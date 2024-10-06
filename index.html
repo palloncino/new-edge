@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="global.css">
-    <title>Infinite Marquee Effect</title>
+    <title>Infinite Marquee Effect with Stop Animation</title>
 </head>
 <body class="intro">
     <style>
@@ -18,7 +18,7 @@
 
         .intro-fixed-background {
             position: fixed;
-            background: #8f8f8f;
+            background: #F7F7F7;
             width: 100%;
             height: 100vh;
             display: flex;
@@ -49,34 +49,46 @@
             align-items: center;
             width: max-content; /* Width is determined by content */
             height: 100%; /* Full height */
-            animation-duration: 15s;
-            animation-timing-function: linear;
-            animation-iteration-count: infinite;
+            animation-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1); /* Smooth acceleration and deceleration */
+            animation-iteration-count: 1; /* One iteration for stop effect */
+            transform: translateX(0); /* Default start position */
         }
 
-        /* Marquee effect animation */
-        @keyframes moveLeft {
+        /* Keyframes for spinning effect with smooth start and stop */
+        @keyframes spinLeft {
             0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+            100% { transform: translateX(-50%); } /* End at half of its length */
         }
-        
-        @keyframes moveRight {
+
+        @keyframes spinRight {
             0% { transform: translateX(-50%); }
-            100% { transform: translateX(0); }
+            100% { transform: translateX(0%); } /* End at origin */
         }
 
         .move-left {
-            animation-name: moveLeft;
+            animation-name: spinLeft;
+            animation-duration: 3s; /* Shorter duration for visible effect */
         }
 
         .move-right {
-            animation-name: moveRight;
+            animation-name: spinRight;
+            animation-duration: 3s; /* Shorter duration for visible effect */
         }
 
         .rail img {
             width: auto; /* Maintain aspect ratio */
             height: 90%; /* Images should occupy most of the rail height */
             margin: 0 5px;
+        }
+
+        /* Marquee wrapper for seamless duplication */
+        .marquee-wrapper {
+            display: flex;
+        }
+
+        /* Style to highlight the centered image after the spin */
+        .highlight-center {
+            border: 2px solid red; /* Example: Highlight for visual confirmation */
         }
     </style>
 
@@ -122,7 +134,7 @@
             const viewportHeight = window.innerHeight;
             const gap = 16; // 1rem gap in pixels (16px by default)
             const railHeight = (viewportHeight - (3 * gap)) / 4; // 3 gaps between 4 rails
-            
+
             // Select all rail containers and set their heights dynamically
             const railContainers = document.querySelectorAll('.rail-container');
             railContainers.forEach(container => {
@@ -135,6 +147,8 @@
             const rails = document.querySelectorAll('.rail');
             rails.forEach(rail => {
                 for (let i = 0; i < 30; i++) {
+                    // if it s odd (1,3) otherwise for even (2,4)
+                    // off img.src = './assets/odd-1.svg';
                     const img = document.createElement('img');
                     img.src = './assets/shape.svg';
                     img.alt = 'Shape';
@@ -143,7 +157,7 @@
             });
         }
 
-        // Set rail heights and populate with images on load
+        // Set rail heights, populate with images, and stop the second rail at the center
         window.onload = function() {
             calculateAndSetRailHeight(); // Set rail heights based on viewport size
             populateRails(); // Populate rails with images
