@@ -29,17 +29,18 @@
 
         .rail-container {
             width: 100%;
-            overflow: hidden; /* Hide overflow to create a seamless effect */
+            overflow: hidden;
             display: flex;
             align-items: center;
+            margin-bottom: 1rem; /* Add gap between rails */
         }
 
         .rail {
             display: flex;
             align-items: center;
             position: relative;
-            width: max-content; /* Ensure width adapts to the content */
-            animation-duration: 15s; /* Duration of animation */
+            width: max-content;
+            animation-duration: 15s;
             animation-timing-function: linear;
             animation-iteration-count: infinite;
         }
@@ -80,35 +81,54 @@
         <div class="rail-container">
             <div class="marquee-wrapper">
                 <div class="rail rail-1 move-left"></div>
-                <div class="rail rail-1 move-left"></div> <!-- Duplicated rail for continuous effect -->
+                <div class="rail rail-1 move-left"></div>
+                <div class="rail rail-1 move-left"></div>
+                <div class="rail rail-1 move-left"></div>
             </div>
         </div>
         <div class="rail-container">
             <div class="marquee-wrapper">
                 <div class="rail rail-2 move-right"></div>
-                <div class="rail rail-2 move-right"></div> <!-- Duplicated rail for continuous effect -->
+                <div class="rail rail-2 move-right"></div>
+                <div class="rail rail-2 move-right"></div>
+                <div class="rail rail-2 move-right"></div>
             </div>
         </div>
         <div class="rail-container">
             <div class="marquee-wrapper">
                 <div class="rail rail-3 move-left"></div>
-                <div class="rail rail-3 move-left"></div> <!-- Duplicated rail for continuous effect -->
+                <div class="rail rail-3 move-left"></div>
+                <div class="rail rail-3 move-left"></div>
+                <div class="rail rail-3 move-left"></div>
             </div>
         </div>
         <div class="rail-container">
             <div class="marquee-wrapper">
                 <div class="rail rail-4 move-right"></div>
-                <div class="rail rail-4 move-right"></div> <!-- Duplicated rail for continuous effect -->
+                <div class="rail rail-4 move-right"></div>
+                <div class="rail rail-4 move-right"></div>
+                <div class="rail rail-4 move-right"></div>
             </div>
         </div>
     </div>
 
     <script>
-        // Select all rail elements
-        const rails = document.querySelectorAll('.rail');
+        // Function to calculate the height of each rail based on total height and gaps
+        function calculateAndSetRailHeight() {
+            const viewportHeight = window.innerHeight;
+            const gap = 16; // 1rem gap in pixels (16px by default)
+            const railHeight = (viewportHeight - (3 * gap)) / 4; // 3 gaps between 4 rails
+            
+            // Select all rail containers and set their heights dynamically
+            const railContainers = document.querySelectorAll('.rail-container');
+            railContainers.forEach(container => {
+                container.style.height = `${railHeight}px`; // Set rail container height
+            });
+        }
 
-        // Function to populate rails with duplicate images for seamless loop
+        // Function to populate rails with images
         function populateRails() {
+            const rails = document.querySelectorAll('.rail');
             rails.forEach(rail => {
                 for (let i = 0; i < 30; i++) {
                     const img = document.createElement('img');
@@ -119,8 +139,11 @@
             });
         }
 
-        // Populate rails with images
-        populateRails();
+        // Set rail heights and populate with images on load
+        window.onload = function() {
+            calculateAndSetRailHeight(); // Set rail heights based on viewport size
+            populateRails(); // Populate rails with images
+        };
     </script>
 </body>
 </html>
