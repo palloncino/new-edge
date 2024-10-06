@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="global.css">
+    <title>Intro</title>
+</head>
+<body class="intro">
+
+    <style>
+        /* Base styles */
+        .intro-fixed-background {
+            position: fixed;
+            background: #8f8f8f;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+
+        .rail {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            overflow: hidden;
+            padding: 10px;
+        }
+
+        .rail img {
+            width: 50px;
+            height: 50px;
+            margin: 5px;
+        }
+
+        /* CSS classes for background colors */
+        .orange-bg {
+            background-color: orange;
+        }
+
+        .grey-bg {
+            background-color: grey;
+        }
+
+        .green-bg {
+            background-color: green;
+        }
+
+        .darkgrey-bg {
+            background-color: darkgrey;
+        }
+    </style>
+
+    <div id="intro-fixed-background" class="intro-fixed-background">
+        <div class="rail rail-0"></div>
+        <div class="rail rail-1"></div>
+        <div class="rail rail-2"></div>
+        <div class="rail rail-3"></div>
+    </div>
+
+    <script>
+        // Get all rail elements
+        const rails = document.querySelectorAll('.rail');
+
+        // Function to append images to each rail with different background colors
+        function populateRails() {
+            rails.forEach((rail, index) => {
+                for (let i = 0; i < 30; i++) {
+                    const img = document.createElement('img');
+                    img.src = './assets/shape.svg';
+                    img.alt = 'Shape ' + (index + 1);
+
+                    // Apply different classes based on the rail index
+                    switch (index) {
+                        case 0:
+                            img.classList.add('orange-bg');
+                            break;
+                        case 1:
+                            img.classList.add('grey-bg');
+                            break;
+                        case 2:
+                            img.classList.add('green-bg');
+                            break;
+                        case 3:
+                            img.classList.add('darkgrey-bg');
+                            break;
+                    }
+
+                    rail.appendChild(img);
+                }
+            });
+        }
+
+        // Populate the rails with images on page load
+        populateRails();
+    </script>
+
+</body>
+</html>
