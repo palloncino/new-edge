@@ -32,14 +32,23 @@
             overflow: hidden;
             display: flex;
             align-items: center;
-            margin-bottom: 1rem; /* Add gap between rails */
+            margin-bottom: 1rem; /* Gap between each rail container */
+            position: relative;
         }
 
+        /* Marquee wrapper should occupy full height of its container */
+        .marquee-wrapper {
+            display: flex;
+            height: 100%; /* Occupy full height of the container */
+            align-items: center;
+        }
+
+        /* Rail should occupy full height of its parent container */
         .rail {
             display: flex;
             align-items: center;
-            position: relative;
-            width: max-content;
+            width: max-content; /* Width is determined by content */
+            height: 100%; /* Full height */
             animation-duration: 15s;
             animation-timing-function: linear;
             animation-iteration-count: infinite;
@@ -53,7 +62,7 @@
         
         @keyframes moveRight {
             0% { transform: translateX(-50%); }
-            100% { transform: translateX(0%); }
+            100% { transform: translateX(0); }
         }
 
         .move-left {
@@ -65,14 +74,9 @@
         }
 
         .rail img {
-            width: 50px;
-            height: auto;
+            width: auto; /* Maintain aspect ratio */
+            height: 90%; /* Images should occupy most of the rail height */
             margin: 0 5px;
-        }
-
-        /* Marquee wrapper for seamless duplication */
-        .marquee-wrapper {
-            display: flex;
         }
     </style>
 
