@@ -4,15 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="global.css">
-    <title>Intro</title>
+    <title>Infinite Marquee Effect</title>
 </head>
 <body class="intro">
     <style>
-        /* Base styling for page and container */
         body, html {
             margin: 0;
             padding: 0;
-            overflow: hidden; /* Hide any overflow */
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
         }
 
         .intro-fixed-background {
@@ -23,53 +24,81 @@
             display: flex;
             flex-direction: column;
             justify-content: space-around;
+            overflow: hidden;
+        }
+
+        .rail-container {
+            width: 100%;
+            overflow: hidden; /* Hide overflow to create a seamless effect */
+            display: flex;
+            align-items: center;
         }
 
         .rail {
             display: flex;
-            position: relative;
             align-items: center;
-            width: 200vw; /* Make the rail extend outside the viewport */
+            position: relative;
+            width: max-content; /* Ensure width adapts to the content */
+            animation-duration: 15s; /* Duration of animation */
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
         }
 
-        .rail img {
-            width: 50px; /* Ensure images maintain aspect ratio */
-            height: auto;
-            margin: 5px;
-        }
-
-        /* Animation for moving rails */
-        @keyframes moveRailLeft {
-            0% { transform: translateX(0%); } 
-            100% { transform: translateX(-100%); } 
-        }
-
-        @keyframes moveRailRight {
-            0% { transform: translateX(0%); } 
-            100% { transform: translateX(100%); } 
+        /* Marquee effect animation */
+        @keyframes moveLeft {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
 
         .move-left {
-            animation: moveRailLeft 10s linear infinite;
+            animation-name: moveLeft;
         }
 
-        .move-right {
-            animation: moveRailRight 10s linear infinite;
+        .rail img {
+            width: 50px;
+            height: auto;
+            margin: 0 5px;
+        }
+
+        /* Marquee wrapper for seamless duplication */
+        .marquee-wrapper {
+            display: flex;
         }
     </style>
 
     <div id="intro-fixed-background" class="intro-fixed-background">
-        <div class="rail rail-1 move-left"></div>
-        <div class="rail rail-2 move-right"></div>
-        <div class="rail rail-3 move-left"></div>
-        <div class="rail rail-4 move-right"></div>
+        <!-- Each rail container will hold a marquee wrapper for continuous effect -->
+        <div class="rail-container">
+            <div class="marquee-wrapper">
+                <div class="rail rail-1 move-left"></div>
+                <div class="rail rail-1 move-left"></div> <!-- Duplicated rail for continuous effect -->
+            </div>
+        </div>
+        <div class="rail-container">
+            <div class="marquee-wrapper">
+                <div class="rail rail-2 move-left"></div>
+                <div class="rail rail-2 move-left"></div> <!-- Duplicated rail for continuous effect -->
+            </div>
+        </div>
+        <div class="rail-container">
+            <div class="marquee-wrapper">
+                <div class="rail rail-3 move-left"></div>
+                <div class="rail rail-3 move-left"></div> <!-- Duplicated rail for continuous effect -->
+            </div>
+        </div>
+        <div class="rail-container">
+            <div class="marquee-wrapper">
+                <div class="rail rail-4 move-left"></div>
+                <div class="rail rail-4 move-left"></div> <!-- Duplicated rail for continuous effect -->
+            </div>
+        </div>
     </div>
 
     <script>
         // Select all rail elements
         const rails = document.querySelectorAll('.rail');
 
-        // Function to append images to each rail
+        // Function to populate rails with duplicate images for seamless loop
         function populateRails() {
             rails.forEach(rail => {
                 for (let i = 0; i < 30; i++) {
@@ -81,7 +110,7 @@
             });
         }
 
-        // Call function to populate rails with images
+        // Populate rails with images
         populateRails();
     </script>
 </body>
