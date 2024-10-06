@@ -49,9 +49,18 @@
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
         }
+        
+        @keyframes moveRight {
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(0%); }
+        }
 
         .move-left {
             animation-name: moveLeft;
+        }
+
+        .move-right {
+            animation-name: moveRight;
         }
 
         .rail img {
@@ -76,8 +85,8 @@
         </div>
         <div class="rail-container">
             <div class="marquee-wrapper">
-                <div class="rail rail-2 move-left"></div>
-                <div class="rail rail-2 move-left"></div> <!-- Duplicated rail for continuous effect -->
+                <div class="rail rail-2 move-right"></div>
+                <div class="rail rail-2 move-right"></div> <!-- Duplicated rail for continuous effect -->
             </div>
         </div>
         <div class="rail-container">
@@ -88,8 +97,8 @@
         </div>
         <div class="rail-container">
             <div class="marquee-wrapper">
-                <div class="rail rail-4 move-left"></div>
-                <div class="rail rail-4 move-left"></div> <!-- Duplicated rail for continuous effect -->
+                <div class="rail rail-4 move-right"></div>
+                <div class="rail rail-4 move-right"></div> <!-- Duplicated rail for continuous effect -->
             </div>
         </div>
     </div>
