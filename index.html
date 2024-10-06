@@ -7,15 +7,19 @@
     <title>Intro</title>
 </head>
 <body class="intro">
-
     <style>
-        /* Base styles */
+        /* Base styling for page and container */
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Hide any overflow */
+        }
+
         .intro-fixed-background {
             position: fixed;
             background: #8f8f8f;
             width: 100%;
             height: 100vh;
-            overflow: hidden;
             display: flex;
             flex-direction: column;
             justify-content: space-around;
@@ -23,79 +27,62 @@
 
         .rail {
             display: flex;
+            position: relative;
             align-items: center;
-            justify-content: flex-start;
-            overflow: hidden;
-            padding: 10px;
+            width: 200vw; /* Make the rail extend outside the viewport */
         }
 
         .rail img {
-            width: 50px;
-            height: 50px;
+            width: 50px; /* Ensure images maintain aspect ratio */
+            height: auto;
             margin: 5px;
         }
 
-        /* CSS classes for background colors */
-        .orange-bg {
-            background-color: orange;
+        /* Animation for moving rails */
+        @keyframes moveRailLeft {
+            0% { transform: translateX(100%); } /* Start outside the viewport */
+            100% { transform: translateX(-100%); } /* Move completely to the left */
         }
 
-        .grey-bg {
-            background-color: grey;
+        @keyframes moveRailRight {
+            0% { transform: translateX(-100%); } /* Start outside the viewport */
+            100% { transform: translateX(100%); } /* Move completely to the right */
         }
 
-        .green-bg {
-            background-color: green;
+        .move-left {
+            animation: moveRailLeft 10s linear infinite;
         }
 
-        .darkgrey-bg {
-            background-color: darkgrey;
+        .move-right {
+            animation: moveRailRight 10s linear infinite;
         }
     </style>
 
     <div id="intro-fixed-background" class="intro-fixed-background">
-        <div class="rail rail-0"></div>
-        <div class="rail rail-1"></div>
-        <div class="rail rail-2"></div>
-        <div class="rail rail-3"></div>
+        <div class="rail rail-1 move-left"></div>
+        <div class="rail rail-2 move-right"></div>
+        <div class="rail rail-3 move-left"></div>
+        <div class="rail rail-4 move-right"></div>
     </div>
 
     <script>
-        // Get all rail elements
+        // Select all rail elements
         const rails = document.querySelectorAll('.rail');
 
-        // Function to append images to each rail with different background colors
+        // Function to append images to each rail
         function populateRails() {
-            rails.forEach((rail, index) => {
+            rails.forEach(rail => {
                 for (let i = 0; i < 30; i++) {
                     const img = document.createElement('img');
                     img.src = './assets/shape.svg';
-                    img.alt = 'Shape ' + (index + 1);
-
-                    // Apply different classes based on the rail index
-                    switch (index) {
-                        case 0:
-                            img.classList.add('orange-bg');
-                            break;
-                        case 1:
-                            img.classList.add('grey-bg');
-                            break;
-                        case 2:
-                            img.classList.add('green-bg');
-                            break;
-                        case 3:
-                            img.classList.add('darkgrey-bg');
-                            break;
-                    }
-
+                    img.alt = 'Shape';
                     rail.appendChild(img);
                 }
             });
         }
 
-        // Populate the rails with images on page load
+        // Call function to populate rails with images
         populateRails();
     </script>
-
 </body>
 </html>
