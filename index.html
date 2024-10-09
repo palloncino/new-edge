@@ -141,14 +141,24 @@
 
         #logo-container {
             position: fixed;
-            width: 48px;
-            height: 105px;
+            width: 96px;
+            /* Double the width */
+            height: 210px;
+            /* Double the height */
             left: 20px;
+            /* Position it on the left */
             top: 50%;
+            /* Vertically center */
             transform: translateY(-50%);
-            background-image: url('./screenshots/spare-logo.png');
+            /* Center it perfectly */
+            /* background-image: url('./assets/spare-logo.png'); */
+            /* Set logo as background */
             background-size: cover;
+            /* Cover the container */
+            border: 1px solid red;
+            /* Add red border */
             opacity: 0;
+            /* Hidden initially */
             transition: opacity 1s ease-in-out;
         }
     </style>
@@ -276,20 +286,41 @@
             const logoContainer = document.getElementById('logo-container');
             logoContainer.style.opacity = '1';
 
-            // Get the bounding rectangle of the logo container
+            // Get the bounding rectangle of the logo container and the shape
             const logoRect = logoContainer.getBoundingClientRect();
+            const shapeRect = shape.getBoundingClientRect(); // Get the current shape's dimensions
 
-            // Calculate the position and scaling to move the shape to the logo
+            // Log values for debugging
+            console.log('Initial Shape Position:', shapeRect);
+            console.log('Logo Container Position:', logoRect);
+
+            // Calculate the shape's final position relative to the logo container
+            // Adjust calculations to ensure they are relative to the container, not the viewport
             const finalTop = logoRect.top + window.scrollY + (logoRect.height / 2) - (FINAL_SHAPE_HEIGHT / 2);
-            const finalLeft = logoRect.left + window.scrollX + (logoRect.width / 2) - (shape.getBoundingClientRect().width / 2);
+            const finalLeft = logoRect.left + window.scrollX + (logoRect.width / 2) - (LOGO_CONTAINER_WIDTH / 2);
 
-            // Animate the shape to move and shrink
-            shape.style.transition = `top 1s ease-in-out, left 1s ease-in-out, width 1s ease-in-out, height 1s ease-in-out`;
+            // Log calculated final position values
+            console.log('Final Calculated Position - Top:', finalTop, 'Left:', finalLeft);
+
+            // Apply positioning and scaling relative to the logo container
+            shape.style.position = 'fixed'; // Use 'fixed' to ensure it's relative to the viewport
+            shape.style.transition = 'top 1s ease-in-out, left 1s ease-in-out, width 1s ease-in-out, height 1s ease-in-out';
+
+            // Log before applying new styles
+            console.log('Applying new styles...');
+
+            // Apply the final position and size
             shape.style.top = `${finalTop}px`;
             shape.style.left = `${finalLeft}px`;
             shape.style.width = `${LOGO_CONTAINER_WIDTH}px`;
             shape.style.height = `${FINAL_SHAPE_HEIGHT}px`;
+
+            // Log after applying styles
+            console.log('New Shape Position:', shape.getBoundingClientRect());
         }
+
+        // Additional code for the entire phase transition...
+
 
         function applyAnimationPauseAndSelectShape() {
             setTimeout(() => {
