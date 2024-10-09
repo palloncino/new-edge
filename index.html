@@ -167,10 +167,10 @@
         // Configuration Variables
         const FADE_IN_DURATION = "1s";
         const ANIMATION_DURATION = "3s";
-        const ANIMATION_DELAY = "1s";
-        const POST_ANIMATION_PAUSE = 1000; // pause after animation ends
+        const ANIMATION_DELAY = "2s";
+        const POST_ANIMATION_PAUSE = 2000; // pause after animation ends
         const RAIL_HEIGHT_GAP = 32; // Gap between rails
-        const ANIMATION_TOTAL_DURATION = 4000; // for animation + 500ms pause
+        const ANIMATION_TOTAL_DURATION = 5500; // for animation + 500ms pause
 
         // Apply configuration to CSS variables
         document.documentElement.style.setProperty('--FADE_IN_DURATION', FADE_IN_DURATION);
@@ -217,12 +217,28 @@
         }
 
         function enterSecondPhase() {
-            // Hide all rails and other shapes except the selected shape
+            // Create a clone of the selected shape and position it
+            const clonedShape = selectedShape.cloneNode(true);
+            document.body.appendChild(clonedShape);
+
+            // Get the bounding rectangle of the selected shape
+            const selectedShapeRect = selectedShape.getBoundingClientRect();
+
+            // Style the cloned shape to be positioned exactly like the original shape
+            clonedShape.style.position = 'absolute';
+            clonedShape.style.top = `${selectedShapeRect.top}px`;
+            clonedShape.style.left = `${selectedShapeRect.left}px`;
+            clonedShape.style.width = `${selectedShapeRect.width}px`;
+            clonedShape.style.height = `${selectedShapeRect.height}px`;
+            clonedShape.style.transform = 'none'; // Ensure no further transforms are applied
+            clonedShape.style.transition = 'none'; // Disable transitions for the cloned shape to keep it stable
+
+            // Hide all rails and other shapes except the cloned shape
             const rails = document.querySelectorAll('.rail');
             rails.forEach((rail) => {
                 // Hide all images in the rail
                 rail.querySelectorAll('img').forEach((img) => {
-                    // Only keep the selected shape visible
+                    // Only keep the cloned shape visible
                     if (img !== selectedShape) {
                         img.style.transition = `opacity ${FADE_IN_DURATION} ease-in-out`;
                         img.style.opacity = '0';
@@ -238,12 +254,8 @@
                     }
                 });
 
-                // Position the selected shape to remain in its current position
-                selectedShape.style.position = 'absolute';
-                const selectedShapeRect = selectedShape.getBoundingClientRect();
-                selectedShape.style.top = `${selectedShapeRect.top}px`;
-                selectedShape.style.left = `${selectedShapeRect.left}px`;
-                selectedShape.style.transform = 'none'; // Prevent any further transforms
+                // Remove the original shape, leaving only the clone
+                selectedShape.style.display = 'none';
             }, POST_ANIMATION_PAUSE); // Wait for the opacity transition to complete
         }
 
@@ -294,6 +306,7 @@
             populateRails();
             applyAnimationPauseAndSelectShape();
         };
+
     </script>
 </body>
 
