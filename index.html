@@ -125,6 +125,48 @@
     </div>
 
     <script>
+        function getCenteredOrangeShape() {
+            // Get the center of the viewport horizontally
+            const viewportCenter = window.innerWidth / 2;
+
+            // Select all images in the second row (rail-2)
+            const rail2 = document.querySelector('.rail-2');
+            const shapes = rail2.querySelectorAll('img');
+
+            // Variable to store the closest orange shape and its distance from center
+            let closestShape = null;
+            let closestDistance = Infinity;
+
+            // Iterate through each shape
+            shapes.forEach((shape) => {
+                // Check if the shape is orange
+                if (shape.src.includes('orange')) {
+                    // Get the shape's horizontal center position
+                    const shapeRect = shape.getBoundingClientRect();
+                    const shapeCenter = shapeRect.left + shapeRect.width / 2;
+
+                    // Calculate distance from the center of the viewport
+                    const distanceFromCenter = Math.abs(viewportCenter - shapeCenter);
+
+                    // Check if this is the closest shape
+                    if (distanceFromCenter < closestDistance) {
+                        closestShape = shape;
+                        closestDistance = distanceFromCenter;
+                    }
+                }
+            });
+
+            // Log the closest shape to the console
+            console.log('Most centered orange shape:', closestShape);
+        }
+
+        function applyAnimationPauseAndSelectShape() {
+            // Wait for animation duration + 500ms
+            setTimeout(() => {
+                getCenteredOrangeShape();
+            }, 3500); // 3s animation duration + 500ms pause
+        }
+
         function calculateAndSetRailHeight() {
             const viewportHeight = window.innerHeight;
             const gap = 32;
@@ -164,6 +206,7 @@
         window.onload = function () {
             calculateAndSetRailHeight();
             populateRails();
+            applyAnimationPauseAndSelectShape();
         };
     </script>
 </body>
