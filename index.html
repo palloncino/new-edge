@@ -290,24 +290,14 @@
             const logoRect = logoContainer.getBoundingClientRect();
             const shapeRect = shape.getBoundingClientRect(); // Get the current shape's dimensions
 
-            // Log values for debugging
-            console.log('Initial Shape Position:', shapeRect);
-            console.log('Logo Container Position:', logoRect);
-
             // Calculate the shape's final position relative to the logo container
             // Adjust calculations to ensure they are relative to the container, not the viewport
             const finalTop = logoRect.top + window.scrollY + (logoRect.height / 2) - (FINAL_SHAPE_HEIGHT / 2);
             const finalLeft = logoRect.left + window.scrollX + (logoRect.width / 2) - (LOGO_CONTAINER_WIDTH / 2);
 
-            // Log calculated final position values
-            console.log('Final Calculated Position - Top:', finalTop, 'Left:', finalLeft);
-
             // Apply positioning and scaling relative to the logo container
             shape.style.position = 'fixed'; // Use 'fixed' to ensure it's relative to the viewport
             shape.style.transition = 'top 1s ease-in-out, left 1s ease-in-out, width 1s ease-in-out, height 1s ease-in-out';
-
-            // Log before applying new styles
-            console.log('Applying new styles...');
 
             // Apply the final position and size
             shape.style.top = `${finalTop}px`;
@@ -316,7 +306,6 @@
             shape.style.height = `${FINAL_SHAPE_HEIGHT}px`;
 
             // Log after applying styles
-            console.log('New Shape Position:', shape.getBoundingClientRect());
         }
 
         // Additional code for the entire phase transition...
