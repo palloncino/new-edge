@@ -35,36 +35,26 @@
             overflow: hidden;
             display: flex;
             align-items: center;
-            margin-bottom: 1rem;
-            /* Gap between each rail container */
             position: relative;
         }
 
-        /* Marquee wrapper should occupy full height of its container */
         .marquee-wrapper {
             display: flex;
             height: 100%;
-            /* Occupy full height of the container */
             align-items: center;
         }
 
-        /* Rail should occupy full height of its parent container */
         .rail {
             display: flex;
             align-items: center;
             width: max-content;
-            /* Width is determined by content */
             height: 100%;
-            /* Full height */
             animation-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
-            /* Smooth acceleration and deceleration */
+            animation-fill-mode: forwards;
             animation-iteration-count: 1;
-            /* One iteration for stop effect */
             transform: translateX(0);
-            /* Default start position */
         }
 
-        /* Keyframes for spinning effect with smooth start and stop */
         @keyframes spinLeft {
             0% {
                 transform: translateX(0);
@@ -73,8 +63,6 @@
             100% {
                 transform: translateX(-50%);
             }
-
-            /* End at half of its length */
         }
 
         @keyframes spinRight {
@@ -85,118 +73,86 @@
             100% {
                 transform: translateX(0%);
             }
-
-            /* End at origin */
         }
 
         .move-left {
             animation-name: spinLeft;
             animation-duration: 3s;
-            /* Shorter duration for visible effect */
         }
 
         .move-right {
             animation-name: spinRight;
             animation-duration: 3s;
-            /* Shorter duration for visible effect */
         }
 
         .rail img {
             width: auto;
-            /* Maintain aspect ratio */
-            height: 90%;
-            /* Images should occupy most of the rail height */
-            margin: 0 5px;
+            height: 100%;
+            margin: 0;
         }
 
-        /* Marquee wrapper for seamless duplication */
+        /* Rotate pink and light blue shapes 180 degrees */
+        .rotate-180 {
+            transform: rotate(180deg);
+        }
+
         .marquee-wrapper {
             display: flex;
-        }
-
-        /* Style to highlight the centered image after the spin */
-        .highlight-center {
-            border: 2px solid red;
-            /* Example: Highlight for visual confirmation */
         }
     </style>
 
     <div id="intro-fixed-background" class="intro-fixed-background">
-        <!-- Each rail container will hold a marquee wrapper for continuous effect -->
         <div class="rail-container">
             <div class="marquee-wrapper">
-                <div class="rail rail-1 move-left"></div>
-                <div class="rail rail-1 move-left"></div>
-                <div class="rail rail-1 move-left"></div>
                 <div class="rail rail-1 move-left"></div>
             </div>
         </div>
         <div class="rail-container">
             <div class="marquee-wrapper">
                 <div class="rail rail-2 move-right"></div>
-                <div class="rail rail-2 move-right"></div>
-                <div class="rail rail-2 move-right"></div>
-                <div class="rail rail-2 move-right"></div>
             </div>
         </div>
         <div class="rail-container">
             <div class="marquee-wrapper">
                 <div class="rail rail-3 move-left"></div>
-                <div class="rail rail-3 move-left"></div>
-                <div class="rail rail-3 move-left"></div>
-                <div class="rail rail-3 move-left"></div>
             </div>
         </div>
         <div class="rail-container">
             <div class="marquee-wrapper">
-                <div class="rail rail-4 move-right"></div>
-                <div class="rail rail-4 move-right"></div>
-                <div class="rail rail-4 move-right"></div>
                 <div class="rail rail-4 move-right"></div>
             </div>
         </div>
     </div>
 
     <script>
-        // Function to calculate the height of each rail based on total height and gaps
         function calculateAndSetRailHeight() {
             const viewportHeight = window.innerHeight;
-            const gap = 16; // 1rem gap in pixels (16px by default)
-            const railHeight = (viewportHeight - (3 * gap)) / 4; // 3 gaps between 4 rails
-
-            // Select all rail containers and set their heights dynamically
+            const gap = 32;
+            const railHeight = (viewportHeight - (3 * gap)) / 4;
             const railContainers = document.querySelectorAll('.rail-container');
             railContainers.forEach(container => {
-                container.style.height = `${railHeight}px`; // Set rail container height
+                container.style.height = `${railHeight}px`;
             });
         }
 
-        // Here a description of the sequence of shapes:
-
-        // first row and third row (same)
-        // ./assets/shape-3-violet.svg and ./assets/shape-2-lightblue.svg 1 and 2 and 1 and 2 continuous. 
-
-        // second row and forth row (same)
-        // ./assets/shape-3-pink.svg and ./assets/shape-2-orange.svg 1 and 2 and 1 and 2 continuous. 
-
-        // Can you apply these changes?
-
-        // Function to append images to each rail with alternating sources
         function populateRails() {
-            // Get all rail elements
             const rails = document.querySelectorAll('.rail');
 
             rails.forEach((rail, index) => {
                 for (let i = 0; i < 15; i++) {
                     const img = document.createElement('img');
 
-                    // Determine the image source based on the rail index and position
-                    if (index % 2 === 0) {
-                        // First and third rows
+                    // Populate images based on row index (index starts at 0)
+                    if (index === 0 || index === 2) {
                         img.src = (i % 2 === 0) ? './assets/shape-3-violet.svg' : './assets/shape-2-lightblue.svg';
-                    } else {
-                        // Second and fourth rows
+                        if (img.src.includes('lightblue')) {
+                            img.classList.add('rotate-180'); // Rotate light blue shape
+                        }
+                    } else if (index === 1 || index === 3) {
                         img.src = (i % 2 === 0) ? './assets/shape-3-pink.svg' : './assets/shape-2-orange.svg';
+                        if (img.src.includes('pink')) {
+                            img.classList.add('rotate-180'); // Rotate pink shape
+                        }
                     }
 
                     img.alt = 'Shape';
@@ -205,10 +161,9 @@
             });
         }
 
-        // Set rail heights, populate with images, and stop the second rail at the center
         window.onload = function () {
-            calculateAndSetRailHeight(); // Set rail heights based on viewport size
-            populateRails(); // Populate rails with images
+            calculateAndSetRailHeight();
+            populateRails();
         };
     </script>
 </body>
