@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="global.css">
     <title>Infinite Marquee Effect with Stop Animation</title>
 </head>
+
 <body class="intro">
     <style>
-        body, html {
+        body,
+        html {
             margin: 0;
             padding: 0;
             overflow: hidden;
@@ -32,14 +35,16 @@
             overflow: hidden;
             display: flex;
             align-items: center;
-            margin-bottom: 1rem; /* Gap between each rail container */
+            margin-bottom: 1rem;
+            /* Gap between each rail container */
             position: relative;
         }
 
         /* Marquee wrapper should occupy full height of its container */
         .marquee-wrapper {
             display: flex;
-            height: 100%; /* Occupy full height of the container */
+            height: 100%;
+            /* Occupy full height of the container */
             align-items: center;
         }
 
@@ -47,37 +52,60 @@
         .rail {
             display: flex;
             align-items: center;
-            width: max-content; /* Width is determined by content */
-            height: 100%; /* Full height */
-            animation-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1); /* Smooth acceleration and deceleration */
-            animation-iteration-count: 1; /* One iteration for stop effect */
-            transform: translateX(0); /* Default start position */
+            width: max-content;
+            /* Width is determined by content */
+            height: 100%;
+            /* Full height */
+            animation-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+            /* Smooth acceleration and deceleration */
+            animation-iteration-count: 1;
+            /* One iteration for stop effect */
+            transform: translateX(0);
+            /* Default start position */
         }
 
         /* Keyframes for spinning effect with smooth start and stop */
         @keyframes spinLeft {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); } /* End at half of its length */
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+
+            /* End at half of its length */
         }
 
         @keyframes spinRight {
-            0% { transform: translateX(-50%); }
-            100% { transform: translateX(0%); } /* End at origin */
+            0% {
+                transform: translateX(-50%);
+            }
+
+            100% {
+                transform: translateX(0%);
+            }
+
+            /* End at origin */
         }
 
         .move-left {
             animation-name: spinLeft;
-            animation-duration: 3s; /* Shorter duration for visible effect */
+            animation-duration: 3s;
+            /* Shorter duration for visible effect */
         }
 
         .move-right {
             animation-name: spinRight;
-            animation-duration: 3s; /* Shorter duration for visible effect */
+            animation-duration: 3s;
+            /* Shorter duration for visible effect */
         }
 
         .rail img {
-            width: auto; /* Maintain aspect ratio */
-            height: 90%; /* Images should occupy most of the rail height */
+            width: auto;
+            /* Maintain aspect ratio */
+            height: 90%;
+            /* Images should occupy most of the rail height */
             margin: 0 5px;
         }
 
@@ -88,7 +116,8 @@
 
         /* Style to highlight the centered image after the spin */
         .highlight-center {
-            border: 2px solid red; /* Example: Highlight for visual confirmation */
+            border: 2px solid red;
+            /* Example: Highlight for visual confirmation */
         }
     </style>
 
@@ -142,15 +171,34 @@
             });
         }
 
-        // Function to populate rails with images
+        // Here a description of the sequence of shapes:
+
+        // first row and third row (same)
+        // ./assets/shape-3-violet.svg and ./assets/shape-2-lightblue.svg 1 and 2 and 1 and 2 continuous. 
+
+        // second row and forth row (same)
+        // ./assets/shape-3-pink.svg and ./assets/shape-2-orange.svg 1 and 2 and 1 and 2 continuous. 
+
+        // Can you apply these changes?
+
+        // Function to append images to each rail with alternating sources
         function populateRails() {
+            // Get all rail elements
             const rails = document.querySelectorAll('.rail');
-            rails.forEach(rail => {
+
+            rails.forEach((rail, index) => {
                 for (let i = 0; i < 30; i++) {
-                    // if it s odd (1,3) otherwise for even (2,4)
-                    // off img.src = './assets/odd-1.svg';
                     const img = document.createElement('img');
-                    img.src = './assets/shape.svg';
+
+                    // Determine the image source based on the rail index and position
+                    if (index % 2 === 0) {
+                        // First and third rows
+                        img.src = (i % 2 === 0) ? './assets/shape-3-violet.svg' : './assets/shape-2-lightblue.svg';
+                    } else {
+                        // Second and fourth rows
+                        img.src = (i % 2 === 0) ? './assets/shape-3-pink.svg' : './assets/shape-2-orange.svg';
+                    }
+
                     img.alt = 'Shape';
                     rail.appendChild(img);
                 }
@@ -158,10 +206,11 @@
         }
 
         // Set rail heights, populate with images, and stop the second rail at the center
-        window.onload = function() {
+        window.onload = function () {
             calculateAndSetRailHeight(); // Set rail heights based on viewport size
             populateRails(); // Populate rails with images
         };
     </script>
 </body>
+
 </html>
