@@ -138,9 +138,27 @@
         .marquee-wrapper {
             display: flex;
         }
+
+        #logo-container {
+            position: fixed;
+            width: 48px;
+            height: 105px;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-image: url('./screenshots/spare-logo.png');
+            background-size: cover;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
     </style>
 
     <div id="intro-fixed-background" class="intro-fixed-background">
+
+        <div id="logo-container" class="logo-container">
+            <!-- This container will be used to display the logo background image in phase three -->
+        </div>
+
         <div class="rail-container">
             <div class="marquee-wrapper">
                 <div class="rail rail-1 move-left"></div>
@@ -167,10 +185,13 @@
         // Configuration Variables
         const FADE_IN_DURATION = "1s";
         const ANIMATION_DURATION = "3s";
-        const ANIMATION_DELAY = "2s";
-        const POST_ANIMATION_PAUSE = 2000; // pause after animation ends
+        const ANIMATION_DELAY = "1s";
+        const POST_ANIMATION_PAUSE = 1000; // pause after animation ends
         const RAIL_HEIGHT_GAP = 32; // Gap between rails
-        const ANIMATION_TOTAL_DURATION = 5500; // for animation + 500ms pause
+        const ANIMATION_TOTAL_DURATION = 4000; // for animation + 500ms pause
+        const FINAL_SHAPE_HEIGHT = 50; // Final height of the orange shape when it shrinks
+        const LOGO_CONTAINER_WIDTH = 48;
+        const LOGO_CONTAINER_HEIGHT = 105;
 
         // Apply configuration to CSS variables
         document.documentElement.style.setProperty('--FADE_IN_DURATION', FADE_IN_DURATION);
@@ -180,28 +201,20 @@
         let selectedShape = null; // Variable to store the selected shape
 
         function getCenteredOrangeShape() {
-            // Get the center of the viewport horizontally
             const viewportCenter = window.innerWidth / 2;
 
-            // Select all images in the second row (rail-2)
             const rail2 = document.querySelector('.rail-2');
             const shapes = rail2.querySelectorAll('img');
 
-            // Variable to store the closest orange shape and its distance from center
             let closestDistance = Infinity;
 
-            // Iterate through each shape
             shapes.forEach((shape) => {
-                // Check if the shape is orange
                 if (shape.src.includes('orange')) {
-                    // Get the shape's horizontal center position
                     const shapeRect = shape.getBoundingClientRect();
                     const shapeCenter = shapeRect.left + shapeRect.width / 2;
 
-                    // Calculate distance from the center of the viewport
                     const distanceFromCenter = Math.abs(viewportCenter - shapeCenter);
 
-                    // Check if this is the closest shape
                     if (distanceFromCenter < closestDistance) {
                         selectedShape = shape;
                         closestDistance = distanceFromCenter;
@@ -209,36 +222,28 @@
                 }
             });
 
-            // Log the closest shape to the console
             console.log('Most centered orange shape:', selectedShape);
 
-            // Proceed to the next transition
             enterSecondPhase();
         }
 
         function enterSecondPhase() {
-            // Create a clone of the selected shape and position it
             const clonedShape = selectedShape.cloneNode(true);
             document.body.appendChild(clonedShape);
 
-            // Get the bounding rectangle of the selected shape
             const selectedShapeRect = selectedShape.getBoundingClientRect();
 
-            // Style the cloned shape to be positioned exactly like the original shape
             clonedShape.style.position = 'absolute';
             clonedShape.style.top = `${selectedShapeRect.top}px`;
             clonedShape.style.left = `${selectedShapeRect.left}px`;
             clonedShape.style.width = `${selectedShapeRect.width}px`;
             clonedShape.style.height = `${selectedShapeRect.height}px`;
-            clonedShape.style.transform = 'none'; // Ensure no further transforms are applied
-            clonedShape.style.transition = 'none'; // Disable transitions for the cloned shape to keep it stable
+            clonedShape.style.transform = 'none';
+            clonedShape.style.transition = 'none';
 
-            // Hide all rails and other shapes except the cloned shape
             const rails = document.querySelectorAll('.rail');
             rails.forEach((rail) => {
-                // Hide all images in the rail
                 rail.querySelectorAll('img').forEach((img) => {
-                    // Only keep the cloned shape visible
                     if (img !== selectedShape) {
                         img.style.transition = `opacity ${FADE_IN_DURATION} ease-in-out`;
                         img.style.opacity = '0';
@@ -246,7 +251,6 @@
                 });
             });
 
-            // Hide all rails except the one containing the selected shape
             setTimeout(() => {
                 rails.forEach((rail) => {
                     if (!rail.contains(selectedShape)) {
@@ -254,16 +258,43 @@
                     }
                 });
 
-                // Remove the original shape, leaving only the clone
                 selectedShape.style.display = 'none';
-            }, POST_ANIMATION_PAUSE); // Wait for the opacity transition to complete
+
+                // Enter the third phase with the cloned shape
+                enterThirdPhase(clonedShape);
+
+            }, POST_ANIMATION_PAUSE);
+        }
+
+        function enterThirdPhase(shape) {
+            // Clean up unnecessary elements from the page
+            const introBackground = document.querySelector('.intro-fixed-background');
+            const rails = document.querySelectorAll('.rail-container');
+            rails.forEach(rail => rail.remove());
+
+            // Show the logo container
+            const logoContainer = document.getElementById('logo-container');
+            logoContainer.style.opacity = '1';
+
+            // Get the bounding rectangle of the logo container
+            const logoRect = logoContainer.getBoundingClientRect();
+
+            // Calculate the position and scaling to move the shape to the logo
+            const finalTop = logoRect.top + window.scrollY + (logoRect.height / 2) - (FINAL_SHAPE_HEIGHT / 2);
+            const finalLeft = logoRect.left + window.scrollX + (logoRect.width / 2) - (shape.getBoundingClientRect().width / 2);
+
+            // Animate the shape to move and shrink
+            shape.style.transition = `top 1s ease-in-out, left 1s ease-in-out, width 1s ease-in-out, height 1s ease-in-out`;
+            shape.style.top = `${finalTop}px`;
+            shape.style.left = `${finalLeft}px`;
+            shape.style.width = `${LOGO_CONTAINER_WIDTH}px`;
+            shape.style.height = `${FINAL_SHAPE_HEIGHT}px`;
         }
 
         function applyAnimationPauseAndSelectShape() {
-            // Wait for animation duration + pause
             setTimeout(() => {
                 getCenteredOrangeShape();
-            }, ANIMATION_TOTAL_DURATION); // Total duration for animation + pause
+            }, ANIMATION_TOTAL_DURATION);
         }
 
         function calculateAndSetRailHeight() {
@@ -282,16 +313,15 @@
                 for (let i = 0; i < 15; i++) {
                     const img = document.createElement('img');
 
-                    // Populate images based on row index (index starts at 0)
                     if (index === 0 || index === 2) {
                         img.src = (i % 2 === 0) ? './assets/shape-3-violet.svg' : './assets/shape-2-lightblue.svg';
                         if (img.src.includes('lightblue')) {
-                            img.classList.add('rotate-180'); // Rotate light blue shape
+                            img.classList.add('rotate-180');
                         }
                     } else if (index === 1 || index === 3) {
                         img.src = (i % 2 === 0) ? './assets/shape-3-pink.svg' : './assets/shape-2-orange.svg';
                         if (img.src.includes('pink')) {
-                            img.classList.add('rotate-180'); // Rotate pink shape
+                            img.classList.add('rotate-180');
                         }
                     }
 
@@ -306,7 +336,6 @@
             populateRails();
             applyAnimationPauseAndSelectShape();
         };
-
     </script>
 </body>
 
