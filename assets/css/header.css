@@ -1,0 +1,138 @@
+.edge-header {
+    box-sizing: border-box;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 2rem 3rem;
+    z-index: 1000;
+    height: 80px;
+    width: 100%;
+    /* max-width: 1200px; */
+}
+
+.edge-header .header-logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.edge-header .header-logo-img {
+    height: 150px;
+    width: auto;
+}
+
+.edge-header .header-navigation-links-container {
+    color: #fff;
+    display: flex;
+    align-items: center;
+}
+
+.edge-header .header-navigation-links {
+    background: #333;
+    height: 50px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    border-radius: 24px;
+    padding: 0.5rem;
+}
+
+.edge-header .header-navigation-link {
+    margin: 0 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-weight: 600;
+    color: #fff;
+    text-decoration: none;
+}
+
+/* PAGE SPECIFIC STYLES */
+
+.home .edge-header .header-navigation-links {
+    background: #3B1573;
+    transition: background 0.3s;
+}
+
+.home .edge-header .header-navigation-link {
+    color: #F59601;
+    text-decoration: none;
+}
+
+.home .edge-header .header-navigation-link.selected {
+    color: white;
+    text-decoration: none;
+}
+
+.cosa-facciamo .edge-header .header-navigation-links {
+    background: #F59601;
+}
+
+.cosa-facciamo .edge-header .header-navigation-link {
+    color: white;
+    text-decoration: none;
+    opacity: .7;
+}
+
+.cosa-facciamo .edge-header .header-navigation-link.selected {
+    opacity: 1;
+}
+
+.chi-siamo .edge-header .header-navigation-links {
+    background: #E946A0;
+}
+
+.chi-siamo .edge-header .header-navigation-link {
+    color: white;
+    text-decoration: none;
+    opacity: .7;
+}
+
+.chi-siamo .edge-header .header-navigation-link.selected {
+    opacity: 1;
+}
+
+.il-gruppo .edge-header .header-navigation-links {
+    background: #3B1573;
+}
+
+.il-gruppo .edge-header .header-navigation-link {
+    color: white;
+    text-decoration: none;
+    opacity: .7;
+}
+
+.il-gruppo .edge-header .header-navigation-link.selected {
+    opacity: 1;
+}
+
+.download .edge-header .header-navigation-links {
+    background: #3B1573;
+}
+
+.download .edge-header .header-navigation-link {
+    color: white;
+    text-decoration: none;
+    opacity: .7;
+}
+
+.download .edge-header .header-navigation-link.selected {
+    opacity: 1;
+}
+
+.contatti .edge-header .header-navigation-links {
+    background: #5289F8;
+}
+
+.contatti .edge-header .header-navigation-link {
+    color: white;
+    text-decoration: none;
+    opacity: .7;
+}
+
+.contatti .edge-header .header-navigation-link.selected {
+    opacity: 1;
+}
