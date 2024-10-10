@@ -36,6 +36,7 @@
             0% {
                 opacity: 0;
             }
+
             100% {
                 opacity: 1;
             }
@@ -117,20 +118,31 @@
             transform: translate(-50%, -50%);
             opacity: 0;
             transition: opacity 1s ease-in-out;
+            width: 100%;
+            max-width: 1110px;
+            border: 1px solid red;
+        }
+
+        #text-container {
+            flex-grow: 1;
+            text-align: left;
+            padding-left: 20px;
+        }
+
+        #text-container h1 {
+            font-size: 160px;
+            line-height: 160px;
+            text-wrap: nowrap;
         }
 
         #logo-container {
             width: 200px;
-            height: 200px;
+            min-width: 200px;
+            height: 332px;
             background: #eee;
             margin-right: 20px;
-            opacity: 0; /* Initially hidden */
+            opacity: 0;
             transition: opacity 1s ease-in-out;
-        }
-
-        #text-container {
-            text-align: left;
-            padding-left: 20px;
         }
 
         #header-text {
@@ -140,7 +152,7 @@
         }
 
         .container-visible {
-            opacity: 1 !important; /* Ensure it overrides any other CSS */
+            opacity: 1 !important;
         }
     </style>
 
@@ -149,7 +161,7 @@
         <div id="header-container">
             <div id="logo-container"></div>
             <div id="text-container">
-                <h1 id="header-text">TEXT ONE<br />TEXT TWO</h1>
+                <h1 id="header-text">YOUR CARE,<br />UNLIMITED</h1>
             </div>
         </div>
 
@@ -310,12 +322,12 @@
                     const img = document.createElement('img');
 
                     if (index === 0 || index === 2) {
-                        img.src = (i % 2 === 0) ? './assets/shape-3-violet.svg' : './assets/shape-2-lightblue.svg';
+                        img.src = (i % 2 === 0) ? './assets/svgs/shape-3-violet.svg' : './assets/svgs/shape-2-lightblue.svg';
                         if (img.src.includes('lightblue')) {
                             img.classList.add('rotate-180');
                         }
                     } else if (index === 1 || index === 3) {
-                        img.src = (i % 2 === 0) ? './assets/shape-3-pink.svg' : './assets/shape-2-orange.svg';
+                        img.src = (i % 2 === 0) ? './assets/svgs/shape-3-pink.svg' : './assets/svgs/shape-2-orange.svg';
                         if (img.src.includes('pink')) {
                             img.classList.add('rotate-180');
                         }
