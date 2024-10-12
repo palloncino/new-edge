@@ -102,49 +102,41 @@
         transform: rotate(180deg);
     }
 
-    #header-container {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        opacity: 0;
-        transition: opacity 1s ease-in-out;
-        width: 100%;
-        max-width: 1110px;
-        border: 1px solid red;
-    }
-
     #text-container {
-        flex-grow: 1;
-        text-align: left;
-        padding-left: 20px;
+        opacity: 0;
+        background: rgba(255, 0, 0, 0.272);
+        position: fixed;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 400px;
+        height: 200px;
+        width: 100%;
+        max-width: 1100px;
+        /*  */
     }
 
-    #text-container h1 {
-        font-size: 160px;
-        line-height: 160px;
+    #text-container__h1 {
+        font-size: 100px;
+        line-height: 100px;
         text-wrap: nowrap;
+        margin: 0;
     }
 
     #logo-container {
-        width: 200px;
-        min-width: 200px;
-        height: 332px;
-        background: #eee;
-        margin-right: 20px;
         opacity: 0;
-        transition: opacity 1s ease-in-out;
-        background: url('./assets/images/logo-multi.png');
-        background-size: contain;
+        background: rgba(0, 255, 106, 0.272);
+        position: fixed;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 200px;
+        height: 300px;
+        width: 200px;
     }
 
-    #header-text {
-        font-size: 48px;
-        line-height: 1.2;
-        margin: 0;
+    #logo-container,
+    #text-container,
+    #text-container__h1 {
+        transition: all 1s ease-in-out;
     }
 
     .container-visible {
@@ -179,12 +171,10 @@
     <!-- LAND ANIMATION -->
 
     <div id="intro-fixed-background" class="intro-fixed-background">
-        <!-- Header Container for the Third Phase -->
-        <div id="header-container">
-            <div id="logo-container"></div>
-            <div id="text-container">
-                <h1 id="header-text">YOUR CARE,<br />UNLIMITED</h1>
-            </div>
+
+        <div id="logo-container"></div>
+        <div id="text-container">
+            <h1 id="text-container__h1">YOUR CARE,<br />UNLIMITED</h1>
         </div>
 
         <!-- Rail Containers for the Marquee Effect -->
@@ -211,193 +201,182 @@
     </div>
 </body>
 
-    <!-- <script src="./assets/js/land-animation.js"></script> -->
-    <script>
+<!-- <script src="./assets/js/land-animation.js"></script> -->
+<script>
 
-        const FADE_IN_DURATION = "1s";
-        const ANIMATION_DURATION = "3s";
-        const ANIMATION_DELAY = "1s";
-        const POST_ANIMATION_PAUSE = 1000;
-        const RAIL_HEIGHT_GAP = 32;
-        const ANIMATION_TOTAL_DURATION = 5000;
-        const FINAL_SHAPE_HEIGHT = 50;
-        const LOGO_CONTAINER_WIDTH = 48;
-        const LOGO_CONTAINER_HEIGHT = 105;
-        
-        // Set CSS variables for durations
-        document.documentElement.style.setProperty('--FADE_IN_DURATION', FADE_IN_DURATION);
-        document.documentElement.style.setProperty('--ANIMATION_DURATION', ANIMATION_DURATION);
-        document.documentElement.style.setProperty('--ANIMATION_DELAY', ANIMATION_DELAY);
-        
-        let selectedShape = null;
-        
-        function getCenteredOrangeShape() {
-            const viewportCenter = window.innerWidth / 2;
-        
-            const rail2 = document.querySelector('.rail-2');
-            const shapes = rail2.querySelectorAll('img');
-        
-            let closestDistance = Infinity;
-        
-            shapes.forEach((shape) => {
-                if (shape.src.includes('orange')) {
-                    const shapeRect = shape.getBoundingClientRect();
-                    const shapeCenter = shapeRect.left + shapeRect.width / 2;
-        
-                    const distanceFromCenter = Math.abs(viewportCenter - shapeCenter);
-        
-                    if (distanceFromCenter < closestDistance) {
-                        selectedShape = shape;
-                        closestDistance = distanceFromCenter;
-                    }
+    const FADE_IN_DURATION = "1s";
+    const ANIMATION_DURATION = "3s";
+    const ANIMATION_DELAY = "1s";
+    const POST_ANIMATION_PAUSE = 1000;
+    const RAIL_HEIGHT_GAP = 48;
+    const ANIMATION_TOTAL_DURATION = 5000;
+    const FINAL_SHAPE_HEIGHT = 50;
+    const LOGO_CONTAINER_WIDTH = 48;
+    const LOGO_CONTAINER_HEIGHT = 105;
+
+    // Set CSS variables for durations
+    document.documentElement.style.setProperty('--FADE_IN_DURATION', FADE_IN_DURATION);
+    document.documentElement.style.setProperty('--ANIMATION_DURATION', ANIMATION_DURATION);
+    document.documentElement.style.setProperty('--ANIMATION_DELAY', ANIMATION_DELAY);
+
+    let selectedShape = null;
+
+    function getCenteredOrangeShape() {
+        const viewportCenter = window.innerWidth / 2;
+
+        const rail2 = document.querySelector('.rail-2');
+        const shapes = rail2.querySelectorAll('img');
+
+        let closestDistance = Infinity;
+
+        shapes.forEach((shape) => {
+            if (shape.src.includes('orange')) {
+                const shapeRect = shape.getBoundingClientRect();
+                const shapeCenter = shapeRect.left + shapeRect.width / 2;
+
+                const distanceFromCenter = Math.abs(viewportCenter - shapeCenter);
+
+                if (distanceFromCenter < closestDistance) {
+                    selectedShape = shape;
+                    closestDistance = distanceFromCenter;
+                }
+            }
+        });
+
+        enterSecondPhase();
+    }
+
+    function enterSecondPhase() {
+        const clonedShape = selectedShape.cloneNode(true);
+        document.body.appendChild(clonedShape);
+
+        const selectedShapeRect = selectedShape.getBoundingClientRect();
+
+        clonedShape.style.position = 'absolute';
+        clonedShape.style.top = `${selectedShapeRect.top}px`;
+        clonedShape.style.left = `${selectedShapeRect.left}px`;
+        clonedShape.style.width = `${selectedShapeRect.width}px`;
+        clonedShape.style.height = `${selectedShapeRect.height}px`;
+        clonedShape.style.transform = 'none';
+        clonedShape.style.transition = 'none';
+
+        const rails = document.querySelectorAll('.rail');
+        rails.forEach((rail) => {
+            rail.querySelectorAll('img').forEach((img) => {
+                if (img !== selectedShape) {
+                    img.style.transition = `opacity ${FADE_IN_DURATION} ease-in-out`;
+                    img.style.opacity = '0';
                 }
             });
-        
-            enterSecondPhase();
-        }
-        
-        function enterSecondPhase() {
-            const clonedShape = selectedShape.cloneNode(true);
-            document.body.appendChild(clonedShape);
-        
-            const selectedShapeRect = selectedShape.getBoundingClientRect();
-        
-            clonedShape.style.position = 'absolute';
-            clonedShape.style.top = `${selectedShapeRect.top}px`;
-            clonedShape.style.left = `${selectedShapeRect.left}px`;
-            clonedShape.style.width = `${selectedShapeRect.width}px`;
-            clonedShape.style.height = `${selectedShapeRect.height}px`;
-            clonedShape.style.transform = 'none';
-            clonedShape.style.transition = 'none';
-        
-            const rails = document.querySelectorAll('.rail');
+        });
+
+        setTimeout(() => {
             rails.forEach((rail) => {
-                rail.querySelectorAll('img').forEach((img) => {
-                    if (img !== selectedShape) {
-                        img.style.transition = `opacity ${FADE_IN_DURATION} ease-in-out`;
-                        img.style.opacity = '0';
-                    }
-                });
-            });
-        
-            setTimeout(() => {
-                rails.forEach((rail) => {
-                    if (!rail.contains(selectedShape)) {
-                        rail.style.display = 'none';
-                    }
-                });
-        
-                selectedShape.style.display = 'none';
-        
-                enterThirdPhase(clonedShape);
-            }, POST_ANIMATION_PAUSE);
-        }
-        
-        function enterThirdPhase(shape) {
-            const introBackground = document.querySelector('.intro-fixed-background');
-            const rails = document.querySelectorAll('.rail-container');
-            rails.forEach(rail => rail.remove());
-        
-            const headerContainer = document.getElementById('header-container');
-            headerContainer.classList.add('container-visible');
-        
-            const logoContainer = document.getElementById('logo-container');
-            logoContainer.style.opacity = '1';
-        
-            const logoRect = logoContainer.getBoundingClientRect();
-            const finalTop = logoRect.top + window.scrollY + (logoRect.height / 2) - (FINAL_SHAPE_HEIGHT / 2);
-            const finalLeft = logoRect.left + window.scrollX + (logoRect.width / 2) - (LOGO_CONTAINER_WIDTH / 2);
-        
-            shape.style.position = 'fixed';
-            shape.style.transition = 'top 1s ease-in-out, left 1s ease-in-out, width 1s ease-in-out, height 1s ease-in-out';
-            shape.style.top = `${finalTop}px`;
-            shape.style.left = `${finalLeft}px`;
-            shape.style.width = `${LOGO_CONTAINER_WIDTH}px`;
-            shape.style.height = `${FINAL_SHAPE_HEIGHT}px`;
-        
-            // Explicitly set the opacity to 1 to ensure it becomes visible
-            headerContainer.style.opacity = '1';
-            headerContainer.style.visibility = 'visible';
-        
-            setTimeout(() => {
-                enterFourthPhase();
-            }, 1000);
-        }
-        
-        function enterFourthPhase() {
-            const header = document.querySelector('.edge-header');
-            const logo = document.getElementById('logo-container');
-            const textContainer = document.getElementById('text-container');
-        
-            const headerLogoRect = document.querySelector('.header-logo-container').getBoundingClientRect();
-        
-            // Move logo to header container
-            logo.style.position = 'fixed';
-            logo.style.transition = 'all 1s ease-in-out';
-            logo.style.top = `${headerLogoRect.top}px`;
-            logo.style.left = `${headerLogoRect.left}px`;
-            logo.style.width = '48px';
-        
-            // Move text-container to the left
-            textContainer.style.position = 'relative';
-            textContainer.style.left = '-30%'; // Adjust value as needed
-        
-            // Show the header
-            setTimeout(() => {
-                header.style.opacity = '1';
-                console.log("Phase 4: Header is now visible.");
-            }, 1000);
-        }
-        
-        function applyAnimationPauseAndSelectShape() {
-            setTimeout(() => {
-                getCenteredOrangeShape();
-            }, ANIMATION_TOTAL_DURATION);
-        }
-        
-        function calculateAndSetRailHeight() {
-            const viewportHeight = window.innerHeight;
-            const railHeight = (viewportHeight - (3 * RAIL_HEIGHT_GAP)) / 4;
-            const railContainers = document.querySelectorAll('.rail-container');
-            railContainers.forEach(container => {
-                container.style.height = `${railHeight}px`;
-            });
-        }
-        
-        function populateRails() {
-            const rails = document.querySelectorAll('.rail');
-        
-            rails.forEach((rail, index) => {
-                for (let i = 0; i < 15; i++) {
-                    const img = document.createElement('img');
-        
-                    if (index === 0 || index === 2) {
-                        img.src = (i % 2 === 0) ? './assets/svgs/shape-3-violet.svg' : './assets/svgs/shape-2-lightblue.svg';
-                        if (img.src.includes('lightblue')) {
-                            img.classList.add('rotate-180');
-                        }
-                    } else if (index === 1 || index === 3) {
-                        img.src = (i % 2 === 0) ? './assets/svgs/shape-3-pink.svg' : './assets/svgs/shape-2-orange.svg';
-                        if (img.src.includes('pink')) {
-                            img.classList.add('rotate-180');
-                        }
-                    }
-        
-                    img.alt = 'Shape';
-                    rail.appendChild(img);
+                if (!rail.contains(selectedShape)) {
+                    rail.style.display = 'none';
                 }
             });
-        }
-        
-        window.onload = function () {
-            calculateAndSetRailHeight();
-            populateRails();
-            applyAnimationPauseAndSelectShape();
-        };
-        
-        
-        
-        
-            </script>
+
+            selectedShape.style.display = 'none';
+
+            enterThirdPhase(clonedShape);
+        }, POST_ANIMATION_PAUSE);
+    }
+
+    function enterThirdPhase(shape) {
+        console.log(3)
+        const logoContainer = document.getElementById('logo-container');
+        const textContainer = document.getElementById('text-container');
+        const introBackground = document.querySelector('.intro-fixed-background');
+        const rails = document.querySelectorAll('.rail-container');
+        rails.forEach(rail => rail.remove());
+
+        const centralContainer = document.getElementById('central-container');
+
+        logoContainer.style.opacity = '1';
+        textContainer.style.opacity = '1';
+
+        const logoRect = logoContainer.getBoundingClientRect();
+        const finalTop = logoRect.top + window.scrollY + (logoRect.height / 2) - (FINAL_SHAPE_HEIGHT / 2);
+        const finalLeft = logoRect.left + window.scrollX + (logoRect.width / 2) - (LOGO_CONTAINER_WIDTH / 2);
+
+        shape.style.position = 'fixed';
+        shape.style.transition = 'top 1s ease-in-out, left 1s ease-in-out, width 1s ease-in-out, height 1s ease-in-out';
+        shape.style.top = `${finalTop}px`;
+        shape.style.left = `${finalLeft}px`;
+        shape.style.width = `${LOGO_CONTAINER_WIDTH}px`;
+        shape.style.height = `${FINAL_SHAPE_HEIGHT}px`;
+
+        setTimeout(() => {
+            enterFourthPhase();
+        }, 2000);
+    }
+
+    function enterFourthPhase() {
+        console.log(4)
+        const logoContainer = document.getElementById('logo-container');
+        const textContainer = document.getElementById('text-container');
+        const textContainerH1 = document.getElementById('text-container__h1');
+
+        logoContainer.style.top = `0`;
+        logoContainer.style.left = `0`;
+
+        textContainer.style.left = `0`;
+
+        textContainerH1.style.fontSize = `160px`;
+        textContainerH1.style.lineHeight = `160px`;
+
+    }
+
+    function applyAnimationPauseAndSelectShape() {
+        setTimeout(() => {
+            getCenteredOrangeShape();
+        }, ANIMATION_TOTAL_DURATION);
+    }
+
+    function calculateAndSetRailHeight() {
+        const viewportHeight = window.innerHeight;
+        const railHeight = (viewportHeight - (3 * RAIL_HEIGHT_GAP)) / 4;
+        const railContainers = document.querySelectorAll('.rail-container');
+        railContainers.forEach(container => {
+            container.style.height = `${railHeight}px`;
+        });
+    }
+
+    function populateRails() {
+        const rails = document.querySelectorAll('.rail');
+
+        rails.forEach((rail, index) => {
+            for (let i = 0; i < 15; i++) {
+                const img = document.createElement('img');
+
+                if (index === 0 || index === 2) {
+                    img.src = (i % 2 === 0) ? './assets/svgs/shape-3-violet.svg' : './assets/svgs/shape-2-lightblue.svg';
+                    if (img.src.includes('lightblue')) {
+                        img.classList.add('rotate-180');
+                    }
+                } else if (index === 1 || index === 3) {
+                    img.src = (i % 2 === 0) ? './assets/svgs/shape-3-pink.svg' : './assets/svgs/shape-2-orange.svg';
+                    if (img.src.includes('pink')) {
+                        img.classList.add('rotate-180');
+                    }
+                }
+
+                img.alt = 'Shape';
+                rail.appendChild(img);
+            }
+        });
+    }
+
+    window.onload = function () {
+        calculateAndSetRailHeight();
+        populateRails();
+        applyAnimationPauseAndSelectShape();
+    };
+
+
+
+
+</script>
 
 </html>
