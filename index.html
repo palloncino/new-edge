@@ -55,6 +55,8 @@
         align-items: center;
         width: max-content;
         height: 100%;
+        transform: translateX(-50%);
+        /* Set initial offset */
         animation-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
         animation-fill-mode: forwards;
         animation-iteration-count: 1;
@@ -64,31 +66,37 @@
         animation-name: spinLeft;
         animation-duration: var(--ANIMATION_DURATION);
         animation-delay: var(--ANIMATION_DELAY);
+        animation-fill-mode: forwards;
     }
 
     .move-right {
         animation-name: spinRight;
         animation-duration: var(--ANIMATION_DURATION);
         animation-delay: var(--ANIMATION_DELAY);
+        animation-fill-mode: forwards;
     }
 
     @keyframes spinLeft {
         0% {
             transform: translateX(0);
+            /* Start from current position */
         }
 
         100% {
             transform: translateX(-50%);
+            /* Move left */
         }
     }
 
     @keyframes spinRight {
         0% {
             transform: translateX(-50%);
+            /* Start from offset */
         }
 
         100% {
             transform: translateX(0%);
+            /* Move right */
         }
     }
 
@@ -368,7 +376,20 @@
         });
     }
 
+    function setInitialRailPositions() {
+        const rails = document.querySelectorAll('.rail');
+        rails.forEach((rail, index) => {
+            // Set initial position based on direction
+            if (index % 2 === 0) {
+                rail.style.transform = 'translateX(0)'; // For left-moving rails
+            } else {
+                rail.style.transform = 'translateX(-50%)'; // For right-moving rails
+            }
+        });
+    }
+
     window.onload = function () {
+        setInitialRailPositions();
         calculateAndSetRailHeight();
         populateRails();
         applyAnimationPauseAndSelectShape();
