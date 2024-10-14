@@ -158,7 +158,7 @@
 
         <!-- HEADER -->
         <div id="edge-header" class="edge-header">
-            <div class="header-logo-container">
+            <div id="header-logo-container" class="header-logo-container">
                 <img class="header-logo-img" src="./assets/images/logo-multi.png" alt="Edge" />
             </div>
             <div class="header-navigation-links-container">
@@ -211,6 +211,11 @@
 
 <!-- <script src="./assets/js/land-animation.js"></script> -->
 <script>
+
+    const EDGE_HEADER = document.getElementById('edge-header');
+    const HEADER_LOGO_CONTAINER = document.getElementById('header-logo-container');
+    const LOGO_CONTAINER = document.getElementById('logo-container');
+    const TEXT_CONTAINER = document.getElementById('text-container');
 
     const FADE_IN_DURATION = "1s";
     const ANIMATION_DURATION = "3s";
@@ -293,18 +298,14 @@
 
     function enterThirdPhase(shape) {
         console.log(3)
-        const logoContainer = document.getElementById('logo-container');
-        const textContainer = document.getElementById('text-container');
         const introBackground = document.querySelector('.intro-fixed-background');
         const rails = document.querySelectorAll('.rail-container');
         rails.forEach(rail => rail.remove());
 
-        const centralContainer = document.getElementById('central-container');
+        LOGO_CONTAINER.style.opacity = '1';
+        TEXT_CONTAINER.style.opacity = '1';
 
-        logoContainer.style.opacity = '1';
-        textContainer.style.opacity = '1';
-
-        const logoRect = logoContainer.getBoundingClientRect();
+        const logoRect = LOGO_CONTAINER.getBoundingClientRect();
         const finalTop = logoRect.top + window.scrollY + (logoRect.height / 2) - (FINAL_SHAPE_HEIGHT / 2);
         const finalLeft = logoRect.left + window.scrollX + (logoRect.width / 2) - (LOGO_CONTAINER_WIDTH / 2);
 
@@ -321,19 +322,30 @@
     }
 
     function enterFourthPhase() {
-        console.log(4)
-        const logoContainer = document.getElementById('logo-container');
-        const textContainer = document.getElementById('text-container');
+        console.log(4);
         const textContainerH1 = document.getElementById('text-container__h1');
 
-        logoContainer.style.top = `0`;
-        logoContainer.style.left = `0`;
+        const headerLogoRect = HEADER_LOGO_CONTAINER.getBoundingClientRect();
 
-        textContainer.style.left = `0`;
+        // Reset logoContainer properties to match headerLogoRect
+        LOGO_CONTAINER.style.transform = 'none';
+        LOGO_CONTAINER.style.position = 'fixed';
+        LOGO_CONTAINER.style.top = `${headerLogoRect.top}px`;
+        LOGO_CONTAINER.style.left = `${headerLogoRect.left}px`;
+        LOGO_CONTAINER.style.width = `${headerLogoRect.width}px`;
+        LOGO_CONTAINER.style.height = `${headerLogoRect.height}px`;
 
+        HEADER_LOGO_CONTAINER.style.opacity = '0';
+
+        EDGE_HEADER.style.transition = 'opacity 1s';
+        EDGE_HEADER.style.opacity = '1';
+
+
+        // Reset textContainer and textContainerH1 styles
+        TEXT_CONTAINER.style.left = `200px`;
+        TEXT_CONTAINER.style.height = `auto`;
         textContainerH1.style.fontSize = `160px`;
         textContainerH1.style.lineHeight = `160px`;
-
     }
 
     function applyAnimationPauseAndSelectShape() {
@@ -388,7 +400,12 @@
         });
     }
 
+    function setEdgeHeader() {
+        EDGE_HEADER.style.opacity = '0';
+    }
+
     window.onload = function () {
+        setEdgeHeader();
         setInitialRailPositions();
         calculateAndSetRailHeight();
         populateRails();
