@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'Mundial Regular';
+    src: url('../fonts/Fontspring-DEMO-4-mundial-regular-tty.otf');
+}
+
 .edge-header {
     box-sizing: border-box;
     position: fixed;
@@ -40,6 +45,7 @@
 }
 
 .edge-header .header-navigation-link {
+    font-family: 'Mundial Regular';
     margin: 0 0.5rem;
     padding: 0.5rem 1rem;
     border-radius: 5px;
@@ -52,87 +58,8 @@
 
 /* PAGE SPECIFIC STYLES */
 
-.home .edge-header .header-navigation-links {
-    background: #3B1573;
+.intro .edge-header .header-navigation-links {
+    background: #F69701;
+    color: #fff;
     transition: background 0.3s;
-}
-
-.home .edge-header .header-navigation-link {
-    color: #F59601;
-    text-decoration: none;
-}
-
-.home .edge-header .header-navigation-link.selected {
-    color: white;
-    text-decoration: none;
-}
-
-.cosa-facciamo .edge-header .header-navigation-links {
-    background: #F59601;
-}
-
-.cosa-facciamo .edge-header .header-navigation-link {
-    color: white;
-    text-decoration: none;
-    opacity: .7;
-}
-
-.cosa-facciamo .edge-header .header-navigation-link.selected {
-    opacity: 1;
-}
-
-.chi-siamo .edge-header .header-navigation-links {
-    background: #E946A0;
-}
-
-.chi-siamo .edge-header .header-navigation-link {
-    color: white;
-    text-decoration: none;
-    opacity: .7;
-}
-
-.chi-siamo .edge-header .header-navigation-link.selected {
-    opacity: 1;
-}
-
-.il-gruppo .edge-header .header-navigation-links {
-    background: #3B1573;
-}
-
-.il-gruppo .edge-header .header-navigation-link {
-    color: white;
-    text-decoration: none;
-    opacity: .7;
-}
-
-.il-gruppo .edge-header .header-navigation-link.selected {
-    opacity: 1;
-}
-
-.download .edge-header .header-navigation-links {
-    background: #3B1573;
-}
-
-.download .edge-header .header-navigation-link {
-    color: white;
-    text-decoration: none;
-    opacity: .7;
-}
-
-.download .edge-header .header-navigation-link.selected {
-    opacity: 1;
-}
-
-.contatti .edge-header .header-navigation-links {
-    background: #5289F8;
-}
-
-.contatti .edge-header .header-navigation-link {
-    color: white;
-    text-decoration: none;
-    opacity: .7;
-}
-
-.contatti .edge-header .header-navigation-link.selected {
-    opacity: 1;
 }

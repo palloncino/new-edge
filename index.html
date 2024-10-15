@@ -12,30 +12,23 @@
 </head>
 
 <style>
-    /* TODO: move inside land-animation.css */
-
     .intro-fixed-background {
         color: #313131;
         position: fixed;
         width: 100%;
-        height: calc(100vh - 200px);
+        height: calc(100vh - 100px);
         display: flex;
         flex-direction: column;
         justify-content: space-around;
         overflow: hidden;
         opacity: 0;
         animation: fadeIn var(--FADE_IN_DURATION) ease-in forwards;
-        padding: 80px 0px;
+        padding: 50px 0px;
     }
 
     @keyframes fadeIn {
-        0% {
-            opacity: 0;
-        }
-
-        100% {
-            opacity: 1;
-        }
+        0% { opacity: 0; }
+        100% { opacity: 1; }
     }
 
     .rail-container {
@@ -62,7 +55,6 @@
         width: max-content;
         height: 100%;
         transform: translateX(-50%);
-        /* Set initial offset */
         animation-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
         animation-fill-mode: forwards;
         animation-iteration-count: 1;
@@ -376,7 +368,7 @@
         const rails = document.querySelectorAll('.rail');
 
         rails.forEach((rail, index) => {
-            for (let i = 0; i < 15; i++) {
+            for (let i = 0; i < 30; i++) {
                 const img = document.createElement('img');
 
                 if (index === 0 || index === 2) {
