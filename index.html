@@ -112,7 +112,6 @@
 
     #text-container {
         opacity: 0;
-        background: rgba(255, 0, 0, 0.272);
         position: fixed;
         top: 50%;
         transform: translateY(-50%);
@@ -132,13 +131,14 @@
 
     #logo-container {
         opacity: 0;
-        background: rgba(0, 255, 106, 0.272);
         position: fixed;
         top: 50%;
         transform: translateY(-50%);
         left: 200px;
         height: 300px;
         width: 200px;
+        background: url('./assets/svgs/logo.svg');
+        background-repeat: no-repeat;
     }
 
     #logo-container,
@@ -159,7 +159,7 @@
         <!-- HEADER -->
         <div id="edge-header" class="edge-header">
             <div id="header-logo-container" class="header-logo-container">
-                <img class="header-logo-img" src="./assets/images/logo-multi.png" alt="Edge" />
+                <img class="header-logo-img" src="./assets/svgs/logo.svg" alt="Edge" />
             </div>
             <div class="header-navigation-links-container">
                 <div class="header-navigation-links">
@@ -338,7 +338,7 @@
         LOGO_CONTAINER.style.width = `${headerLogoRect.width}px`;
         LOGO_CONTAINER.style.height = `${headerLogoRect.height}px`;
 
-        HEADER_LOGO_CONTAINER.style.opacity = '0';
+        HEADER_LOGO_CONTAINER.style.opacity = '.2';
 
         EDGE_HEADER.style.transition = 'opacity 1s';
         EDGE_HEADER.style.opacity = '1';
