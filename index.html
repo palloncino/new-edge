@@ -217,6 +217,8 @@
     const LOGO_CONTAINER = document.getElementById('logo-container');
     const TEXT_CONTAINER = document.getElementById('text-container');
 
+    let selectedShape = null;
+
     const FADE_IN_DURATION = "1s";
     const ANIMATION_DURATION = "3s";
     const ANIMATION_DELAY = "1s";
@@ -231,8 +233,6 @@
     document.documentElement.style.setProperty('--FADE_IN_DURATION', FADE_IN_DURATION);
     document.documentElement.style.setProperty('--ANIMATION_DURATION', ANIMATION_DURATION);
     document.documentElement.style.setProperty('--ANIMATION_DELAY', ANIMATION_DELAY);
-
-    let selectedShape = null;
 
     function getCenteredOrangeShape() {
         const viewportCenter = window.innerWidth / 2;
@@ -255,6 +255,10 @@
                 }
             }
         });
+
+        if (selectedShape) {
+            selectedShape.id = 'selectedOrangeShape';
+        }
 
         enterSecondPhase();
     }
@@ -297,7 +301,6 @@
     }
 
     function enterThirdPhase(shape) {
-        console.log(3)
         const introBackground = document.querySelector('.intro-fixed-background');
         const rails = document.querySelectorAll('.rail-container');
         rails.forEach(rail => rail.remove());
@@ -322,10 +325,10 @@
     }
 
     function enterFourthPhase() {
-        console.log(4);
         const textContainerH1 = document.getElementById('text-container__h1');
-
         const headerLogoRect = HEADER_LOGO_CONTAINER.getBoundingClientRect();
+        const selectedOrangeShape = document.getElementById('selectedOrangeShape');
+        selectedOrangeShape.style.display = 'none';
 
         // Reset logoContainer properties to match headerLogoRect
         LOGO_CONTAINER.style.transform = 'none';
