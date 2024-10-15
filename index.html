@@ -14,16 +14,17 @@
     /* TODO: move inside land-animation.css */
 
     .intro-fixed-background {
+        color: #313131;
         position: fixed;
-        background: #F7F7F7;
         width: 100%;
-        height: 100vh;
+        height: calc(100vh - 200px);
         display: flex;
         flex-direction: column;
         justify-content: space-around;
         overflow: hidden;
         opacity: 0;
         animation: fadeIn var(--FADE_IN_DURATION) ease-in forwards;
+        padding: 80px 0px;
     }
 
     @keyframes fadeIn {
@@ -42,6 +43,10 @@
         display: flex;
         align-items: center;
         position: relative;
+    }
+
+    .rail-container:not(:last-child) {
+        margin-bottom: 2.6rem;
     }
 
     .marquee-wrapper {
