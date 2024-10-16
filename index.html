@@ -214,7 +214,7 @@
         </div>
 
         <div id="text-container">
-            <h1 class="Heading" id="text-container__h1">YOUR CARE,<br />UNLIMITED</h1>
+            <h1 class="Heading" id="text-container__h1"><span id="YOUR_CARE">YOUR CARE,</span><br /><span id="UNLIMITED">UNLIMITED</span></h1>
         </div>
 
         <!-- Rail Containers for the Marquee Effect -->
@@ -341,9 +341,6 @@
         const rails = document.querySelectorAll('.rail-container');
         rails.forEach(rail => rail.remove());
 
-        LOGO_CONTAINER.style.opacity = '1';
-        TEXT_CONTAINER.style.opacity = '1';
-
         const logoRect = LOGO_CONTAINER.getBoundingClientRect();
         const selectedShapeRect = selectedOrangeShape.getBoundingClientRect(); // Get the original position of the shape
 
@@ -372,7 +369,7 @@
 
         // Trigger the transition smoothly
         requestAnimationFrame(() => {
-            selectedOrangeShape.style.transition = 'top 1s ease-in-out, left 1s ease-in-out, width 1s ease-in-out, height 1s ease-in-out';
+            selectedOrangeShape.style.transition = 'all 1s ease-in-out';
 
             // Move the shape to the final position
             selectedOrangeShape.style.top = '43.69%';
@@ -382,17 +379,28 @@
         });
 
         setTimeout(() => {
-            selectedOrangeShape.style.display = 'none';
+            LOGO_CONTAINER.style.opacity = '1';
+            TEXT_CONTAINER.style.opacity = '1';
         }, 1000);
+
+        // setTimeout(() => {
+        //     LOGO_CONTAINER.style.opacity = '1';
+        //     TEXT_CONTAINER.style.opacity = '1';
+        // }, 2000);
+
+        setTimeout(() => {
+            selectedOrangeShape.style.opacity = '0';
+        }, 2000);
 
 
         setTimeout(() => {
             enterFourthPhase();
-        }, 2000);
+        }, 4000);
     }
 
     function enterFourthPhase() {
         const textContainerH1 = document.getElementById('text-container__h1');
+
         const headerLogoRect = HEADER_LOGO_CONTAINER.getBoundingClientRect();
         const selectedOrangeShape = document.getElementById('selectedOrangeShape');
         selectedOrangeShape.style.display = 'none';
