@@ -108,43 +108,6 @@
         transform: rotate(180deg);
     }
 
-    #text-container {
-        opacity: 0;
-        position: fixed;
-        top: 50%;
-        transform: translateY(-50%);
-        left: 400px;
-        height: 200px;
-        width: 100%;
-        max-width: 1100px;
-        /*  */
-    }
-
-    #text-container__h1 {
-        font-size: 100px;
-        line-height: 100px;
-        text-wrap: nowrap;
-        margin: 0;
-    }
-
-    #logo-container {
-        opacity: 0;
-        position: fixed;
-        top: 50%;
-        transform: translateY(-50%);
-        left: 200px;
-        height: 300px;
-        width: 200px;
-        background: url('./assets/svgs/logo.svg');
-        background-repeat: no-repeat;
-    }
-
-    #logo-container,
-    #text-container,
-    #text-container__h1 {
-        transition: all 1s ease-in-out;
-    }
-
     .container-visible {
         opacity: 1 !important;
     }
@@ -179,10 +142,71 @@
 
     <div id="intro-fixed-background" class="intro-fixed-background">
 
-        <div id="logo-container"></div>
-        
+
+        <style>
+            .intro-header-logo-container {
+                display: none;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .intro-header-logo-img {
+                height: 120px;
+                width: 65.85px;
+            }
+
+            .intro-header-logo-edge {
+                text-transform: uppercase;
+                font-family: 'Mundial Regular';
+                font-size: 24px;
+                margin-bottom: 0;
+            }
+
+            #intro-header-logo-container {
+                opacity: 0;
+                position: fixed;
+                top: 50%;
+                transform: translateY(-50%);
+                left: 200px;
+                height: 300px;
+                width: 200px;
+                background: rgba(77, 115, 77, 0.725);
+                transition: all 1s ease-in-out;
+            }
+
+            #text-container {
+                opacity: 0;
+                position: fixed;
+                top: 50%;
+                transform: translateY(-50%);
+                left: 400px;
+                height: 200px;
+                width: 100%;
+                max-width: 1100px;
+                /*  */
+            }
+
+            #text-container__h1 {
+                font-size: 100px;
+                line-height: 100px;
+                text-wrap: nowrap;
+                margin: 0;
+            }
+
+            #text-container,
+            #text-container__h1 {
+                transition: all 1s ease-in-out;
+            }
+        </style>
+
+        <div id="intro-header-logo-container" class="intro-header-logo-container">
+            <img class="intro-header-logo-img" src="./assets/svgs/logo.svg" alt="Edge" />
+            <h1 class="intro-header-logo-edge">edge</h1>
+        </div>
+
         <div id="text-container">
-            <h1 class="Heading" id="text-container__h1">YOUR CARE,<br />UNLIMITED</h1>  
+            <h1 class="Heading" id="text-container__h1">YOUR CARE,<br />UNLIMITED</h1>
         </div>
 
         <!-- Rail Containers for the Marquee Effect -->
@@ -214,7 +238,7 @@
 
     const EDGE_HEADER = document.getElementById('edge-header');
     const HEADER_LOGO_CONTAINER = document.getElementById('header-logo-container');
-    const LOGO_CONTAINER = document.getElementById('logo-container');
+    const LOGO_CONTAINER = document.getElementById('intro-header-logo-container');
     const TEXT_CONTAINER = document.getElementById('text-container');
 
     let selectedShape = null;
@@ -347,8 +371,8 @@
         // Reset textContainer and textContainerH1 styles
         TEXT_CONTAINER.style.left = `200px`;
         TEXT_CONTAINER.style.height = `auto`;
-        textContainerH1.style.fontSize = `160px`;
-        textContainerH1.style.lineHeight = `160px`;
+        textContainerH1.style.fontSize = `130px`;
+        textContainerH1.style.lineHeight = `115px`;
     }
 
     function applyAnimationPauseAndSelectShape() {
