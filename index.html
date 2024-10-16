@@ -337,7 +337,7 @@
         }, POST_ANIMATION_PAUSE);
     }
 
-    function enterThirdPhase(shape) {
+    function enterThirdPhase(selectedOrangeShape) {
         const introBackground = document.querySelector('.intro-fixed-background');
         const rails = document.querySelectorAll('.rail-container');
         rails.forEach(rail => rail.remove());
@@ -350,12 +350,12 @@
         const finalTop = logoRect.top + window.scrollY + (logoRect.height / 2) - (FINAL_SHAPE_HEIGHT / 2);
         const finalLeft = logoRect.left + window.scrollX + (logoRect.width / 2) - (LOGO_CONTAINER_WIDTH / 2);
 
-        shape.style.position = 'fixed';
-        shape.style.transition = 'top 1s ease-in-out, left 1s ease-in-out, width 1s ease-in-out, height 1s ease-in-out';
-        shape.style.top = `${finalTop}px`;
-        shape.style.left = `${finalLeft}px`;
-        shape.style.width = `${LOGO_CONTAINER_WIDTH}px`;
-        shape.style.height = `${FINAL_SHAPE_HEIGHT}px`;
+        selectedOrangeShape.style.position = 'fixed';
+        selectedOrangeShape.style.transition = 'top 1s ease-in-out, left 1s ease-in-out, width 1s ease-in-out, height 1s ease-in-out';
+        selectedOrangeShape.style.top = `${finalTop}px`;
+        selectedOrangeShape.style.left = `${finalLeft}px`;
+        selectedOrangeShape.style.width = `${LOGO_CONTAINER_WIDTH}px`;
+        selectedOrangeShape.style.height = `${FINAL_SHAPE_HEIGHT}px`;
 
         setTimeout(() => {
             enterFourthPhase();
