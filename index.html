@@ -27,8 +27,13 @@
     }
 
     @keyframes fadeIn {
-        0% { opacity: 0; }
-        100% { opacity: 1; }
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
     }
 
     .rail-container {
@@ -152,7 +157,7 @@
             }
 
             .intro-header-logo-img {
-            /* 
+                /* 
                 height: 120px;
                 width: 65.85px; 
             */
@@ -161,8 +166,10 @@
             .intro-header-logo-edge {
                 text-transform: uppercase;
                 font-family: 'Mundial Regular';
-                font-size: 24px;
+                font-size: 56px;
                 margin-bottom: 0;
+                margin-top: 25px;
+                transition: all 1s ease-in-out;
             }
 
             #intro-header-logo-container {
@@ -337,9 +344,7 @@
 
         LOGO_CONTAINER.style.opacity = '1';
         TEXT_CONTAINER.style.opacity = '1';
-
-        LOGO_CONTAINER_EDGE_H1.style.fontSize = '56px';
-        LOGO_CONTAINER_EDGE_H1.style.marginTop = '25px';
+        
 
         const logoRect = LOGO_CONTAINER.getBoundingClientRect();
         const finalTop = logoRect.top + window.scrollY + (logoRect.height / 2) - (FINAL_SHAPE_HEIGHT / 2);
@@ -351,6 +356,10 @@
         shape.style.left = `${finalLeft}px`;
         shape.style.width = `${LOGO_CONTAINER_WIDTH}px`;
         shape.style.height = `${FINAL_SHAPE_HEIGHT}px`;
+
+        setTimeout(() => {
+            enterFourthPhase();
+        }, 2000);
     }
 
     function enterFourthPhase() {
@@ -366,6 +375,9 @@
         LOGO_CONTAINER.style.left = `${headerLogoRect.left}px`;
         LOGO_CONTAINER.style.width = `${headerLogoRect.width}px`;
         LOGO_CONTAINER.style.height = `${headerLogoRect.height}px`;
+        
+        LOGO_CONTAINER_EDGE_H1.style.fontSize = '24px';
+        LOGO_CONTAINER_EDGE_H1.style.marginTop = '20px';
 
         HEADER_LOGO_CONTAINER.style.opacity = '.0';
 
