@@ -214,7 +214,8 @@
         </div>
 
         <div id="text-container">
-            <h1 class="Heading" id="text-container__h1"><span id="YOUR_CARE">YOUR CARE,</span><br /><span id="UNLIMITED">UNLIMITED</span></h1>
+            <h1 class="Heading" id="text-container__h1"><span id="YOUR_CARE">YOUR CARE,</span><br /><span
+                    id="UNLIMITED">UNLIMITED</span></h1>
         </div>
 
         <!-- Rail Containers for the Marquee Effect -->
@@ -252,6 +253,8 @@
     const LOGO_CONTAINER_EDGE_H1 = document.getElementById('intro-header-logo-edge');
 
     const TEXT_CONTAINER = document.getElementById('text-container');
+    const YOUR_CARE = document.getElementById('YOUR_CARE');
+    const UNLIMITED = document.getElementById('UNLIMITED');
 
     let selectedShape = null;
 
@@ -376,6 +379,9 @@
             selectedOrangeShape.style.left = '19.5%';
             selectedOrangeShape.style.width = `${LOGO_CONTAINER_WIDTH}px`; // Target width
             selectedOrangeShape.style.height = '55px'; // Target height
+
+            YOUR_CARE.style.opacity = '0';
+            UNLIMITED.style.opacity = '0';
         });
 
         setTimeout(() => {
@@ -383,14 +389,14 @@
             TEXT_CONTAINER.style.opacity = '1';
         }, 1000);
 
-        // setTimeout(() => {
-        //     LOGO_CONTAINER.style.opacity = '1';
-        //     TEXT_CONTAINER.style.opacity = '1';
-        // }, 2000);
-
         setTimeout(() => {
+            YOUR_CARE.style.opacity = '1';
             selectedOrangeShape.style.opacity = '0';
         }, 2000);
+
+        setTimeout(() => {
+            UNLIMITED.style.opacity = '1';
+        }, 3000);
 
 
         setTimeout(() => {
