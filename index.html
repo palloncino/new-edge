@@ -152,8 +152,10 @@
             }
 
             .intro-header-logo-img {
+            /* 
                 height: 120px;
-                width: 65.85px;
+                width: 65.85px; 
+            */
             }
 
             .intro-header-logo-edge {
@@ -168,9 +170,9 @@
                 position: fixed;
                 top: 50%;
                 transform: translateY(-50%);
-                left: 200px;
-                height: 300px;
-                width: 200px;
+                left: 300px;
+                height: 250px;
+                width: 150px;
                 background: rgba(77, 115, 77, 0.725);
                 transition: all 1s ease-in-out;
             }
@@ -180,7 +182,7 @@
                 position: fixed;
                 top: 50%;
                 transform: translateY(-50%);
-                left: 400px;
+                left: 500px;
                 height: 200px;
                 width: 100%;
                 max-width: 1100px;
@@ -201,8 +203,8 @@
         </style>
 
         <div id="intro-header-logo-container" class="intro-header-logo-container">
-            <img class="intro-header-logo-img" src="./assets/svgs/logo.svg" alt="Edge" />
-            <h1 class="intro-header-logo-edge">edge</h1>
+            <img class="intro-header-logo-img" id="intro-header-logo-img" src="./assets/svgs/logo.svg" alt="Edge" />
+            <h1 class="intro-header-logo-edge" id="intro-header-logo-edge">edge</h1>
         </div>
 
         <div id="text-container">
@@ -238,7 +240,11 @@
 
     const EDGE_HEADER = document.getElementById('edge-header');
     const HEADER_LOGO_CONTAINER = document.getElementById('header-logo-container');
+
     const LOGO_CONTAINER = document.getElementById('intro-header-logo-container');
+    const LOGO_CONTAINER_EDGE_IMG = document.getElementById('intro-header-logo-img');
+    const LOGO_CONTAINER_EDGE_H1 = document.getElementById('intro-header-logo-edge');
+
     const TEXT_CONTAINER = document.getElementById('text-container');
 
     let selectedShape = null;
@@ -332,6 +338,9 @@
         LOGO_CONTAINER.style.opacity = '1';
         TEXT_CONTAINER.style.opacity = '1';
 
+        LOGO_CONTAINER_EDGE_H1.style.fontSize = '56px';
+        LOGO_CONTAINER_EDGE_H1.style.marginTop = '25px';
+
         const logoRect = LOGO_CONTAINER.getBoundingClientRect();
         const finalTop = logoRect.top + window.scrollY + (logoRect.height / 2) - (FINAL_SHAPE_HEIGHT / 2);
         const finalLeft = logoRect.left + window.scrollX + (logoRect.width / 2) - (LOGO_CONTAINER_WIDTH / 2);
@@ -342,10 +351,6 @@
         shape.style.left = `${finalLeft}px`;
         shape.style.width = `${LOGO_CONTAINER_WIDTH}px`;
         shape.style.height = `${FINAL_SHAPE_HEIGHT}px`;
-
-        setTimeout(() => {
-            enterFourthPhase();
-        }, 2000);
     }
 
     function enterFourthPhase() {
@@ -366,7 +371,6 @@
 
         EDGE_HEADER.style.transition = 'opacity 1s';
         EDGE_HEADER.style.opacity = '1';
-
 
         // Reset textContainer and textContainerH1 styles
         TEXT_CONTAINER.style.left = `200px`;
