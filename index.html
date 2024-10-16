@@ -180,7 +180,6 @@
                 left: 300px;
                 height: 250px;
                 width: 150px;
-                background: rgba(77, 115, 77, 0.725);
                 transition: all 1s ease-in-out;
             }
 
@@ -263,8 +262,8 @@
     const RAIL_HEIGHT_GAP = 48;
     const ANIMATION_TOTAL_DURATION = 5000;
     const FINAL_SHAPE_HEIGHT = 50;
-    const LOGO_CONTAINER_WIDTH = 48;
-    const LOGO_CONTAINER_HEIGHT = 105;
+    const LOGO_CONTAINER_WIDTH = 150;
+    const LOGO_CONTAINER_HEIGHT = 250;
 
     // Set CSS variables for durations
     document.documentElement.style.setProperty('--FADE_IN_DURATION', FADE_IN_DURATION);
@@ -344,18 +343,48 @@
 
         LOGO_CONTAINER.style.opacity = '1';
         TEXT_CONTAINER.style.opacity = '1';
-        
 
         const logoRect = LOGO_CONTAINER.getBoundingClientRect();
-        const finalTop = logoRect.top + window.scrollY + (logoRect.height / 2) - (FINAL_SHAPE_HEIGHT / 2);
-        const finalLeft = logoRect.left + window.scrollX + (logoRect.width / 2) - (LOGO_CONTAINER_WIDTH / 2);
+        const selectedShapeRect = selectedOrangeShape.getBoundingClientRect(); // Get the original position of the shape
 
-        selectedOrangeShape.style.position = 'fixed';
-        selectedOrangeShape.style.transition = 'top 1s ease-in-out, left 1s ease-in-out, width 1s ease-in-out, height 1s ease-in-out';
-        selectedOrangeShape.style.top = `${finalTop}px`;
-        selectedOrangeShape.style.left = `${finalLeft}px`;
-        selectedOrangeShape.style.width = `${LOGO_CONTAINER_WIDTH}px`;
-        selectedOrangeShape.style.height = `${FINAL_SHAPE_HEIGHT}px`;
+        // Create a new relative container positioned exactly at the logo container's position
+        const relativeContainer = document.createElement('div');
+        relativeContainer.style.position = 'absolute'; // Absolute based on the document
+        relativeContainer.style.top = `${logoRect.top + window.scrollY}px`;
+        relativeContainer.style.left = `${logoRect.left + window.scrollX}px`;
+        relativeContainer.style.width = `${logoRect.width}px`;
+        relativeContainer.style.height = `${logoRect.height}px`;
+        relativeContainer.style.zIndex = '1000'; // To make sure it's above other elements
+
+        document.body.appendChild(relativeContainer); // Append the new container to the body
+
+        // Place the orange shape inside the new container, keeping its original position
+        selectedOrangeShape.style.position = 'absolute'; // Make it absolute in the new container
+        selectedOrangeShape.style.top = `${selectedShapeRect.top - logoRect.top}px`; // Keep its relative position
+        selectedOrangeShape.style.left = `${selectedShapeRect.left - logoRect.left}px`;
+        selectedOrangeShape.style.width = `${selectedShapeRect.width}px`;
+        selectedOrangeShape.style.height = `${selectedShapeRect.height}px`;
+
+        relativeContainer.appendChild(selectedOrangeShape); // Append the orange shape to the new container
+
+        // Force layout recalculation before applying transition
+        getComputedStyle(selectedOrangeShape).top;
+
+        // Trigger the transition smoothly
+        requestAnimationFrame(() => {
+            selectedOrangeShape.style.transition = 'top 1s ease-in-out, left 1s ease-in-out, width 1s ease-in-out, height 1s ease-in-out';
+
+            // Move the shape to the final position
+            selectedOrangeShape.style.top = '43.69%';
+            selectedOrangeShape.style.left = '19.5%';
+            selectedOrangeShape.style.width = `${LOGO_CONTAINER_WIDTH}px`; // Target width
+            selectedOrangeShape.style.height = '55px'; // Target height
+        });
+
+        setTimeout(() => {
+            selectedOrangeShape.style.display = 'none';
+        }, 1000);
+
 
         setTimeout(() => {
             enterFourthPhase();
@@ -375,7 +404,7 @@
         LOGO_CONTAINER.style.left = `${headerLogoRect.left}px`;
         LOGO_CONTAINER.style.width = `${headerLogoRect.width}px`;
         LOGO_CONTAINER.style.height = `${headerLogoRect.height}px`;
-        
+
         LOGO_CONTAINER_EDGE_H1.style.fontSize = '24px';
         LOGO_CONTAINER_EDGE_H1.style.marginTop = '20px';
 
