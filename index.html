@@ -11,113 +11,6 @@
     <title>Welcome to Edge</title>
 </head>
 
-<style>
-    .intro-fixed-background {
-        color: #313131;
-        position: fixed;
-        width: 100%;
-        height: calc(100vh - 100px);
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        overflow: hidden;
-        opacity: 0;
-        animation: fadeIn var(--FADE_IN_DURATION) ease-in forwards;
-        padding: 50px 0px;
-    }
-
-    @keyframes fadeIn {
-        0% {
-            opacity: 0;
-        }
-
-        100% {
-            opacity: 1;
-        }
-    }
-
-    .rail-container {
-        width: 100%;
-        overflow: hidden;
-        display: flex;
-        align-items: center;
-        position: relative;
-    }
-
-    .rail-container:not(:last-child) {
-        margin-bottom: 2.6rem;
-    }
-
-    .marquee-wrapper {
-        display: flex;
-        height: 100%;
-        align-items: center;
-    }
-
-    .rail {
-        display: flex;
-        align-items: center;
-        width: max-content;
-        height: 100%;
-        transform: translateX(-50%);
-        animation-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
-        animation-fill-mode: forwards;
-        animation-iteration-count: 1;
-    }
-
-    .move-left {
-        animation-name: spinLeft;
-        animation-duration: var(--ANIMATION_DURATION);
-        animation-delay: var(--ANIMATION_DELAY);
-        animation-fill-mode: forwards;
-    }
-
-    .move-right {
-        animation-name: spinRight;
-        animation-duration: var(--ANIMATION_DURATION);
-        animation-delay: var(--ANIMATION_DELAY);
-        animation-fill-mode: forwards;
-    }
-
-    @keyframes spinLeft {
-        0% {
-            transform: translateX(0);
-            /* Start from current position */
-        }
-
-        100% {
-            transform: translateX(-50%);
-            /* Move left */
-        }
-    }
-
-    @keyframes spinRight {
-        0% {
-            transform: translateX(-50%);
-            /* Start from offset */
-        }
-
-        100% {
-            transform: translateX(0%);
-            /* Move right */
-        }
-    }
-
-    .rail img {
-        width: auto;
-        height: 100%;
-        margin: 0;
-    }
-
-    .rotate-180 {
-        transform: rotate(180deg);
-    }
-
-    .container-visible {
-        opacity: 1 !important;
-    }
-</style>
-
 <body class="intro">
 
     <div class="app-container">
@@ -146,96 +39,6 @@
     <!-- LAND ANIMATION -->
 
     <div id="intro-fixed-background" class="intro-fixed-background">
-
-
-        <style>
-            .intro-header-logo-container {
-                display: none;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .intro-header-logo-img {
-                /* 
-                height: 120px;
-                width: 65.85px; 
-            */
-            }
-
-            .intro-header-logo-edge {
-                text-transform: uppercase;
-                font-family: 'Mundial Regular';
-                font-size: 56px;
-                margin-bottom: 0;
-                margin-top: 25px;
-                transition: all 1s ease-in-out;
-            }
-
-            #intro-header-logo-container {
-                opacity: 0;
-                position: fixed;
-                top: 50%;
-                transform: translateY(-50%);
-                left: 300px;
-                height: 250px;
-                width: 150px;
-                transition: all 1s ease-in-out;
-            }
-
-            #text-container {
-                opacity: 0;
-                position: fixed;
-                top: 50%;
-                transform: translateY(-50%);
-                left: 500px;
-                height: 200px;
-                width: 100%;
-                max-width: 1100px;
-                /*  */
-            }
-
-            #text-container__h1 {
-                font-size: 100px;
-                line-height: 100px;
-                text-wrap: nowrap;
-                margin: 0;
-            }
-
-            #text-container,
-            #text-container__h1 {
-                transition: all 1s ease-in-out;
-            }
-
-            #intro-start-button-container-row {
-                position: fixed;
-                opacity: 0;
-                display: flex;
-                transform: translateX(-100%);
-                height: 100vh;
-                z-index: -1;
-                width: 100%;
-                align-items: flex-end;
-                justify-content: flex-end;
-                box-sizing: border-box;
-                padding: 0 100px;
-                transition: all 1s ease-in-out;
-            }
-
-            #intro-start-button-container {
-                cursor: pointer;
-                display: flex;
-                height: 75px;
-                width: 120px;
-                font-size: 24px;
-                background: url('./assets/svgs/shape-2-orange.svg');
-                background-repeat: no-repeat;
-                align-items: center;
-                justify-content: center;
-                color: #fff;
-                font-family: 'Mundial Regular';
-            }
-        </style>
 
         <div id="intro-header-logo-container" class="intro-header-logo-container">
             <img class="intro-header-logo-img" id="intro-header-logo-img" src="./assets/svgs/logo.svg" alt="Edge" />
@@ -469,8 +272,8 @@
         // Reset textContainer and textContainerH1 styles
         TEXT_CONTAINER.style.left = `200px`;
         TEXT_CONTAINER.style.height = `auto`;
-        textContainerH1.style.fontSize = `130px`;
-        textContainerH1.style.lineHeight = `115px`;
+        textContainerH1.style.fontSize = `150px`;
+        textContainerH1.style.lineHeight = `150px`;
         
 
         FinalButtonRow.style.position = 'relative';
