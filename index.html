@@ -206,6 +206,35 @@
             #text-container__h1 {
                 transition: all 1s ease-in-out;
             }
+
+            #intro-start-button-container-row {
+                position: fixed;
+                opacity: 0;
+                display: flex;
+                transform: translateX(-100%);
+                height: 100vh;
+                z-index: -1;
+                width: 100%;
+                align-items: flex-end;
+                justify-content: flex-end;
+                box-sizing: border-box;
+                padding: 0 100px;
+                transition: all 1s ease-in-out;
+            }
+
+            #intro-start-button-container {
+                cursor: pointer;
+                display: flex;
+                height: 75px;
+                width: 120px;
+                font-size: 24px;
+                background: url('./assets/svgs/shape-2-orange.svg');
+                background-repeat: no-repeat;
+                align-items: center;
+                justify-content: center;
+                color: #fff;
+                font-family: 'Mundial Regular';
+            }
         </style>
 
         <div id="intro-header-logo-container" class="intro-header-logo-container">
@@ -216,6 +245,13 @@
         <div id="text-container">
             <h1 class="Heading" id="text-container__h1"><span id="YOUR_CARE">YOUR CARE,</span><br /><span
                     id="UNLIMITED">UNLIMITED</span></h1>
+        </div>
+
+
+        <div id="intro-start-button-container-row">
+            <div id="intro-start-button-container">
+                <span id="intro-start-button">inizia</span>
+            </div>
         </div>
 
         <!-- Rail Containers for the Marquee Effect -->
@@ -255,6 +291,9 @@
     const TEXT_CONTAINER = document.getElementById('text-container');
     const YOUR_CARE = document.getElementById('YOUR_CARE');
     const UNLIMITED = document.getElementById('UNLIMITED');
+
+    const FinalButtonRow = document.getElementById('intro-start-button-container-row');
+    const FinalButtonContainer = document.getElementById('intro-start-button-container');
 
     let selectedShape = null;
 
@@ -432,6 +471,15 @@
         TEXT_CONTAINER.style.height = `auto`;
         textContainerH1.style.fontSize = `130px`;
         textContainerH1.style.lineHeight = `115px`;
+        
+
+        FinalButtonRow.style.position = 'relative';
+        FinalButtonRow.style.opacity = 1;
+        
+        FinalButtonRow.style.display = 'flex';
+        FinalButtonRow.style.transition = 'all 1s';
+        FinalButtonRow.style.transform = 'translateX(0%)';
+
     }
 
     function applyAnimationPauseAndSelectShape() {
@@ -497,9 +545,6 @@
         populateRails();
         applyAnimationPauseAndSelectShape();
     };
-
-
-
 
 </script>
 
