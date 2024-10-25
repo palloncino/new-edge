@@ -9,6 +9,7 @@ html {
 
 .intro-fixed-background {
     color: #313131;
+    background: #fff;
     position: fixed;
     width: 100%;
     height: calc(100vh - 100px);
