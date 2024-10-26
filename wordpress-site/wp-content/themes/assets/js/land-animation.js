@@ -253,6 +253,10 @@ function setInitialRailPositions() {
 
 function setEdgeHeader() {
     EDGE_HEADER.style.opacity = '0';
+    setTimeout(() => {
+        console.log('trying to hide opacity')
+        EDGE_HEADER.classList.add('hidden-opacity');
+    }, 10); 
 }
 
 window.onload = function () {

@@ -17,6 +17,10 @@
     width: 100%;
 }
 
+.hidden-opacity {
+    opacity: 0 !important;
+}
+
 .edge-header .header-logo-container {
     opacity: 0;
     display: flex;
