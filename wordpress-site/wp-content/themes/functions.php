@@ -201,3 +201,6 @@ function remove_default_widgets() {
     unregister_sidebar('primary-widget-area'); // Adjust this to match any registered sidebar IDs
 }
 add_action('widgets_init', 'remove_default_widgets', 11);
+
+// Disable Admin Bar for All Users
+add_filter('show_admin_bar', '__return_false');
