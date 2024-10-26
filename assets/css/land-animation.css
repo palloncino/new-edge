@@ -190,7 +190,7 @@ html {
 #intro-start-button-container {
     cursor: pointer;
     display: flex;
-    height: 75px;
+    height: 65px;
     width: 120px;
     font-size: 24px;
     background: url('../svgs/shape-2-orange.svg');
