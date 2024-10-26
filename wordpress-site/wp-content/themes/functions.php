@@ -11,9 +11,6 @@ function generic_setup() {
     add_theme_support('html5', array('search-form', 'navigation-widgets'));
     add_theme_support('appearance-tools');
     add_theme_support('woocommerce');
-    
-    // Removed content width constraint
-    // Removed navigation menu registration
 }
 
 // Enqueue styles and scripts
@@ -31,6 +28,11 @@ function generic_enqueue() {
     
     wp_enqueue_script('jquery');
     wp_enqueue_script('land-animation-js', get_template_directory_uri() . '/assets/js/land-animation.js', array(), null, true);
+
+    // Pass template directory URI to the script
+    wp_localize_script('land-animation-js', 'themeData', array(
+        'templateDirectoryUri' => get_template_directory_uri(),
+    ));
 }
 
 // Footer custom scripts
