@@ -3,7 +3,7 @@
 get_header(); // Includes header.php with the <head> and <body> tags
 ?>
 
-<div class="app-container">
+<div class="app-container page-a-proposito-di-noi">
     <?php get_template_part('template-parts/header-custom'); ?> <!-- Dynamic Header Call -->
 
     <div class="content-section">
