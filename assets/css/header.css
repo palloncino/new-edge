@@ -33,6 +33,7 @@
     width: 65.85px;
 }
 .edge-header .header-logo-edge {
+    margin-top: 16px;
     text-transform: uppercase;
     font-family: 'Mundial Regular';
     font-size: 24px;

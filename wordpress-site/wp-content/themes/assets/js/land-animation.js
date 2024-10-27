@@ -176,7 +176,7 @@ function enterFourthPhase() {
     LOGO_CONTAINER.style.height = `${headerLogoRect.height}px`;
 
     LOGO_CONTAINER_EDGE_H1.style.fontSize = '24px';
-    LOGO_CONTAINER_EDGE_H1.style.marginTop = '20px';
+    LOGO_CONTAINER_EDGE_H1.style.marginTop = '16px';
 
     HEADER_LOGO_CONTAINER.style.opacity = '.0';
 
@@ -252,10 +252,7 @@ function setInitialRailPositions() {
 }
 
 function setEdgeHeader() {
-    // setTimeout(() => {
-    //     console.log('trying to hide opacity')
-    //     EDGE_HEADER.classList.add('hidden-opacity');
-    // }, 10);
+    // make invisible untill set to visible
 }
 
 document.addEventListener("DOMContentLoaded", () => {
