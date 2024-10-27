@@ -197,6 +197,10 @@ function enterFourthPhase() {
     FinalButtonRow.style.transition = 'all 1s';
     FinalButtonRow.style.transform = 'translateX(0%)';
 
+    setTimeout(() => {
+        window.location.href = '/front-page.html';
+    }, 2000);
+
 }
 
 function applyAnimationPauseAndSelectShape() {
