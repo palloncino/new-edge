@@ -3,6 +3,25 @@ body {
 }
 
 .app-container {
-    margin: 0 auto;
-    max-width: 1200px;
-  }
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.section-no-padding-content {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background: #a9bcce5c;
+    width: 100vw;
+    height: 100vh;
+}
+
+.section-padded-content {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 115px 48px 48px 48px;
+    background: #ceb9a95c;
+    width: 100vw;
+    height: 100vh;
+}

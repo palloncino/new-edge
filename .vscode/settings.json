@@ -1,0 +1,17 @@
+{
+    "liveServer.settings.AdvanceCustomBrowserCmdLine": "",
+    // Additional quality-of-life settings
+    "php.validate.executablePath": "/Applications/XAMPP/xamppfiles/bin/php", // Path to PHP in XAMPP
+    "php.suggest.basic": false, // Minimize PHP suggestions if they’re not needed
+    "files.exclude": {
+        "**/.git": true,
+        "**/.DS_Store": true,
+        "**/node_modules": true,
+        "**/vendor": true
+    },
+    "explorer.confirmDragAndDrop": false,
+    "editor.formatOnSave": true, // Automatically formats on save
+    "[php]": {
+        "editor.defaultFormatter": "bmewburn.vscode-intelephense-client" // Set Intelephense as the formatter
+    }
+}
