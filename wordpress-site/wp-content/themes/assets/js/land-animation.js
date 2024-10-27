@@ -1,5 +1,6 @@
 const EDGE_HEADER = document.getElementById('edge-header');
 const HEADER_LOGO_CONTAINER = document.getElementById('header-logo-container');
+const HEADER_LINKS_CONTAINER = document.querySelector('.page-template-intro .edge-header .header-navigation-links-container');
 
 const LOGO_CONTAINER = document.getElementById('intro-header-logo-container');
 const LOGO_CONTAINER_EDGE_IMG = document.getElementById('intro-header-logo-img');
@@ -183,6 +184,9 @@ function enterFourthPhase() {
     EDGE_HEADER.style.transition = 'opacity 1s';
     EDGE_HEADER.style.opacity = '1';
 
+    HEADER_LINKS_CONTAINER.style.transition = 'opacity 1s';
+    HEADER_LINKS_CONTAINER.style.opacity = '1';
+
     // Reset textContainer and textContainerH1 styles
     TEXT_CONTAINER.style.left = `200px`;
     TEXT_CONTAINER.style.height = `auto`;
@@ -251,10 +255,6 @@ function setInitialRailPositions() {
     });
 }
 
-function setEdgeHeader() {
-    // make invisible untill set to visible
-}
-
 document.addEventListener("DOMContentLoaded", () => {
     // Check if we're on the intro page by looking for an element unique to it
     const introPageElement = document.getElementById('intro-header-logo-container');
@@ -273,7 +273,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
         // Animation setup
-        setEdgeHeader();
         setInitialRailPositions();
         calculateAndSetRailHeight();
         populateRails();

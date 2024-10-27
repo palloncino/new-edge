@@ -28,6 +28,11 @@
     align-items: center;
 }
 
+/* only for landing animation */
+.page-template-intro .edge-header .header-logo-container {
+    opacity: 0;
+}
+
 .edge-header .header-logo-img {
     height: 120px;
     width: 65.85px;
@@ -43,6 +48,11 @@
 .edge-header .header-navigation-links-container {
     display: flex;
     align-items: center;
+}
+
+/* only for landing animation */
+.page-template-intro .edge-header .header-navigation-links-container {
+    opacity: 0;
 }
 
 .edge-header .header-navigation-links {
@@ -71,8 +81,15 @@
 
 /* PAGE SPECIFIC STYLES */
 
+/* /intro */
+.page-template-intro .edge-header .header-navigation-links {
+    background: #F69701!important;
+    color: #fff;
+    transition: background 0.3s;
+}
+/* / */
 .front-page .edge-header .header-navigation-links {
-    background: #F69701;
+    background: #F69701!important;
     color: #fff;
     transition: background 0.3s;
 }
