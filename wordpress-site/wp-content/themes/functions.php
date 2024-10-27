@@ -204,3 +204,18 @@ add_action('widgets_init', 'remove_default_widgets', 11);
 
 // Disable Admin Bar for All Users
 add_filter('show_admin_bar', '__return_false');
+
+// Enqueue scripts conditionally
+add_action('wp_enqueue_scripts', 'conditional_enqueue_scripts');
+function conditional_enqueue_scripts() {
+    // Enqueue url-controller.js on all relevant pages
+    wp_enqueue_script('url-controller-js', get_template_directory_uri() . '/assets/js/url-controller.js', array(), null, true);
+
+    // Only enqueue land-animation.js on the /intro page
+    if (is_page_template('intro.php')) {
+        wp_enqueue_script('land-animation-js', get_template_directory_uri() . '/assets/js/land-animation.js', array(), null, true);
+        wp_localize_script('land-animation-js', 'themeData', array(
+            'templateDirectoryUri' => get_template_directory_uri(),
+        ));
+    }
+}

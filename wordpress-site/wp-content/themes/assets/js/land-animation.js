@@ -256,13 +256,22 @@ function setEdgeHeader() {
     setTimeout(() => {
         console.log('trying to hide opacity')
         EDGE_HEADER.classList.add('hidden-opacity');
-    }, 10); 
+    }, 10);
 }
 
-window.onload = function () {
+document.addEventListener("DOMContentLoaded", () => {
+    // Animation setup
     setEdgeHeader();
     setInitialRailPositions();
     calculateAndSetRailHeight();
     populateRails();
     applyAnimationPauseAndSelectShape();
-};
+
+    // Set `introSeen` after the animation finishes and redirect to `/`
+    const animationDuration = 12000;
+    setTimeout(() => {
+        localStorage.setItem("introSeen", "true");
+        window.location.href = "/";
+    }, animationDuration);
+});
+
