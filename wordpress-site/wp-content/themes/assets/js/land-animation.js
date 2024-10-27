@@ -252,27 +252,46 @@ function setInitialRailPositions() {
 }
 
 function setEdgeHeader() {
-    EDGE_HEADER.style.opacity = '0';
-    setTimeout(() => {
-        console.log('trying to hide opacity')
-        EDGE_HEADER.classList.add('hidden-opacity');
-    }, 10);
+    // setTimeout(() => {
+    //     console.log('trying to hide opacity')
+    //     EDGE_HEADER.classList.add('hidden-opacity');
+    // }, 10);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    // Animation setup
-    setEdgeHeader();
-    setInitialRailPositions();
-    calculateAndSetRailHeight();
-    populateRails();
-    applyAnimationPauseAndSelectShape();
+    // Check if we're on the intro page by looking for an element unique to it
+    const introPageElement = document.getElementById('intro-header-logo-container');
+    if (!introPageElement) {
+        // Exit if not on the intro page
+        return;
+    }
 
-    // Set `introSeen` after the animation finishes and redirect to `/`
-    const animationDuration = 12000;
-    setTimeout(() => {
-        HEADER_LOGO_CONTAINER.style.opacity = '1';
-        localStorage.setItem("introSeen", "true");
+    // Check if the animation should be skipped
+    const skipAnimation = localStorage.getItem("introSeen");
+    if (skipAnimation) {
+        console.log('Intro seen; skipping animation');
         window.location.href = "/";
-    }, animationDuration);
+        return;
+    }
+
+    try {
+        // Animation setup
+        setEdgeHeader();
+        setInitialRailPositions();
+        calculateAndSetRailHeight();
+        populateRails();
+        applyAnimationPauseAndSelectShape();
+
+        // Set `introSeen` after the animation finishes and redirect to `/`
+        const animationDuration = 12000;
+        setTimeout(() => {
+            console.log('land-animation, redirecting to /');
+            localStorage.setItem("introSeen", "true");
+            window.location.href = "/";
+        }, animationDuration);
+
+    } catch (error) {
+        console.error("Animation setup error:", error);
+    }
 });
 
