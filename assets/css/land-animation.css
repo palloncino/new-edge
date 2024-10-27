@@ -183,7 +183,7 @@ html {
     align-items: flex-end;
     justify-content: flex-end;
     box-sizing: border-box;
-    padding: 0 3rem;
+    padding: 0 48px;
     transition: all 1s ease-in-out;
 }
 

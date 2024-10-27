@@ -1,6 +1,9 @@
 <?php
 /* Template Name: Intro - Landing Animation */
 get_header(); // Includes the main header.php with <head> and opening <body>
+
+// Enqueue the land-animation.css specifically for this template
+wp_enqueue_style('land-animation-css', get_template_directory_uri() . '/assets/css/land-animation.css');
 ?>
 
 

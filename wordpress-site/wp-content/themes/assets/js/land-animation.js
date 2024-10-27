@@ -1,3 +1,5 @@
+const FIXED_BACKGROUND = document.getElementById('intro-fixed-background'); 
+
 const EDGE_HEADER = document.getElementById('edge-header');
 const HEADER_LOGO_CONTAINER = document.getElementById('header-logo-container');
 const HEADER_LINKS_CONTAINER = document.querySelector('.page-template-intro .edge-header .header-navigation-links-container');
@@ -180,6 +182,9 @@ function enterFourthPhase() {
     LOGO_CONTAINER_EDGE_H1.style.marginTop = '16px';
 
     HEADER_LOGO_CONTAINER.style.opacity = '.0';
+
+    FIXED_BACKGROUND.style.transition = 'background 1s';
+    FIXED_BACKGROUND.style.background = '#F7F7F7';
 
     EDGE_HEADER.style.transition = 'opacity 1s';
     EDGE_HEADER.style.opacity = '1';

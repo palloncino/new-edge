@@ -23,7 +23,6 @@ function generic_enqueue() {
     // Enqueue custom styles and scripts
     wp_enqueue_style('font-css', get_template_directory_uri() . '/assets/css/font.css');
     wp_enqueue_style('global-css', get_template_directory_uri() . '/assets/css/global.css');
-    wp_enqueue_style('land-animation-css', get_template_directory_uri() . '/assets/css/land-animation.css');
     wp_enqueue_style('header-css', get_template_directory_uri() . '/assets/css/header.css');
     
     wp_enqueue_script('jquery');
