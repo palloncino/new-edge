@@ -270,6 +270,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Set `introSeen` after the animation finishes and redirect to `/`
     const animationDuration = 12000;
     setTimeout(() => {
+        HEADER_LOGO_CONTAINER.style.opacity = '1';
         localStorage.setItem("introSeen", "true");
         window.location.href = "/";
     }, animationDuration);
