@@ -12,57 +12,12 @@
 
 
 <style>
-    #text-container {
-        opacity: 0;
-        position: fixed;
-        top: 50%;
-        transform: translateY(-50%);
-        left: 500px;
-        height: 200px;
-        width: 100%;
-        max-width: 1100px;
-        /*  */
+    .section-2-homepage {
+        background: green;
     }
 
-    #text-container__h1 {
-        font-size: 100px;
-        line-height: 100px;
-        text-wrap: nowrap;
-        margin: 0;
-    }
-
-    #text-container,
-    #text-container__h1 {
-        transition: all 1s ease-in-out;
-    }
-
-    #intro-start-button-container-row {
-        position: fixed;
-        opacity: 0;
-        display: flex;
-        transform: translateX(-100%);
-        height: 100vh;
-        z-index: -1;
-        width: 100%;
-        align-items: flex-end;
-        justify-content: flex-end;
-        box-sizing: border-box;
-        padding: 0 100px;
-        transition: all 1s ease-in-out;
-    }
-
-    #intro-start-button-container {
-        cursor: pointer;
-        display: flex;
-        height: 65px;
-        width: 120px;
-        font-size: 24px;
-        background: url('../svgs/shape-2-orange.svg');
-        background-repeat: no-repeat;
-        align-items: center;
-        justify-content: center;
-        color: #fff;
-        font-family: 'Mundial Regular';
+    .section-3-homepage {
+        background: red;
     }
 </style>
 
@@ -87,6 +42,100 @@
                 </div>
             </div>
         </div>
+
+        <style>
+            #text-container {
+                opacity: 1;
+                position: absolute;
+                top: 50%;
+                left: 200px;
+                transform: translateY(-50%);
+                height: auto;
+                width: 100%;
+                max-width: 1100px;
+            }
+
+            #text-container__h1 {
+                font-size: 150px;
+                line-height: 150px;
+                text-wrap: nowrap;
+                margin: 0;
+            }
+
+            #text-container,
+            #text-container__h1 {
+                transition: all 1s ease-in-out;
+            }
+
+            #intro-start-button-container-row {
+                opacity: 1;
+                position: absolute;
+                bottom: 48px;
+                right: 48px;
+                /* transform: translateY(-50%); */
+            }
+
+            #intro-start-button-container {
+                cursor: pointer;
+                display: flex;
+                height: 65px;
+                width: 120px;
+                font-size: 24px;
+                background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-2-orange.svg');
+                background-repeat: no-repeat;
+                align-items: center;
+                justify-content: center;
+                color: #fff;
+                font-family: 'Mundial Regular';
+            }
+        </style>
+
+        <style>
+
+            .section-1-homepage {
+                background: orange;
+            }
+
+            .section-2-homepage {
+                background: red;
+            }
+
+            .section-3-homepage {
+                background: green;
+            }
+        </style>
+
+        <div class="app-container">
+            <div class="section-padded-content">
+
+                <div id="text-container">
+                    <h1 class="Heading" id="text-container__h1">
+                        <span id="YOUR_CARE">YOUR CARE,</span><br />
+                        <span id="UNLIMITED">UNLIMITED</span>
+                    </h1>
+                </div>
+
+                <div id="intro-start-button-container-row">
+                    <div id="intro-start-button-container">
+                        <span id="intro-start-button">inizia</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-padded-content section-1-homepage">
+                <h1>Sec 1</h1>
+            </div>
+
+            <div class="section-padded-content section-2-homepage">
+                <h1>Sec 2</h1>
+            </div>
+
+            <div class="section-padded-content section-3-homepage">
+                <h1>Sec 3</h1>
+            </div>
+        </div>
+
+    </div>
 
     </div>
 </body>
