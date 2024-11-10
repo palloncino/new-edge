@@ -11,10 +11,6 @@
     src: url('../fonts/Fontspring-DEMO-2-mundial-thin-italic-tty.otf');
 }
 @font-face {
-    font-family: 'Mundial Thin';
-    src: url('../fonts/Fontspring-DEMO-2-mundial-thin-tty.otf');
-}
-@font-face {
     font-family: 'Mundial Light Italic';
     src: url('../fonts/Fontspring-DEMO-3-mundial-light-italic-tty.otf');
 }
@@ -29,6 +25,11 @@
 @font-face {
     font-family: 'Mundial Regular';
     src: url('../fonts/Fontspring-DEMO-4-mundial-regular-tty.otf');
+}
+
+@font-face {
+    font-family: 'Mundial Thin';
+    src: url('../fonts/Fontspring-DEMO-2-mundial-thin-tty.otf');
 }
 /* @font-face {
     font-family: 'Mundial Demibold Italic';

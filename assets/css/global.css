@@ -30,5 +30,5 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Specific pages */
 body.page-template-default {
-    background: #F7F7F7;
+    background: #F7F7F7!important;
 }
