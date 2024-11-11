@@ -28,7 +28,31 @@ h1, h2, h3, h4, h5, h6 {
     height: 100vh;
 }
 
+.h1-m {
+    font-family: 'Mundial Regular';
+    font-size: 4rem;
+    line-height: 5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.h1-xl {
+    font-family: 'Mundial Regular';
+    font-size: 10rem;
+    line-height: 10rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.color-3B1473 {
+    color: #3B1473;
+}
+
+.color-FFF {
+    color: #FFF;
+}
+
 /* Specific pages */
-body.page-template-default {
-    background: #F7F7F7!important;
+body .page-template-default {
+    background: #F7F7F7;
 }

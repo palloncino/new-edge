@@ -10,20 +10,9 @@
     <title>Edge Homepage</title>
 </head>
 
-
-<style>
-    .section-2-homepage {
-        background: green;
-    }
-
-    .section-3-homepage {
-        background: red;
-    }
-</style>
-
 <body>
 
-    <div class="app-container front-page">
+    <div class="app-container page-template-default page-id-37">
 
         <!-- HEADER -->
         <div id="edge-header" class="edge-header">
@@ -44,8 +33,30 @@
         </div>
 
         <style>
-            .section-1-about-us {
-                background: #F69602;
+            .section-1-about-us {}
+
+            .section-1-about-us-links-wrapper {
+                position: absolute;
+                width: 100%;
+                bottom: 100px;
+                left: 0;
+
+            }
+
+            .section-1-about-us-links-container {
+                box-sizing: border-box;
+                padding: 0 4rem;
+                display: flex;
+                height: 200px;
+                justify-content: space-around;
+                align-items: flex-end;
+                width: 100%;
+                gap: 2rem;
+            }
+
+            .section-1-about-us-link-container {
+                width: 100%;
+                background: red;
             }
 
             .section-2-about-us {
@@ -66,12 +77,30 @@
         </style>
 
         <div class="app-container">
-            <div class="section-padded-content section-1-about-us"></div>
+            <div class="section-padded-content section-1-about-us">
+
+                <h1 class="h1-xl color-3B1473">
+                    LA NOSTRA STORIA
+                </h1>
+
+                <div class="section-1-about-us-links-wrapper">
+                    <div class="section-1-about-us-links-container">
+
+                        <div class="section-1-about-us-link-container">LINK 1</div>
+                        <div class="section-1-about-us-link-container">LINK 2</div>
+                        <div class="section-1-about-us-link-container">LINK 3</div>
+                    </div>
+                </div>
+            </div>
+
+
             <div class="section-padded-content section-2-about-us"></div>
             <div class="section-padded-content section-3-about-us"></div>
             <div class="section-padded-content section-4-about-us"></div>
             <div class="section-5-about-us">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni natus illo repudiandae necessitatibus quisquam eos nihil laudantium unde laboriosam. Perspiciatis iste nam quas delectus voluptas. Est deleniti voluptas molestias dolores?
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni natus illo repudiandae necessitatibus
+                quisquam eos nihil laudantium unde laboriosam. Perspiciatis iste nam quas delectus voluptas. Est
+                deleniti voluptas molestias dolores?
             </div>
         </div>
 
