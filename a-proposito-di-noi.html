@@ -32,12 +32,6 @@
             </div>
         </div>
 
-        <style>
-            .section-5-about-us {
-                background: rgb(0, 128, 126);
-            }
-        </style>
-
         <div class="app-container">
 
             <!-- LA NOSTRA STORIA -->
@@ -184,6 +178,7 @@
                 .section-4-about-us {
                     background: #528AF8;
                 }
+
                 .section-4-about-us-bottom-row {
                     margin: 0 auto;
                     height: 200px;
@@ -194,19 +189,17 @@
                     max-width: 1200px;
                     gap: 2rem;
                 }
+
                 .section-4-about-us-link-container {
                     width: 300px;
                     border: 1px solid #fff;
                 }
-                .section-4-about-us-link-shape-icon {
 
-                }
-                .section-4-about-us-link-plus-icon {
+                .section-4-about-us-link-shape-icon {}
 
-                }
-                .section-4-about-us-link-text {
-                    
-                }
+                .section-4-about-us-link-plus-icon {}
+
+                .section-4-about-us-link-text {}
             </style>
             <div class="section-padded-content section-4-about-us">
 
@@ -234,11 +227,248 @@
             </div>
 
             <!-- SEC 5 -->
+            <style>
+                .section-5-about-us {
+                    overflow-x: hidden;
+
+                }
+
+                .chi-siamo-content {
+                    padding-top: 130px;
+                }
+
+                .first-grid-container {
+                    box-sizing: border-box;
+                    position: relative;
+                    display: grid;
+                    grid-template-columns: repeat(6, 1fr);
+                    gap: 1rem;
+                    width: 100%;
+                    height: calc(100vh - 130px - 100px);
+                    /* Adjust for header and padding */
+                    margin-bottom: 100px;
+                    align-items: end;
+                    /* Align items at the bottom */
+                }
+
+                .grid-item {
+                    background-color: transparent;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    aspect-ratio: 1 / 1.5;
+                    /* Maintain aspect ratio */
+                }
+
+                .grid-item img {
+                    max-width: 100%;
+                    max-height: 100%;
+                    object-fit: contain;
+                }
+
+                .grid-item.row-1_item-1 {
+                    background: url('http://edge.chebellagiornata.it/wp-content/uploads/2024/11/girl.png') no-repeat center center;
+                    background-size: cover;
+                }
+
+                .grid-item.row-1_item-2 {
+                    background: url('http://edge.chebellagiornata.it/wp-content/uploads/2024/11/girl.png') no-repeat center center;
+                    background-size: cover;
+                }
+
+                .svg-background-1 {
+                    background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-3-lightblue.svg');
+                    background-repeat: no-repeat;
+                    position: absolute;
+                    right: 100px;
+                    top: 200px;
+                    width: 200px;
+                    height: 100%;
+                    z-index: 1;
+                }
+
+                .content-wrapper {
+                    box-sizing: border-box;
+                    padding: 40px 0 200px 40px;
+                }
+
+                .second-grid-container {
+                    padding: 50px 0;
+                    box-sizing: border-box;
+                    position: relative;
+                    display: grid;
+                    grid-template-columns: repeat(6, 1fr);
+                    grid-template-rows: repeat(6, 1fr);
+                    gap: 1rem;
+                    width: 100%;
+                    align-items: end;
+                    /* Align items at the bottom */
+                }
+
+                .second-grid-item {
+                    background: transparent;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    aspect-ratio: 1 / 1.5;
+                    /* Maintain aspect ratio */
+                }
+
+                .second-grid-item img {
+                    max-width: 100%;
+                    max-height: 100%;
+                    object-fit: contain;
+                }
+
+                .second-grid-item.row-1_item-2,
+                .second-grid-item.row-1_item-3,
+                .second-grid-item.row-1_item-4,
+                .second-grid-item.row-1_item-5,
+                .second-grid-item.row-1_item-6,
+
+                .second-grid-item.row-2_item-1,
+                .second-grid-item.row-2_item-2,
+                .second-grid-item.row-2_item-3,
+                .second-grid-item.row-2_item-4,
+
+                .second-grid-item.row-3_item-1,
+                .second-grid-item.row-3_item-2,
+                .second-grid-item.row-3_item-3,
+                .second-grid-item.row-3_item-4,
+
+                .second-grid-item.row-4_item-1,
+                .second-grid-item.row-4_item-2,
+                .second-grid-item.row-4_item-3,
+                .second-grid-item.row-4_item-4,
+
+                .second-grid-item.row-5_item-2,
+                .second-grid-item.row-5_item-3,
+                .second-grid-item.row-5_item-4,
+                .second-grid-item.row-5_item-5,
+                .second-grid-item.row-5_item-6,
+
+                .second-grid-item.row-6_item-2,
+                .second-grid-item.row-6_item-3,
+                .second-grid-item.row-6_item-4,
+                .second-grid-item.row-6_item-5,
+                .second-grid-item.row-6_item-6 {
+                    background: url('http://edge.chebellagiornata.it/wp-content/uploads/2024/11/girl.png') no-repeat center center;
+                    background-size: cover;
+                }
+
+                .svg-background-2 {
+                    position: absolute;
+                    width: 100%;
+                    transform: rotate(180deg);
+                    left: -90%;
+                    top: 0;
+                    z-index: -1;
+                }
+
+                .svg-background-3 {
+                    position: absolute;
+                    width: auto;
+                    right: -60%;
+                    z-index: -1;
+                }
+
+                .svg-background-4 {
+                    position: absolute;
+                    width: auto;
+                    left: -35%;
+                    transform: rotate(-90deg);
+                    right: 200px;
+                    bottom: 0;
+                    z-index: -1;
+                }
+            </style>
             <div class="section-5-about-us">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni natus illo repudiandae necessitatibus
-                quisquam eos nihil laudantium unde laboriosam. Perspiciatis iste nam quas delectus voluptas. Est
-                deleniti voluptas molestias dolores?
+                <div class="chi-siamo-content">
+                    <div class="content-wrapper">
+                        <div class="section-title-2-text">
+                            Il nostro team di professionisti
+                        </div>
+                        <div class="first-grid-container">
+                            <!-- Items in the grid -->
+                            <div class="grid-item row-1_item-1"></div>
+                            <div class="grid-item row-1_item-2"></div>
+                            <div class="grid-item"></div>
+                            <div class="grid-item"></div>
+                            <div class="grid-item"></div>
+                            <div class="grid-item"></div>
+                            <div class="svg-background-1"></div>
+                        </div>
+
+                        <div class="second-grid-container">
+                            <!-- Second grid with 6 rows and SVG backgrounds -->
+                            <div class="second-grid-item row-1_item-1"></div>
+                            <div class="second-grid-item row-1_item-2"></div>
+                            <div class="second-grid-item row-1_item-3"></div>
+                            <div class="second-grid-item row-1_item-4"></div>
+                            <div class="second-grid-item row-1_item-5"></div>
+                            <div class="second-grid-item row-1_item-6"></div>
+
+                            <svg class="svg-background-2" id="Layer_1" data-name="Layer 1"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 859 279.5">
+                                <path fill="#E846A0" d="M0,279.5S124,0,429.5,0c286.5,0,429.5,279.5,429.5,279.5" />
+                            </svg>
+
+                            <div class="second-grid-item row-2_item-1"></div>
+                            <div class="second-grid-item row-2_item-2"></div>
+                            <div class="second-grid-item row-2_item-3"></div>
+                            <div class="second-grid-item row-2_item-4"></div>
+                            <div class="second-grid-item row-2_item-5"></div>
+                            <div class="second-grid-item row-2_item-6"></div>
+
+                            <div class="second-grid-item row-3_item-1"></div>
+                            <div class="second-grid-item row-3_item-2"></div>
+                            <div class="second-grid-item row-3_item-3"></div>
+                            <div class="second-grid-item row-3_item-4"></div>
+                            <div class="second-grid-item row-2_item-5"></div>
+                            <div class="second-grid-item row-2_item-6"></div>
+
+                            <svg class="svg-background-3" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 565.08 441.79">
+                                <path fill="#E846A0"
+                                    d="M173.2,441.99h0s343.58,0,343.58,0C395.25,228.82,509.04.5,509.04.5H173.66C78.03.5.5,99.33.5,221.25s77.28,220.43,172.7,220.74Z" />
+                            </svg>
+
+                            <div class="second-grid-item row-4_item-1"></div>
+                            <div class="second-grid-item row-4_item-2"></div>
+                            <div class="second-grid-item row-4_item-3"></div>
+                            <div class="second-grid-item row-4_item-4"></div>
+                            <div class="second-grid-item row-4_item-5"></div>
+                            <div class="second-grid-item row-4_item-6"></div>
+
+                            <div class="second-grid-item row-5_item-1"></div>
+                            <div class="second-grid-item row-5_item-2"></div>
+                            <div class="second-grid-item row-5_item-3"></div>
+                            <div class="second-grid-item row-5_item-4"></div>
+                            <div class="second-grid-item row-5_item-5"></div>
+                            <div class="second-grid-item row-5_item-6"></div>
+
+                            <div class="second-grid-item row-6_item-1"></div>
+                            <div class="second-grid-item row-6_item-2"></div>
+                            <div class="second-grid-item row-6_item-3"></div>
+                            <div class="second-grid-item row-6_item-4"></div>
+                            <div class="second-grid-item row-6_item-5"></div>
+                            <div class="second-grid-item row-6_item-6"></div>
+
+                            <svg class="svg-background-4" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 565.08 441.79">
+                                <path fill="#E846A0"
+                                    d="M173.2,441.99h0s343.58,0,343.58,0C395.25,228.82,509.04.5,509.04.5H173.66C78.03.5.5,99.33.5,221.25s77.28,220.43,172.7,220.74Z" />
+                            </svg>
+
+                            <div class="section-privacy-tag-container">
+                                © 2024 EDGE - tutti i diritti riservati
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             </div>
+            <script src="./assets/js/a-proposito-di-noi-section-5.js"></script>
         </div>
 
     </div>
