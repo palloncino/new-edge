@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/font.css">
+    <link rel="stylesheet" href="./assets/css/global.css">
+    <link rel="stylesheet" href="./assets/css/header.css">
+    <title>Edge Homepage</title>
+</head>
+
+<body>
+
+    <div class="app-container page-template-default page-id-40">
+
+        <!-- HEADER -->
+        <div id="edge-header" class="edge-header">
+            <div id="header-logo-container" class="header-logo-container">
+                <img class="header-logo-img" src="./assets/svgs/logo.svg" alt="Edge" />
+                <h1 class="header-logo-edge">edge</h1>
+            </div>
+            <div class="header-navigation-links-container">
+                <div class="header-navigation-links">
+                    <a class="header-navigation-link selected" href="/a-proposito-di-noi.html">A proposito di noi</a>
+                    <a class="header-navigation-link" href="/cosa-facciamo.html">Cosa facciamo</a>
+                    <a class="header-navigation-link" href="/over-the-edge.html">Over the Edge</a>
+                    <a class="header-navigation-link" href="/il-gruppo.html">Il gruppo</a>
+                    <a class="header-navigation-link" href="/contatti.html">Contatti</a>
+                    <a class="header-navigation-link" href="#">it <span style="font-family: arial;">|</span> en</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="app-container">
+
+            <style>
+                .section-1-what-we-do {}
+
+                .section-1-what-we-do--container {
+                    border: 1px solid;
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                .section-1-what-we-do--left-big-svg {
+                    margin-right: 4rem;
+                    width: 200px;
+                    height: 122px;
+                    background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-2-orange.svg');
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: contain;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                .section-1-what-we-do--left-big-svg-text {
+                    color: white;
+                }
+
+                .section-1-what-we-do--circle-container {
+                    border: 1px solid;
+                    width: 500px; /* Explicitly set size */
+                    height: 500px;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    position: relative; /* Allows absolute positioning inside */
+                }
+
+                .circle-item {
+                    width: 50px; /* Size of the SVGs */
+                    height: 50px;
+                    background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-2-orange.svg');
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: contain;
+                    position: absolute;
+                    top: 45%; /* Start positioning from the center */
+                    left: 45%; /* Start positioning from the center */
+                    transform-origin: 0 0; /* Align to the container center */
+                    transform: rotate(0deg) translate(250px) rotate(0deg); /* Adjust position and rotation */
+                    z-index: 2; /* Ensure visibility over container border */
+                }
+
+                /* Use nth-child to rotate each SVG */
+                .circle-item:nth-child(1) { transform: rotate(0deg) translate(250px) rotate(0deg); }
+                .circle-item:nth-child(2) { transform: rotate(15deg) translate(250px) rotate(-15deg); }
+                .circle-item:nth-child(3) { transform: rotate(30deg) translate(250px) rotate(-30deg); }
+                .circle-item:nth-child(4) { transform: rotate(45deg) translate(250px) rotate(-45deg); }
+                .circle-item:nth-child(5) { transform: rotate(60deg) translate(250px) rotate(-60deg); }
+                .circle-item:nth-child(6) { transform: rotate(75deg) translate(250px) rotate(-75deg); }
+                .circle-item:nth-child(7) { transform: rotate(90deg) translate(250px) rotate(-90deg); }
+                .circle-item:nth-child(8) { transform: rotate(105deg) translate(250px) rotate(-105deg); }
+                .circle-item:nth-child(9) { transform: rotate(120deg) translate(250px) rotate(-120deg); }
+                .circle-item:nth-child(10) { transform: rotate(135deg) translate(250px) rotate(-135deg); }
+                .circle-item:nth-child(11) { transform: rotate(150deg) translate(250px) rotate(-150deg); }
+                .circle-item:nth-child(12) { transform: rotate(165deg) translate(250px) rotate(-165deg); }
+                .circle-item:nth-child(13) { transform: rotate(180deg) translate(250px) rotate(-180deg); }
+                .circle-item:nth-child(14) { transform: rotate(195deg) translate(250px) rotate(-195deg); }
+                .circle-item:nth-child(15) { transform: rotate(210deg) translate(250px) rotate(-210deg); }
+                .circle-item:nth-child(16) { transform: rotate(225deg) translate(250px) rotate(-225deg); }
+                .circle-item:nth-child(17) { transform: rotate(240deg) translate(250px) rotate(-240deg); }
+                .circle-item:nth-child(18) { transform: rotate(255deg) translate(250px) rotate(-255deg); }
+                .circle-item:nth-child(19) { transform: rotate(270deg) translate(250px) rotate(-270deg); }
+                .circle-item:nth-child(20) { transform: rotate(285deg) translate(250px) rotate(-285deg); }
+                .circle-item:nth-child(21) { transform: rotate(300deg) translate(250px) rotate(-300deg); }
+                .circle-item:nth-child(22) { transform: rotate(315deg) translate(250px) rotate(-315deg); }
+                .circle-item:nth-child(23) { transform: rotate(330deg) translate(250px) rotate(-330deg); }
+                .circle-item:nth-child(24) { transform: rotate(345deg) translate(250px) rotate(-345deg); }
+
+                .section-1-what-we-do--central-logo {
+                    background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/logo.svg');
+                    background-repeat: no-repeat;
+                    width: 100%;
+                    height: 100%;
+                    max-width: 99px;
+                    max-height: 181px;
+                }
+
+                .section-1-what-we-do--right-big-svg {
+                    margin-left: 4rem;
+                    width: 200px;
+                    height: 122px;
+                    background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-2-orange.svg');
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: contain;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    transform: scaleX(-1);
+                }
+
+                .section-1-what-we-do--right-big-svg-text {
+                    color: white;
+                    transform: scaleX(-1);
+                }
+            </style>
+            <div class="section-padded-content section-1-what-we-do">
+                <div class="section-1-what-we-do--container">
+
+                    <div class="section-1-what-we-do--left-big-svg">
+                        <div class="section-1-what-we-do--left-big-svg-text">Client</div>
+                    </div>
+
+                    <div class="section-1-what-we-do--circle-container">
+                        <div class="section-1-what-we-do--central-logo"></div>
+
+                        <div class="circle-item" id="svg-1"></div>
+                        <div class="circle-item" id="svg-2"></div>
+                        <div class="circle-item" id="svg-3"></div>
+                        <div class="circle-item" id="svg-4"></div>
+                        <div class="circle-item" id="svg-5"></div>
+                        <div class="circle-item" id="svg-6"></div>
+                        <div class="circle-item" id="svg-7"></div>
+                        <div class="circle-item" id="svg-8"></div>
+                        <div class="circle-item" id="svg-9"></div>
+                        <div class="circle-item" id="svg-10"></div>
+                        <div class="circle-item" id="svg-11"></div>
+                        <div class="circle-item" id="svg-12"></div>
+                        <div class="circle-item" id="svg-13"></div>
+                        <div class="circle-item" id="svg-14"></div>
+                        <div class="circle-item" id="svg-15"></div>
+                        <div class="circle-item" id="svg-16"></div>
+                        <div class="circle-item" id="svg-17"></div>
+                        <div class="circle-item" id="svg-18"></div>
+                        <div class="circle-item" id="svg-19"></div>
+                        <div class="circle-item" id="svg-20"></div>
+                        <div class="circle-item" id="svg-21"></div>
+                        <div class="circle-item" id="svg-22"></div>
+                        <div class="circle-item" id="svg-23"></div>
+                        <div class="circle-item" id="svg-24"></div>
+                    </div>
+
+                    <div class="section-1-what-we-do--right-big-svg">
+                        <div class="section-1-what-we-do--right-big-svg-text">compagnia<br>assicurativa</div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <script>
+
+
+
+            </script>
+        </div>
+
+    </div>
+
+    </div>
+</body>
+
+</html>
