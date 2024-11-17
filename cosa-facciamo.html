@@ -38,7 +38,6 @@
                 .section-1-what-we-do {}
 
                 .section-1-what-we-do--container {
-                    border: 1px solid;
                     width: 100%;
                     height: 100%;
                     display: flex;
@@ -69,7 +68,6 @@
                 .section-1-what-we-do--circle-container {
                     border: 1px solid;
                     width: 500px;
-                    /* Explicitly set size */
                     height: 500px;
                     border-radius: 50%;
                     display: flex;
@@ -90,32 +88,6 @@
                     z-index: 2;
                 }
 
-                .circle-item-2,
-                .circle-item-3,
-                .circle-item-4,
-                .circle-item-5,
-                .circle-item-6,
-                .circle-item-8,
-                .circle-item-9,
-                .circle-item-10,
-                .circle-item-11,
-                .circle-item-12,
-                .circle-item-14,
-                .circle-item-15,
-                .circle-item-16,
-                .circle-item-17,
-                .circle-item-18,
-                .circle-item-20,
-                .circle-item-21,
-                .circle-item-22,
-                .circle-item-23,
-                .circle-item-24 {
-                    background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-2-orange.svg');
-                    background-repeat: no-repeat;
-                    background-position: center;
-                    background-size: contain;
-                }
-
                 .inner-container {
                     width: 100%;
                     height: 100%;
@@ -125,67 +97,42 @@
                     transform-origin: center;
                 }
 
-                .circle-item.circle-item-1 .inner-container,
-                .circle-item.circle-item-7 .inner-container,
-                .circle-item.circle-item-13 .inner-container,
-                .circle-item.circle-item-19 .inner-container {
+                .circle-item .inner-container {
                     background-image: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-3-lightblue.svg');
                 }
 
-                /* For the orange shapes */
-                .circle-item:not(.circle-item-1):not(.circle-item-7):not(.circle-item-13):not(.circle-item-19) .inner-container {
-                    background-image: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-2-orange.svg');
-                }
-
-                .circle-item-1 .inner-container {
-                    transform: rotate(180deg);
-                }
-
-                .circle-item-7 .inner-container {
-                    transform: rotate(270deg);
-                }
-
-                .circle-item-13 .inner-container {
-                    transform: rotate(0deg);
-                }
-
-                .circle-item-19 .inner-container {
-                    transform: rotate(90deg);
-                }
-
                 /* Use classes to rotate each SVG inline */
-                .circle-item-1 { transform: rotate(0deg) translate(250px) rotate(0deg); }
-                .circle-item-2 { transform: rotate(15deg) translate(250px) rotate(-15deg); }
-                .circle-item-3 { transform: rotate(30deg) translate(250px) rotate(-30deg); }
-                .circle-item-4 { transform: rotate(45deg) translate(250px) rotate(-45deg); }
-                .circle-item-5 { transform: rotate(60deg) translate(250px) rotate(-60deg); }
-                .circle-item-6 { transform: rotate(75deg) translate(250px) rotate(-75deg); }
+                .circle-item-1 {transform: rotate(0deg) translate(250px) rotate(-100deg);}
+                .circle-item-2 {transform: rotate(15deg) translate(250px) rotate(-105deg);}
+                .circle-item-3 {transform: rotate(30deg) translate(250px) rotate(-100deg);}
+                .circle-item-4 {transform: rotate(45deg) translate(250px) rotate(-95deg);}
+                .circle-item-5 {transform: rotate(60deg) translate(250px) rotate(-90deg);}
+                .circle-item-6 {transform: rotate(75deg) translate(250px) rotate(-95deg);}
                 .circle-item-7 { transform: rotate(90deg) translate(250px) rotate(-90deg); }
-                .circle-item-8 { transform: rotate(105deg) translate(250px) rotate(-105deg); }
-                .circle-item-9 { transform: rotate(120deg) translate(250px) rotate(-120deg); }
-                .circle-item-10 { transform: rotate(135deg) translate(250px) rotate(-135deg); }
-                .circle-item-11 { transform: rotate(150deg) translate(250px) rotate(-150deg); }
-                .circle-item-12 { transform: rotate(165deg) translate(250px) rotate(-165deg); }
-                .circle-item-13 { transform: rotate(180deg) translate(250px) rotate(-180deg); }
-                .circle-item-14 { transform: rotate(195deg) translate(250px) rotate(-195deg); }
-                .circle-item-15 { transform: rotate(210deg) translate(250px) rotate(-210deg); }
-                .circle-item-16 { transform: rotate(225deg) translate(250px) rotate(-225deg); }
-                .circle-item-17 { transform: rotate(240deg) translate(250px) rotate(-240deg); }
-                .circle-item-18 { transform: rotate(255deg) translate(250px) rotate(-255deg); }
-                .circle-item-19 { transform: rotate(270deg) translate(250px) rotate(-270deg); }
-                .circle-item-20 { transform: rotate(285deg) translate(250px) rotate(-285deg); }
-                .circle-item-21 { transform: rotate(300deg) translate(250px) rotate(-300deg); }
-                .circle-item-22 { transform: rotate(315deg) translate(250px) rotate(-315deg); }
-                .circle-item-23 { transform: rotate(330deg) translate(250px) rotate(-330deg); }
-                .circle-item-24 { transform: rotate(345deg) translate(250px) rotate(-345deg); }
+                .circle-item-8 {transform: rotate(105deg) translate(250px) rotate(-95deg);}
+                .circle-item-9 {transform: rotate(120deg) translate(250px) rotate(-100deg);}
+                .circle-item-10 {transform: rotate(135deg) translate(250px) rotate(-105deg);}
+                .circle-item-11 {transform: rotate(150deg) translate(250px) rotate(-110deg);}
+                .circle-item-12 {transform: rotate(165deg) translate(250px) rotate(-105deg);}
+                .circle-item-13 {transform: rotate(180deg) translate(250px) rotate(-90deg);}
+                .circle-item-14 {transform: rotate(195deg) translate(250px) rotate(-95deg);}
+                .circle-item-15 {transform: rotate(210deg) translate(250px) rotate(-90deg);}
+                .circle-item-16 {transform: rotate(225deg) translate(250px) rotate(-95deg);}
+                .circle-item-17 {transform: rotate(240deg) translate(250px) rotate(-100deg);}
+                .circle-item-18 {transform: rotate(255deg) translate(250px) rotate(-95deg);}
+                .circle-item-19 {transform: rotate(270deg) translate(250px) rotate(-90deg);}
+                .circle-item-20 {transform: rotate(285deg) translate(250px) rotate(-455deg);}
+                .circle-item-21 {transform: rotate(300deg) translate(250px) rotate(-460deg);}
+                .circle-item-22 {transform: rotate(315deg) translate(250px) rotate(-95deg);}
+                .circle-item-23 {transform: rotate(330deg) translate(250px) rotate(-100deg);}
+                .circle-item-24 {transform: rotate(345deg) translate(250px) rotate(-105deg);}
+
 
                 .section-1-what-we-do--central-logo {
                     background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/logo.svg');
                     background-repeat: no-repeat;
-                    width: 100%;
-                    height: 100%;
-                    max-width: 99px;
-                    max-height: 181px;
+                    width: 99px;
+                    height: 181px;
                 }
 
                 .section-1-what-we-do--right-big-svg {
