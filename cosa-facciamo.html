@@ -89,6 +89,7 @@
                     display: flex;
                     align-items: center;
                     justify-content: center;
+                    /* transform: rotate(5deg); */
                 }
 
                 .circle-item {
@@ -337,34 +338,119 @@
 
 
             <script>
-
                 document.addEventListener("DOMContentLoaded", () => {
                     const circleInnerContainer = document.getElementById("circle_inner_container");
 
-                    // Add a CSS transition for smooth rotation
-                    circleInnerContainer.style.transition = "transform 1s ease-in-out";
+                    if (!circleInnerContainer) {
+                        console.error("Element with ID 'circle_inner_container' not found.");
+                        return;
+                    }
 
-                    // Set the final rotation after a slight delay to ensure the DOM is fully loaded
-                    setTimeout(() => {
-                        // Rotate the #circle_inner_container by 185 degrees
-                        circleInnerContainer.style.transform = "rotate(185deg)";
+                    // Phase 1: Rotate the circle_inner_container and two specific items simultaneously
+                    function phaseOne() {
+                        return new Promise((resolve) => {
+                            // Set initial transform to ensure the browser registers it
+                            circleInnerContainer.style.transform = "rotate(0deg)";
 
-                        // Rotate circle-item-1 and circle-item-13 .inner-container by 90 degrees
-                        const circleItem1Inner = document.querySelector(".circle-item-1 .inner-container");
-                        const circleItem13Inner = document.querySelector(".circle-item-13 .inner-container");
+                            // Apply the transition for rotation
+                            circleInnerContainer.style.transition = "transform 1s ease-in-out";
 
-                        if (circleItem1Inner) {
-                            circleItem1Inner.style.transition = "transform 1s ease-in-out";
-                            circleItem1Inner.style.transform = "rotate(-85deg)";
-                        }
+                            // Select the two specific circle items
+                            const circleItem1Inner = document.querySelector(".circle-item-1 .inner-container");
+                            const circleItem13Inner = document.querySelector(".circle-item-13 .inner-container");
 
-                        if (circleItem13Inner) {
-                            circleItem13Inner.style.transition = "transform 1s ease-in-out";
-                            circleItem13Inner.style.transform = "rotate(-95deg)";
-                        }
-                    }, 100);
+                            if (!circleItem1Inner || !circleItem13Inner) {
+                                console.warn("One or both of the circle-item-1 or circle-item-13 not found.");
+                            }
+
+                            // Apply transitions and rotations to the two selected items
+                            if (circleItem1Inner) {
+                                circleItem1Inner.style.transition = "transform 1s ease-in-out";
+                                circleItem1Inner.style.transform = "rotate(-85deg)";
+                            }
+
+                            if (circleItem13Inner) {
+                                circleItem13Inner.style.transition = "transform 1s ease-in-out";
+                                circleItem13Inner.style.transform = "rotate(-95deg)";
+                            }
+
+                            // Use a slight delay to ensure the initial state is registered
+                            setTimeout(() => {
+                                circleInnerContainer.style.transform = "rotate(185deg)";
+                            }, 50); // 50ms delay
+
+                            // Wait for the animation to complete before resolving
+                            setTimeout(() => {
+                                // Verify the rotation via computed styles
+                                const computedStyle = window.getComputedStyle(circleInnerContainer);
+                                console.log("Phase 1: Computed transform after animation", computedStyle.transform);
+                                resolve();
+                            }, 1050); // 1s transition + 50ms delay
+                        });
+                    }
+
+                    // Phase 2: Incrementally change shape backgrounds to orange, starting from 2 to 24, excluding 13
+                    function phaseTwo() {
+                        return new Promise((resolve) => {
+                            const orangeBackground = 'url("https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-3-orange.svg")';
+                            const defaultDelay = 250;
+
+                            const circleItems = [];
+
+                            // Collect circle items from 2 to 24, excluding 13
+                            for (let i = 2; i <= 24; i++) {
+                                const item = document.querySelector(`.circle-item-${i} .inner-container`);
+                                if (item) {
+                                    circleItems.push(item);
+                                } else {
+                                    console.warn(`Circle item ${i} not found.`);
+                                }
+                            }
+
+                            if (!circleItems.length) {
+                                console.error("No circle items found for phase two.");
+                                resolve();
+                                return;
+                            }
+
+                            // Start changing backgrounds after a 1-second delay
+                            setTimeout(() => {
+                                circleItems.forEach((item, index) => {
+                                    // Apply the incremental delay and background change
+                                    setTimeout(() => {
+                                        // Remove any transition for an instant background change
+                                        item.style.transition = "none";
+                                        item.style.backgroundImage = orangeBackground;
+
+                                        // Debugging: Log each item's background change
+                                        console.log(`Phase 2: Background applied to ${item.parentElement.className}`, {
+                                            backgroundImage: item.style.backgroundImage,
+                                        });
+                                    }, index * defaultDelay);
+                                });
+
+                                // Wait for all background changes to complete
+                                setTimeout(() => {
+                                    resolve();
+                                }, circleItems.length * defaultDelay);
+                            }, 1000); // 1-second delay before starting background changes
+                        });
+                    }
+
+                    // Start the animation sequence
+                    async function startAnimation() {
+                        await phaseOne(); // Phase 1: Rotate the container and two items simultaneously
+                        await phaseTwo(); // Phase 2: Change backgrounds incrementally
+                    }
+
+                    startAnimation();
                 });
+            </script>
 
+
+            </script>
+
+            });
 
             </script>
         </div>
