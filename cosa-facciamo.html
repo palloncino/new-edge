@@ -145,30 +145,101 @@
 
             <style>
                 /* Use classes to rotate each SVG inline */
-                .circle-item-1 { transform: rotate(0deg) translate(200px) rotate(-100deg); }
-                .circle-item-2 { transform: rotate(15deg) translate(200px) rotate(-105deg); }
-                .circle-item-3 { transform: rotate(30deg) translate(200px) rotate(-100deg); }
-                .circle-item-4 { transform: rotate(45deg) translate(200px) rotate(-95deg); }
-                .circle-item-5 { transform: rotate(60deg) translate(200px) rotate(-90deg); }
-                .circle-item-6 { transform: rotate(75deg) translate(200px) rotate(-95deg); }
-                .circle-item-7 { transform: rotate(90deg) translate(200px) rotate(-90deg); }
-                .circle-item-8 { transform: rotate(105deg) translate(200px) rotate(-95deg); }
-                .circle-item-9 { transform: rotate(120deg) translate(200px) rotate(-100deg); }
-                .circle-item-10 { transform: rotate(135deg) translate(200px) rotate(-105deg); }
-                .circle-item-11 { transform: rotate(150deg) translate(200px) rotate(-110deg); }
-                .circle-item-12 { transform: rotate(165deg) translate(200px) rotate(-100deg); }
-                .circle-item-13 { transform: rotate(180deg) translate(200px) rotate(-90deg); }
-                .circle-item-14 { transform: rotate(195deg) translate(200px) rotate(-95deg); }
-                .circle-item-15 { transform: rotate(210deg) translate(200px) rotate(-90deg); }
-                .circle-item-16 { transform: rotate(225deg) translate(200px) rotate(-95deg); }
-                .circle-item-17 { transform: rotate(240deg) translate(200px) rotate(-100deg); }
-                .circle-item-18 { transform: rotate(255deg) translate(200px) rotate(-95deg); }
-                .circle-item-19 { transform: rotate(270deg) translate(200px) rotate(-90deg); }
-                .circle-item-20 { transform: rotate(285deg) translate(200px) rotate(-455deg); }
-                .circle-item-21 { transform: rotate(300deg) translate(200px) rotate(-460deg); }
-                .circle-item-22 { transform: rotate(315deg) translate(200px) rotate(-95deg); }
-                .circle-item-23 { transform: rotate(330deg) translate(200px) rotate(-100deg); }
-                .circle-item-24 { transform: rotate(345deg) translate(200px) rotate(-105deg); }
+                .circle-item-1 {
+                    transform: rotate(0deg) translate(200px) rotate(-100deg);
+                }
+
+                .circle-item-2 {
+                    transform: rotate(15deg) translate(200px) rotate(-105deg);
+                }
+
+                .circle-item-3 {
+                    transform: rotate(30deg) translate(200px) rotate(-100deg);
+                }
+
+                .circle-item-4 {
+                    transform: rotate(45deg) translate(200px) rotate(-95deg);
+                }
+
+                .circle-item-5 {
+                    transform: rotate(60deg) translate(200px) rotate(-90deg);
+                }
+
+                .circle-item-6 {
+                    transform: rotate(75deg) translate(200px) rotate(-95deg);
+                }
+
+                .circle-item-7 {
+                    transform: rotate(90deg) translate(200px) rotate(-90deg);
+                }
+
+                .circle-item-8 {
+                    transform: rotate(105deg) translate(200px) rotate(-95deg);
+                }
+
+                .circle-item-9 {
+                    transform: rotate(120deg) translate(200px) rotate(-100deg);
+                }
+
+                .circle-item-10 {
+                    transform: rotate(135deg) translate(200px) rotate(-105deg);
+                }
+
+                .circle-item-11 {
+                    transform: rotate(150deg) translate(200px) rotate(-110deg);
+                }
+
+                .circle-item-12 {
+                    transform: rotate(165deg) translate(200px) rotate(-100deg);
+                }
+
+                .circle-item-13 {
+                    transform: rotate(180deg) translate(200px) rotate(-90deg);
+                }
+
+                .circle-item-14 {
+                    transform: rotate(195deg) translate(200px) rotate(-95deg);
+                }
+
+                .circle-item-15 {
+                    transform: rotate(210deg) translate(200px) rotate(-90deg);
+                }
+
+                .circle-item-16 {
+                    transform: rotate(225deg) translate(200px) rotate(-95deg);
+                }
+
+                .circle-item-17 {
+                    transform: rotate(240deg) translate(200px) rotate(-100deg);
+                }
+
+                .circle-item-18 {
+                    transform: rotate(255deg) translate(200px) rotate(-95deg);
+                }
+
+                .circle-item-19 {
+                    transform: rotate(270deg) translate(200px) rotate(-90deg);
+                }
+
+                .circle-item-20 {
+                    transform: rotate(285deg) translate(200px) rotate(-455deg);
+                }
+
+                .circle-item-21 {
+                    transform: rotate(300deg) translate(200px) rotate(-460deg);
+                }
+
+                .circle-item-22 {
+                    transform: rotate(315deg) translate(200px) rotate(-95deg);
+                }
+
+                .circle-item-23 {
+                    transform: rotate(330deg) translate(200px) rotate(-100deg);
+                }
+
+                .circle-item-24 {
+                    transform: rotate(345deg) translate(200px) rotate(-105deg);
+                }
             </style>
             <div class="section-padded-content section-1-what-we-do">
                 <div class="section-1-what-we-do--container">
@@ -316,53 +387,69 @@
                         });
                     }
 
+
+
                     // Phase 2: Incrementally change shape backgrounds to orange, starting from 2 to 24, excluding 13
                     function phaseTwo() {
                         return new Promise((resolve) => {
                             const orangeBackground = 'url("https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-3-orange.svg")';
+                            const lightBlueBackground = 'url("https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-3-lightblue.svg")';
                             const defaultDelay = 250;
 
-                            const circleItems = [];
+                            // Special cases: Only adjust the inner-container for outward orientation
+                            const specialCases = {
+                                1: 275,
+                                4: 265,
+                                7: 270,
+                                10: 285,
+                                13: 265,
+                                16: 265,
+                                19: 265,
+                                22: 270,
+                            };
 
-                            // Collect circle items from 2 to 24, excluding 13
-                            for (let i = 2; i <= 24; i++) {
+                            // Collect all circle items
+                            for (let i = 1; i <= 24; i++) {
+                                const parentItem = document.querySelector(`.circle-item-${i}`);
                                 const item = document.querySelector(`.circle-item-${i} .inner-container`);
-                                if (item) {
-                                    circleItems.push(item);
-                                } else {
+
+                                if (!parentItem || !item) {
                                     console.warn(`Circle item ${i} not found.`);
+                                    continue;
                                 }
-                            }
 
-                            if (!circleItems.length) {
-                                console.error("No circle items found for phase two.");
-                                resolve();
-                                return;
-                            }
+                                setTimeout(() => {
+                                    if (specialCases[i] !== undefined) {
+                                        // Apply light blue background and outward rotation
+                                        item.style.transition = "none";
+                                        item.style.backgroundImage = lightBlueBackground;
 
-                            // Start changing backgrounds after a 1-second delay
-                            setTimeout(() => {
-                                circleItems.forEach((item, index) => {
-                                    // Apply the incremental delay and background change
-                                    setTimeout(() => {
-                                        // Remove any transition for an instant background change
+                                        // Apply outward rotation directly to the inner-container
+                                        item.style.transform = `rotate(${specialCases[i]}deg)`;
+
+                                        console.log(`Phase 2: Special case for ${i} (light blue background, outward rotation)`, {
+                                            backgroundImage: item.style.backgroundImage,
+                                            transform: item.style.transform,
+                                        });
+                                    } else {
+                                        // Apply orange background for default cases
                                         item.style.transition = "none";
                                         item.style.backgroundImage = orangeBackground;
 
-                                        // Debugging: Log each item's background change
                                         console.log(`Phase 2: Background applied to ${item.parentElement.className}`, {
                                             backgroundImage: item.style.backgroundImage,
                                         });
-                                    }, index * defaultDelay);
-                                });
+                                    }
+                                }, i * defaultDelay); // Incremental delay
+                            }
 
-                                // Wait for all background changes to complete
-                                setTimeout(() => {
-                                    resolve();
-                                }, circleItems.length * defaultDelay);
-                            }, 1000); // 1-second delay before starting background changes
+                            // Wait for all animations to complete
+                            setTimeout(() => {
+                                resolve();
+                            }, 24 * defaultDelay);
                         });
                     }
+
 
                     // Start the animation sequence
                     async function startAnimation() {
