@@ -65,7 +65,23 @@
                     color: white;
                 }
 
-                .section-1-what-we-do--circle-container {
+                #circle_outer_container {
+                    position: relative;
+                }
+
+                .section-1-what-we-do--central-logo {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/logo.svg');
+                    background-repeat: no-repeat;
+                    width: 99px;
+                    height: 181px;
+                }
+
+                #circle_inner_container {
+                    box-sizing: border-box;
                     border: 1px solid;
                     width: 500px;
                     height: 500px;
@@ -73,7 +89,7 @@
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    position: relative;
+                    transform: rotate(5deg);
                 }
 
                 .circle-item {
@@ -100,38 +116,8 @@
                     background-image: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-3-lightblue.svg');
                 }
 
-                /* Use classes to rotate each SVG inline */
-                .circle-item-1 {transform: rotate(0deg) translate(250px) rotate(-100deg);}
-                .circle-item-2 {transform: rotate(15deg) translate(250px) rotate(-105deg);}
-                .circle-item-3 {transform: rotate(30deg) translate(250px) rotate(-100deg);}
-                .circle-item-4 {transform: rotate(45deg) translate(250px) rotate(-95deg);}
-                .circle-item-5 {transform: rotate(60deg) translate(250px) rotate(-90deg);}
-                .circle-item-6 {transform: rotate(75deg) translate(250px) rotate(-95deg);}
-                .circle-item-7 { transform: rotate(90deg) translate(250px) rotate(-90deg); }
-                .circle-item-8 {transform: rotate(105deg) translate(250px) rotate(-95deg);}
-                .circle-item-9 {transform: rotate(120deg) translate(250px) rotate(-100deg);}
-                .circle-item-10 {transform: rotate(135deg) translate(250px) rotate(-105deg);}
-                .circle-item-11 {transform: rotate(150deg) translate(250px) rotate(-110deg);}
-                .circle-item-12 {transform: rotate(165deg) translate(250px) rotate(-100deg);}
-                .circle-item-13 {transform: rotate(180deg) translate(250px) rotate(-90deg);}
-                .circle-item-14 {transform: rotate(195deg) translate(250px) rotate(-95deg);}
-                .circle-item-15 {transform: rotate(210deg) translate(250px) rotate(-90deg);}
-                .circle-item-16 {transform: rotate(225deg) translate(250px) rotate(-95deg);}
-                .circle-item-17 {transform: rotate(240deg) translate(250px) rotate(-100deg);}
-                .circle-item-18 {transform: rotate(255deg) translate(250px) rotate(-95deg);}
-                .circle-item-19 {transform: rotate(270deg) translate(250px) rotate(-90deg);}
-                .circle-item-20 {transform: rotate(285deg) translate(250px) rotate(-455deg);}
-                .circle-item-21 {transform: rotate(300deg) translate(250px) rotate(-460deg);}
-                .circle-item-22 {transform: rotate(315deg) translate(250px) rotate(-95deg);}
-                .circle-item-23 {transform: rotate(330deg) translate(250px) rotate(-100deg);}
-                .circle-item-24 {transform: rotate(345deg) translate(250px) rotate(-105deg);}
-
-
-                .section-1-what-we-do--central-logo {
-                    background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/logo.svg');
-                    background-repeat: no-repeat;
-                    width: 99px;
-                    height: 181px;
+                .circle-item-13 .inner-container, .circle-item-1 .inner-container {
+                    background-image: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-3-orange.svg');
                 }
 
                 .section-1-what-we-do--right-big-svg {
@@ -157,6 +143,105 @@
                     margin-left: 1rem;
                 }
             </style>
+
+            <style>
+                /* Use classes to rotate each SVG inline */
+                .circle-item-1 {
+                    transform: rotate(0deg) translate(250px) rotate(-100deg);
+                }
+
+                .circle-item-2 {
+                    transform: rotate(15deg) translate(250px) rotate(-105deg);
+                }
+
+                .circle-item-3 {
+                    transform: rotate(30deg) translate(250px) rotate(-100deg);
+                }
+
+                .circle-item-4 {
+                    transform: rotate(45deg) translate(250px) rotate(-95deg);
+                }
+
+                .circle-item-5 {
+                    transform: rotate(60deg) translate(250px) rotate(-90deg);
+                }
+
+                .circle-item-6 {
+                    transform: rotate(75deg) translate(250px) rotate(-95deg);
+                }
+
+                .circle-item-7 {
+                    transform: rotate(90deg) translate(250px) rotate(-90deg);
+                }
+
+                .circle-item-8 {
+                    transform: rotate(105deg) translate(250px) rotate(-95deg);
+                }
+
+                .circle-item-9 {
+                    transform: rotate(120deg) translate(250px) rotate(-100deg);
+                }
+
+                .circle-item-10 {
+                    transform: rotate(135deg) translate(250px) rotate(-105deg);
+                }
+
+                .circle-item-11 {
+                    transform: rotate(150deg) translate(250px) rotate(-110deg);
+                }
+
+                .circle-item-12 {
+                    transform: rotate(165deg) translate(250px) rotate(-100deg);
+                }
+
+                .circle-item-13 {
+                    transform: rotate(180deg) translate(250px) rotate(-90deg);
+                }
+
+                .circle-item-14 {
+                    transform: rotate(195deg) translate(250px) rotate(-95deg);
+                }
+
+                .circle-item-15 {
+                    transform: rotate(210deg) translate(250px) rotate(-90deg);
+                }
+
+                .circle-item-16 {
+                    transform: rotate(225deg) translate(250px) rotate(-95deg);
+                }
+
+                .circle-item-17 {
+                    transform: rotate(240deg) translate(250px) rotate(-100deg);
+                }
+
+                .circle-item-18 {
+                    transform: rotate(255deg) translate(250px) rotate(-95deg);
+                }
+
+                .circle-item-19 {
+                    transform: rotate(270deg) translate(250px) rotate(-90deg);
+                }
+
+                .circle-item-20 {
+                    transform: rotate(285deg) translate(250px) rotate(-455deg);
+                }
+
+                .circle-item-21 {
+                    transform: rotate(300deg) translate(250px) rotate(-460deg);
+                }
+
+                .circle-item-22 {
+                    transform: rotate(315deg) translate(250px) rotate(-95deg);
+                }
+
+                .circle-item-23 {
+                    transform: rotate(330deg) translate(250px) rotate(-100deg);
+                }
+
+                .circle-item-24 {
+                    transform: rotate(345deg) translate(250px) rotate(-105deg);
+                }
+            </style>
             <div class="section-padded-content section-1-what-we-do">
                 <div class="section-1-what-we-do--container">
 
@@ -164,80 +249,82 @@
                         <div class="section-1-what-we-do--left-big-svg-text">Client</div>
                     </div>
 
-                    <div class="section-1-what-we-do--circle-container">
-                        <div class="section-1-what-we-do--central-logo"></div>
 
-                        <div class="circle-item circle-item-8" id="svg-8">
-                            <div class="inner-container"></div>
-                        </div>
-                        <div class="circle-item circle-item-9" id="svg-9">
-                            <div class="inner-container"></div>
-                        </div>
-                        <div class="circle-item circle-item-10" id="svg-10">
-                            <div class="inner-container"></div>
-                        </div>
-                        <div class="circle-item circle-item-11" id="svg-11">
-                            <div class="inner-container"></div>
-                        </div>
-                        <div class="circle-item circle-item-12" id="svg-12">
-                            <div class="inner-container"></div>
-                        </div>
-                        <div class="circle-item circle-item-13" id="svg-13">
-                            <div class="inner-container"></div>
-                        </div>
-                        <div class="circle-item circle-item-14" id="svg-14">
-                            <div class="inner-container"></div>
-                        </div>
-                        <div class="circle-item circle-item-15" id="svg-15">
-                            <div class="inner-container"></div>
-                        </div>
-                        <div class="circle-item circle-item-16" id="svg-16">
-                            <div class="inner-container"></div>
-                        </div>
-                        <div class="circle-item circle-item-17" id="svg-17">
-                            <div class="inner-container"></div>
-                        </div>
-                        <div class="circle-item circle-item-18" id="svg-18">
-                            <div class="inner-container"></div>
-                        </div>
-                        <div class="circle-item circle-item-19" id="svg-19">
-                            <div class="inner-container"></div>
-                        </div>
-                        <div class="circle-item circle-item-20" id="svg-20">
-                            <div class="inner-container"></div>
-                        </div>
-                        <div class="circle-item circle-item-21" id="svg-21">
-                            <div class="inner-container"></div>
-                        </div>
-                        <div class="circle-item circle-item-22" id="svg-22">
-                            <div class="inner-container"></div>
-                        </div>
-                        <div class="circle-item circle-item-23" id="svg-23">
-                            <div class="inner-container"></div>
-                        </div>
-                        <div class="circle-item circle-item-24" id="svg-24">
-                            <div class="inner-container"></div>
-                        </div>
-                        <div class="circle-item circle-item-1" id="svg-1">
-                            <div class="inner-container"></div>
-                        </div>
-                        <div class="circle-item circle-item-2" id="svg-2">
-                            <div class="inner-container"></div>
-                        </div>
-                        <div class="circle-item circle-item-3" id="svg-3">
-                            <div class="inner-container"></div>
-                        </div>
-                        <div class="circle-item circle-item-4" id="svg-4">
-                            <div class="inner-container"></div>
-                        </div>
-                        <div class="circle-item circle-item-5" id="svg-5">
-                            <div class="inner-container"></div>
-                        </div>
-                        <div class="circle-item circle-item-6" id="svg-6">
-                            <div class="inner-container"></div>
-                        </div>
-                        <div class="circle-item circle-item-7" id="svg-7">
-                            <div class="inner-container"></div>
+                    <div id="circle_outer_container">
+                        <div class="section-1-what-we-do--central-logo"></div>
+                        <div id="circle_inner_container">
+                            <div class="circle-item circle-item-8" id="svg-8">
+                                <div class="inner-container"></div>
+                            </div>
+                            <div class="circle-item circle-item-9" id="svg-9">
+                                <div class="inner-container"></div>
+                            </div>
+                            <div class="circle-item circle-item-10" id="svg-10">
+                                <div class="inner-container"></div>
+                            </div>
+                            <div class="circle-item circle-item-11" id="svg-11">
+                                <div class="inner-container"></div>
+                            </div>
+                            <div class="circle-item circle-item-12" id="svg-12">
+                                <div class="inner-container"></div>
+                            </div>
+                            <div class="circle-item circle-item-13" id="svg-13">
+                                <div class="inner-container"></div>
+                            </div>
+                            <div class="circle-item circle-item-14" id="svg-14">
+                                <div class="inner-container"></div>
+                            </div>
+                            <div class="circle-item circle-item-15" id="svg-15">
+                                <div class="inner-container"></div>
+                            </div>
+                            <div class="circle-item circle-item-16" id="svg-16">
+                                <div class="inner-container"></div>
+                            </div>
+                            <div class="circle-item circle-item-17" id="svg-17">
+                                <div class="inner-container"></div>
+                            </div>
+                            <div class="circle-item circle-item-18" id="svg-18">
+                                <div class="inner-container"></div>
+                            </div>
+                            <div class="circle-item circle-item-19" id="svg-19">
+                                <div class="inner-container"></div>
+                            </div>
+                            <div class="circle-item circle-item-20" id="svg-20">
+                                <div class="inner-container"></div>
+                            </div>
+                            <div class="circle-item circle-item-21" id="svg-21">
+                                <div class="inner-container"></div>
+                            </div>
+                            <div class="circle-item circle-item-22" id="svg-22">
+                                <div class="inner-container"></div>
+                            </div>
+                            <div class="circle-item circle-item-23" id="svg-23">
+                                <div class="inner-container"></div>
+                            </div>
+                            <div class="circle-item circle-item-24" id="svg-24">
+                                <div class="inner-container"></div>
+                            </div>
+                            <div class="circle-item circle-item-1" id="svg-1">
+                                <div class="inner-container"></div>
+                            </div>
+                            <div class="circle-item circle-item-2" id="svg-2">
+                                <div class="inner-container"></div>
+                            </div>
+                            <div class="circle-item circle-item-3" id="svg-3">
+                                <div class="inner-container"></div>
+                            </div>
+                            <div class="circle-item circle-item-4" id="svg-4">
+                                <div class="inner-container"></div>
+                            </div>
+                            <div class="circle-item circle-item-5" id="svg-5">
+                                <div class="inner-container"></div>
+                            </div>
+                            <div class="circle-item circle-item-6" id="svg-6">
+                                <div class="inner-container"></div>
+                            </div>
+                            <div class="circle-item circle-item-7" id="svg-7">
+                                <div class="inner-container"></div>
+                            </div>
                         </div>
                     </div>
 
