@@ -89,7 +89,6 @@
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    transform: rotate(5deg);
                 }
 
                 .circle-item {
@@ -116,7 +115,8 @@
                     background-image: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-3-lightblue.svg');
                 }
 
-                .circle-item-13 .inner-container, .circle-item-1 .inner-container {
+                .circle-item-13 .inner-container,
+                .circle-item-1 .inner-container {
                     background-image: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-3-orange.svg');
                 }
 
@@ -338,6 +338,32 @@
 
             <script>
 
+                document.addEventListener("DOMContentLoaded", () => {
+                    const circleInnerContainer = document.getElementById("circle_inner_container");
+
+                    // Add a CSS transition for smooth rotation
+                    circleInnerContainer.style.transition = "transform 1s ease-in-out";
+
+                    // Set the final rotation after a slight delay to ensure the DOM is fully loaded
+                    setTimeout(() => {
+                        // Rotate the #circle_inner_container by 185 degrees
+                        circleInnerContainer.style.transform = "rotate(185deg)";
+
+                        // Rotate circle-item-1 and circle-item-13 .inner-container by 90 degrees
+                        const circleItem1Inner = document.querySelector(".circle-item-1 .inner-container");
+                        const circleItem13Inner = document.querySelector(".circle-item-13 .inner-container");
+
+                        if (circleItem1Inner) {
+                            circleItem1Inner.style.transition = "transform 1s ease-in-out";
+                            circleItem1Inner.style.transform = "rotate(-85deg)";
+                        }
+
+                        if (circleItem13Inner) {
+                            circleItem13Inner.style.transition = "transform 1s ease-in-out";
+                            circleItem13Inner.style.transform = "rotate(-95deg)";
+                        }
+                    }, 100);
+                });
 
 
             </script>
