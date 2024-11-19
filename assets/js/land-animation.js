@@ -226,12 +226,12 @@ function populateRails() {
             const img = document.createElement('img');
 
             if (index === 0 || index === 2) {
-                img.src = (i % 2 === 0) ? './assets/svgs/shape-3-violet.svg' : './assets/svgs/shape-2-lightblue.svg';
+                img.src = (i % 2 === 0) ? 'https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-3-violet.svg' : 'https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-2-lightblue.svg';
                 if (img.src.includes('lightblue')) {
                     img.classList.add('rotate-180');
                 }
             } else if (index === 1 || index === 3) {
-                img.src = (i % 2 === 0) ? './assets/svgs/shape-3-pink.svg' : './assets/svgs/shape-2-orange.svg';
+                img.src = (i % 2 === 0) ? 'https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-3-pink.svg' : 'https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-2-orange.svg';
                 if (img.src.includes('pink')) {
                     img.classList.add('rotate-180');
                 }

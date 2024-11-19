@@ -71,7 +71,7 @@
                 }
 
                 .section-1-about-us-link-plus-icon {
-                    background: url('http://edge.chebellagiornata.it/wp-content/uploads/2024/11/plus-button.svg');
+                    background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/plus-button-5289F8.svg');
                     background-repeat: no-repeat;
                     width: 16px;
                     height: 16px;
@@ -162,7 +162,7 @@
                 }
 
                 .section-3-about-us-link-plus-icon {
-                    background: url('http://edge.chebellagiornata.it/wp-content/uploads/2024/11/plus-button.svg');
+                    background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/plus-button-3B1473.svg');
                     background-repeat: no-repeat;
                     width: 16px;
                     height: 16px;
@@ -212,29 +212,66 @@
             <style>
                 .section-4-about-us {
                     background: #528AF8;
+                    position: relative;
                 }
 
                 .section-4-about-us-bottom-row {
+                    position: absolute;
+                    bottom: 100px;
                     margin: 0 auto;
                     height: 200px;
                     display: flex;
                     align-items: center;
                     justify-content: flex-end;
                     width: 100%;
-                    max-width: 1200px;
-                    gap: 2rem;
+                    max-width: 1400px;
+                    gap: 4rem;
                 }
 
                 .section-4-about-us-link-container {
-                    width: 300px;
-                    border: 1px solid #fff;
+                    display: flex;
+                    align-items: flex-start;
+                    flex-direction: column;
+                    gap: 1rem;
+                    height: 100%;
                 }
 
-                .section-4-about-us-link-shape-icon {}
+                .section-4-about-us-link-shape-upper-container {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 200px;
+                    height: 200px;
+                }
 
-                .section-4-about-us-link-plus-icon {}
+                .section-4-about-us-link-shape-lower-container {
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                    gap: 1rem;
+                }
 
-                .section-4-about-us-link-text {}
+                .section-4-about-us-link-shape-icon {
+                    background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-1-white.svg');
+                    background-repeat: no-repeat;
+                    width: 100%;
+                    height: 100%;
+                    transform: scaleX(-1);
+                }
+
+                .section-4-about-us-link-plus-icon {
+                    background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/plus-button-3B1473.svg');
+                    background-repeat: no-repeat;
+                    width: 16px;
+                    height: 16px;
+                }
+
+                .section-4-about-us-link-text {
+                    line-height: 2rem;
+                    font-family: 'Mundial Regular';
+                    font-size: 1.4rem;
+                    padding-top: .2rem;
+                }
             </style>
             <div class="section-padded-content section-4-about-us">
 
@@ -244,267 +281,402 @@
 
                 <div class="section-4-about-us-bottom-row">
                     <div class="section-4-about-us-link-container">
-                        <div class="section-4-about-us-link-shape-icon"></div>
-                        <div class="section-4-about-us-link-plus-icon"></div>
-                        <div class="section-4-about-us-link-text">CARE</div>
+                        <div class="section-4-about-us-link-shape-upper-container">
+                            <div class="section-4-about-us-link-shape-icon"></div>
+                        </div>
+                        <div class="section-4-about-us-link-shape-lower-container">
+                            <div class="section-4-about-us-link-plus-icon"></div>
+                            <div class="section-4-about-us-link-text color-FFF">LOREM IPSUM</div>
+                        </div>
                     </div>
                     <div class="section-4-about-us-link-container">
-                        <div class="section-4-about-us-link-shape-icon"></div>
-                        <div class="section-4-about-us-link-plus-icon"></div>
-                        <div class="section-4-about-us-link-text">VALUE OUR PEOPLE</div>
+                        <div class="section-4-about-us-link-shape-upper-container">
+                            <div class="section-4-about-us-link-shape-icon"></div>
+                        </div>
+                        <div class="section-4-about-us-link-shape-lower-container">
+                            <div class="section-4-about-us-link-plus-icon"></div>
+                            <div class="section-4-about-us-link-text color-FFF">LOREM IPSUM</div>
+                        </div>
                     </div>
+
                     <div class="section-4-about-us-link-container">
-                        <div class="section-4-about-us-link-shape-icon"></div>
-                        <div class="section-4-about-us-link-plus-icon"></div>
-                        <div class="section-4-about-us-link-text">OUR DNA TO PLAN THE FUTURE</div>
+                        <div class="section-4-about-us-link-shape-upper-container">
+                            <div class="section-4-about-us-link-shape-icon"></div>
+                        </div>
+                        <div class="section-4-about-us-link-shape-lower-container">
+                            <div class="section-4-about-us-link-plus-icon"></div>
+                            <div class="section-4-about-us-link-text color-FFF">LOREM IPSUM</div>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <!-- SEC 5 -->
-            <style>
-                .section-5-about-us {
-                    overflow-x: hidden;
-
-                }
-
-                .chi-siamo-content {
-                    padding-top: 130px;
-                }
-
-                .first-grid-container {
-                    box-sizing: border-box;
-                    position: relative;
-                    display: grid;
-                    grid-template-columns: repeat(6, 1fr);
-                    gap: 1rem;
-                    width: 100%;
-                    height: calc(100vh - 130px - 100px);
-                    /* Adjust for header and padding */
-                    margin-bottom: 100px;
-                    align-items: end;
-                    /* Align items at the bottom */
-                }
-
-                .grid-item {
-                    background-color: transparent;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    aspect-ratio: 1 / 1.5;
-                    /* Maintain aspect ratio */
-                }
-
-                .grid-item img {
-                    max-width: 100%;
-                    max-height: 100%;
-                    object-fit: contain;
-                }
-
-                .grid-item.row-1_item-1 {
-                    background: url('http://edge.chebellagiornata.it/wp-content/uploads/2024/11/girl.png') no-repeat center center;
-                    background-size: cover;
-                }
-
-                .grid-item.row-1_item-2 {
-                    background: url('http://edge.chebellagiornata.it/wp-content/uploads/2024/11/girl.png') no-repeat center center;
-                    background-size: cover;
-                }
-
-                .svg-background-1 {
-                    background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-3-lightblue.svg');
-                    background-repeat: no-repeat;
-                    position: absolute;
-                    right: 100px;
-                    top: 200px;
-                    width: 200px;
-                    height: 100%;
-                    z-index: 1;
-                }
-
-                .content-wrapper {
-                    box-sizing: border-box;
-                    padding: 40px 0 200px 40px;
-                }
-
-                .second-grid-container {
-                    padding: 50px 0;
-                    box-sizing: border-box;
-                    position: relative;
-                    display: grid;
-                    grid-template-columns: repeat(6, 1fr);
-                    grid-template-rows: repeat(6, 1fr);
-                    gap: 1rem;
-                    width: 100%;
-                    align-items: end;
-                    /* Align items at the bottom */
-                }
-
-                .second-grid-item {
-                    background: transparent;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    aspect-ratio: 1 / 1.5;
-                    /* Maintain aspect ratio */
-                }
-
-                .second-grid-item img {
-                    max-width: 100%;
-                    max-height: 100%;
-                    object-fit: contain;
-                }
-
-                .second-grid-item.row-1_item-2,
-                .second-grid-item.row-1_item-3,
-                .second-grid-item.row-1_item-4,
-                .second-grid-item.row-1_item-5,
-                .second-grid-item.row-1_item-6,
-
-                .second-grid-item.row-2_item-1,
-                .second-grid-item.row-2_item-2,
-                .second-grid-item.row-2_item-3,
-                .second-grid-item.row-2_item-4,
-
-                .second-grid-item.row-3_item-1,
-                .second-grid-item.row-3_item-2,
-                .second-grid-item.row-3_item-3,
-                .second-grid-item.row-3_item-4,
-
-                .second-grid-item.row-4_item-1,
-                .second-grid-item.row-4_item-2,
-                .second-grid-item.row-4_item-3,
-                .second-grid-item.row-4_item-4,
-
-                .second-grid-item.row-5_item-2,
-                .second-grid-item.row-5_item-3,
-                .second-grid-item.row-5_item-4,
-                .second-grid-item.row-5_item-5,
-                .second-grid-item.row-5_item-6,
-
-                .second-grid-item.row-6_item-2,
-                .second-grid-item.row-6_item-3,
-                .second-grid-item.row-6_item-4,
-                .second-grid-item.row-6_item-5,
-                .second-grid-item.row-6_item-6 {
-                    background: url('http://edge.chebellagiornata.it/wp-content/uploads/2024/11/girl.png') no-repeat center center;
-                    background-size: cover;
-                }
-
-                .svg-background-2 {
-                    position: absolute;
-                    width: 100%;
-                    transform: rotate(180deg);
-                    left: -90%;
-                    top: 0;
-                    z-index: -1;
-                }
-
-                .svg-background-3 {
-                    position: absolute;
-                    width: auto;
-                    right: -60%;
-                    z-index: -1;
-                }
-
-                .svg-background-4 {
-                    position: absolute;
-                    width: auto;
-                    left: -35%;
-                    transform: rotate(-90deg);
-                    right: 200px;
-                    bottom: 0;
-                    z-index: -1;
-                }
-            </style>
-            <div class="section-5-about-us">
-                <div class="chi-siamo-content">
-                    <div class="content-wrapper">
-                        <div class="section-title-2-text">
-                            Il nostro team di professionisti
-                        </div>
-                        <div class="first-grid-container">
-                            <!-- Items in the grid -->
-                            <div class="grid-item row-1_item-1"></div>
-                            <div class="grid-item row-1_item-2"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                            <div class="svg-background-1"></div>
-                        </div>
-
-                        <div class="second-grid-container">
-                            <!-- Second grid with 6 rows and SVG backgrounds -->
-                            <div class="second-grid-item row-1_item-1"></div>
-                            <div class="second-grid-item row-1_item-2"></div>
-                            <div class="second-grid-item row-1_item-3"></div>
-                            <div class="second-grid-item row-1_item-4"></div>
-                            <div class="second-grid-item row-1_item-5"></div>
-                            <div class="second-grid-item row-1_item-6"></div>
-
-                            <svg class="svg-background-2" id="Layer_1" data-name="Layer 1"
-                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 859 279.5">
-                                <path fill="#E846A0" d="M0,279.5S124,0,429.5,0c286.5,0,429.5,279.5,429.5,279.5" />
-                            </svg>
-
-                            <div class="second-grid-item row-2_item-1"></div>
-                            <div class="second-grid-item row-2_item-2"></div>
-                            <div class="second-grid-item row-2_item-3"></div>
-                            <div class="second-grid-item row-2_item-4"></div>
-                            <div class="second-grid-item row-2_item-5"></div>
-                            <div class="second-grid-item row-2_item-6"></div>
-
-                            <div class="second-grid-item row-3_item-1"></div>
-                            <div class="second-grid-item row-3_item-2"></div>
-                            <div class="second-grid-item row-3_item-3"></div>
-                            <div class="second-grid-item row-3_item-4"></div>
-                            <div class="second-grid-item row-2_item-5"></div>
-                            <div class="second-grid-item row-2_item-6"></div>
-
-                            <svg class="svg-background-3" xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 565.08 441.79">
-                                <path fill="#E846A0"
-                                    d="M173.2,441.99h0s343.58,0,343.58,0C395.25,228.82,509.04.5,509.04.5H173.66C78.03.5.5,99.33.5,221.25s77.28,220.43,172.7,220.74Z" />
-                            </svg>
-
-                            <div class="second-grid-item row-4_item-1"></div>
-                            <div class="second-grid-item row-4_item-2"></div>
-                            <div class="second-grid-item row-4_item-3"></div>
-                            <div class="second-grid-item row-4_item-4"></div>
-                            <div class="second-grid-item row-4_item-5"></div>
-                            <div class="second-grid-item row-4_item-6"></div>
-
-                            <div class="second-grid-item row-5_item-1"></div>
-                            <div class="second-grid-item row-5_item-2"></div>
-                            <div class="second-grid-item row-5_item-3"></div>
-                            <div class="second-grid-item row-5_item-4"></div>
-                            <div class="second-grid-item row-5_item-5"></div>
-                            <div class="second-grid-item row-5_item-6"></div>
-
-                            <div class="second-grid-item row-6_item-1"></div>
-                            <div class="second-grid-item row-6_item-2"></div>
-                            <div class="second-grid-item row-6_item-3"></div>
-                            <div class="second-grid-item row-6_item-4"></div>
-                            <div class="second-grid-item row-6_item-5"></div>
-                            <div class="second-grid-item row-6_item-6"></div>
-
-                            <svg class="svg-background-4" xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 565.08 441.79">
-                                <path fill="#E846A0"
-                                    d="M173.2,441.99h0s343.58,0,343.58,0C395.25,228.82,509.04.5,509.04.5H173.66C78.03.5.5,99.33.5,221.25s77.28,220.43,172.7,220.74Z" />
-                            </svg>
-
-                            <div class="section-privacy-tag-container">
-                                © 2024 EDGE - tutti i diritti riservati
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <script src="./assets/js/a-proposito-di-noi-section-5.js"></script>
         </div>
+
+        <!-- SEC 5 -->
+        <style>
+            .section-5-about-us {
+                overflow-x: hidden;
+
+            }
+
+            .chi-siamo-content {
+                padding-top: 130px;
+            }
+
+            .first-grid-container {
+                box-sizing: border-box;
+                position: relative;
+                display: grid;
+                grid-template-columns: repeat(6, 1fr);
+                gap: 1rem;
+                width: 100%;
+                margin-bottom: 100px;
+                align-items: center;
+            }
+
+            .grid-item {
+                background-color: transparent;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                aspect-ratio: 1 / 1.5;
+                /* Maintain aspect ratio */
+            }
+
+            .grid-item img {
+                max-width: 100%;
+                max-height: 100%;
+                object-fit: contain;
+            }
+
+            .grid-item.row-1_item-1 {
+                background: url('http://edge.chebellagiornata.it/wp-content/uploads/2024/11/girl.png') no-repeat center center;
+                background-size: cover;
+            }
+
+            .grid-item.row-1_item-2 {
+                background: url('http://edge.chebellagiornata.it/wp-content/uploads/2024/11/girl.png') no-repeat center center;
+                background-size: cover;
+            }
+
+            .svg-background-1-1-container {
+                position: absolute;
+                right: 700px;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 200px;
+                height: 100%;
+                z-index: 1;
+            }
+
+            .svg-background-1-1 {
+                background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-3-lightblue.svg');
+                background-position: center;
+                background-repeat: no-repeat;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                height: 100%;
+                transform: rotate(270deg);
+            }
+
+            .svg-background-1-2-container {
+                position: absolute;
+                right: 500px;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 200px;
+                height: 100%;
+                z-index: 1;
+            }
+
+            .svg-background-1-2 {
+                background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-3-violet.svg');
+                background-position: center;
+                background-repeat: no-repeat;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                height: 100%;
+                transform: rotate(90deg);
+            }
+
+
+            .svg-background-1-3-container {
+                position: absolute;
+                right: 300px;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 200px;
+                height: 100%;
+                z-index: 1;
+            }
+
+            .svg-background-1-3 {
+                background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-3-lightblue.svg');
+                background-position: center;
+                background-repeat: no-repeat;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                height: 100%;
+                transform: rotate(270deg);
+            }
+
+            .svg-background-1-4-container {
+                position: absolute;
+                right: 100px;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 200px;
+                height: 100%;
+                z-index: 1;
+            }
+
+            .svg-background-1-4 {
+                background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-3-violet.svg');
+                background-position: center;
+                background-repeat: no-repeat;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                height: 100%;
+                transform: rotate(90deg);
+            }
+
+            .svg-background-1-5-container {
+                position: absolute;
+                right: -100px;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 200px;
+                height: 100%;
+                z-index: 1;
+            }
+
+            .svg-background-1-5 {
+                background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-3-lightblue.svg');
+                background-position: center;
+                background-repeat: no-repeat;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                height: 100%;
+                transform: rotate(270deg);
+            }
+
+
+            .content-wrapper {
+                box-sizing: border-box;
+                padding: 40px 0 200px 40px;
+            }
+
+            .second-grid-container {
+                padding: 50px 0;
+                box-sizing: border-box;
+                position: relative;
+                display: grid;
+                grid-template-columns: repeat(6, 1fr);
+                grid-template-rows: repeat(8, 1fr);
+                /* Now 8 rows */
+                gap: 1rem;
+                width: 100%;
+                align-items: end;
+                /* Align items at the bottom */
+            }
+
+            .second-grid-item {
+                background: transparent;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                aspect-ratio: 1 / 1.5;
+                /* Maintain aspect ratio */
+            }
+
+            .second-grid-item img {
+                max-width: 100%;
+                max-height: 100%;
+                object-fit: contain;
+            }
+
+            .second-grid-item.row-1_item-3,
+            .second-grid-item.row-1_item-4,
+            .second-grid-item.row-1_item-5,
+            .second-grid-item.row-1_item-6,
+
+            .second-grid-item.row-2_item-2,
+            .second-grid-item.row-2_item-3,
+            .second-grid-item.row-2_item-4,
+            .second-grid-item.row-2_item-5,
+
+            .second-grid-item.row-3_item-1,
+            .second-grid-item.row-3_item-2,
+            .second-grid-item.row-3_item-3,
+            .second-grid-item.row-3_item-4,
+
+            .second-grid-item.row-4_item-1,
+            .second-grid-item.row-4_item-2,
+            .second-grid-item.row-4_item-3,
+
+            .second-grid-item.row-5_item-1,
+            .second-grid-item.row-5_item-2,
+            .second-grid-item.row-5_item-3,
+            .second-grid-item.row-5_item-4,
+
+            .second-grid-item.row-6_item-2,
+            .second-grid-item.row-6_item-3,
+            .second-grid-item.row-6_item-4,
+            .second-grid-item.row-6_item-5,
+
+            .second-grid-item.row-7_item-3,
+            .second-grid-item.row-7_item-4,
+            .second-grid-item.row-7_item-5,
+            .second-grid-item.row-7_item-6,
+
+            .second-grid-item.row-8_item-4,
+            .second-grid-item.row-8_item-5,
+            .second-grid-item.row-8_item-6
+            {
+                background: url('http://edge.chebellagiornata.it/wp-content/uploads/2024/11/girl.png') no-repeat center center;
+                background-size: cover;
+            }
+
+            .svg-background-2 {
+                position: absolute;
+                width: 100%;
+                transform: rotate(180deg);
+                left: -90%;
+                top: 0;
+                z-index: -1;
+            }
+
+            .svg-background-3 {
+                position: absolute;
+                width: auto;
+                right: -60%;
+                z-index: -1;
+            }
+
+            .svg-background-4 {
+                position: absolute;
+                width: auto;
+                left: -35%;
+                transform: rotate(-90deg);
+                right: 200px;
+                bottom: 0;
+                z-index: -1;
+            }
+        </style>
+        <div class="section-5-about-us">
+            <div class="chi-siamo-content">
+                <div class="content-wrapper">
+                    <div class="first-grid-container">
+                        <!-- Items in the grid -->
+                        <div class="grid-item row-1_item-1"></div>
+                        <div class="grid-item row-1_item-2"></div>
+                        <div class="grid-item"></div>
+                        <div class="grid-item"></div>
+                        <div class="grid-item"></div>
+                        <div class="grid-item"></div>
+
+                        <div class="svg-background-1-1-container">
+                            <div class="svg-background-1-1"></div>
+                        </div>
+
+                        <div class="svg-background-1-2-container">
+                            <div class="svg-background-1-2"></div>
+                        </div>
+
+                        <div class="svg-background-1-3-container">
+                            <div class="svg-background-1-3"></div>
+                        </div>
+
+                        <div class="svg-background-1-4-container">
+                            <div class="svg-background-1-4"></div>
+                        </div>
+
+                        <div class="svg-background-1-5-container">
+                            <div class="svg-background-1-5"></div>
+                        </div>
+                    </div>
+
+                    <div class="second-grid-container">
+                        <!-- Row 1 -->
+                        <div class="second-grid-item row-1_item-1"></div>
+                        <div class="second-grid-item row-1_item-2"></div>
+                        <div class="second-grid-item row-1_item-3"></div>
+                        <div class="second-grid-item row-1_item-4"></div>
+                        <div class="second-grid-item row-1_item-5"></div>
+                        <div class="second-grid-item row-1_item-6"></div>
+
+                        <!-- Row 2 -->
+                        <div class="second-grid-item row-2_item-1"></div>
+                        <div class="second-grid-item row-2_item-2"></div>
+                        <div class="second-grid-item row-2_item-3"></div>
+                        <div class="second-grid-item row-2_item-4"></div>
+                        <div class="second-grid-item row-2_item-5"></div>
+                        <div class="second-grid-item row-2_item-6"></div>
+
+                        <!-- Row 3 -->
+                        <div class="second-grid-item row-3_item-1"></div>
+                        <div class="second-grid-item row-3_item-2"></div>
+                        <div class="second-grid-item row-3_item-3"></div>
+                        <div class="second-grid-item row-3_item-4"></div>
+                        <div class="second-grid-item row-3_item-5"></div>
+                        <div class="second-grid-item row-3_item-6"></div>
+
+                        <!-- Row 4 -->
+                        <div class="second-grid-item row-4_item-1"></div>
+                        <div class="second-grid-item row-4_item-2"></div>
+                        <div class="second-grid-item row-4_item-3"></div>
+                        <div class="second-grid-item row-4_item-4"></div>
+                        <div class="second-grid-item row-4_item-5"></div>
+                        <div class="second-grid-item row-4_item-6"></div>
+
+                        <!-- Row 5 -->
+                        <div class="second-grid-item row-5_item-1"></div>
+                        <div class="second-grid-item row-5_item-2"></div>
+                        <div class="second-grid-item row-5_item-3"></div>
+                        <div class="second-grid-item row-5_item-4"></div>
+                        <div class="second-grid-item row-5_item-5"></div>
+                        <div class="second-grid-item row-5_item-6"></div>
+
+                        <!-- Row 6 -->
+                        <div class="second-grid-item row-6_item-1"></div>
+                        <div class="second-grid-item row-6_item-2"></div>
+                        <div class="second-grid-item row-6_item-3"></div>
+                        <div class="second-grid-item row-6_item-4"></div>
+                        <div class="second-grid-item row-6_item-5"></div>
+                        <div class="second-grid-item row-6_item-6"></div>
+
+                        <!-- Row 7 -->
+                        <div class="second-grid-item row-7_item-1"></div>
+                        <div class="second-grid-item row-7_item-2"></div>
+                        <div class="second-grid-item row-7_item-3"></div>
+                        <div class="second-grid-item row-7_item-4"></div>
+                        <div class="second-grid-item row-7_item-5"></div>
+                        <div class="second-grid-item row-7_item-6"></div>
+
+                        <!-- Row 8 -->
+                        <div class="second-grid-item row-8_item-1"></div>
+                        <div class="second-grid-item row-8_item-2"></div>
+                        <div class="second-grid-item row-8_item-3"></div>
+                        <div class="second-grid-item row-8_item-4"></div>
+                        <div class="second-grid-item row-8_item-5"></div>
+                        <div class="second-grid-item row-8_item-6"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <script src="./assets/js/a-proposito-di-noi-section-5.js"></script>
+    </div>
 
     </div>
 
