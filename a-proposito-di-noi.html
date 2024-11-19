@@ -17,7 +17,8 @@
         <!-- HEADER -->
         <div id="edge-header" class="edge-header">
             <div id="header-logo-container" class="header-logo-container">
-                <img class="header-logo-img" src="./assets/svgs/logo.svg" alt="Edge" />
+                <img class="header-logo-img" src="./assets/svgs/logo.svg" alt="Edge"
+                    onClick="window.location = './front-page.html';" style="cursor: pointer;" />
                 <h1 class="header-logo-edge">edge</h1>
             </div>
             <div class="header-navigation-links-container">
@@ -47,30 +48,63 @@
                 }
 
                 .section-1-about-us-links-container {
-                    box-sizing: border-box;
-                    padding: 0 4rem;
                     display: flex;
-                    height: 200px;
-                    justify-content: space-around;
-                    align-items: flex-end;
-                    width: 100%;
-                    gap: 2rem;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 4rem;
+                    height: 100%;
                 }
 
                 .section-1-about-us-link-container {
-                    width: 100%;
-                    background: red;
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+                    height: 100%;
+                }
+
+                .section-1-about-us-link-shape-icon {
+                    background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-2-violet.svg');
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    width: 100px;
+                    height: 100px;
+                }
+
+                .section-1-about-us-link-plus-icon {
+                    background: url('http://edge.chebellagiornata.it/wp-content/uploads/2024/11/plus-button.svg');
+                    background-repeat: no-repeat;
+                    width: 16px;
+                    height: 16px;
+                }
+
+                .section-1-about-us-link-text {
+                    line-height: 2rem;
+                    font-family: 'Mundial Regular';
+                    font-size: 1.4rem;
+                    padding-top: .2rem;
                 }
             </style>
             <div class="section-padded-content section-1-about-us">
-                <h1 class="h1-xl color-3B1473">
+                <h1 class="h1-xl color-3B1473" style="margin-top: 120px;">
                     LA NOSTRA STORIA
                 </h1>
                 <div class="section-1-about-us-links-wrapper">
                     <div class="section-1-about-us-links-container">
-                        <div class="section-1-about-us-link-container">LINK 1</div>
-                        <div class="section-1-about-us-link-container">LINK 2</div>
-                        <div class="section-1-about-us-link-container">LINK 3</div>
+                        <div class="section-1-about-us-link-container">
+                            <div class="section-1-about-us-link-shape-icon"></div>
+                            <div class="section-1-about-us-link-plus-icon"></div>
+                            <div class="section-1-about-us-link-text">LOREM IPSUM</div>
+                        </div>
+                        <div class="section-1-about-us-link-container">
+                            <div class="section-1-about-us-link-shape-icon"></div>
+                            <div class="section-1-about-us-link-plus-icon"></div>
+                            <div class="section-1-about-us-link-text">LOREM IPSUM</div>
+                        </div>
+                        <div class="section-1-about-us-link-container">
+                            <div class="section-1-about-us-link-shape-icon"></div>
+                            <div class="section-1-about-us-link-plus-icon"></div>
+                            <div class="section-1-about-us-link-text">LOREM IPSUM</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -82,11 +116,12 @@
                 }
             </style>
             <div class="section-padded-content section-2-about-us">
-                <h1 class="h1-xl color-FFF">MISSION</h1>
-                <p class="color-FFF">La nostra mission è affiancare persone e aziende nel loro percorso di crescita,
+                <h1 class="h1-xl color-FFF mb-4">MISSION</h1>
+                <div class="h3-m color-FFF">La nostra mission è affiancare persone e aziende nel loro percorso di
+                    crescita,
                     garantendo loro una protezione costante attraverso una consapevole ed equilibrata gestione dei
                     rischi. Il nostro obiettivo è liberare tempo e risorse ai nostri clienti, che potranno così essere
-                    dedicate al loro core business.</p>
+                    dedicate al loro core business.</div>
             </div>
 
             <!-- VALUES -->

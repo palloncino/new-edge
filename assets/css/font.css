@@ -22,6 +22,15 @@
     font-family: 'Mundial Regular Italic';
     src: url('../fonts/Fontspring-DEMO-4-mundial-regular-italic-tty.otf');
 } */
+
+@font-face {
+    font-family: 'Mundial Bold';
+    src: url('../fonts/Fontspring-DEMO-6-mundial-bold-tty.otf');
+}
+@font-face {
+    font-family: 'Mundial Demibold';
+    src: url('../fonts/Fontspring-DEMO-5-mundial-demibold-tty.otf');
+}
 @font-face {
     font-family: 'Mundial Regular';
     src: url('../fonts/Fontspring-DEMO-4-mundial-regular-tty.otf');
@@ -36,16 +45,8 @@
     src: url('../fonts/Fontspring-DEMO-5-mundial-demibold-italic-tty.otf');
 }
 @font-face {
-    font-family: 'Mundial Demibold';
-    src: url('../fonts/Fontspring-DEMO-5-mundial-demibold-tty.otf');
-}
-@font-face {
     font-family: 'Mundial Bold Italic';
     src: url('../fonts/Fontspring-DEMO-6-mundial-bold-italic-tty.otf');
-}
-@font-face {
-    font-family: 'Mundial Bold';
-    src: url('../fonts/Fontspring-DEMO-6-mundial-bold-tty.otf');
 }
 @font-face {
     font-family: 'Mundial Black Italic';

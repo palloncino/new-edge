@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function adjustLayout() {
         const appContainer = document.querySelector('.app-container');
-        const header = document.querySelector('.edge-header');
         const firstGridContainer = document.querySelector('.first-grid-container');
         const gridItems = document.querySelectorAll('.grid-item');
         
@@ -22,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         appContainer.style.width = `${computedWidth}px`;
-        header.style.width = `${computedWidth}px`;
+        // header.style.width = `${computedWidth}px`;
 
         const itemWidth = computedWidth / 6 - 10; // 6 items per row, accounting for gaps
         const itemHeight = itemWidth * 1.5; // Aspect ratio of 1:1.5
