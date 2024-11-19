@@ -6,7 +6,13 @@ h1, h2, h3, h4, h5, h6 {
     color: #313131;
 }
 
-.app-container {
+.outer-app-container {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.inner-app-container {
     margin: 0;
     padding: 0;
     height: 100%;
