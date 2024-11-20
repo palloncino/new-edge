@@ -42,21 +42,6 @@
                     overflow: hidden;
                 }
 
-                .section-1-about-us-links-wrapper {
-                    width: 100%;
-                    height: 100%;
-                }
-
-                .section-1-about-us-links-container {
-                    position: absolute;
-                    display: flex;
-                    align-items: flex-end;
-                    justify-content: flex-end;
-                    gap: 4rem;
-                    height: 100%;
-                    width: 100%;
-                }
-
                 #main-title {
                     position: absolute;
                     top: 0;
@@ -64,9 +49,10 @@
                     z-index: 20;
                 }
 
-                /* 1 */
-
-                .section-1-about-us-link-1-container {
+                #link-1-container {
+                    position: absolute;
+                    bottom: 0;
+                    right: 800px;
                     display: flex;
                     align-items: center;
                     gap: 1rem;
@@ -114,8 +100,10 @@
                 }
 
                 /* 2 */
-
-                .section-1-about-us-link-2-container {
+                #link-2-container {
+                    position: absolute;
+                    bottom: 0;
+                    right: 400px;
                     display: flex;
                     align-items: center;
                     gap: 1rem;
@@ -145,8 +133,10 @@
                 }
 
                 /* 3 */
-
-                .section-1-about-us-link-3-container {
+                #link-3-container {
+                    position: absolute;
+                    bottom: 0;
+                    right: 0;
                     display: flex;
                     align-items: center;
                     gap: 1rem;
@@ -180,25 +170,20 @@
                     <h1 class="h1-xl color-3B1473" id="main-title">
                         LA NOSTRA STORIA
                     </h1>
-                    <div class="section-1-about-us-links-wrapper">
-                        <div class="section-1-about-us-links-container">
-                            <div class="section-1-about-us-link-1-container" id="link-1-container">
-                                <div class="section-1-about-us-link-1-shape-icon"></div>
-                                <div class="section-1-about-us-link-1-plus-icon plus-icon"
-                                    onclick="toggleDescription()"></div>
-                                <div class="section-1-about-us-link-1-title" id="link-1-title">LE NOSTRE RADICI</div>
-                            </div>
-                            <div class="section-1-about-us-link-2-container">
-                                <div class="section-1-about-us-link-2-shape-icon"></div>
-                                <div class="section-1-about-us-link-2-plus-icon plus-icon"></div>
-                                <div class="section-1-about-us-link-2-title">LOREM IPSUM</div>
-                            </div>
-                            <div class="section-1-about-us-link-3-container">
-                                <div class="section-1-about-us-link-3-shape-icon"></div>
-                                <div class="section-1-about-us-link-3-plus-icon plus-icon"></div>
-                                <div class="section-1-about-us-link-3-title">LOREM IPSUM</div>
-                            </div>
-                        </div>
+                    <div class="section-1-about-us-link-1-container" id="link-1-container">
+                        <div class="section-1-about-us-link-1-shape-icon"></div>
+                        <div class="section-1-about-us-link-1-plus-icon plus-icon" onclick="toggleDescription('link-1-container')"></div>
+                        <div class="section-1-about-us-link-1-title" id="link-1-title">LE NOSTRE RADICI</div>
+                    </div>
+                    <div class="section-1-about-us-link-2-container" id="link-2-container">
+                        <div class="section-1-about-us-link-2-shape-icon"></div>
+                        <div class="section-1-about-us-link-2-plus-icon plus-icon" onclick="toggleDescription('link-2-container')"></div>
+                        <div class="section-1-about-us-link-2-title">LOREM IPSUM</div>
+                    </div>
+                    <div class="section-1-about-us-link-3-container" id="link-3-container">
+                        <div class="section-1-about-us-link-3-shape-icon"></div>
+                        <div class="section-1-about-us-link-3-plus-icon plus-icon" onclick="toggleDescription('link-3-container')"></div>
+                        <div class="section-1-about-us-link-3-title">LOREM IPSUM</div>
                     </div>
 
                     <div class="section-1-about-us-link-1-description">
@@ -212,15 +197,16 @@
             </div>
             <script>
                 document.addEventListener('DOMContentLoaded', function () {
-                    function toggleDescription() {
+                    function toggleDescription(id) {
                         const description = document.querySelector('.section-1-about-us-link-1-description');
                         const link1title = document.querySelector('#link-1-title'); // LE NOSTRE RADICI
                         const link1plusIcon = document.querySelector('.section-1-about-us-link-1-plus-icon');
                         const link1shapeIcon = document.querySelector('.section-1-about-us-link-1-shape-icon');
                         const mainTitle = document.querySelector('#main-title'); // LA NOSTRA STORIA
-                        const link2container = document.querySelector('.section-1-about-us-link-2-container');
-                        const link3container = document.querySelector('.section-1-about-us-link-3-container');
-                        
+                        const link1container = document.querySelector('#link-1-container');
+                        const link2container = document.querySelector('#link-2-container');
+                        const link3container = document.querySelector('#link-3-container');
+
                         if (description) {
                             if (description.style.visibility === 'visible') {
                                 description.style.visibility = 'hidden';
@@ -231,6 +217,18 @@
                             }
                         } else {
                             console.error('Description element not found');
+                        }
+
+                        if (link1container) {
+                            link1container.style.position = 'relative';
+                            link1container.style.top = '0';
+                            link1container.style.left = '0';
+                            link1container.style.display = 'flex';
+                            link1container.style.alignItems = 'center';
+                            link1container.style.gap = '1rem';
+                            link1container.style.height = '100%';
+                            link1container.style.transition = 'top 1s, font-size 1s';
+                            link1container.style.width = '100%';
                         }
 
                         if (link1title) {
