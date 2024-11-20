@@ -254,8 +254,10 @@
                         if (link1plusIcon) {
                             // Get the current position of the plus icon
                             const rect = link1plusIcon.getBoundingClientRect();
-                            const currentTop = rect.top + window.scrollY - 115; // Adjust for padding
-                            const currentLeft = rect.left + window.scrollX - 48; // Adjust for padding
+                            const paddingTopOfParentContainer = 115;
+                            const paddingLeftOfParentContainer = 48;
+                            const currentTop = rect.top + window.scrollY - paddingTopOfParentContainer;
+                            const currentLeft = rect.left + window.scrollX - paddingLeftOfParentContainer;
 
                             // Set the plus icon to absolute with its current position
                             link1plusIcon.style.position = 'absolute';
@@ -275,8 +277,10 @@
                         if (link1shapeIcon) {
                             // Get the current position of the shape icon
                             const rect = link1shapeIcon.getBoundingClientRect();
-                            const currentTop = rect.top + window.scrollY - 115; // Adjust for padding
-                            const currentLeft = rect.left + window.scrollX - 48; // Adjust for padding
+                            const paddingTopOfParentContainer = 115;
+                            const paddingLeftOfParentContainer = 48;
+                            const currentTop = rect.top + window.scrollY - paddingTopOfParentContainer;
+                            const currentLeft = rect.left + window.scrollX - paddingLeftOfParentContainer;
 
                             // Set the shape icon to absolute with its current position
                             link1shapeIcon.style.position = 'absolute';
@@ -306,42 +310,46 @@
                         if (link2container) {
                             // Get the current position of link 2 container
                             const rect = link2container.getBoundingClientRect();
-                            const currentRight = window.innerWidth - rect.right;
-                            const currentBottom = window.innerHeight - rect.bottom;
+                            const paddingTopOfParentContainer = 115;
+                            const paddingLeftOfParentContainer = 48;
+                            const currentTop = rect.top + window.scrollY - paddingTopOfParentContainer;
+                            const currentLeft = rect.left + window.scrollX - paddingLeftOfParentContainer;
 
                             // Set link 2 container to absolute with its current position
                             link2container.style.position = 'absolute';
-                            link2container.style.right = `${currentRight}px`;
-                            link2container.style.bottom = `${currentBottom}px`;
+                            link2container.style.top = `${currentTop}px`;
+                            link2container.style.left = `${currentLeft}px`;
 
                             // Force a reflow to ensure the position is applied
                             link2container.offsetHeight;
 
                             // Move link 2 container to the new position
-                            link2container.style.right = '0';
                             link2container.style.bottom = '0';
-                            link2container.style.transition = 'right 1s, bottom 1s';
+                            link2container.style.right = '0';
+                            link2container.style.transition = 'bottom 1s, right 1s';
                             link2container.style.height = 'auto';
                         }
 
                         if (link3container) {
                             // Get the current position of link 3 container
                             const rect = link3container.getBoundingClientRect();
-                            const currentRight = window.innerWidth - rect.right;
-                            const currentBottom = window.innerHeight - rect.bottom;
+                            const paddingTopOfParentContainer = 115;
+                            const paddingLeftOfParentContainer = 48;
+                            const currentTop = rect.top + window.scrollY - paddingTopOfParentContainer;
+                            const currentLeft = rect.left + window.scrollX - paddingLeftOfParentContainer;
 
                             // Set link 3 container to absolute with its current position
                             link3container.style.position = 'absolute';
-                            link3container.style.right = `${currentRight}px`;
-                            link3container.style.bottom = `${currentBottom}px`;
+                            link3container.style.top = `${currentTop}px`;
+                            link3container.style.left = `${currentLeft}px`;
 
                             // Force a reflow to ensure the position is applied
                             link3container.offsetHeight;
 
                             // Move link 3 container to the new position
-                            link3container.style.right = '0';
                             link3container.style.bottom = '100px';
-                            link3container.style.transition = 'right 1s, bottom 1s';
+                            link3container.style.right = '0';
+                            link3container.style.transition = 'bottom 1s, right 1s';
                             link3container.style.height = 'auto';
                         }
                     }
