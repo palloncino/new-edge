@@ -39,23 +39,29 @@
             <style>
                 .section-1-about-us {
                     position: relative;
-                    /* overflow: hidden; */
+                    overflow: hidden;
                 }
 
                 .section-1-about-us-links-wrapper {
                     width: 100%;
-                }
-
-                .section-1-about-us-links-container {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    gap: 4rem;
                     height: 100%;
                 }
 
+                .section-1-about-us-links-container {
+                    position: absolute;
+                    display: flex;
+                    align-items: flex-end;
+                    justify-content: flex-end;
+                    gap: 4rem;
+                    height: 100%;
+                    width: 100%;
+                }
+
                 #main-title {
+                    position: absolute;
+                    top: 0;
                     margin-top: 100px;
+                    z-index: 20;
                 }
 
                 /* 1 */
@@ -64,7 +70,7 @@
                     display: flex;
                     align-items: center;
                     gap: 1rem;
-                    height: 100%;
+                    height: auto;
                     transition: top 1s, font-size 1s;
                 }
 
@@ -113,7 +119,7 @@
                     display: flex;
                     align-items: center;
                     gap: 1rem;
-                    height: 100%;
+                    height: auto;
                 }
 
                 .section-1-about-us-link-2-shape-icon {
@@ -144,7 +150,7 @@
                     display: flex;
                     align-items: center;
                     gap: 1rem;
-                    height: 100%;
+                    height: auto;
                 }
 
                 .section-1-about-us-link-3-shape-icon {
@@ -308,49 +314,19 @@
                         }
 
                         if (link2container) {
-                            // Get the current position of link 2 container
-                            const rect = link2container.getBoundingClientRect();
-                            const paddingTopOfParentContainer = 115;
-                            const paddingLeftOfParentContainer = 48;
-                            const currentTop = rect.top + window.scrollY - paddingTopOfParentContainer;
-                            const currentLeft = rect.left + window.scrollX - paddingLeftOfParentContainer;
-
-                            // Set link 2 container to absolute with its current position
+                            // Set link 2 container to absolute and move to bottom-right
                             link2container.style.position = 'absolute';
-                            link2container.style.top = `${currentTop}px`;
-                            link2container.style.left = `${currentLeft}px`;
-
-                            // Force a reflow to ensure the position is applied
-                            link2container.offsetHeight;
-
-                            // Move link 2 container to the new position
                             link2container.style.bottom = '0';
                             link2container.style.right = '0';
                             link2container.style.transition = 'bottom 1s, right 1s';
-                            link2container.style.height = 'auto';
                         }
 
                         if (link3container) {
-                            // Get the current position of link 3 container
-                            const rect = link3container.getBoundingClientRect();
-                            const paddingTopOfParentContainer = 115;
-                            const paddingLeftOfParentContainer = 48;
-                            const currentTop = rect.top + window.scrollY - paddingTopOfParentContainer;
-                            const currentLeft = rect.left + window.scrollX - paddingLeftOfParentContainer;
-
-                            // Set link 3 container to absolute with its current position
+                            // Set link 3 container to absolute and move to bottom-right with offset
                             link3container.style.position = 'absolute';
-                            link3container.style.top = `${currentTop}px`;
-                            link3container.style.left = `${currentLeft}px`;
-
-                            // Force a reflow to ensure the position is applied
-                            link3container.offsetHeight;
-
-                            // Move link 3 container to the new position
-                            link3container.style.bottom = '100px';
+                            link3container.style.bottom = '100px'; // Offset to avoid stacking
                             link3container.style.right = '0';
                             link3container.style.transition = 'bottom 1s, right 1s';
-                            link3container.style.height = 'auto';
                         }
                     }
 
