@@ -39,14 +39,11 @@
             <style>
                 .section-1-about-us {
                     position: relative;
-                    overflow: hidden;
+                    /* overflow: hidden; */
                 }
 
                 .section-1-about-us-links-wrapper {
-                    position: absolute;
                     width: 100%;
-                    bottom: 100px;
-                    left: 0;
                 }
 
                 .section-1-about-us-links-container {
@@ -57,6 +54,10 @@
                     height: 100%;
                 }
 
+                #main-title {
+                    margin-top: 100px;
+                }
+
                 /* 1 */
 
                 .section-1-about-us-link-1-container {
@@ -64,6 +65,7 @@
                     align-items: center;
                     gap: 1rem;
                     height: 100%;
+                    transition: top 1s, font-size 1s;
                 }
 
                 .section-1-about-us-link-1-shape-icon {
@@ -80,26 +82,29 @@
                     width: 16px;
                     height: 16px;
                     cursor: pointer;
+                    transition: visibility 1s, opacity 1s;
                 }
 
-                .section-1-about-us-link-1-text {
+                .section-1-about-us-link-1-title {
                     line-height: 2rem;
                     font-family: 'Mundial Regular';
                     font-size: 1.4rem;
                     padding-top: .2rem;
+                    transition: top 1s, font-size 1s, left 1s, transform 1s;
                 }
 
                 .section-1-about-us-link-1-description {
                     position: absolute;
-                    top: 1200px; /* 1200px to 50% when active */
-                    left: 50%;
-                    visibility: hidden; /* visibility visible when active */
+                    visibility: hidden;
+                    /* visibility visible when active */
                     font-size: 1.6rem;
                     line-height: 2rem;
-                    transform: translate(-50%, -50%);
                     font-family: 'Mundial Thin';
                     max-width: 600px;
-                    transition: top 0.5s, visibility 0.5s;
+                    top: 1200px;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    transition: top 1s, visibility 1s;
                 }
 
                 /* 2 */
@@ -126,7 +131,7 @@
                     height: 16px;
                 }
 
-                .section-1-about-us-link-2-text {
+                .section-1-about-us-link-2-title {
                     line-height: 2rem;
                     font-family: 'Mundial Regular';
                     font-size: 1.4rem;
@@ -157,7 +162,7 @@
                     height: 16px;
                 }
 
-                .section-1-about-us-link-3-text {
+                .section-1-about-us-link-3-title {
                     line-height: 2rem;
                     font-family: 'Mundial Regular';
                     font-size: 1.4rem;
@@ -166,40 +171,50 @@
             </style>
             <div class="section-padded-content section-1-about-us">
                 <div class="section-padded-content-relative-container">
-                    <h1 class="h1-xl color-3B1473" style="margin-top: 100px;">
+                    <h1 class="h1-xl color-3B1473" id="main-title">
                         LA NOSTRA STORIA
                     </h1>
                     <div class="section-1-about-us-links-wrapper">
                         <div class="section-1-about-us-links-container">
-                            <div class="section-1-about-us-link-1-container">
+                            <div class="section-1-about-us-link-1-container" id="link-1-container">
                                 <div class="section-1-about-us-link-1-shape-icon"></div>
-                                <div class="section-1-about-us-link-1-plus-icon plus-icon" onclick="toggleDescription()"></div>
-                                <div class="section-1-about-us-link-1-text">LOREM IPSUM</div>
+                                <div class="section-1-about-us-link-1-plus-icon plus-icon"
+                                    onclick="toggleDescription()"></div>
+                                <div class="section-1-about-us-link-1-title" id="link-1-title">LE NOSTRE RADICI</div>
                             </div>
                             <div class="section-1-about-us-link-2-container">
                                 <div class="section-1-about-us-link-2-shape-icon"></div>
                                 <div class="section-1-about-us-link-2-plus-icon plus-icon"></div>
-                                <div class="section-1-about-us-link-2-text">LOREM IPSUM</div>
+                                <div class="section-1-about-us-link-2-title">LOREM IPSUM</div>
                             </div>
                             <div class="section-1-about-us-link-3-container">
                                 <div class="section-1-about-us-link-3-shape-icon"></div>
                                 <div class="section-1-about-us-link-3-plus-icon plus-icon"></div>
-                                <div class="section-1-about-us-link-3-text">LOREM IPSUM</div>
+                                <div class="section-1-about-us-link-3-title">LOREM IPSUM</div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="section-1-about-us-link-1-description">Lorem ipsum dolor sit, amet consectetur
-                        adipisicing elit. Nam aut ex nisi necessitatibus maxime facilis, doloribus molestiae explicabo
-                        sint eos reiciendis at molestias, dignissimos iure fugit in tempora unde earum.</div>
-                    <!-- <div class="section-1-about-us-link-2-description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam aut ex nisi necessitatibus maxime facilis, doloribus molestiae explicabo sint eos reiciendis at molestias, dignissimos iure fugit in tempora unde earum.</div>
-                <div class="section-1-about-us-link-3-description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam aut ex nisi necessitatibus maxime facilis, doloribus molestiae explicabo sint eos reiciendis at molestias, dignissimos iure fugit in tempora unde earum.</div> -->
+                    <div class="section-1-about-us-link-1-description">
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam aut ex nisi necessitatibus maxime
+                        facilis, doloribus molestiae explicabo sint eos reiciendis at molestias, dignissimos iure fugit
+                        in tempora unde earum. Molestiae explicabo sint eos reiciendis at molestias, dignissimos iure
+                        fugit
+                        in tempora unde earum.
+                    </div>
                 </div>
             </div>
             <script>
-                document.addEventListener('DOMContentLoaded', function() {
+                document.addEventListener('DOMContentLoaded', function () {
                     function toggleDescription() {
                         const description = document.querySelector('.section-1-about-us-link-1-description');
+                        const link1title = document.querySelector('#link-1-title'); // LE NOSTRE RADICI
+                        const link1plusIcon = document.querySelector('.section-1-about-us-link-1-plus-icon');
+                        const link1shapeIcon = document.querySelector('.section-1-about-us-link-1-shape-icon');
+                        const mainTitle = document.querySelector('#main-title'); // LA NOSTRA STORIA
+                        const link2container = document.querySelector('.section-1-about-us-link-2-container');
+                        const link3container = document.querySelector('.section-1-about-us-link-3-container');
+                        
                         if (description) {
                             if (description.style.visibility === 'visible') {
                                 description.style.visibility = 'hidden';
@@ -210,6 +225,124 @@
                             }
                         } else {
                             console.error('Description element not found');
+                        }
+
+                        if (link1title) {
+                            // Get the current position of the title
+                            const rect = link1title.getBoundingClientRect();
+                            const paddingTopOfParentContainer = 115;
+                            const paddingLeftOfParentContainer = 48;
+                            const currentTop = rect.top + window.scrollY - paddingTopOfParentContainer;
+                            const currentLeft = rect.left + window.scrollX - paddingLeftOfParentContainer;
+
+                            // Set the title to absolute with its current position
+                            link1title.style.position = 'absolute';
+                            link1title.style.top = `${currentTop}px`;
+                            link1title.style.left = `${currentLeft}px`;
+
+                            // Force a reflow to ensure the position is applied
+                            link1title.offsetHeight;
+
+                            // Move it to the new position
+                            link1title.style.fontSize = '4rem';
+                            link1title.style.top = '20%';
+                            link1title.style.left = '50%';
+                            link1title.style.transform = 'translate(-50%, -50%)';
+                            link1title.style.transition = 'top 1s, font-size 1s, left 1s, transform 1s';
+                        }
+
+                        if (link1plusIcon) {
+                            // Get the current position of the plus icon
+                            const rect = link1plusIcon.getBoundingClientRect();
+                            const currentTop = rect.top + window.scrollY - 115; // Adjust for padding
+                            const currentLeft = rect.left + window.scrollX - 48; // Adjust for padding
+
+                            // Set the plus icon to absolute with its current position
+                            link1plusIcon.style.position = 'absolute';
+                            link1plusIcon.style.top = `${currentTop}px`;
+                            link1plusIcon.style.left = `${currentLeft}px`;
+
+                            // Force a reflow to ensure the position is applied
+                            link1plusIcon.offsetHeight;
+
+                            // Move it to the new position and fade out
+                            link1plusIcon.style.top = '20%';
+                            link1plusIcon.style.left = '50%';
+                            link1plusIcon.style.opacity = '0';
+                            link1plusIcon.style.transition = 'top 1s, left 1s, opacity 1s';
+                        }
+
+                        if (link1shapeIcon) {
+                            // Get the current position of the shape icon
+                            const rect = link1shapeIcon.getBoundingClientRect();
+                            const currentTop = rect.top + window.scrollY - 115; // Adjust for padding
+                            const currentLeft = rect.left + window.scrollX - 48; // Adjust for padding
+
+                            // Set the shape icon to absolute with its current position
+                            link1shapeIcon.style.position = 'absolute';
+                            link1shapeIcon.style.top = `${currentTop}px`;
+                            link1shapeIcon.style.left = `${currentLeft}px`;
+
+                            // Force a reflow to ensure the position is applied
+                            link1shapeIcon.offsetHeight;
+
+                            // Move it to the new position
+                            link1shapeIcon.style.top = '160px';
+                            link1shapeIcon.style.left = '0';
+                            link1shapeIcon.style.width = '200px';
+                            link1shapeIcon.style.height = '200px';
+                            link1shapeIcon.style.transition = 'top 1s, left 1s, width 1s, height 1s';
+                        }
+
+                        if (mainTitle) {
+                            // Set the main title to absolute with its new position
+                            mainTitle.style.position = 'absolute';
+                            mainTitle.style.top = '200px';
+                            mainTitle.style.left = '0';
+                            mainTitle.style.fontSize = '2rem';
+                            mainTitle.style.transition = 'top 1s, font-size 1s, left 1s';
+                        }
+
+                        if (link2container) {
+                            // Get the current position of link 2 container
+                            const rect = link2container.getBoundingClientRect();
+                            const currentRight = window.innerWidth - rect.right;
+                            const currentBottom = window.innerHeight - rect.bottom;
+
+                            // Set link 2 container to absolute with its current position
+                            link2container.style.position = 'absolute';
+                            link2container.style.right = `${currentRight}px`;
+                            link2container.style.bottom = `${currentBottom}px`;
+
+                            // Force a reflow to ensure the position is applied
+                            link2container.offsetHeight;
+
+                            // Move link 2 container to the new position
+                            link2container.style.right = '0';
+                            link2container.style.bottom = '0';
+                            link2container.style.transition = 'right 1s, bottom 1s';
+                            link2container.style.height = 'auto';
+                        }
+
+                        if (link3container) {
+                            // Get the current position of link 3 container
+                            const rect = link3container.getBoundingClientRect();
+                            const currentRight = window.innerWidth - rect.right;
+                            const currentBottom = window.innerHeight - rect.bottom;
+
+                            // Set link 3 container to absolute with its current position
+                            link3container.style.position = 'absolute';
+                            link3container.style.right = `${currentRight}px`;
+                            link3container.style.bottom = `${currentBottom}px`;
+
+                            // Force a reflow to ensure the position is applied
+                            link3container.offsetHeight;
+
+                            // Move link 3 container to the new position
+                            link3container.style.right = '0';
+                            link3container.style.bottom = '100px';
+                            link3container.style.transition = 'right 1s, bottom 1s';
+                            link3container.style.height = 'auto';
                         }
                     }
 
