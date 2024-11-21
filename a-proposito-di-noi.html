@@ -42,249 +42,580 @@
                     overflow: hidden;
                 }
 
-                #main-title {
+                .section-1-about-us__link-title {
                     position: absolute;
-                    top: 0;
-                    margin-top: 100px;
-                    z-index: 20;
+                    font-family: 'Mundial Regular';
+                    font-size: 1.4rem;
+                    line-height: 24px;
+                    padding-top: 0.2rem;
+                    transition: top .5s, font-size .5s, left .5s, transform .5s;
+                    width: 200px;
+                    text-wrap: nowrap;
                 }
 
-                #link-1-container {
+                /* Main title */
+                #section-1-about-us__section-1-main-title {
+                    position: absolute;
+                    top: 0;
+                    left: 200px;
+                    margin-top: 100px;
+                    z-index: 20;
+                    transition: top .5s, font-size .5s, left .5s;
+                }
+
+                /* Back button */
+                #section-1-about-us__back-btn {
+                    position: absolute;
+                    top: calc(100% - 100px);
+                    left: -600px;
+                    transition: all .5s;
+                }
+
+                /* Link 1 Styles */
+                #section-1-about-us__link-1-shape {
                     position: absolute;
                     top: calc(100% - 100px);
                     left: 200px;
-                    display: flex;
-                    align-items: center;
-                    gap: 1rem;
-                    height: auto;
-                    transition: all 1s ease;
-                    background: transparent;
-                    width: 400px;
-                    border: 1px solid red;
-                }
-
-                .section-1-about-us-link-1-shape-icon {
-                    background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-2-violet.svg');
-                    background-repeat: no-repeat;
-                    background-position: center;
+                    background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-2-violet.svg') no-repeat center;
                     width: 100px;
-                    height: 100px;
-                    transition: all 1s;
+                    height: 60px;
+                    transform: rotate(0deg);
+                    transition: all .5s;
                 }
 
-                .section-1-about-us-link-1-plus-icon {
-                    background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/plus-button-5289F8.svg');
-                    background-repeat: no-repeat;
-                    width: 16px;
-                    height: 16px;
-                    cursor: pointer;
-                    transition: visibility 1s, opacity 1s;
-                }
-
-                .section-1-about-us-link-1-title {
-                    line-height: 2rem;
-                    font-family: 'Mundial Regular';
-                    font-size: 1.4rem;
-                    padding-top: .2rem;
-                    transition: top 1s, font-size 1s, left 1s, transform 1s;
-                }
-
-                .section-1-about-us-link-1-description {
+                #section-1-about-us__link-1-plus {
                     position: absolute;
-                    visibility: hidden;
-                    /* visibility visible when active */
-                    font-size: 1.6rem;
-                    line-height: 2rem;
-                    font-family: 'Mundial Thin';
-                    max-width: 600px;
+                    top: calc(100% - 100px);
+                    left: calc(200px + 100px + 10px);
+                    width: 16px;
+                    height: 60px;
+                    background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/plus-button-5289F8.svg') no-repeat center;
+                    transition: all .5s;
+                }
+
+                #section-1-about-us__link-1-title {
+                    top: calc(100% - 100px);
+                    left: calc(200px + 100px + 10px + 16px + 10px);
+                }
+
+                #section-1-about-us__link-1-description {
+                    position: absolute;
                     top: 2000px;
                     left: 540px;
-                    transition: top 1s, visibility 1s;
+                    max-width: 600px;
+                    font-family: 'Mundial Thin';
+                    font-size: 1.6rem;
+                    line-height: 2rem;
+                    transition: top .5s;
                 }
 
-                /* 2 */
-                #link-2-container {
+                /* Link 2 Styles */
+                #section-1-about-us__link-2-shape {
                     position: absolute;
                     top: calc(100% - 100px);
-                    left: 700px;
-                    display: flex;
-                    align-items: center;
-                    gap: 1rem;
-                    height: auto;
-                    transition: all 1s ease;
-                    background: transparent;
-                    width: 400px;
-                    border: 1px solid red;
-                }
-
-                .section-1-about-us-link-2-shape-icon {
-                    background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-2-violet.svg');
-                    background-repeat: no-repeat;
-                    background-position: center;
+                    left: calc(200px + 100px + 10px + 16px + 10px + 200px + 100px);
+                    background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-2-violet.svg') no-repeat center;
                     width: 100px;
-                    height: 100px;
+                    height: 60px;
+                    transform: rotate(0deg);
+                    transition: all .5s;
                 }
 
-                .section-1-about-us-link-2-plus-icon {
-                    background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/plus-button-5289F8.svg');
-                    background-repeat: no-repeat;
-                    width: 16px;
-                    height: 16px;
-                }
-
-                .section-1-about-us-link-2-title {
-                    line-height: 2rem;
-                    font-family: 'Mundial Regular';
-                    font-size: 1.4rem;
-                    padding-top: .2rem;
-                }
-
-                /* 3 */
-                #link-3-container {
+                #section-1-about-us__link-2-plus {
                     position: absolute;
                     top: calc(100% - 100px);
-                    left: 1200px;
-                    display: flex;
-                    align-items: center;
-                    gap: 1rem;
-                    height: auto;
-                    transition: all 1s ease;
-                    background: transparent;
-                    width: 400px;
-                    border: 1px solid red;
-                }
-
-                .section-1-about-us-link-3-shape-icon {
-                    background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-2-violet.svg');
-                    background-repeat: no-repeat;
-                    background-position: center;
-                    width: 100px;
-                    height: 100px;
-                }
-
-                .section-1-about-us-link-3-plus-icon {
-                    background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/plus-button-5289F8.svg');
-                    background-repeat: no-repeat;
+                    left: calc(200px + 100px + 10px + 16px + 10px + 200px + 100px + 100px + 10px);
                     width: 16px;
-                    height: 16px;
+                    height: 60px;
+                    background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/plus-button-5289F8.svg') no-repeat center;
+                    transition: all .5s;
                 }
 
-                .section-1-about-us-link-3-title {
+                #section-1-about-us__link-2-title {
+                    top: calc(100% - 100px);
+                    left: calc(200px + 100px + 10px + 16px + 10px + 200px + 100px + 100px + 10px + 16px + 10px);
+                }
+
+                #section-1-about-us__link-2-description {
+                    position: absolute;
+                    top: 2000px;
+                    left: 540px;
+                    max-width: 600px;
+                    font-family: 'Mundial Thin';
+                    font-size: 1.6rem;
                     line-height: 2rem;
-                    font-family: 'Mundial Regular';
-                    font-size: 1.4rem;
-                    padding-top: .2rem;
+                    transition: top .5s;
+                }
+
+                /* Link 3 Styles */
+                #section-1-about-us__link-3-shape {
+                    position: absolute;
+                    top: calc(100% - 100px);
+                    left: calc(200px + 100px + 10px + 16px + 10px + 200px + 100px + 100px + 10px + 16px + 10px + 200px + 100px);
+                    background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-2-violet.svg') no-repeat center;
+                    width: 100px;
+                    height: 60px;
+                    transform: rotate(0deg);
+                    transition: all .5s;
+                }
+
+                #section-1-about-us__link-3-plus {
+                    position: absolute;
+                    top: calc(100% - 100px);
+                    left: calc(200px + 100px + 10px + 16px + 10px + 200px + 100px + 100px + 10px + 16px + 10px + 200px + 100px + 100px + 10px);
+                    width: 16px;
+                    height: 60px;
+                    background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/plus-button-5289F8.svg') no-repeat center;
+                    transition: all .5s;
+                }
+
+                #section-1-about-us__link-3-title {
+                    top: calc(100% - 100px);
+                    left: calc(200px + 100px + 10px + 16px + 10px + 200px + 100px + 100px + 10px + 16px + 10px + 200px + 100px + 100px + 10px + 16px + 10px);
+                }
+
+                #section-1-about-us__link-3-description {
+                    position: absolute;
+                    top: 2000px;
+                    left: 540px;
+                    max-width: 600px;
+                    font-family: 'Mundial Thin';
+                    font-size: 1.6rem;
+                    line-height: 2rem;
+                    transition: top .5s;
                 }
             </style>
             <div class="section-padded-content section-1-about-us">
                 <div class="section-padded-content-relative-container">
-                    <h1 class="h1-xl color-3B1473" id="main-title">
+
+                    <h1 class="h1-xl color-3B1473" id="section-1-about-us__section-1-main-title">
                         LA NOSTRA STORIA
                     </h1>
-                    <div class="section-1-about-us-link-1-container" id="link-1-container">
-                        <div class="section-1-about-us-link-1-shape-icon"></div>
-                        <div class="section-1-about-us-link-1-plus-icon plus-icon" onclick="toggleDescription('link-1-container')"></div>
-                        <div class="section-1-about-us-link-1-title" id="link-1-title">LE NOSTRE RADICI</div>
-                    </div>
-                    <div class="section-1-about-us-link-2-container" id="link-2-container">
-                        <div class="section-1-about-us-link-2-shape-icon"></div>
-                        <div class="section-1-about-us-link-2-plus-icon plus-icon" onclick="toggleDescription('link-2-container')"></div>
-                        <div class="section-1-about-us-link-2-title">LOREM IPSUM</div>
-                    </div>
-                    <div class="section-1-about-us-link-3-container" id="link-3-container">
-                        <div class="section-1-about-us-link-3-shape-icon"></div>
-                        <div class="section-1-about-us-link-3-plus-icon plus-icon" onclick="toggleDescription('link-3-container')"></div>
-                        <div class="section-1-about-us-link-3-title">LOREM IPSUM</div>
+
+                    <div id="section-1-about-us__link-1-shape"></div>
+                    <div id="section-1-about-us__link-1-plus" class="plus-icon" onclick="section1AboutUsSelectLink(1)"></div>
+                    <div id="section-1-about-us__link-1-title" class="section-1-about-us__link-title">LE NOSTRE<br>RADICI</div>
+                    <div id="section-1-about-us__link-1-description">
+                        Lorem ipsum 1 Lorem ipsum 1 Lorem ipsum 1 Lorem ipsum 1 Lorem ipsum 1 Lorem ipsum 1 Lorem ipsum
+                        1 Lorem ipsum 1 Lorem ipsum 1 Lorem ipsum 1
+                        Lorem ipsum 1 Lorem ipsum 1 Lorem ipsum 1 Lorem ipsum 1 Lorem ipsum 1 Lorem ipsum 1 Lorem ipsum
+                        1 Lorem ipsum 1 Lorem ipsum 1 Lorem ipsum 1
                     </div>
 
-                    <div class="section-1-about-us-link-1-description">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam aut ex nisi necessitatibus maxime
-                        facilis, doloribus molestiae explicabo sint eos reiciendis at molestias, dignissimos iure fugit
-                        in tempora unde earum. Molestiae explicabo sint eos reiciendis at molestias, dignissimos iure
-                        fugit
-                        in tempora unde earum.
+                    <div id="section-1-about-us__link-2-shape"></div>
+                    <div id="section-1-about-us__link-2-plus" class="plus-icon" onclick="section1AboutUsSelectLink(2)"></div>
+                    <div id="section-1-about-us__link-2-title" class="section-1-about-us__link-title">LE PRIME<br>AGGREGAZIONI</div>
+                    <div id="section-1-about-us__link-2-description">
+                        Lorem ipsum 2 Lorem ipsum 2 Lorem ipsum 2 Lorem ipsum 2 Lorem ipsum 2 Lorem ipsum 2 Lorem ipsum
+                        2 Lorem ipsum 2 Lorem ipsum 2 Lorem ipsum 2
+                        Lorem ipsum 2 Lorem ipsum 2 Lorem ipsum 2 Lorem ipsum 2 Lorem ipsum 2 Lorem ipsum 2 Lorem ipsum
+                        2 Lorem ipsum 2 Lorem ipsum 2 Lorem ipsum 2
+                    </div>
+
+                    <div id="section-1-about-us__link-3-shape"></div>
+                    <div id="section-1-about-us__link-3-plus" class="plus-icon" onclick="section1AboutUsSelectLink(3)"></div>
+                    <div id="section-1-about-us__link-3-title" class="section-1-about-us__link-title">LA CRESCITA<br>CONTINUA</div>
+                    <div id="section-1-about-us__link-3-description">
+                        Lorem ipsum 3 Lorem ipsum 3 Lorem ipsum 3 Lorem ipsum 3 Lorem ipsum 3 Lorem ipsum 3 Lorem ipsum
+                        3 Lorem ipsum 3 Lorem ipsum 3 Lorem ipsum 3
+                        Lorem ipsum 3 Lorem ipsum 3 Lorem ipsum 3 Lorem ipsum 3 Lorem ipsum 3 Lorem ipsum 3 Lorem ipsum
+                        3 Lorem ipsum 3 Lorem ipsum 3 Lorem ipsum 3
+                    </div>
+
+                    <div id="section-1-about-us__back-btn" class="btn btn-F69701 color-FFF" onclick="section1AboutUsUnselect()">Back
                     </div>
                 </div>
             </div>
             <script>
                 document.addEventListener('DOMContentLoaded', function () {
-                    function toggleDescription(id) {
-                        const mainTitle = document.querySelector('#main-title'); // LA NOSTRA STORIA
-                        const description1 = document.querySelector('.section-1-about-us-link-1-description');
-                        const link1title = document.querySelector('#link-1-title'); // LE NOSTRE RADICI
-                        const link1plusIcon = document.querySelector('.section-1-about-us-link-1-plus-icon');
-                        const link1shapeIcon = document.querySelector('.section-1-about-us-link-1-shape-icon');
-                        const link1container = document.querySelector('#link-1-container');
-                        const link2container = document.querySelector('#link-2-container');
-                        const link3container = document.querySelector('#link-3-container');
 
-                        if (mainTitle) {
-                            // Set the main title to absolute with its new position
-                            mainTitle.style.position = 'absolute';
-                            mainTitle.style.top = '200px';
-                            mainTitle.style.left = '200px';
-                            mainTitle.style.fontSize = '2rem';
-                            mainTitle.style.transition = 'top 1s, font-size 1s, left 1s';
-                        }
+                    // Common elements
+                    const mainTitle1 = document.querySelector('#section-1-about-us__section-1-main-title');
+                    const backBtn1 = document.querySelector('#section-1-about-us__back-btn');
+                    // Link 1 elements
+                    const link1shape = document.querySelector('#section-1-about-us__link-1-shape');
+                    const link1plus = document.querySelector('#section-1-about-us__link-1-plus');
+                    const link1title = document.querySelector('#section-1-about-us__link-1-title');
+                    const link1description = document.querySelector('#section-1-about-us__link-1-description');
+                    // Link 2 elements (if any)
+                    const link2shape = document.querySelector('#section-1-about-us__link-2-shape');
+                    const link2plus = document.querySelector('#section-1-about-us__link-2-plus');
+                    const link2title = document.querySelector('#section-1-about-us__link-2-title');
+                    const link2description = document.querySelector('#section-1-about-us__link-2-description');
+                    // Link 3 elements (if any)
+                    const link3shape = document.querySelector('#section-1-about-us__link-3-shape');
+                    const link3plus = document.querySelector('#section-1-about-us__link-3-plus');
+                    const link3title = document.querySelector('#section-1-about-us__link-3-title');
+                    const link3description = document.querySelector('#section-1-about-us__link-3-description');
 
-                        if (description1) {     
-                            if (description1.style.visibility === 'visible') {
-                                description1.style.visibility = 'hidden';
-                                description1.style.top = '370px';
-                                description1.style.left = '540px';
-                            } else {
-                                description1.style.visibility = 'visible';
-                                description1.style.top = '270px';
+                    // Object to store the initial styles
+                    const initialStyles = {};
+
+                    function captureInitialStyles() {
+                        // Capture computed styles for all elements
+                        const elements = {
+                            'section-1-about-us__section-1-main-title': mainTitle1,
+                            'section-1-about-us__back-btn': backBtn1,
+                            // Link 1
+                            'section-1-about-us__link-1-shape': link1shape,
+                            'section-1-about-us__link-1-plus': link1plus,
+                            'section-1-about-us__link-1-title': link1title,
+                            'section-1-about-us__link-1-description': link1description,
+                            // Link 2
+                            'section-1-about-us__link-2-shape': link2shape,
+                            'section-1-about-us__link-2-plus': link2plus,
+                            'section-1-about-us__link-2-title': link2title,
+                            'section-1-about-us__link-2-description': link2description,
+                            // Link 3
+                            'section-1-about-us__link-3-shape': link3shape,
+                            'section-1-about-us__link-3-plus': link3plus,
+                            'section-1-about-us__link-3-title': link3title,
+                            'section-1-about-us__link-3-description': link3description,
+                        };
+
+                        for (const [id, element] of Object.entries(elements)) {
+                            if (element) {
+                                const computedStyles = window.getComputedStyle(element);
+                                initialStyles[id] = {};
+                                // List all relevant styles you might change later
+                                [
+                                    'position',
+                                    'top',
+                                    'left',
+                                    'font-size',
+                                    'line-height',
+                                    'width',
+                                    'height',
+                                    'visibility',
+                                    'opacity',
+                                    'background-position',
+                                    'transition',
+                                    'font-weight',
+                                    'transform',
+                                ].forEach((property) => {
+                                    initialStyles[id][property] = computedStyles.getPropertyValue(property);
+                                });
                             }
-                        } else {
-                            console.error('description1 element not found');
-                        }
-
-                        if (link1container) {
-                            link1container.style.top = '100px';
-                            link1container.style.left = '200px';
-                            link1container.style.border = '1px solid red';
-                            link1container.style.width = 'auto';
-                            link1container.style.gap = '0';
-                            link1container.style.alignItems = 'flex-start';
-                        }
-
-                        if (link1container) {
-                            link1title.style.fontSize = '4rem';
-                            link1title.style.lineHeight = '4rem';
-                            link1title.style.marginLeft = '60px';
-                        }
-
-                        if (link1plusIcon) {
-                            link1plusIcon.style.visibility = 'hidden'
-                            link1plusIcon.style.width = 0;
-                        }
-
-                        if (link1shapeIcon) {
-                            link1shapeIcon.style.height = '220px';
-                            link1shapeIcon.style.width = '270px';
-                            link1shapeIcon.style.backgroundPosition = 'top';
-                        }
-
-                        if (link2container) {
-                            // Set link 2 container to absolute and move to bottom-right
-                            link2container.style.position = 'absolute';
-                            link2container.style.bottom = '0';
-                            link2container.style.right = '0';
-                            link2container.style.transition = 'bottom 1s, right 1s';
-                        }
-
-                        if (link3container) {
-                            // Set link 3 container to absolute and move to bottom-right with offset
-                            link3container.style.position = 'absolute';
-                            link3container.style.bottom = '100px'; // Offset to avoid stacking
-                            link3container.style.right = '0';
-                            link3container.style.transition = 'bottom 1s, right 1s';
                         }
                     }
 
-                    // Expose the function to the global scope
-                    window.toggleDescription = toggleDescription;
+                    function section1AboutUsSelectLink(id) {
+                        if (mainTitle1) {
+                            mainTitle1.style.position = 'absolute';
+                            mainTitle1.style.top = '200px';
+                            mainTitle1.style.left = '0';
+                            mainTitle1.style.fontSize = '2rem';
+                            mainTitle1.style.transition = 'top .5s, font-size .5s, left .5s';
+                        }
+
+                        if (backBtn1) {
+                            backBtn1.style.left = '0';
+                        }
+
+                        switch (id) {
+                            case 1:
+                                move1();
+                                break;
+
+                            case 2:
+                                move2();
+                                break;
+
+                            case 3:
+                                move3();
+                                break;
+
+                            default:
+                                break;
+                        }
+                    }
+
+                    function section1AboutUsUnselect() {
+                        // Restore the initial styles of all elements
+                        for (const [id, savedStyles] of Object.entries(initialStyles)) {
+                            const element = document.querySelector(`#${id}`);
+                            if (element) {
+                                Object.entries(savedStyles).forEach(([property, value]) => {
+                                    element.style.setProperty(property, value);
+                                });
+                            }
+                        }
+                    }
+
+                    function move1() {
+                        if (link1shape) {
+                            link1shape.style.height = '160px';
+                            link1shape.style.width = '270px';
+                            link1shape.style.top = '170px';
+                            link1shape.style.left = '0';
+                            link1shape.style.backgroundPosition = 'center';
+                        }
+
+                        if (link1plus) {
+                            link1plus.style.visibility = 'hidden';
+                            link1plus.style.width = '0';
+                        }
+
+                        if (link1title) {
+                            link1title.style.width = '600px';
+                            link1title.style.top = '170px';
+                            link1title.style.left = '540px';
+                            link1title.style.fontSize = '4rem';
+                            link1title.style.lineHeight = '4rem';
+                            link1title.style.fontWeight = '700';
+                        }
+
+                        if (link1description) {
+                            link1description.style.top = '370px';
+                            link1description.style.left = '540px';
+                        }
+
+                        // moving link 2
+                        if (link2shape) {
+                            link2shape.style.height = '60px';
+                            link2shape.style.width = '100px';
+                            link2shape.style.top = 'calc(100% - 200px)';
+                            link2shape.style.left = 'calc(100% - 340px)';
+                            link2shape.style.transform = 'rotate(180deg)';
+                        }
+
+                        if (link2plus) {
+                            link2plus.style.visibility = 'visible';
+                            link2plus.style.opacity = '1';
+                            link2plus.style.width = '16px';
+                            link2plus.style.top = 'calc(100% - 200px)';
+                            link2plus.style.left = 'calc(100% - 230px)';
+                        }
+
+                        if (link2title) {
+                            link2title.style.height = '60px';
+                            link2title.style.width = '100px';
+                            link2title.style.top = 'calc(100% - 200px)';
+                            link2title.style.left = 'calc(100% - 200px)';
+                            link2title.style.fontSize = '1.4rem';
+                        }
+
+                        if (link2description) {
+                            link2description.style.top = '2000px'
+                            link1description.style.left = '540px';
+                        }
+
+                        // moving link 3
+                        if (link3shape) {
+                            link3shape.style.height = '60px';
+                            link3shape.style.width = '100px';
+                            link3shape.style.top = 'calc(100% - 100px)';
+                            link3shape.style.left = 'calc(100% - 340px)';
+                            link3shape.style.transform = 'rotate(180deg)';
+                        }
+
+                        if (link3plus) {
+                            link3plus.style.visibility = 'visible';
+                            link3plus.style.opacity = '1';
+                            link3plus.style.width = '16px';
+                            link3plus.style.top = 'calc(100% - 100px)';
+                            link3plus.style.left = 'calc(100% - 230px)';
+                        }
+
+                        if (link3title) {
+                            link3title.style.height = '60px';
+                            link3title.style.width = '100px';
+                            link3title.style.top = 'calc(100% - 100px)';
+                            link3title.style.left = 'calc(100% - 200px)';
+                            link3title.style.fontSize = '1.4rem';
+                        }
+
+                        if (link3description) {
+                            link3description.style.top = '2000px'
+                            link1description.style.left = '540px';
+                        }
+                    }
+
+                    function move2() {
+                        if (link2shape) {
+                            link2shape.style.height = '160px';
+                            link2shape.style.width = '270px';
+                            link2shape.style.top = '170px';
+                            link2shape.style.left = '0';
+                            link2shape.style.backgroundPosition = 'center';
+                        }
+
+                        if (link2plus) {
+                            link2plus.style.visibility = 'hidden';
+                            link2plus.style.width = '0';
+                        }
+
+                        if (link2title) {
+                            link2title.style.width = '600px';
+                            link2title.style.top = '170px';
+                            link2title.style.left = '540px';
+                            link2title.style.fontSize = '4rem';
+                            link2title.style.lineHeight = '4rem';
+                            link2title.style.fontWeight = '700';
+                        }
+
+                        if (link2description) {
+                            link2description.style.top = '370px';
+                            link2description.style.left = '540px';
+                        }
+
+                        // moving link 1
+                        if (link1shape) {
+                            link1shape.style.height = '60px';
+                            link1shape.style.width = '100px';
+                            link1shape.style.top = 'calc(100% - 300px)';
+                            link1shape.style.left = 'calc(100% - 340px)';
+                            link1shape.style.transform = 'rotate(180deg)';
+                        }
+
+                        if (link1plus) {
+                            link1plus.style.visibility = 'visible';
+                            link1plus.style.opacity = '1';
+                            link1plus.style.width = '16px';
+                            link1plus.style.top = 'calc(100% - 300px)';
+                            link1plus.style.left = 'calc(100% - 230px)';
+                        }
+
+                        if (link1title) {
+                            link1title.style.height = '60px';
+                            link1title.style.width = '100px';
+                            link1title.style.top = 'calc(100% - 300px)';
+                            link1title.style.left = 'calc(100% - 200px)';
+                            link1title.style.fontSize = '1.4rem';
+                        }
+
+                        if (link1description) {
+                            link1description.style.top = '2000px'
+                            link2description.style.left = '540px';
+                        }
+
+                        // moving link 3
+                        if (link3shape) {
+                            link3shape.style.height = '60px';
+                            link3shape.style.width = '100px';
+                            link3shape.style.top = 'calc(100% - 100px)';
+                            link3shape.style.left = 'calc(100% - 340px)';
+                            link3shape.style.transform = 'rotate(180deg)';
+                        }
+
+                        if (link3plus) {
+                            link3plus.style.visibility = 'visible';
+                            link3plus.style.opacity = '1';
+                            link3plus.style.width = '16px';
+                            link3plus.style.top = 'calc(100% - 100px)';
+                            link3plus.style.left = 'calc(100% - 230px)';
+                        }
+
+                        if (link3title) {
+                            link3title.style.height = '60px';
+                            link3title.style.width = '100px';
+                            link3title.style.top = 'calc(100% - 100px)';
+                            link3title.style.left = 'calc(100% - 200px)';
+                            link3title.style.fontSize = '1.4rem';
+                        }
+
+                        if (link3description) {
+                            link3description.style.top = '2000px'
+                            link2description.style.left = '540px';
+                        }
+
+                    }
+
+                    function move3() {
+                        if (link3shape) {
+                            link3shape.style.height = '160px';
+                            link3shape.style.width = '270px';
+                            link3shape.style.top = '170px';
+                            link3shape.style.left = '0';
+                            link3shape.style.backgroundPosition = 'center';
+                        }
+
+                        if (link3plus) {
+                            link3plus.style.visibility = 'hidden';
+                            link3plus.style.width = '0';
+                        }
+
+                        if (link3title) {
+                            link3title.style.width = '600px';
+                            link3title.style.top = '170px';
+                            link3title.style.left = '540px';
+                            link3title.style.fontSize = '4rem';
+                            link3title.style.lineHeight = '4rem';
+                            link3title.style.fontWeight = '700';
+                        }
+
+                        if (link3description) {
+                            link3description.style.top = '370px';
+                            link3description.style.left = '540px';
+                        }
+
+                        // moving link 1
+                        if (link1shape) {
+                            link1shape.style.height = '60px';
+                            link1shape.style.width = '100px';
+                            link1shape.style.top = 'calc(100% - 300px)';
+                            link1shape.style.left = 'calc(100% - 340px)';
+                            link1shape.style.transform = 'rotate(180deg)';
+                        }
+
+                        if (link1plus) {
+                            link1plus.style.visibility = 'visible';
+                            link1plus.style.opacity = '1';
+                            link1plus.style.width = '16px';
+                            link1plus.style.top = 'calc(100% - 300px)';
+                            link1plus.style.left = 'calc(100% - 230px)';
+                        }
+
+                        if (link1title) {
+                            link1title.style.height = '60px';
+                            link1title.style.width = '100px';
+                            link1title.style.top = 'calc(100% - 300px)';
+                            link1title.style.left = 'calc(100% - 200px)';
+                            link1title.style.fontSize = '1.4rem';
+                        }
+
+                        if (link1description) {
+                            link1description.style.top = '2000px'
+                            link3description.style.left = '540px';
+                        }
+
+                        // moving link 3
+                        if (link2shape) {
+                            link2shape.style.height = '60px';
+                            link2shape.style.width = '100px';
+                            link2shape.style.top = 'calc(100% - 100px)';
+                            link2shape.style.left = 'calc(100% - 340px)';
+                            link2shape.style.transform = 'rotate(180deg)';
+                        }
+
+                        if (link2plus) {
+                            link2plus.style.visibility = 'visible';
+                            link2plus.style.opacity = '1';
+                            link2plus.style.width = '16px';
+                            link2plus.style.top = 'calc(100% - 100px)';
+                            link2plus.style.left = 'calc(100% - 230px)';
+                        }
+
+                        if (link2title) {
+                            link2title.style.height = '60px';
+                            link2title.style.width = '100px';
+                            link2title.style.top = 'calc(100% - 100px)';
+                            link2title.style.left = 'calc(100% - 200px)';
+                            link2title.style.fontSize = '1.4rem';
+                        }
+
+                        if (link2description) {
+                            link2description.style.top = '2000px'
+                            link3description.style.left = '540px';
+                        }
+                    }
+
+                    // Capture initial styles after DOM is ready
+                    captureInitialStyles();
+
+                    // Expose functions globally
+                    window.section1AboutUsSelectLink = section1AboutUsSelectLink;
+                    window.section1AboutUsUnselect = section1AboutUsUnselect;
                 });
             </script>
 
