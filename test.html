@@ -36,6 +36,8 @@
         <div class="inner-app-container">
 
             <!-- LA NOSTRA STORIA -->
+             
+            <!-- Common area -->
             <style>
                 .section-1-test {
                     position: relative;
@@ -43,13 +45,21 @@
                 }
 
                 /* main title  */
-                #main-title {
+                #section-1-main-title {
                     position: absolute;
                     top: 0;
                     margin-top: 100px;
                     z-index: 20;
                 }
+                #section-1-back-btn {
+                    position: absolute;
+                    top: calc(100% - 100px);
+                    left: -600px;
+                    transition: all 1s;
+                }
             </style>
+
+            <!-- link 1 -->
             <style>
                 /* svg shape */
                 #link-1-shape {
@@ -100,9 +110,11 @@
                     transition: top 1s, visibility 1s;
                 }
             </style>
+            
             <div class="section-padded-content section-1-test">
                 <div class="section-padded-content-relative-container">
-                    <h1 class="h1-xl color-3B1473" id="main-title">
+                    
+                    <h1 class="h1-xl color-3B1473" id="section-1-main-title">
                         LA NOSTRA STORIA
                     </h1>
 
@@ -113,16 +125,19 @@
                         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam aut ex nisi necessitatibus maxime
                         facilis, doloribus molestiae explicabo sint eos reiciendis at molestias, dignissimos iure fugit
                         in tempora unde earum. Molestiae explicabo sint eos reiciendis at molestias, dignissimos iure
-                        fugit
-                        in tempora unde earum.
+                        fugit in tempora unde earum.
                     </div>
+
+
+                    <div id="section-1-back-btn" class="btn btn-F69701 color-FFF">Back</div>
                 </div>
             </div>
             <script>
                 document.addEventListener('DOMContentLoaded', function () {
 
                     // Common
-                    const mainTitle = document.querySelector('#main-title');
+                    const mainTitle1 = document.querySelector('#section-1-main-title');
+                    const backBtn1 = document.querySelector('#section-1-back-btn');
                     // 1
                     const link1shape = document.querySelector('#link-1-shape');
                     const link1plus = document.querySelector('#link-1-plus');
@@ -135,12 +150,16 @@
 
                     function toggleDescription(id) {
 
-                        if (mainTitle) {
-                            mainTitle.style.position = 'absolute';
-                            mainTitle.style.top = '200px';
-                            mainTitle.style.left = '0';
-                            mainTitle.style.fontSize = '2rem';
-                            mainTitle.style.transition = 'top 1s, font-size 1s, left 1s';
+                        if (mainTitle1) {
+                            mainTitle1.style.position = 'absolute';
+                            mainTitle1.style.top = '200px';
+                            mainTitle1.style.left = '0';
+                            mainTitle1.style.fontSize = '2rem';
+                            mainTitle1.style.transition = 'top 1s, font-size 1s, left 1s';
+                        }
+
+                        if (backBtn1) {
+                            backBtn1.style.left = '0';
                         }
 
 
