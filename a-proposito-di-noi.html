@@ -51,13 +51,16 @@
 
                 #link-1-container {
                     position: absolute;
-                    bottom: 0;
-                    right: 800px;
+                    top: calc(100% - 100px);
+                    left: 200px;
                     display: flex;
                     align-items: center;
                     gap: 1rem;
                     height: auto;
-                    transition: top 1s, font-size 1s;
+                    transition: all 1s ease;
+                    background: transparent;
+                    width: 400px;
+                    border: 1px solid red;
                 }
 
                 .section-1-about-us-link-1-shape-icon {
@@ -66,6 +69,7 @@
                     background-position: center;
                     width: 100px;
                     height: 100px;
+                    transition: all 1s;
                 }
 
                 .section-1-about-us-link-1-plus-icon {
@@ -93,21 +97,24 @@
                     line-height: 2rem;
                     font-family: 'Mundial Thin';
                     max-width: 600px;
-                    top: 1200px;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
+                    top: 2000px;
+                    left: 540px;
                     transition: top 1s, visibility 1s;
                 }
 
                 /* 2 */
                 #link-2-container {
                     position: absolute;
-                    bottom: 0;
-                    right: 400px;
+                    top: calc(100% - 100px);
+                    left: 700px;
                     display: flex;
                     align-items: center;
                     gap: 1rem;
                     height: auto;
+                    transition: all 1s ease;
+                    background: transparent;
+                    width: 400px;
+                    border: 1px solid red;
                 }
 
                 .section-1-about-us-link-2-shape-icon {
@@ -135,12 +142,16 @@
                 /* 3 */
                 #link-3-container {
                     position: absolute;
-                    bottom: 0;
-                    right: 0;
+                    top: calc(100% - 100px);
+                    left: 1200px;
                     display: flex;
                     align-items: center;
                     gap: 1rem;
                     height: auto;
+                    transition: all 1s ease;
+                    background: transparent;
+                    width: 400px;
+                    border: 1px solid red;
                 }
 
                 .section-1-about-us-link-3-shape-icon {
@@ -198,117 +209,61 @@
             <script>
                 document.addEventListener('DOMContentLoaded', function () {
                     function toggleDescription(id) {
-                        const description = document.querySelector('.section-1-about-us-link-1-description');
+                        const mainTitle = document.querySelector('#main-title'); // LA NOSTRA STORIA
+                        const description1 = document.querySelector('.section-1-about-us-link-1-description');
                         const link1title = document.querySelector('#link-1-title'); // LE NOSTRE RADICI
                         const link1plusIcon = document.querySelector('.section-1-about-us-link-1-plus-icon');
                         const link1shapeIcon = document.querySelector('.section-1-about-us-link-1-shape-icon');
-                        const mainTitle = document.querySelector('#main-title'); // LA NOSTRA STORIA
                         const link1container = document.querySelector('#link-1-container');
                         const link2container = document.querySelector('#link-2-container');
                         const link3container = document.querySelector('#link-3-container');
-
-                        if (description) {
-                            if (description.style.visibility === 'visible') {
-                                description.style.visibility = 'hidden';
-                                description.style.top = '1200px';
-                            } else {
-                                description.style.visibility = 'visible';
-                                description.style.top = '50%';
-                            }
-                        } else {
-                            console.error('Description element not found');
-                        }
-
-                        if (link1container) {
-                            link1container.style.position = 'relative';
-                            link1container.style.top = '0';
-                            link1container.style.left = '0';
-                            link1container.style.display = 'flex';
-                            link1container.style.alignItems = 'center';
-                            link1container.style.gap = '1rem';
-                            link1container.style.height = '100%';
-                            link1container.style.transition = 'top 1s, font-size 1s';
-                            link1container.style.width = '100%';
-                        }
-
-                        if (link1title) {
-                            // Get the current position of the title
-                            const rect = link1title.getBoundingClientRect();
-                            const paddingTopOfParentContainer = 115;
-                            const paddingLeftOfParentContainer = 48;
-                            const currentTop = rect.top + window.scrollY - paddingTopOfParentContainer;
-                            const currentLeft = rect.left + window.scrollX - paddingLeftOfParentContainer;
-
-                            // Set the title to absolute with its current position
-                            link1title.style.position = 'absolute';
-                            link1title.style.top = `${currentTop}px`;
-                            link1title.style.left = `${currentLeft}px`;
-
-                            // Force a reflow to ensure the position is applied
-                            link1title.offsetHeight;
-
-                            // Move it to the new position
-                            link1title.style.fontSize = '4rem';
-                            link1title.style.top = '20%';
-                            link1title.style.left = '50%';
-                            link1title.style.transform = 'translate(-50%, -50%)';
-                            link1title.style.transition = 'top 1s, font-size 1s, left 1s, transform 1s';
-                        }
-
-                        if (link1plusIcon) {
-                            // Get the current position of the plus icon
-                            const rect = link1plusIcon.getBoundingClientRect();
-                            const paddingTopOfParentContainer = 115;
-                            const paddingLeftOfParentContainer = 48;
-                            const currentTop = rect.top + window.scrollY - paddingTopOfParentContainer;
-                            const currentLeft = rect.left + window.scrollX - paddingLeftOfParentContainer;
-
-                            // Set the plus icon to absolute with its current position
-                            link1plusIcon.style.position = 'absolute';
-                            link1plusIcon.style.top = `${currentTop}px`;
-                            link1plusIcon.style.left = `${currentLeft}px`;
-
-                            // Force a reflow to ensure the position is applied
-                            link1plusIcon.offsetHeight;
-
-                            // Move it to the new position and fade out
-                            link1plusIcon.style.top = '20%';
-                            link1plusIcon.style.left = '50%';
-                            link1plusIcon.style.opacity = '0';
-                            link1plusIcon.style.transition = 'top 1s, left 1s, opacity 1s';
-                        }
-
-                        if (link1shapeIcon) {
-                            // Get the current position of the shape icon
-                            const rect = link1shapeIcon.getBoundingClientRect();
-                            const paddingTopOfParentContainer = 115;
-                            const paddingLeftOfParentContainer = 48;
-                            const currentTop = rect.top + window.scrollY - paddingTopOfParentContainer;
-                            const currentLeft = rect.left + window.scrollX - paddingLeftOfParentContainer;
-
-                            // Set the shape icon to absolute with its current position
-                            link1shapeIcon.style.position = 'absolute';
-                            link1shapeIcon.style.top = `${currentTop}px`;
-                            link1shapeIcon.style.left = `${currentLeft}px`;
-
-                            // Force a reflow to ensure the position is applied
-                            link1shapeIcon.offsetHeight;
-
-                            // Move it to the new position
-                            link1shapeIcon.style.top = '160px';
-                            link1shapeIcon.style.left = '0';
-                            link1shapeIcon.style.width = '200px';
-                            link1shapeIcon.style.height = '200px';
-                            link1shapeIcon.style.transition = 'top 1s, left 1s, width 1s, height 1s';
-                        }
 
                         if (mainTitle) {
                             // Set the main title to absolute with its new position
                             mainTitle.style.position = 'absolute';
                             mainTitle.style.top = '200px';
-                            mainTitle.style.left = '0';
+                            mainTitle.style.left = '200px';
                             mainTitle.style.fontSize = '2rem';
                             mainTitle.style.transition = 'top 1s, font-size 1s, left 1s';
+                        }
+
+                        if (description1) {     
+                            if (description1.style.visibility === 'visible') {
+                                description1.style.visibility = 'hidden';
+                                description1.style.top = '370px';
+                                description1.style.left = '540px';
+                            } else {
+                                description1.style.visibility = 'visible';
+                                description1.style.top = '270px';
+                            }
+                        } else {
+                            console.error('description1 element not found');
+                        }
+
+                        if (link1container) {
+                            link1container.style.top = '100px';
+                            link1container.style.left = '200px';
+                            link1container.style.border = '1px solid red';
+                            link1container.style.width = 'auto';
+                            link1container.style.gap = '0';
+                            link1container.style.alignItems = 'flex-start';
+                        }
+
+                        if (link1container) {
+                            link1title.style.fontSize = '4rem';
+                            link1title.style.lineHeight = '4rem';
+                            link1title.style.marginLeft = '60px';
+                        }
+
+                        if (link1plusIcon) {
+                            link1plusIcon.style.visibility = 'hidden'
+                            link1plusIcon.style.width = 0;
+                        }
+
+                        if (link1shapeIcon) {
+                            link1shapeIcon.style.height = '220px';
+                            link1shapeIcon.style.width = '270px';
+                            link1shapeIcon.style.backgroundPosition = 'top';
                         }
 
                         if (link2container) {

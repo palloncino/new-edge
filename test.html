@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/font.css">
+    <link rel="stylesheet" href="./assets/css/global.css">
+    <link rel="stylesheet" href="./assets/css/header.css">
+    <title>TEST</title>
+</head>
+
+<body>
+
+    <div class="outer-app-container page-template-default page-id-37">
+
+        <!-- HEADER -->
+        <div id="edge-header" class="edge-header">
+            <div id="header-logo-container" class="header-logo-container">
+                <img class="header-logo-img" src="./assets/svgs/logo.svg" alt="Edge"
+                    onClick="window.location = './front-page.html';" style="cursor: pointer;" />
+                <h1 class="header-logo-edge">edge</h1>
+            </div>
+            <div class="header-navigation-links-container">
+                <div class="header-navigation-links">
+                    <a class="header-navigation-link selected" href="/a-proposito-di-noi.html">A proposito di noi</a>
+                    <a class="header-navigation-link" href="/cosa-facciamo.html">Cosa facciamo</a>
+                    <a class="header-navigation-link" href="/over-the-edge.html">Over the Edge</a>
+                    <a class="header-navigation-link" href="/il-gruppo.html">Il gruppo</a>
+                    <a class="header-navigation-link" href="/contatti.html">Contatti</a>
+                    <a class="header-navigation-link" href="#">it <span style="font-family: arial;">|</span> en</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="inner-app-container">
+
+            <!-- LA NOSTRA STORIA -->
+            <style>
+                .section-1-test {
+                    position: relative;
+                    overflow: hidden;
+                }
+
+                /* main title  */
+                #main-title {
+                    position: absolute;
+                    top: 0;
+                    margin-top: 100px;
+                    z-index: 20;
+                }
+            </style>
+            <style>
+                /* svg shape */
+                #link-1-shape {
+                    position: absolute;
+                    top: calc(100% - 100px);
+                    background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-2-violet.svg');
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    width: 100px;
+                    height: 60px;
+                    transition: all 1s;
+                }
+
+                #link-1-plus {
+                    position: absolute;
+                    top: calc(100% - 100px);
+                    width: 16px;
+                    height: 16px;
+                    transition: visibility 1s, opacity 1s, transform .2s;
+                    background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/plus-button-5289F8.svg');
+                    background-repeat: no-repeat;
+                }
+
+                #link-1-title {
+                    position: absolute;
+                    top: calc(100% - 100px);
+                    font-family: 'Mundial Regular';
+                    font-size: 1.4rem;
+                    line-height: 1.4rem;
+                    transition: top 1s, font-size 1s, left 1s, transform 1s;
+                }
+
+                #link-1-description {
+                    position: absolute;
+                    visibility: hidden;
+                    /* visibility visible when active */
+                    font-size: 1.6rem;
+                    line-height: 2rem;
+                    font-family: 'Mundial Thin';
+                    max-width: 600px;
+                    top: 2000px;
+                    left: 540px;
+                    transition: top 1s, visibility 1s;
+                }
+            </style>
+            <div class="section-padded-content section-1-test">
+                <div class="section-padded-content-relative-container">
+                    <h1 class="h1-xl color-3B1473" id="main-title">
+                        LA NOSTRA STORIA
+                    </h1>
+
+                    <div id="link-1-shape"></div>
+                    <div id="link-1-plus" class="plus-icon" onclick="toggleDescription(1)"></div>
+                    <div id="link-1-title">LE NOSTRE RADICI</div>
+                    <div id="link-1-description">
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam aut ex nisi necessitatibus maxime
+                        facilis, doloribus molestiae explicabo sint eos reiciendis at molestias, dignissimos iure fugit
+                        in tempora unde earum. Molestiae explicabo sint eos reiciendis at molestias, dignissimos iure
+                        fugit
+                        in tempora unde earum.
+                    </div>
+                </div>
+            </div>
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+
+                    // Common
+                    const mainTitle = document.querySelector('#main-title');
+                    // 1
+                    const link1shape = document.querySelector('#link-1-shape');
+                    const link1plus = document.querySelector('#link-1-plus');
+                    const link1title = document.querySelector('#link-1-title');
+                    const link1description = document.querySelector('#link-1-description');
+                    // 2
+                    // ...
+                    // 3
+                    // ...
+
+                    function toggleDescription(id) {
+
+                        if (mainTitle) {
+                            mainTitle.style.position = 'absolute';
+                            mainTitle.style.top = '200px';
+                            mainTitle.style.left = '200px';
+                            mainTitle.style.fontSize = '2rem';
+                            mainTitle.style.transition = 'top 1s, font-size 1s, left 1s';
+                        }
+
+
+                        switch (id) {
+                            case 1:
+                                moveLink1();
+                                break;
+
+                            case 2:
+                                // moveLink2();
+                                break;
+
+                            case 3:
+                                // moveLink3();
+                                break;
+
+                            default:
+                                break;
+                        }
+
+                    }
+
+                    function moveLink1() {
+                        if (link1shape) {
+                            link1shape.style.height = '220px';
+                            link1shape.style.width = '270px';
+                            link1shape.style.backgroundPosition = 'top';
+                        }
+
+                        if (link1plus) {
+                            link1plus.style.visibility = 'hidden'
+                            link1plus.style.width = 0;
+                        }
+                        if (link1title) {
+                            
+                        }
+
+
+                        if (link1description) {
+                            if (link1description.style.visibility === 'visible') {
+                                link1description.style.visibility = 'hidden';
+                                link1description.style.top = '370px';
+                                link1description.style.left = '540px';
+                            } else {
+                                link1description.style.visibility = 'visible';
+                                link1description.style.top = '270px';
+                            }
+                        } else {
+                            console.error('link1description element not found');
+                        }
+                    }
+
+                    // Expose the function to the global scope
+                    window.toggleDescription = toggleDescription;
+                });
+            </script>
+
+
+            <div class="section-padded-content section-2-test" style="background: grey"></div>
+        </div>
+    </div>
+</body>
+
+</html>
