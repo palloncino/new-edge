@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="./assets/css/global.css">
     <link rel="stylesheet" href="./assets/css/header.css">
     <title>TEST</title>
-    <!-- Common Styles -->
     <style>
         .section-1-test {
             position: relative;
@@ -77,6 +76,98 @@
             line-height: 2rem;
             transition: top 1s, visibility 1s;
         }
+
+        /* Link 2 Styles */
+        #link-2-shape {
+            position: absolute;
+            top: calc(100% - 100px);
+            left: calc(100px + 10px + 16px + 10px + 200px + 100px);
+            background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-2-violet.svg') no-repeat center;
+            width: 100px;
+            height: 60px;
+            transition: all 1s;
+        }
+
+        #link-2-plus {
+            position: absolute;
+            top: calc(100% - 100px);
+            left: calc(100px + 10px + 16px + 10px + 200px + 100px + 100px + 10px);
+            width: 16px;
+            height: 60px;
+            background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/plus-button-5289F8.svg') no-repeat center;
+            transition: visibility 1s, opacity 1s, transform 0.2s;
+        }
+
+        #link-2-title {
+            position: absolute;
+            top: calc(100% - 100px);
+            left: calc(100px + 10px + 16px + 10px + 200px + 100px + 100px + 10px + 16px + 10px);
+            font-family: 'Mundial Regular';
+            font-size: 1.4rem;
+            line-height: 60px;
+            padding-top: 0.2rem;
+            transition: top 1s, font-size 1s, left 1s, transform 1s;
+            width: 200px;
+            text-wrap: nowrap;
+        }
+
+        #link-2-description {
+            position: absolute;
+            top: 2000px;
+            left: 540px;
+            max-width: 600px;
+            visibility: hidden;
+            font-family: 'Mundial Thin';
+            font-size: 1.6rem;
+            line-height: 2rem;
+            transition: top 1s, visibility 1s;
+        }
+
+        /* Link 3 Styles */
+        #link-3-shape {
+            position: absolute;
+            top: calc(100% - 100px);
+            left: calc(100px + 10px + 16px + 10px + 200px + 100px + 100px + 10px + 16px + 10px + 200px + 100px);
+            background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-2-violet.svg') no-repeat center;
+            width: 100px;
+            height: 60px;
+            transition: all 1s;
+        }
+
+        #link-3-plus {
+            position: absolute;
+            top: calc(100% - 100px);
+            left: calc(100px + 10px + 16px + 10px + 200px + 100px + 100px + 10px + 16px + 10px + 200px + 100px + 100px + 10px);
+            width: 16px;
+            height: 60px;
+            background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/plus-button-5289F8.svg') no-repeat center;
+            transition: visibility 1s, opacity 1s, transform 0.2s;
+        }
+
+        #link-3-title {
+            position: absolute;
+            top: calc(100% - 100px);
+            left: calc(100px + 10px + 16px + 10px + 200px + 100px + 100px + 10px + 16px + 10px + 200px + 100px + 100px + 10px + 16px + 10px);
+            font-family: 'Mundial Regular';
+            font-size: 1.4rem;
+            line-height: 60px;
+            padding-top: 0.2rem;
+            transition: top 1s, font-size 1s, left 1s, transform 1s;
+            width: 200px;
+            text-wrap: nowrap;
+        }
+
+        #link-3-description {
+            position: absolute;
+            top: 2000px;
+            left: 540px;
+            max-width: 600px;
+            visibility: hidden;
+            font-family: 'Mundial Thin';
+            font-size: 1.6rem;
+            line-height: 2rem;
+            transition: top 1s, visibility 1s;
+        }
     </style>
 </head>
 
@@ -124,6 +215,26 @@
                         fugit in tempora unde earum.
                     </div>
 
+                    <div id="link-2-shape"></div>
+                    <div id="link-2-plus" class="plus-icon" onclick="section1SelectLink(1)"></div>
+                    <div id="link-2-title">LE NOSTRE RADICI</div>
+                    <div id="link-2-description">
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam aut ex nisi necessitatibus maxime
+                        facilis, doloribus molestiae explicabo sint eos reiciendis at molestias, dignissimos iure fugit
+                        in tempora unde earum. Molestiae explicabo sint eos reiciendis at molestias, dignissimos iure
+                        fugit in tempora unde earum.
+                    </div>
+
+                    <div id="link-3-shape"></div>
+                    <div id="link-3-plus" class="plus-icon" onclick="section1SelectLink(1)"></div>
+                    <div id="link-3-title">LE NOSTRE RADICI</div>
+                    <div id="link-3-description">
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam aut ex nisi necessitatibus maxime
+                        facilis, doloribus molestiae explicabo sint eos reiciendis at molestias, dignissimos iure fugit
+                        in tempora unde earum. Molestiae explicabo sint eos reiciendis at molestias, dignissimos iure
+                        fugit in tempora unde earum.
+                    </div>
+
                     <div id="section-1-back-btn" class="btn btn-F69701 color-FFF" onclick="section1Unselect()">Back</div>
                 </div>
             </div>
@@ -164,11 +275,21 @@
                 const elements = {
                     'section-1-main-title': mainTitle1,
                     'section-1-back-btn': backBtn1,
+                    // Link 1
                     'link-1-shape': link1shape,
                     'link-1-plus': link1plus,
                     'link-1-title': link1title,
                     'link-1-description': link1description,
-                    // Add other elements as needed
+                    // Link 2
+                    'link-2-shape': link2shape,
+                    'link-2-plus': link2plus,
+                    'link-2-title': link2title,
+                    'link-2-description': link2description,
+                    // Link 3
+                    'link-3-shape': link3shape,
+                    'link-3-plus': link3plus,
+                    'link-3-title': link3title,
+                    'link-3-description': link3description,
                 };
 
                 for (const [id, element] of Object.entries(elements)) {
