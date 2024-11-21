@@ -1,0 +1,11 @@
+.section-2-about-us {
+    background: #5289F8;
+}
+.section-2-about-us-content {
+    transform: translateX(-100%);
+    transition: transform 0.5s ease-in-out;
+    z-index: 20;
+}
+.section-2-about-us-content.active {
+    transform: translateX(0);
+}
