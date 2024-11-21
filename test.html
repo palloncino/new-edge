@@ -216,7 +216,7 @@
                     </div>
 
                     <div id="link-2-shape"></div>
-                    <div id="link-2-plus" class="plus-icon" onclick="section1SelectLink(1)"></div>
+                    <div id="link-2-plus" class="plus-icon" onclick="section1SelectLink(2)"></div>
                     <div id="link-2-title">LE NOSTRE RADICI</div>
                     <div id="link-2-description">
                         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam aut ex nisi necessitatibus maxime
@@ -226,7 +226,7 @@
                     </div>
 
                     <div id="link-3-shape"></div>
-                    <div id="link-3-plus" class="plus-icon" onclick="section1SelectLink(1)"></div>
+                    <div id="link-3-plus" class="plus-icon" onclick="section1SelectLink(3)"></div>
                     <div id="link-3-title">LE NOSTRE RADICI</div>
                     <div id="link-3-description">
                         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam aut ex nisi necessitatibus maxime
@@ -326,7 +326,15 @@
                     case 1:
                         move1();
                         break;
-                    // Add cases for other links as needed
+
+                    case 2:
+                        move2();
+                        break;
+
+                    case 3:
+                        move3();
+                        break;
+
                     default:
                         break;
                 }
@@ -376,6 +384,76 @@
                     } else {
                         link1description.style.visibility = 'visible';
                         link1description.style.top = '270px';
+                    }
+                }
+            }
+
+            function move2() {
+                if (link2shape) {
+                    link2shape.style.height = '160px';
+                    link2shape.style.width = '270px';
+                    link2shape.style.top = '170px';
+                    link2shape.style.left = '0';
+                    link2shape.style.backgroundPosition = 'center';
+                }
+
+                if (link2plus) {
+                    link2plus.style.visibility = 'hidden';
+                    link2plus.style.width = '0';
+                }
+
+                if (link2title) {
+                    link2title.style.width = '600px';
+                    link2title.style.top = '170px';
+                    link2title.style.left = '540px';
+                    link2title.style.fontSize = '4rem';
+                    link2title.style.lineHeight = '4rem';
+                    link2title.style.fontWeight = '700';
+                }
+
+                if (link2description) {
+                    if (link2description.style.visibility === 'visible') {
+                        link2description.style.visibility = 'hidden';
+                        link2description.style.top = '370px';
+                        link2description.style.left = '540px';
+                    } else {
+                        link2description.style.visibility = 'visible';
+                        link2description.style.top = '270px';
+                    }
+                }
+            }
+
+            function move3() {
+                if (link3shape) {
+                    link3shape.style.height = '160px';
+                    link3shape.style.width = '270px';
+                    link3shape.style.top = '170px';
+                    link3shape.style.left = '0';
+                    link3shape.style.backgroundPosition = 'center';
+                }
+
+                if (link3plus) {
+                    link3plus.style.visibility = 'hidden';
+                    link3plus.style.width = '0';
+                }
+
+                if (link3title) {
+                    link3title.style.width = '600px';
+                    link3title.style.top = '170px';
+                    link3title.style.left = '540px';
+                    link3title.style.fontSize = '4rem';
+                    link3title.style.lineHeight = '4rem';
+                    link3title.style.fontWeight = '700';
+                }
+
+                if (link3description) {
+                    if (link3description.style.visibility === 'visible') {
+                        link3description.style.visibility = 'hidden';
+                        link3description.style.top = '370px';
+                        link3description.style.left = '540px';
+                    } else {
+                        link3description.style.visibility = 'visible';
+                        link3description.style.top = '270px';
                     }
                 }
             }
