@@ -20,7 +20,7 @@
             top: 0;
             margin-top: 100px;
             z-index: 20;
-            transition: top 1s, font-size 1s, left 1s;
+            transition: top .5s, font-size .5s, left .5s;
         }
 
         /* Back button */
@@ -28,7 +28,7 @@
             position: absolute;
             top: calc(100% - 100px);
             left: -600px;
-            transition: all 1s;
+            transition: all .5s;
         }
 
         /* Link 1 Styles */
@@ -39,7 +39,7 @@
             background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-2-violet.svg') no-repeat center;
             width: 100px;
             height: 60px;
-            transition: all 1s;
+            transition: all .5s;
         }
 
         #link-1-plus {
@@ -49,7 +49,7 @@
             width: 16px;
             height: 60px;
             background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/plus-button-5289F8.svg') no-repeat center;
-            transition: visibility 1s, opacity 1s, transform 0.2s;
+            transition: all .5s;
         }
 
         #link-1-title {
@@ -60,7 +60,7 @@
             font-size: 1.4rem;
             line-height: 60px;
             padding-top: 0.2rem;
-            transition: top 1s, font-size 1s, left 1s, transform 1s;
+            transition: top .5s, font-size .5s, left .5s, transform .5s;
             width: 200px;
             text-wrap: nowrap;
         }
@@ -74,7 +74,7 @@
             font-family: 'Mundial Thin';
             font-size: 1.6rem;
             line-height: 2rem;
-            transition: top 1s, visibility 1s;
+            transition: top .5s, visibility .5s;
         }
 
         /* Link 2 Styles */
@@ -85,7 +85,7 @@
             background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-2-violet.svg') no-repeat center;
             width: 100px;
             height: 60px;
-            transition: all 1s;
+            transition: all .5s;
         }
 
         #link-2-plus {
@@ -95,7 +95,7 @@
             width: 16px;
             height: 60px;
             background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/plus-button-5289F8.svg') no-repeat center;
-            transition: visibility 1s, opacity 1s, transform 0.2s;
+            transition: all .5s;
         }
 
         #link-2-title {
@@ -106,7 +106,7 @@
             font-size: 1.4rem;
             line-height: 60px;
             padding-top: 0.2rem;
-            transition: top 1s, font-size 1s, left 1s, transform 1s;
+            transition: top .5s, font-size .5s, left .5s, transform .5s;
             width: 200px;
             text-wrap: nowrap;
         }
@@ -120,7 +120,7 @@
             font-family: 'Mundial Thin';
             font-size: 1.6rem;
             line-height: 2rem;
-            transition: top 1s, visibility 1s;
+            transition: top .5s, visibility .5s;
         }
 
         /* Link 3 Styles */
@@ -131,7 +131,7 @@
             background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-2-violet.svg') no-repeat center;
             width: 100px;
             height: 60px;
-            transition: all 1s;
+            transition: all .5s;
         }
 
         #link-3-plus {
@@ -141,7 +141,7 @@
             width: 16px;
             height: 60px;
             background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/plus-button-5289F8.svg') no-repeat center;
-            transition: visibility 1s, opacity 1s, transform 0.2s;
+            transition: all .5s;
         }
 
         #link-3-title {
@@ -152,7 +152,7 @@
             font-size: 1.4rem;
             line-height: 60px;
             padding-top: 0.2rem;
-            transition: top 1s, font-size 1s, left 1s, transform 1s;
+            transition: top .5s, font-size .5s, left .5s, transform .5s;
             width: 200px;
             text-wrap: nowrap;
         }
@@ -166,7 +166,7 @@
             font-family: 'Mundial Thin';
             font-size: 1.6rem;
             line-height: 2rem;
-            transition: top 1s, visibility 1s;
+            transition: top .5s, visibility .5s;
         }
     </style>
 </head>
@@ -305,8 +305,6 @@
                         });
                     }
                 }
-
-                console.log('Captured Initial Styles:', initialStyles);
             }
 
             function section1SelectLink(id) {
@@ -315,7 +313,7 @@
                     mainTitle1.style.top = '200px';
                     mainTitle1.style.left = '0';
                     mainTitle1.style.fontSize = '2rem';
-                    mainTitle1.style.transition = 'top 1s, font-size 1s, left 1s';
+                    mainTitle1.style.transition = 'top .5s, font-size .5s, left .5s';
                 }
 
                 if (backBtn1) {
@@ -386,6 +384,57 @@
                         link1description.style.top = '270px';
                     }
                 }
+
+                // moving link 2
+                if (link2shape) {
+                    link2shape.style.height = '60px';
+                    link2shape.style.width = '100px';
+                    link2shape.style.top = 'calc(100% - 200px)';
+                    link2shape.style.left = 'calc(100% - 340px)';
+                    link2shape.style.transform = 'rotate(180deg)';
+                }
+
+                if (link2plus) {
+                    link2plus.style.visibility = 'visible';
+                    link2plus.style.opacity = '1';
+                    link2plus.style.width = '16px';
+                    link2plus.style.top = 'calc(100% - 200px)';
+                    link2plus.style.left = 'calc(100% - 230px)';
+                }
+
+                if (link2title) {
+                    link2title.style.height = '60px';
+                    link2title.style.width = '100px';
+                    link2title.style.top = 'calc(100% - 200px)';
+                    link2title.style.left = 'calc(100% - 200px)';
+                    link2title.style.fontSize = '1.4rem';
+                }
+
+                // moving link 3
+                if (link3shape) {
+                    link3shape.style.height = '60px';
+                    link3shape.style.width = '100px';
+                    link3shape.style.top = 'calc(100% - 100px)';
+                    link3shape.style.left = 'calc(100% - 340px)';
+                    link3shape.style.transform = 'rotate(180deg)';
+                }
+
+                if (link3plus) {
+                    link3plus.style.visibility = 'visible';
+                    link3plus.style.opacity = '1';
+                    link3plus.style.width = '16px';
+                    link3plus.style.top = 'calc(100% - 100px)';
+                    link3plus.style.left = 'calc(100% - 230px)';
+                }
+
+                if (link3title) {
+                    link3title.style.height = '60px';
+                    link3title.style.width = '100px';
+                    link3title.style.top = 'calc(100% - 100px)';
+                    link3title.style.left = 'calc(100% - 200px)';
+                    link3title.style.fontSize = '1.4rem';
+                }
+
             }
 
             function move2() {
