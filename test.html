@@ -72,11 +72,10 @@
             top: 2000px;
             left: 540px;
             max-width: 600px;
-            visibility: hidden;
             font-family: 'Mundial Thin';
             font-size: 1.6rem;
             line-height: 2rem;
-            transition: top .5s, visibility .5s;
+            transition: top .5s;
         }
 
         /* Link 2 Styles */
@@ -119,11 +118,10 @@
             top: 2000px;
             left: 540px;
             max-width: 600px;
-            visibility: hidden;
             font-family: 'Mundial Thin';
             font-size: 1.6rem;
             line-height: 2rem;
-            transition: top .5s, visibility .5s;
+            transition: top .5s;
         }
 
         /* Link 3 Styles */
@@ -166,11 +164,10 @@
             top: 2000px;
             left: 540px;
             max-width: 600px;
-            visibility: hidden;
             font-family: 'Mundial Thin';
             font-size: 1.6rem;
             line-height: 2rem;
-            transition: top .5s, visibility .5s;
+            transition: top .5s;
         }
     </style>
 </head>
@@ -303,19 +300,19 @@
                         initialStyles[id] = {};
                         // List all relevant styles you might change later
                         [
-                            'position', 
-                            'top', 
-                            'left', 
-                            'font-size', 
-                            'line-height', 
-                            'width', 
+                            'position',
+                            'top',
+                            'left',
+                            'font-size',
+                            'line-height',
+                            'width',
                             'height',
-                            'visibility', 
-                            'background-position', 
-                            'transition', 
+                            'visibility',
+                            'opacity',
+                            'background-position',
+                            'transition',
                             'font-weight',
                             'transform',
-                            'opacity'
                         ].forEach((property) => {
                             initialStyles[id][property] = computedStyles.getPropertyValue(property);
                         });
@@ -390,14 +387,8 @@
                 }
 
                 if (link1description) {
-                    if (link1description.style.visibility === 'visible') {
-                        link1description.style.visibility = 'hidden';
-                        link1description.style.top = '370px';
-                        link1description.style.left = '540px';
-                    } else {
-                        link1description.style.visibility = 'visible';
-                        link1description.style.top = '270px';
-                    }
+                    link1description.style.top = '370px';
+                    link1description.style.left = '540px';
                 }
 
                 // moving link 2
@@ -427,6 +418,7 @@
 
                 if (link2description) {
                     link2description.style.top = '2000px'
+                    link1description.style.left = '540px';
                 }
 
                 // moving link 3
@@ -456,9 +448,10 @@
 
                 if (link3description) {
                     link3description.style.top = '2000px'
+                    link1description.style.left = '540px';
                 }
             }
-            
+
 
             function move2() {
                 if (link2shape) {
@@ -484,14 +477,8 @@
                 }
 
                 if (link2description) {
-                    if (link2description.style.visibility === 'visible') {
-                        link2description.style.visibility = 'hidden';
-                        link2description.style.top = '370px';
-                        link2description.style.left = '540px';
-                    } else {
-                        link2description.style.visibility = 'visible';
-                        link2description.style.top = '270px';
-                    }
+                    link2description.style.top = '370px';
+                    link2description.style.left = '540px';
                 }
 
                 // moving link 1
@@ -521,6 +508,7 @@
 
                 if (link1description) {
                     link1description.style.top = '2000px'
+                    link2description.style.left = '540px';
                 }
 
                 // moving link 3
@@ -550,6 +538,7 @@
 
                 if (link3description) {
                     link3description.style.top = '2000px'
+                    link2description.style.left = '540px';
                 }
 
             }
@@ -578,14 +567,8 @@
                 }
 
                 if (link3description) {
-                    if (link3description.style.visibility === 'visible') {
-                        link3description.style.visibility = 'hidden';
-                        link3description.style.top = '370px';
-                        link3description.style.left = '540px';
-                    } else {
-                        link3description.style.visibility = 'visible';
-                        link3description.style.top = '270px';
-                    }
+                    link3description.style.top = '370px';
+                    link3description.style.left = '540px';
                 }
 
                 // moving link 1
@@ -615,6 +598,7 @@
 
                 if (link1description) {
                     link1description.style.top = '2000px'
+                    link3description.style.left = '540px';
                 }
 
                 // moving link 3
@@ -644,6 +628,7 @@
 
                 if (link2description) {
                     link2description.style.top = '2000px'
+                    link3description.style.left = '540px';
                 }
             }
 
