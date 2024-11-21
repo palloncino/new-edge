@@ -42,17 +42,6 @@
                     overflow: hidden;
                 }
 
-                .section-1-about-us__link-title {
-                    position: absolute;
-                    font-family: 'Mundial Regular';
-                    font-size: 1.4rem;
-                    line-height: 24px;
-                    padding-top: 0.2rem;
-                    transition: top .5s, font-size .5s, left .5s, transform .5s;
-                    width: 200px;
-                    text-wrap: nowrap;
-                }
-
                 /* Main title */
                 #section-1-about-us__section-1-main-title {
                     position: absolute;
@@ -71,11 +60,28 @@
                     transition: all .5s;
                 }
 
-                /* Link 1 Styles */
-                #section-1-about-us__link-1-shape {
+                /* Common among links */
+                .section-1-about-us__link-title {
                     position: absolute;
-                    top: calc(100% - 100px);
-                    left: 200px;
+                    font-family: 'Mundial Regular';
+                    font-size: 1.4rem;
+                    line-height: 24px;
+                    padding-top: .4rem;
+                    transition: top .5s, font-size .5s, left .5s, transform .5s;
+                    width: 200px;
+                    text-wrap: nowrap;
+                }
+
+                .section-1-about-us__link-plus {
+                    position: absolute;
+                    width: 16px;
+                    height: 60px;
+                    background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/plus-button-5289F8.svg') no-repeat center;
+                    transition: all .5s;
+                }
+
+                .section-1-about-us__link-shape {
+                    position: absolute;
                     background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-2-violet.svg') no-repeat center;
                     width: 100px;
                     height: 60px;
@@ -83,14 +89,26 @@
                     transition: all .5s;
                 }
 
-                #section-1-about-us__link-1-plus {
+                .section-1-about-us__link-description {
                     position: absolute;
+                    max-width: 600px;
+                    font-family: 'Mundial Thin';
+                    font-size: 1.6rem;
+                    line-height: 2rem;
+                    transition: top .5s;
+                    top: 2000px;
+                    left: 460px;
+                }
+
+                /* Link 1 Styles */
+                #section-1-about-us__link-1-shape {
+                    top: calc(100% - 100px);
+                    left: 200px;
+                }
+
+                #section-1-about-us__link-1-plus {
                     top: calc(100% - 100px);
                     left: calc(200px + 100px + 10px);
-                    width: 16px;
-                    height: 60px;
-                    background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/plus-button-5289F8.svg') no-repeat center;
-                    transition: all .5s;
                 }
 
                 #section-1-about-us__link-1-title {
@@ -98,37 +116,15 @@
                     left: calc(200px + 100px + 10px + 16px + 10px);
                 }
 
-                #section-1-about-us__link-1-description {
-                    position: absolute;
-                    top: 2000px;
-                    left: 540px;
-                    max-width: 600px;
-                    font-family: 'Mundial Thin';
-                    font-size: 1.6rem;
-                    line-height: 2rem;
-                    transition: top .5s;
-                }
-
                 /* Link 2 Styles */
                 #section-1-about-us__link-2-shape {
-                    position: absolute;
                     top: calc(100% - 100px);
                     left: calc(200px + 100px + 10px + 16px + 10px + 200px + 100px);
-                    background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-2-violet.svg') no-repeat center;
-                    width: 100px;
-                    height: 60px;
-                    transform: rotate(0deg);
-                    transition: all .5s;
                 }
 
                 #section-1-about-us__link-2-plus {
-                    position: absolute;
                     top: calc(100% - 100px);
                     left: calc(200px + 100px + 10px + 16px + 10px + 200px + 100px + 100px + 10px);
-                    width: 16px;
-                    height: 60px;
-                    background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/plus-button-5289F8.svg') no-repeat center;
-                    transition: all .5s;
                 }
 
                 #section-1-about-us__link-2-title {
@@ -136,53 +132,20 @@
                     left: calc(200px + 100px + 10px + 16px + 10px + 200px + 100px + 100px + 10px + 16px + 10px);
                 }
 
-                #section-1-about-us__link-2-description {
-                    position: absolute;
-                    top: 2000px;
-                    left: 540px;
-                    max-width: 600px;
-                    font-family: 'Mundial Thin';
-                    font-size: 1.6rem;
-                    line-height: 2rem;
-                    transition: top .5s;
-                }
-
                 /* Link 3 Styles */
                 #section-1-about-us__link-3-shape {
-                    position: absolute;
                     top: calc(100% - 100px);
                     left: calc(200px + 100px + 10px + 16px + 10px + 200px + 100px + 100px + 10px + 16px + 10px + 200px + 100px);
-                    background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-2-violet.svg') no-repeat center;
-                    width: 100px;
-                    height: 60px;
-                    transform: rotate(0deg);
-                    transition: all .5s;
                 }
 
                 #section-1-about-us__link-3-plus {
-                    position: absolute;
                     top: calc(100% - 100px);
                     left: calc(200px + 100px + 10px + 16px + 10px + 200px + 100px + 100px + 10px + 16px + 10px + 200px + 100px + 100px + 10px);
-                    width: 16px;
-                    height: 60px;
-                    background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/plus-button-5289F8.svg') no-repeat center;
-                    transition: all .5s;
                 }
 
                 #section-1-about-us__link-3-title {
                     top: calc(100% - 100px);
                     left: calc(200px + 100px + 10px + 16px + 10px + 200px + 100px + 100px + 10px + 16px + 10px + 200px + 100px + 100px + 10px + 16px + 10px);
-                }
-
-                #section-1-about-us__link-3-description {
-                    position: absolute;
-                    top: 2000px;
-                    left: 540px;
-                    max-width: 600px;
-                    font-family: 'Mundial Thin';
-                    font-size: 1.6rem;
-                    line-height: 2rem;
-                    transition: top .5s;
                 }
             </style>
             <div class="section-padded-content section-1-about-us">
@@ -192,37 +155,44 @@
                         LA NOSTRA STORIA
                     </h1>
 
-                    <div id="section-1-about-us__link-1-shape"></div>
-                    <div id="section-1-about-us__link-1-plus" class="plus-icon" onclick="section1AboutUsSelectLink(1)"></div>
-                    <div id="section-1-about-us__link-1-title" class="section-1-about-us__link-title">LE NOSTRE<br>RADICI</div>
-                    <div id="section-1-about-us__link-1-description">
-                        Lorem ipsum 1 Lorem ipsum 1 Lorem ipsum 1 Lorem ipsum 1 Lorem ipsum 1 Lorem ipsum 1 Lorem ipsum
-                        1 Lorem ipsum 1 Lorem ipsum 1 Lorem ipsum 1
-                        Lorem ipsum 1 Lorem ipsum 1 Lorem ipsum 1 Lorem ipsum 1 Lorem ipsum 1 Lorem ipsum 1 Lorem ipsum
-                        1 Lorem ipsum 1 Lorem ipsum 1 Lorem ipsum 1
+                    <div id="section-1-about-us__link-1-shape" class="section-1-about-us__link-shape"></div>
+                    <div id="section-1-about-us__link-1-plus" class="plus-icon section-1-about-us__link-plus"
+                        onclick="section1AboutUsSelectLink(1)"></div>
+                    <div id="section-1-about-us__link-1-title" class="section-1-about-us__link-title">LE
+                        NOSTRE<br>RADICI</div>
+                    <div id="section-1-about-us__link-1-description" class="section-1-about-us__link-description">
+                        EDGE nasce dalla visione di Alessandra Moretti e Manfredo Sciarretta che dedicano la loro
+                        consolidata esperienza nel campo della consulenza assicurativa alla creazione di uno studio
+                        professionale di nicchia basato su elevati standard di competenza e forte attenzione per il
+                        cliente.
                     </div>
 
-                    <div id="section-1-about-us__link-2-shape"></div>
-                    <div id="section-1-about-us__link-2-plus" class="plus-icon" onclick="section1AboutUsSelectLink(2)"></div>
-                    <div id="section-1-about-us__link-2-title" class="section-1-about-us__link-title">LE PRIME<br>AGGREGAZIONI</div>
-                    <div id="section-1-about-us__link-2-description">
-                        Lorem ipsum 2 Lorem ipsum 2 Lorem ipsum 2 Lorem ipsum 2 Lorem ipsum 2 Lorem ipsum 2 Lorem ipsum
-                        2 Lorem ipsum 2 Lorem ipsum 2 Lorem ipsum 2
-                        Lorem ipsum 2 Lorem ipsum 2 Lorem ipsum 2 Lorem ipsum 2 Lorem ipsum 2 Lorem ipsum 2 Lorem ipsum
-                        2 Lorem ipsum 2 Lorem ipsum 2 Lorem ipsum 2
+                    <div id="section-1-about-us__link-2-shape" class="section-1-about-us__link-shape"></div>
+                    <div id="section-1-about-us__link-2-plus" class="plus-icon section-1-about-us__link-plus"
+                        onclick="section1AboutUsSelectLink(2)"></div>
+                    <div id="section-1-about-us__link-2-title" class="section-1-about-us__link-title">LE
+                        PRIME<br>AGGREGAZIONI</div>
+                    <div id="section-1-about-us__link-2-description" class="section-1-about-us__link-description">
+                        Dal 2014 il nostro percorso di crescita è in costante evoluzione grazie all’arrivo nel gruppo di
+                        realtà d’eccellenza del settore assicurativo. Inizia così un continuo confronto e arricchimento
+                        di valori che porta a raggiungere insieme professionalità, redditività e capacità organizzative
+                        crescenti.
                     </div>
 
-                    <div id="section-1-about-us__link-3-shape"></div>
-                    <div id="section-1-about-us__link-3-plus" class="plus-icon" onclick="section1AboutUsSelectLink(3)"></div>
-                    <div id="section-1-about-us__link-3-title" class="section-1-about-us__link-title">LA CRESCITA<br>CONTINUA</div>
-                    <div id="section-1-about-us__link-3-description">
-                        Lorem ipsum 3 Lorem ipsum 3 Lorem ipsum 3 Lorem ipsum 3 Lorem ipsum 3 Lorem ipsum 3 Lorem ipsum
-                        3 Lorem ipsum 3 Lorem ipsum 3 Lorem ipsum 3
-                        Lorem ipsum 3 Lorem ipsum 3 Lorem ipsum 3 Lorem ipsum 3 Lorem ipsum 3 Lorem ipsum 3 Lorem ipsum
-                        3 Lorem ipsum 3 Lorem ipsum 3 Lorem ipsum 3
+                    <div id="section-1-about-us__link-3-shape" class="section-1-about-us__link-shape"></div>
+                    <div id="section-1-about-us__link-3-plus" class="plus-icon section-1-about-us__link-plus"
+                        onclick="section1AboutUsSelectLink(3)"></div>
+                    <div id="section-1-about-us__link-3-title" class="section-1-about-us__link-title">LA
+                        CRESCITA<br>CONTINUA</div>
+                    <div id="section-1-about-us__link-3-description" class="section-1-about-us__link-description">
+                        I traguardi di oggi sono il punto di partenza per il miglioramento di domani. Con questo
+                        approccio e grazie alla aggregazione di consulenti qualificati, continuiamo a perfezionare i
+                        processi di intermediazione assicurativa, proponendo soluzioni tecnicamente avanzate che
+                        rappresentano l’equilibrio tra le esigenze del cliente e le concrete opportunità del mercato.
                     </div>
 
-                    <div id="section-1-about-us__back-btn" class="btn btn-F69701 color-FFF" onclick="section1AboutUsUnselect()">Back
+                    <div id="section-1-about-us__back-btn" class="btn btn-F69701 color-FFF"
+                        onclick="section1AboutUsUnselect()">Back
                     </div>
                 </div>
             </div>
@@ -247,6 +217,10 @@
                     const link3plus = document.querySelector('#section-1-about-us__link-3-plus');
                     const link3title = document.querySelector('#section-1-about-us__link-3-title');
                     const link3description = document.querySelector('#section-1-about-us__link-3-description');
+
+                    const PARAGRAPH_TOP = '370px';
+                    const PARAGRAPH_HIDDEN = '2000px';
+                    const PARAGRAPH_LEFT = '470px';
 
                     // Object to store the initial styles
                     const initialStyles = {};
@@ -277,7 +251,6 @@
                             if (element) {
                                 const computedStyles = window.getComputedStyle(element);
                                 initialStyles[id] = {};
-                                // List all relevant styles you might change later
                                 [
                                     'position',
                                     'top',
@@ -359,21 +332,21 @@
                         if (link1title) {
                             link1title.style.width = '600px';
                             link1title.style.top = '170px';
-                            link1title.style.left = '540px';
+                            link1title.style.left = PARAGRAPH_LEFT;
                             link1title.style.fontSize = '4rem';
                             link1title.style.lineHeight = '4rem';
                             link1title.style.fontWeight = '700';
                         }
 
                         if (link1description) {
-                            link1description.style.top = '370px';
-                            link1description.style.left = '540px';
+                            link1description.style.top = PARAGRAPH_TOP;
+                            link1description.style.left = PARAGRAPH_LEFT;
                         }
 
                         // moving link 2
                         if (link2shape) {
-                            link2shape.style.height = '60px';
                             link2shape.style.width = '100px';
+                            link2shape.style.height = '60px';
                             link2shape.style.top = 'calc(100% - 200px)';
                             link2shape.style.left = 'calc(100% - 340px)';
                             link2shape.style.transform = 'rotate(180deg)';
@@ -388,22 +361,22 @@
                         }
 
                         if (link2title) {
-                            link2title.style.height = '60px';
                             link2title.style.width = '100px';
                             link2title.style.top = 'calc(100% - 200px)';
                             link2title.style.left = 'calc(100% - 200px)';
                             link2title.style.fontSize = '1.4rem';
+                            link2title.style.lineHeight = '24px';
                         }
 
                         if (link2description) {
-                            link2description.style.top = '2000px'
-                            link1description.style.left = '540px';
+                            link2description.style.top = PARAGRAPH_HIDDEN;
+                            link1description.style.left = PARAGRAPH_LEFT;
                         }
 
                         // moving link 3
                         if (link3shape) {
-                            link3shape.style.height = '60px';
                             link3shape.style.width = '100px';
+                            link3shape.style.height = '60px';
                             link3shape.style.top = 'calc(100% - 100px)';
                             link3shape.style.left = 'calc(100% - 340px)';
                             link3shape.style.transform = 'rotate(180deg)';
@@ -418,16 +391,16 @@
                         }
 
                         if (link3title) {
-                            link3title.style.height = '60px';
                             link3title.style.width = '100px';
                             link3title.style.top = 'calc(100% - 100px)';
                             link3title.style.left = 'calc(100% - 200px)';
                             link3title.style.fontSize = '1.4rem';
+                            link3title.style.lineHeight = '24px';
                         }
 
                         if (link3description) {
-                            link3description.style.top = '2000px'
-                            link1description.style.left = '540px';
+                            link3description.style.top = PARAGRAPH_HIDDEN;
+                            link1description.style.left = PARAGRAPH_LEFT;
                         }
                     }
 
@@ -448,21 +421,21 @@
                         if (link2title) {
                             link2title.style.width = '600px';
                             link2title.style.top = '170px';
-                            link2title.style.left = '540px';
+                            link2title.style.left = PARAGRAPH_LEFT;
                             link2title.style.fontSize = '4rem';
                             link2title.style.lineHeight = '4rem';
                             link2title.style.fontWeight = '700';
                         }
 
                         if (link2description) {
-                            link2description.style.top = '370px';
-                            link2description.style.left = '540px';
+                            link2description.style.top = PARAGRAPH_TOP;
+                            link2description.style.left = PARAGRAPH_LEFT;
                         }
 
                         // moving link 1
                         if (link1shape) {
-                            link1shape.style.height = '60px';
                             link1shape.style.width = '100px';
+                            link1shape.style.height = '60px';
                             link1shape.style.top = 'calc(100% - 300px)';
                             link1shape.style.left = 'calc(100% - 340px)';
                             link1shape.style.transform = 'rotate(180deg)';
@@ -477,22 +450,22 @@
                         }
 
                         if (link1title) {
-                            link1title.style.height = '60px';
                             link1title.style.width = '100px';
                             link1title.style.top = 'calc(100% - 300px)';
                             link1title.style.left = 'calc(100% - 200px)';
                             link1title.style.fontSize = '1.4rem';
+                            link1title.style.lineHeight = '24px';
                         }
 
                         if (link1description) {
-                            link1description.style.top = '2000px'
-                            link2description.style.left = '540px';
+                            link1description.style.top = PARAGRAPH_HIDDEN;
+                            link2description.style.left = PARAGRAPH_LEFT;
                         }
 
                         // moving link 3
                         if (link3shape) {
-                            link3shape.style.height = '60px';
                             link3shape.style.width = '100px';
+                            link3shape.style.height = '60px';
                             link3shape.style.top = 'calc(100% - 100px)';
                             link3shape.style.left = 'calc(100% - 340px)';
                             link3shape.style.transform = 'rotate(180deg)';
@@ -507,16 +480,16 @@
                         }
 
                         if (link3title) {
-                            link3title.style.height = '60px';
                             link3title.style.width = '100px';
                             link3title.style.top = 'calc(100% - 100px)';
                             link3title.style.left = 'calc(100% - 200px)';
                             link3title.style.fontSize = '1.4rem';
+                            link3title.style.lineHeight = '24px';
                         }
 
                         if (link3description) {
-                            link3description.style.top = '2000px'
-                            link2description.style.left = '540px';
+                            link3description.style.top = PARAGRAPH_HIDDEN;
+                            link3description.style.left = PARAGRAPH_LEFT;
                         }
 
                     }
@@ -538,21 +511,21 @@
                         if (link3title) {
                             link3title.style.width = '600px';
                             link3title.style.top = '170px';
-                            link3title.style.left = '540px';
+                            link3title.style.left = PARAGRAPH_LEFT;
                             link3title.style.fontSize = '4rem';
                             link3title.style.lineHeight = '4rem';
                             link3title.style.fontWeight = '700';
                         }
 
                         if (link3description) {
-                            link3description.style.top = '370px';
-                            link3description.style.left = '540px';
+                            link3description.style.top = PARAGRAPH_TOP;
+                            link3description.style.left = PARAGRAPH_LEFT;
                         }
 
                         // moving link 1
                         if (link1shape) {
-                            link1shape.style.height = '60px';
                             link1shape.style.width = '100px';
+                            link1shape.style.height = '60px';
                             link1shape.style.top = 'calc(100% - 300px)';
                             link1shape.style.left = 'calc(100% - 340px)';
                             link1shape.style.transform = 'rotate(180deg)';
@@ -567,22 +540,22 @@
                         }
 
                         if (link1title) {
-                            link1title.style.height = '60px';
                             link1title.style.width = '100px';
                             link1title.style.top = 'calc(100% - 300px)';
                             link1title.style.left = 'calc(100% - 200px)';
                             link1title.style.fontSize = '1.4rem';
+                            link1title.style.lineHeight = '24px';
                         }
 
                         if (link1description) {
-                            link1description.style.top = '2000px'
-                            link3description.style.left = '540px';
+                            link1description.style.top = PARAGRAPH_HIDDEN;
+                            link1description.style.left = PARAGRAPH_LEFT;
                         }
 
-                        // moving link 3
+                        // moving link 2
                         if (link2shape) {
-                            link2shape.style.height = '60px';
                             link2shape.style.width = '100px';
+                            link2shape.style.height = '60px';
                             link2shape.style.top = 'calc(100% - 100px)';
                             link2shape.style.left = 'calc(100% - 340px)';
                             link2shape.style.transform = 'rotate(180deg)';
@@ -597,16 +570,16 @@
                         }
 
                         if (link2title) {
-                            link2title.style.height = '60px';
                             link2title.style.width = '100px';
                             link2title.style.top = 'calc(100% - 100px)';
                             link2title.style.left = 'calc(100% - 200px)';
                             link2title.style.fontSize = '1.4rem';
+                            link2title.style.lineHeight = '24px';
                         }
 
                         if (link2description) {
-                            link2description.style.top = '2000px'
-                            link3description.style.left = '540px';
+                            link2description.style.top = PARAGRAPH_HIDDEN;
+                            link3description.style.left = PARAGRAPH_LEFT;
                         }
                     }
 
