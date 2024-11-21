@@ -8,6 +8,76 @@
     <link rel="stylesheet" href="./assets/css/global.css">
     <link rel="stylesheet" href="./assets/css/header.css">
     <title>TEST</title>
+    <!-- Common Styles -->
+    <style>
+        .section-1-test {
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Main title */
+        #section-1-main-title {
+            position: absolute;
+            top: 0;
+            margin-top: 100px;
+            z-index: 20;
+            transition: top 1s, font-size 1s, left 1s;
+        }
+
+        /* Back button */
+        #section-1-back-btn {
+            position: absolute;
+            top: calc(100% - 100px);
+            left: -600px;
+            transition: all 1s;
+        }
+
+        /* Link 1 Styles */
+        #link-1-shape {
+            position: absolute;
+            top: calc(100% - 100px);
+            left: 0;
+            background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-2-violet.svg') no-repeat center;
+            width: 100px;
+            height: 60px;
+            transition: all 1s;
+        }
+
+        #link-1-plus {
+            position: absolute;
+            top: calc(100% - 100px);
+            left: calc(100px + 10px);
+            width: 16px;
+            height: 60px;
+            background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/plus-button-5289F8.svg') no-repeat center;
+            transition: visibility 1s, opacity 1s, transform 0.2s;
+        }
+
+        #link-1-title {
+            position: absolute;
+            top: calc(100% - 100px);
+            left: calc(100px + 10px + 16px + 10px);
+            font-family: 'Mundial Regular';
+            font-size: 1.4rem;
+            line-height: 60px;
+            padding-top: 0.2rem;
+            transition: top 1s, font-size 1s, left 1s, transform 1s;
+            width: 200px;
+            text-wrap: nowrap;
+        }
+
+        #link-1-description {
+            position: absolute;
+            top: 2000px;
+            left: 540px;
+            max-width: 600px;
+            visibility: hidden;
+            font-family: 'Mundial Thin';
+            font-size: 1.6rem;
+            line-height: 2rem;
+            transition: top 1s, visibility 1s;
+        }
+    </style>
 </head>
 
 <body>
@@ -18,7 +88,7 @@
         <div id="edge-header" class="edge-header">
             <div id="header-logo-container" class="header-logo-container">
                 <img class="header-logo-img" src="./assets/svgs/logo.svg" alt="Edge"
-                    onClick="window.location = './front-page.html';" style="cursor: pointer;" />
+                    onclick="window.location = './front-page.html';" style="cursor: pointer;" />
                 <h1 class="header-logo-edge">edge</h1>
             </div>
             <div class="header-navigation-links-container">
@@ -36,90 +106,16 @@
         <div class="inner-app-container">
 
             <!-- LA NOSTRA STORIA -->
-             
-            <!-- Common area -->
-            <style>
-                .section-1-test {
-                    position: relative;
-                    overflow: hidden;
-                }
 
-                /* main title  */
-                #section-1-main-title {
-                    position: absolute;
-                    top: 0;
-                    margin-top: 100px;
-                    z-index: 20;
-                }
-                #section-1-back-btn {
-                    position: absolute;
-                    top: calc(100% - 100px);
-                    left: -600px;
-                    transition: all 1s;
-                }
-            </style>
-
-            <!-- link 1 -->
-            <style>
-                /* svg shape */
-                #link-1-shape {
-                    position: absolute;
-                    top: calc(100% - 100px);
-                    left: 0;
-                    background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-2-violet.svg');
-                    background-repeat: no-repeat;
-                    background-position: center;
-                    width: 100px;
-                    height: 60px;
-                    transition: all 1s;
-                }
-
-                #link-1-plus {
-                    position: absolute;
-                    top: calc(100% - 100px);
-                    left: calc(100px + 10px); /* calc(link-1-shape width, some margin) */
-                    width: 16px;
-                    background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/plus-button-5289F8.svg');
-                    background-repeat: no-repeat;
-                    background-position: center;
-                    height: 60px;
-                    transition: visibility 1s, opacity 1s, transform .2s;
-                }
-
-                #link-1-title {
-                    position: absolute;
-                    top: calc(100% - 100px);
-                    left: calc(100px + 10px + 16px + 10px); /* calc(link-1-shape width, some margin, plus icon, some margin) */
-                    font-family: 'Mundial Regular';
-                    font-size: 1.4rem;
-                    line-height: 60px;
-                    transition: top 1s, font-size 1s, left 1s, transform 1s;
-                    padding-top: .2rem;
-                }
-
-                #link-1-description {
-                    position: absolute;
-                    visibility: hidden;
-                    /* visibility visible when active */
-                    font-size: 1.6rem;
-                    line-height: 2rem;
-                    font-family: 'Mundial Thin';
-                    max-width: 600px;
-                    top: 2000px;
-                    left: 540px;
-                    transition: top 1s, visibility 1s;
-                }
-            </style>
-            
             <div class="section-padded-content section-1-test">
                 <div class="section-padded-content-relative-container">
-                    
+
                     <h1 class="h1-xl color-3B1473" id="section-1-main-title">
                         LA NOSTRA STORIA
                     </h1>
 
                     <div id="link-1-shape"></div>
-                    <div id="link-1-plus" class="plus-icon" onclick="toggleDescription(1)"></div>
+                    <div id="link-1-plus" class="plus-icon" onclick="section1SelectLink(1)"></div>
                     <div id="link-1-title">LE NOSTRE RADICI</div>
                     <div id="link-1-description">
                         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam aut ex nisi necessitatibus maxime
@@ -128,105 +124,150 @@
                         fugit in tempora unde earum.
                     </div>
 
-
-                    <div id="section-1-back-btn" class="btn btn-F69701 color-FFF">Back</div>
+                    <div id="section-1-back-btn" class="btn btn-F69701 color-FFF" onclick="section1Unselect()">Back</div>
                 </div>
             </div>
-            <script>
-                document.addEventListener('DOMContentLoaded', function () {
 
-                    // Common
-                    const mainTitle1 = document.querySelector('#section-1-main-title');
-                    const backBtn1 = document.querySelector('#section-1-back-btn');
-                    // 1
-                    const link1shape = document.querySelector('#link-1-shape');
-                    const link1plus = document.querySelector('#link-1-plus');
-                    const link1title = document.querySelector('#link-1-title');
-                    const link1description = document.querySelector('#link-1-description');
-                    // 2
-                    // ...
-                    // 3
-                    // ...
-
-                    function toggleDescription(id) {
-
-                        if (mainTitle1) {
-                            mainTitle1.style.position = 'absolute';
-                            mainTitle1.style.top = '200px';
-                            mainTitle1.style.left = '0';
-                            mainTitle1.style.fontSize = '2rem';
-                            mainTitle1.style.transition = 'top 1s, font-size 1s, left 1s';
-                        }
-
-                        if (backBtn1) {
-                            backBtn1.style.left = '0';
-                        }
-
-
-                        switch (id) {
-                            case 1:
-                                moveLink1();
-                                break;
-
-                            case 2:
-                                // moveLink2();
-                                break;
-
-                            case 3:
-                                // moveLink3();
-                                break;
-
-                            default:
-                                break;
-                        }
-
-                    }
-
-                    function moveLink1() {
-                        if (link1shape) {
-                            link1shape.style.height = '160px';
-                            link1shape.style.width = '270px';
-                            link1shape.style.top = '170px';
-                            link1shape.style.left = '0';
-                            link1shape.style.backgroundPosition = 'center';
-                        }
-
-                        if (link1plus) {
-                            link1plus.style.visibility = 'hidden'
-                            link1plus.style.width = 0;
-                        }
-                        if (link1title) {
-                            link1title.style.top = '170px';
-                            link1title.style.left = '540px';
-                            link1title.style.fontSize = '4rem';
-                            link1title.style.lineHeight = '4rem';
-                            link1title.style.fontWeight = '700';
-                        }
-
-
-                        if (link1description) {
-                            if (link1description.style.visibility === 'visible') {
-                                link1description.style.visibility = 'hidden';
-                                link1description.style.top = '370px';
-                                link1description.style.left = '540px';
-                            } else {
-                                link1description.style.visibility = 'visible';
-                                link1description.style.top = '270px';
-                            }
-                        } else {
-                            console.error('link1description element not found');
-                        }
-                    }
-
-                    // Expose the function to the global scope
-                    window.toggleDescription = toggleDescription;
-                });
-            </script>
-
-
+            <!-- Additional Sections -->
             <div class="section-padded-content section-2-test" style="background: grey"></div>
         </div>
     </div>
+
+    <!-- Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // Common elements
+            const mainTitle1 = document.querySelector('#section-1-main-title');
+            const backBtn1 = document.querySelector('#section-1-back-btn');
+            // Link 1 elements
+            const link1shape = document.querySelector('#link-1-shape');
+            const link1plus = document.querySelector('#link-1-plus');
+            const link1title = document.querySelector('#link-1-title');
+            const link1description = document.querySelector('#link-1-description');
+            // Link 2 elements (if any)
+            const link2shape = document.querySelector('#link-2-shape');
+            const link2plus = document.querySelector('#link-2-plus');
+            const link2title = document.querySelector('#link-2-title');
+            const link2description = document.querySelector('#link-2-description');
+            // Link 3 elements (if any)
+            const link3shape = document.querySelector('#link-3-shape');
+            const link3plus = document.querySelector('#link-3-plus');
+            const link3title = document.querySelector('#link-3-title');
+            const link3description = document.querySelector('#link-3-description');
+
+            // Object to store the initial styles
+            const initialStyles = {};
+
+            function captureInitialStyles() {
+                // Capture computed styles for all elements
+                const elements = {
+                    'section-1-main-title': mainTitle1,
+                    'section-1-back-btn': backBtn1,
+                    'link-1-shape': link1shape,
+                    'link-1-plus': link1plus,
+                    'link-1-title': link1title,
+                    'link-1-description': link1description,
+                    // Add other elements as needed
+                };
+
+                for (const [id, element] of Object.entries(elements)) {
+                    if (element) {
+                        const computedStyles = window.getComputedStyle(element);
+                        initialStyles[id] = {};
+                        // List all relevant styles you might change later
+                        [
+                            'position', 'top', 'left', 'font-size', 'line-height', 'width', 'height',
+                            'visibility', 'background-position', 'transition', 'font-weight',
+                        ].forEach((property) => {
+                            initialStyles[id][property] = computedStyles.getPropertyValue(property);
+                        });
+                    }
+                }
+
+                console.log('Captured Initial Styles:', initialStyles);
+            }
+
+            function section1SelectLink(id) {
+                if (mainTitle1) {
+                    mainTitle1.style.position = 'absolute';
+                    mainTitle1.style.top = '200px';
+                    mainTitle1.style.left = '0';
+                    mainTitle1.style.fontSize = '2rem';
+                    mainTitle1.style.transition = 'top 1s, font-size 1s, left 1s';
+                }
+
+                if (backBtn1) {
+                    backBtn1.style.left = '0';
+                }
+
+                switch (id) {
+                    case 1:
+                        move1();
+                        break;
+                    // Add cases for other links as needed
+                    default:
+                        break;
+                }
+            }
+
+            function section1Unselect() {
+                // Restore the initial styles of all elements
+                for (const [id, savedStyles] of Object.entries(initialStyles)) {
+                    console.log(id, savedStyles);
+                    const element = document.querySelector(`#${id}`);
+                    if (element) {
+                        Object.entries(savedStyles).forEach(([property, value]) => {
+                            element.style.setProperty(property, value);
+                        });
+                    }
+                }
+            }
+
+            function move1() {
+                if (link1shape) {
+                    link1shape.style.height = '160px';
+                    link1shape.style.width = '270px';
+                    link1shape.style.top = '170px';
+                    link1shape.style.left = '0';
+                    link1shape.style.backgroundPosition = 'center';
+                }
+
+                if (link1plus) {
+                    link1plus.style.visibility = 'hidden';
+                    link1plus.style.width = '0';
+                }
+
+                if (link1title) {
+                    link1title.style.width = '600px';
+                    link1title.style.top = '170px';
+                    link1title.style.left = '540px';
+                    link1title.style.fontSize = '4rem';
+                    link1title.style.lineHeight = '4rem';
+                    link1title.style.fontWeight = '700';
+                }
+
+                if (link1description) {
+                    if (link1description.style.visibility === 'visible') {
+                        link1description.style.visibility = 'hidden';
+                        link1description.style.top = '370px';
+                        link1description.style.left = '540px';
+                    } else {
+                        link1description.style.visibility = 'visible';
+                        link1description.style.top = '270px';
+                    }
+                }
+            }
+
+            // Capture initial styles after DOM is ready
+            captureInitialStyles();
+
+            // Expose functions globally
+            window.section1SelectLink = section1SelectLink;
+            window.section1Unselect = section1Unselect;
+        });
+    </script>
+
 </body>
 
 </html>
