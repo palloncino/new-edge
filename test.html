@@ -55,6 +55,7 @@
                 #link-1-shape {
                     position: absolute;
                     top: calc(100% - 100px);
+                    left: 0;
                     background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-2-violet.svg');
                     background-repeat: no-repeat;
                     background-position: center;
@@ -66,20 +67,24 @@
                 #link-1-plus {
                     position: absolute;
                     top: calc(100% - 100px);
+                    left: calc(100px + 10px); /* calc(link-1-shape width, some margin) */
                     width: 16px;
-                    height: 16px;
-                    transition: visibility 1s, opacity 1s, transform .2s;
                     background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/plus-button-5289F8.svg');
                     background-repeat: no-repeat;
+                    background-position: center;
+                    height: 60px;
+                    transition: visibility 1s, opacity 1s, transform .2s;
                 }
 
                 #link-1-title {
                     position: absolute;
                     top: calc(100% - 100px);
+                    left: calc(100px + 10px + 16px + 10px); /* calc(link-1-shape width, some margin, plus icon, some margin) */
                     font-family: 'Mundial Regular';
                     font-size: 1.4rem;
-                    line-height: 1.4rem;
+                    line-height: 60px;
                     transition: top 1s, font-size 1s, left 1s, transform 1s;
+                    padding-top: .2rem;
                 }
 
                 #link-1-description {
@@ -133,7 +138,7 @@
                         if (mainTitle) {
                             mainTitle.style.position = 'absolute';
                             mainTitle.style.top = '200px';
-                            mainTitle.style.left = '200px';
+                            mainTitle.style.left = '0';
                             mainTitle.style.fontSize = '2rem';
                             mainTitle.style.transition = 'top 1s, font-size 1s, left 1s';
                         }
@@ -160,9 +165,11 @@
 
                     function moveLink1() {
                         if (link1shape) {
-                            link1shape.style.height = '220px';
+                            link1shape.style.height = '160px';
                             link1shape.style.width = '270px';
-                            link1shape.style.backgroundPosition = 'top';
+                            link1shape.style.top = '170px';
+                            link1shape.style.left = '0';
+                            link1shape.style.backgroundPosition = 'center';
                         }
 
                         if (link1plus) {
@@ -170,7 +177,11 @@
                             link1plus.style.width = 0;
                         }
                         if (link1title) {
-                            
+                            link1title.style.top = '170px';
+                            link1title.style.left = '540px';
+                            link1title.style.fontSize = '4rem';
+                            link1title.style.lineHeight = '4rem';
+                            link1title.style.fontWeight = '700';
                         }
 
 
