@@ -1,0 +1,139 @@
+.section-3-about-us {
+    position: relative;
+    overflow: hidden;
+}
+
+.section-3-about-us-content {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    transform: translateX(-100%);
+    transition: transform 0.5s ease-in-out;
+    z-index: 20;
+}
+
+.section-3-about-us-content.active {
+    transform: translateX(0);
+}
+
+/* Main title */
+#section-3-about-us__main-title {
+    position: absolute;
+    top: 50%;
+    left: 70%;
+    transform: translate(-50%, -50%);
+    z-index: 20;
+    transition: top .5s, font-size .5s, left .5s, transform .5s;
+}
+
+/* Back button */
+#section-3-about-us__back-btn {
+    position: absolute;
+    top: calc(100% - 100px);
+    left: -600px;
+    transition: all .5s;
+}
+
+/* Common among links */
+.section-3-about-us__link-title {
+    position: absolute;
+    font-family: 'Mundial Regular';
+    font-size: 1.4rem;
+    line-height: 84px;
+    padding-top: .2rem;
+    transition: top .5s, font-size .5s, left .5s, transform .5s;
+    width: 200px;
+    text-wrap: nowrap;
+}
+
+.section-3-about-us__link-plus {
+    position: absolute;
+    width: 16px;
+    height: 84px;
+    background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/plus-button-5289F8.svg') no-repeat center;
+    transition: all .5s;
+}
+
+.section-3-about-us__link-shape {
+    position: absolute;
+    background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-3-lightblue.svg') no-repeat center;
+    width: 90px;
+    height: 84px;
+    transform: rotate(180deg);
+    transition: all .5s;
+}
+
+.section-3-about-us__link-description {
+    position: absolute;
+    max-width: 600px;
+    font-family: 'Mundial Thin';
+    font-size: 1.6rem;
+    line-height: 2rem;
+    transition: top .5s;
+    top: 2000px;
+    left: 460px;
+}
+
+/* Link 1 Styles */
+#section-3-about-us__link-1-shape {
+    top: 200px;
+    left: 200px;
+}
+
+#section-3-about-us__link-1-plus {
+    top: 200px;
+    left: calc(200px + 100px + 10px);
+}
+
+#section-3-about-us__link-1-title {
+    top: 200px;
+    left: calc(200px + 100px + 10px + 16px + 10px);
+}
+
+/* Link 2 Styles */
+#section-3-about-us__link-2-shape {
+    top: calc(200px + 100px);
+    left: 200px;
+}
+
+#section-3-about-us__link-2-plus {
+    top: calc(200px + 100px);
+    left: calc(200px + 100px + 10px);
+}
+
+#section-3-about-us__link-2-title {
+    top: calc(200px + 100px);
+    left: calc(200px + 100px + 10px + 16px + 10px);
+}
+
+/* Link 3 Styles */
+#section-3-about-us__link-3-shape {
+    top: calc(200px + 100px + 100px);
+    left: 200px;
+}
+
+#section-3-about-us__link-3-plus {
+    top: calc(200px + 100px + 100px);
+    left: calc(200px + 100px + 10px);
+}
+
+#section-3-about-us__link-3-title {
+    top: calc(200px + 100px + 100px);
+    left: calc(200px + 100px + 10px + 16px + 10px);
+}
+
+/* Link 4 Styles */
+#section-3-about-us__link-4-shape {
+    top: calc(200px + 100px + 100px + 100px);
+    left: 200px;
+}
+
+#section-3-about-us__link-4-plus {
+    top: calc(200px + 100px + 100px + 100px);
+    left: calc(200px + 100px + 10px);
+}
+
+#section-3-about-us__link-4-title {
+    top: calc(200px + 100px + 100px + 100px);
+    left: calc(200px + 100px + 10px + 16px + 10px);
+}
