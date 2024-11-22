@@ -44,6 +44,7 @@
     transition: top .5s, font-size .5s, left .5s, transform .5s;
     width: 200px;
     text-wrap: nowrap;
+    z-index: 21;
 }
 
 .section-3-about-us__link-plus {
@@ -52,6 +53,7 @@
     height: 84px;
     background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/plus-button-5289F8.svg') no-repeat center;
     transition: all .5s;
+    z-index: 21;
 }
 
 .section-3-about-us__link-shape {
@@ -61,6 +63,7 @@
     height: 84px;
     transform: rotate(180deg);
     transition: all .5s;
+    z-index: 21;
 }
 
 .section-3-about-us__link-description {

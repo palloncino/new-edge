@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Common elements
-    const mainTitle1 = document.querySelector('#section-3-about-us__main-title');
-    const backBtn1 = document.querySelector('#section-3-about-us__back-btn');
+    const mainTitle3 = document.querySelector('#section-3-about-us__main-title');
+    const backBtn3 = document.querySelector('#section-3-about-us__back-btn');
     // Link 1 elements
     const link1shape = document.querySelector('#section-3-about-us__link-1-shape');
     const link1plus = document.querySelector('#section-3-about-us__link-1-plus');
@@ -28,8 +28,8 @@ document.addEventListener('DOMContentLoaded', function () {
     function captureInitialStyles() {
         // Capture computed styles for all elements
         const elements = {
-            'section-3-about-us__main-title': mainTitle1,
-            'section-3-about-us__back-btn': backBtn1,
+            'section-3-about-us__main-title': mainTitle3,
+            'section-3-about-us__back-btn': backBtn3,
             // Link 1
             'section-3-about-us__link-1-shape': link1shape,
             'section-3-about-us__link-1-plus': link1plus,
@@ -152,12 +152,20 @@ document.addEventListener('DOMContentLoaded', function () {
     const MOVING_LINK_PLUS_VISIBILITY = 'visible';
     const MOVING_LINK_PLUS_OPACITY = '1';
     const MOVING_LINK_PLUS_WIDTH = '16px';
+    const MOVING_LINK_PLUS_HEIGHT = '60px';
     const MOVING_LINK_PLUS_LEFT = 'calc(100% - 230px)';
 
     const MOVING_LINK_TITLE_WIDTH = '100px';
     const MOVING_LINK_TITLE_LEFT = 'calc(100% - 200px)';
     const MOVING_LINK_TITLE_FONT_SIZE = '1.4rem';
-    const MOVING_LINK_TITLE_LINE_HEIGHT = '24px';
+    const MOVING_LINK_TITLE_LINE_HEIGHT = '60px';
+
+    /* Specifics */
+
+    const MOVING_LINK1_TOP = 'calc(100% - 400px)';
+    const MOVING_LINK2_TOP = 'calc(100% - 300px)';
+    const MOVING_LINK3_TOP = 'calc(100% - 200px)';
+    const MOVING_LINK4_TOP = 'calc(100% - 100px)';
 
     function move1() {
         if (link1shape) {
@@ -191,7 +199,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (link2shape) {
             link2shape.style.width = MOVING_LINK_SHAPE_WIDTH;
             link2shape.style.height = MOVING_LINK_SHAPE_HEIGHT;
-            link2shape.style.top = 'calc(100% - 200px)';
+            link2shape.style.top = MOVING_LINK2_TOP;
             link2shape.style.left = MOVING_LINK_SHAPE_LEFT;
             link2shape.style.transform = MOVING_LINK_SHAPE_TRANSFORM;
         }
@@ -200,13 +208,14 @@ document.addEventListener('DOMContentLoaded', function () {
             link2plus.style.visibility = MOVING_LINK_PLUS_VISIBILITY;
             link2plus.style.opacity = MOVING_LINK_PLUS_OPACITY;
             link2plus.style.width = MOVING_LINK_PLUS_WIDTH;
-            link2plus.style.top = 'calc(100% - 200px)';
+            link2plus.style.height = MOVING_LINK_PLUS_HEIGHT
+            link2plus.style.top = MOVING_LINK2_TOP;
             link2plus.style.left = MOVING_LINK_PLUS_LEFT;
         }
 
         if (link2title) {
             link2title.style.width = MOVING_LINK_TITLE_WIDTH;
-            link2title.style.top = 'calc(100% - 200px)';
+            link2title.style.top = MOVING_LINK2_TOP;
             link2title.style.left = MOVING_LINK_TITLE_LEFT;
             link2title.style.fontSize = MOVING_LINK_TITLE_FONT_SIZE;
             link2title.style.lineHeight = MOVING_LINK_TITLE_LINE_HEIGHT;
@@ -221,7 +230,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (link3shape) {
             link3shape.style.width = MOVING_LINK_SHAPE_WIDTH;
             link3shape.style.height = MOVING_LINK_SHAPE_HEIGHT;
-            link3shape.style.top = 'calc(100% - 100px)';
+            link3shape.style.top = MOVING_LINK3_TOP;
             link3shape.style.left = MOVING_LINK_SHAPE_LEFT;
             link3shape.style.transform = MOVING_LINK_SHAPE_TRANSFORM;
         }
@@ -230,13 +239,14 @@ document.addEventListener('DOMContentLoaded', function () {
             link3plus.style.visibility = MOVING_LINK_PLUS_VISIBILITY;
             link3plus.style.opacity = MOVING_LINK_PLUS_OPACITY;
             link3plus.style.width = MOVING_LINK_PLUS_WIDTH;
-            link3plus.style.top = 'calc(100% - 100px)';
+            link3plus.style.height = MOVING_LINK_PLUS_HEIGHT
+            link3plus.style.top = MOVING_LINK3_TOP;
             link3plus.style.left = MOVING_LINK_PLUS_LEFT;
         }
 
         if (link3title) {
             link3title.style.width = MOVING_LINK_TITLE_WIDTH;
-            link3title.style.top = 'calc(100% - 100px)';
+            link3title.style.top = MOVING_LINK3_TOP;
             link3title.style.left = MOVING_LINK_TITLE_LEFT;
             link3title.style.fontSize = MOVING_LINK_TITLE_FONT_SIZE;
             link3title.style.lineHeight = MOVING_LINK_TITLE_LINE_HEIGHT;
@@ -251,7 +261,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (link4shape) {
             link4shape.style.width = MOVING_LINK_SHAPE_WIDTH;
             link4shape.style.height = MOVING_LINK_SHAPE_HEIGHT;
-            link4shape.style.top = 'calc(100% - 50px)';
+            link4shape.style.top = MOVING_LINK4_TOP;
             link4shape.style.left = MOVING_LINK_SHAPE_LEFT;
             link4shape.style.transform = MOVING_LINK_SHAPE_TRANSFORM;
         }
@@ -260,13 +270,14 @@ document.addEventListener('DOMContentLoaded', function () {
             link4plus.style.visibility = MOVING_LINK_PLUS_VISIBILITY;
             link4plus.style.opacity = MOVING_LINK_PLUS_OPACITY;
             link4plus.style.width = MOVING_LINK_PLUS_WIDTH;
-            link4plus.style.top = 'calc(100% - 50px)';
+            link4plus.style.height = MOVING_LINK_PLUS_HEIGHT
+            link4plus.style.top = MOVING_LINK4_TOP;
             link4plus.style.left = MOVING_LINK_PLUS_LEFT;
         }
 
         if (link4title) {
             link4title.style.width = MOVING_LINK_TITLE_WIDTH;
-            link4title.style.top = 'calc(100% - 50px)';
+            link4title.style.top = MOVING_LINK4_TOP;
             link4title.style.left = MOVING_LINK_TITLE_LEFT;
             link4title.style.fontSize = MOVING_LINK_TITLE_FONT_SIZE;
             link4title.style.lineHeight = MOVING_LINK_TITLE_LINE_HEIGHT;
@@ -310,7 +321,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (link1shape) {
             link1shape.style.width = MOVING_LINK_SHAPE_WIDTH;
             link1shape.style.height = MOVING_LINK_SHAPE_HEIGHT;
-            link1shape.style.top = 'calc(100% - 300px)';
+            link1shape.style.top = MOVING_LINK1_TOP;
             link1shape.style.left = MOVING_LINK_SHAPE_LEFT;
             link1shape.style.transform = MOVING_LINK_SHAPE_TRANSFORM;
         }
@@ -319,13 +330,14 @@ document.addEventListener('DOMContentLoaded', function () {
             link1plus.style.visibility = MOVING_LINK_PLUS_VISIBILITY;
             link1plus.style.opacity = MOVING_LINK_PLUS_OPACITY;
             link1plus.style.width = MOVING_LINK_PLUS_WIDTH;
-            link1plus.style.top = 'calc(100% - 300px)';
+            link1plus.style.height = MOVING_LINK_PLUS_HEIGHT
+            link1plus.style.top = MOVING_LINK1_TOP;
             link1plus.style.left = MOVING_LINK_PLUS_LEFT;
         }
 
         if (link1title) {
             link1title.style.width = MOVING_LINK_TITLE_WIDTH;
-            link1title.style.top = 'calc(100% - 300px)';
+            link1title.style.top = MOVING_LINK1_TOP;
             link1title.style.left = MOVING_LINK_TITLE_LEFT;
             link1title.style.fontSize = MOVING_LINK_TITLE_FONT_SIZE;
             link1title.style.lineHeight = MOVING_LINK_TITLE_LINE_HEIGHT;
@@ -340,7 +352,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (link3shape) {
             link3shape.style.width = MOVING_LINK_SHAPE_WIDTH;
             link3shape.style.height = MOVING_LINK_SHAPE_HEIGHT;
-            link3shape.style.top = 'calc(100% - 100px)';
+            link3shape.style.top = MOVING_LINK3_TOP;
             link3shape.style.left = MOVING_LINK_SHAPE_LEFT;
             link3shape.style.transform = MOVING_LINK_SHAPE_TRANSFORM;
         }
@@ -349,13 +361,14 @@ document.addEventListener('DOMContentLoaded', function () {
             link3plus.style.visibility = MOVING_LINK_PLUS_VISIBILITY;
             link3plus.style.opacity = MOVING_LINK_PLUS_OPACITY;
             link3plus.style.width = MOVING_LINK_PLUS_WIDTH;
-            link3plus.style.top = 'calc(100% - 100px)';
+            link3plus.style.height = MOVING_LINK_PLUS_HEIGHT
+            link3plus.style.top = MOVING_LINK3_TOP;
             link3plus.style.left = MOVING_LINK_PLUS_LEFT;
         }
 
         if (link3title) {
             link3title.style.width = MOVING_LINK_TITLE_WIDTH;
-            link3title.style.top = 'calc(100% - 100px)';
+            link3title.style.top = MOVING_LINK3_TOP;
             link3title.style.left = MOVING_LINK_TITLE_LEFT;
             link3title.style.fontSize = MOVING_LINK_TITLE_FONT_SIZE;
             link3title.style.lineHeight = MOVING_LINK_TITLE_LINE_HEIGHT;
@@ -370,7 +383,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (link4shape) {
             link4shape.style.width = MOVING_LINK_SHAPE_WIDTH;
             link4shape.style.height = MOVING_LINK_SHAPE_HEIGHT;
-            link4shape.style.top = 'calc(100% - 50px)';
+            link4shape.style.top = MOVING_LINK4_TOP;
             link4shape.style.left = MOVING_LINK_SHAPE_LEFT;
             link4shape.style.transform = MOVING_LINK_SHAPE_TRANSFORM;
         }
@@ -379,13 +392,14 @@ document.addEventListener('DOMContentLoaded', function () {
             link4plus.style.visibility = MOVING_LINK_PLUS_VISIBILITY;
             link4plus.style.opacity = MOVING_LINK_PLUS_OPACITY;
             link4plus.style.width = MOVING_LINK_PLUS_WIDTH;
-            link4plus.style.top = 'calc(100% - 50px)';
+            link4plus.style.height = MOVING_LINK_PLUS_HEIGHT
+            link4plus.style.top = MOVING_LINK4_TOP;
             link4plus.style.left = MOVING_LINK_PLUS_LEFT;
         }
 
         if (link4title) {
             link4title.style.width = MOVING_LINK_TITLE_WIDTH;
-            link4title.style.top = 'calc(100% - 50px)';
+            link4title.style.top = MOVING_LINK4_TOP;
             link4title.style.left = MOVING_LINK_TITLE_LEFT;
             link4title.style.fontSize = MOVING_LINK_TITLE_FONT_SIZE;
             link4title.style.lineHeight = MOVING_LINK_TITLE_LINE_HEIGHT;
@@ -429,7 +443,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (link1shape) {
             link1shape.style.width = MOVING_LINK_SHAPE_WIDTH;
             link1shape.style.height = MOVING_LINK_SHAPE_HEIGHT;
-            link1shape.style.top = 'calc(100% - 300px)';
+            link1shape.style.top = MOVING_LINK1_TOP;
             link1shape.style.left = MOVING_LINK_SHAPE_LEFT;
             link1shape.style.transform = MOVING_LINK_SHAPE_TRANSFORM;
         }
@@ -438,13 +452,14 @@ document.addEventListener('DOMContentLoaded', function () {
             link1plus.style.visibility = MOVING_LINK_PLUS_VISIBILITY;
             link1plus.style.opacity = MOVING_LINK_PLUS_OPACITY;
             link1plus.style.width = MOVING_LINK_PLUS_WIDTH;
-            link1plus.style.top = 'calc(100% - 300px)';
+            link1plus.style.height = MOVING_LINK_PLUS_HEIGHT
+            link1plus.style.top = MOVING_LINK1_TOP;
             link1plus.style.left = MOVING_LINK_PLUS_LEFT;
         }
 
         if (link1title) {
             link1title.style.width = MOVING_LINK_TITLE_WIDTH;
-            link1title.style.top = 'calc(100% - 300px)';
+            link1title.style.top = MOVING_LINK1_TOP;
             link1title.style.left = MOVING_LINK_TITLE_LEFT;
             link1title.style.fontSize = MOVING_LINK_TITLE_FONT_SIZE;
             link1title.style.lineHeight = MOVING_LINK_TITLE_LINE_HEIGHT;
@@ -459,7 +474,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (link2shape) {
             link2shape.style.width = MOVING_LINK_SHAPE_WIDTH;
             link2shape.style.height = MOVING_LINK_SHAPE_HEIGHT;
-            link2shape.style.top = 'calc(100% - 200px)';
+            link2shape.style.top = MOVING_LINK2_TOP;
             link2shape.style.left = MOVING_LINK_SHAPE_LEFT;
             link2shape.style.transform = MOVING_LINK_SHAPE_TRANSFORM;
         }
@@ -468,13 +483,14 @@ document.addEventListener('DOMContentLoaded', function () {
             link2plus.style.visibility = MOVING_LINK_PLUS_VISIBILITY;
             link2plus.style.opacity = MOVING_LINK_PLUS_OPACITY;
             link2plus.style.width = MOVING_LINK_PLUS_WIDTH;
-            link2plus.style.top = 'calc(100% - 200px)';
+            link2plus.style.height = MOVING_LINK_PLUS_HEIGHT
+            link2plus.style.top = MOVING_LINK2_TOP;
             link2plus.style.left = MOVING_LINK_PLUS_LEFT;
         }
 
         if (link2title) {
             link2title.style.width = MOVING_LINK_TITLE_WIDTH;
-            link2title.style.top = 'calc(100% - 200px)';
+            link2title.style.top = MOVING_LINK2_TOP;
             link2title.style.left = MOVING_LINK_TITLE_LEFT;
             link2title.style.fontSize = MOVING_LINK_TITLE_FONT_SIZE;
             link2title.style.lineHeight = MOVING_LINK_TITLE_LINE_HEIGHT;
@@ -489,7 +505,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (link4shape) {
             link4shape.style.width = MOVING_LINK_SHAPE_WIDTH;
             link4shape.style.height = MOVING_LINK_SHAPE_HEIGHT;
-            link4shape.style.top = 'calc(100% - 50px)';
+            link4shape.style.top = MOVING_LINK4_TOP;
             link4shape.style.left = MOVING_LINK_SHAPE_LEFT;
             link4shape.style.transform = MOVING_LINK_SHAPE_TRANSFORM;
         }
@@ -498,13 +514,14 @@ document.addEventListener('DOMContentLoaded', function () {
             link4plus.style.visibility = MOVING_LINK_PLUS_VISIBILITY;
             link4plus.style.opacity = MOVING_LINK_PLUS_OPACITY;
             link4plus.style.width = MOVING_LINK_PLUS_WIDTH;
-            link4plus.style.top = 'calc(100% - 50px)';
+            link4plus.style.height = MOVING_LINK_PLUS_HEIGHT
+            link4plus.style.top = MOVING_LINK4_TOP;
             link4plus.style.left = MOVING_LINK_PLUS_LEFT;
         }
 
         if (link4title) {
             link4title.style.width = MOVING_LINK_TITLE_WIDTH;
-            link4title.style.top = 'calc(100% - 50px)';
+            link4title.style.top = MOVING_LINK4_TOP;
             link4title.style.left = MOVING_LINK_TITLE_LEFT;
             link4title.style.fontSize = MOVING_LINK_TITLE_FONT_SIZE;
             link4title.style.lineHeight = MOVING_LINK_TITLE_LINE_HEIGHT;
@@ -548,7 +565,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (link1shape) {
             link1shape.style.width = MOVING_LINK_SHAPE_WIDTH;
             link1shape.style.height = MOVING_LINK_SHAPE_HEIGHT;
-            link1shape.style.top = 'calc(100% - 300px)';
+            link1shape.style.top = MOVING_LINK1_TOP;
             link1shape.style.left = MOVING_LINK_SHAPE_LEFT;
             link1shape.style.transform = MOVING_LINK_SHAPE_TRANSFORM;
         }
@@ -557,13 +574,14 @@ document.addEventListener('DOMContentLoaded', function () {
             link1plus.style.visibility = MOVING_LINK_PLUS_VISIBILITY;
             link1plus.style.opacity = MOVING_LINK_PLUS_OPACITY;
             link1plus.style.width = MOVING_LINK_PLUS_WIDTH;
-            link1plus.style.top = 'calc(100% - 300px)';
+            link1plus.style.height = MOVING_LINK_PLUS_HEIGHT
+            link1plus.style.top = MOVING_LINK1_TOP;
             link1plus.style.left = MOVING_LINK_PLUS_LEFT;
         }
 
         if (link1title) {
             link1title.style.width = MOVING_LINK_TITLE_WIDTH;
-            link1title.style.top = 'calc(100% - 300px)';
+            link1title.style.top = MOVING_LINK1_TOP;
             link1title.style.left = MOVING_LINK_TITLE_LEFT;
             link1title.style.fontSize = MOVING_LINK_TITLE_FONT_SIZE;
             link1title.style.lineHeight = MOVING_LINK_TITLE_LINE_HEIGHT;
@@ -578,7 +596,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (link2shape) {
             link2shape.style.width = MOVING_LINK_SHAPE_WIDTH;
             link2shape.style.height = MOVING_LINK_SHAPE_HEIGHT;
-            link2shape.style.top = 'calc(100% - 200px)';
+            link2shape.style.top = MOVING_LINK2_TOP;
             link2shape.style.left = MOVING_LINK_SHAPE_LEFT;
             link2shape.style.transform = MOVING_LINK_SHAPE_TRANSFORM;
         }
@@ -587,13 +605,14 @@ document.addEventListener('DOMContentLoaded', function () {
             link2plus.style.visibility = MOVING_LINK_PLUS_VISIBILITY;
             link2plus.style.opacity = MOVING_LINK_PLUS_OPACITY;
             link2plus.style.width = MOVING_LINK_PLUS_WIDTH;
-            link2plus.style.top = 'calc(100% - 200px)';
+            link2plus.style.height = MOVING_LINK_PLUS_HEIGHT
+            link2plus.style.top = MOVING_LINK2_TOP;
             link2plus.style.left = MOVING_LINK_PLUS_LEFT;
         }
 
         if (link2title) {
             link2title.style.width = MOVING_LINK_TITLE_WIDTH;
-            link2title.style.top = 'calc(100% - 200px)';
+            link2title.style.top = MOVING_LINK2_TOP;
             link2title.style.left = MOVING_LINK_TITLE_LEFT;
             link2title.style.fontSize = MOVING_LINK_TITLE_FONT_SIZE;
             link2title.style.lineHeight = MOVING_LINK_TITLE_LINE_HEIGHT;
@@ -608,7 +627,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (link3shape) {
             link3shape.style.width = MOVING_LINK_SHAPE_WIDTH;
             link3shape.style.height = MOVING_LINK_SHAPE_HEIGHT;
-            link3shape.style.top = 'calc(100% - 100px)';
+            link3shape.style.top = MOVING_LINK3_TOP;
             link3shape.style.left = MOVING_LINK_SHAPE_LEFT;
             link3shape.style.transform = MOVING_LINK_SHAPE_TRANSFORM;
         }
@@ -617,13 +636,14 @@ document.addEventListener('DOMContentLoaded', function () {
             link3plus.style.visibility = MOVING_LINK_PLUS_VISIBILITY;
             link3plus.style.opacity = MOVING_LINK_PLUS_OPACITY;
             link3plus.style.width = MOVING_LINK_PLUS_WIDTH;
-            link3plus.style.top = 'calc(100% - 100px)';
+            link3plus.style.height = MOVING_LINK_PLUS_HEIGHT
+            link3plus.style.top = MOVING_LINK3_TOP;
             link3plus.style.left = MOVING_LINK_PLUS_LEFT;
         }
 
         if (link3title) {
             link3title.style.width = MOVING_LINK_TITLE_WIDTH;
-            link3title.style.top = 'calc(100% - 100px)';
+            link3title.style.top = MOVING_LINK3_TOP;
             link3title.style.left = MOVING_LINK_TITLE_LEFT;
             link3title.style.fontSize = MOVING_LINK_TITLE_FONT_SIZE;
             link3title.style.lineHeight = MOVING_LINK_TITLE_LINE_HEIGHT;
@@ -634,7 +654,6 @@ document.addEventListener('DOMContentLoaded', function () {
             link3description.style.left = PARAGRAPH_LEFT;
         }
     }
-
 
     // Capture initial styles after DOM is ready
     captureInitialStyles();
