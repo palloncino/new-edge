@@ -110,12 +110,12 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    const PARAGRAPH_TOP = '310px';
+    const PARAGRAPH_TOP = '370px';
     const PARAGRAPH_HIDDEN = '2000px';
     const PARAGRAPH_LEFT = '470px';
 
-    const SELECTED_LINK_SHAPE_HEIGHT = '200px';
-    const SELECTED_LINK_SHAPE_WIDTH = '218px';
+    const SELECTED_LINK_SHAPE_HEIGHT = '150px';
+    const SELECTED_LINK_SHAPE_WIDTH = '250px';
     const SELECTED_LINK_SHAPE_TOP = '170px';
     const SELECTED_LINK_SHAPE_LEFT = '0';
     const SELECTED_LINK_SHAPE_BG_POSITION = 'center';
@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const MOVING_LINK_SHAPE_WIDTH = '100px';
     const MOVING_LINK_SHAPE_HEIGHT = '60px';
     const MOVING_LINK_SHAPE_LEFT = 'calc(100% - 340px)';
-    const MOVING_LINK_SHAPE_TRANSFORM = 'rotate(360deg)';
+    const MOVING_LINK_SHAPE_TRANSFORM = 'rotate(180deg)';
 
     const MOVING_LINK_PLUS_VISIBILITY = 'visible';
     const MOVING_LINK_PLUS_OPACITY = '1';
@@ -146,11 +146,13 @@ document.addEventListener('DOMContentLoaded', function () {
     const MOVING_LINK_TITLE_FONT_SIZE = '1.4rem';
     const MOVING_LINK_TITLE_LINE_HEIGHT = '24px';
 
+    const SHAPE_MIRROR_TRANSFORM = 'scaleX(-1)';
+    const MOVING_LINK_TRANSFORM = `${SHAPE_MIRROR_TRANSFORM} rotate(180deg)`;
+
     /* Specifics */
-    const MOVING_LINK1_TOP = 'calc(100% - 240px - 10px - 10px - 10px)';
-    const MOVING_LINK2_TOP = 'calc(100% - 180px - 10px - 10px)';
-    const MOVING_LINK3_TOP = 'calc(100% - 120px - 10px)';
-    const MOVING_LINK4_TOP = 'calc(100% - 60px)';
+    const MOVING_LINK1_TOP = 'calc(100% - 180px - 10px - 10px)';
+    const MOVING_LINK2_TOP = 'calc(100% - 120px - 10px)';
+    const MOVING_LINK3_TOP = 'calc(100% - 60px)';
 
     function move1() {
         if (link1shape) {
@@ -159,6 +161,7 @@ document.addEventListener('DOMContentLoaded', function () {
             link1shape.style.top = SELECTED_LINK_SHAPE_TOP;
             link1shape.style.left = SELECTED_LINK_SHAPE_LEFT;
             link1shape.style.backgroundPosition = SELECTED_LINK_SHAPE_BG_POSITION;
+            link1shape.style.transform = SHAPE_MIRROR_TRANSFORM;
         }
 
         if (link1plus) {
@@ -186,7 +189,7 @@ document.addEventListener('DOMContentLoaded', function () {
             link2shape.style.height = MOVING_LINK_SHAPE_HEIGHT;
             link2shape.style.top = MOVING_LINK2_TOP;
             link2shape.style.left = MOVING_LINK_SHAPE_LEFT;
-            link2shape.style.transform = MOVING_LINK_SHAPE_TRANSFORM;
+            link2shape.style.transform = MOVING_LINK_TRANSFORM;
         }
 
         if (link2plus) {
@@ -217,7 +220,7 @@ document.addEventListener('DOMContentLoaded', function () {
             link3shape.style.height = MOVING_LINK_SHAPE_HEIGHT;
             link3shape.style.top = MOVING_LINK3_TOP;
             link3shape.style.left = MOVING_LINK_SHAPE_LEFT;
-            link3shape.style.transform = MOVING_LINK_SHAPE_TRANSFORM;
+            link3shape.style.transform = MOVING_LINK_TRANSFORM;
         }
 
         if (link3plus) {
@@ -240,37 +243,6 @@ document.addEventListener('DOMContentLoaded', function () {
         if (link3description) {
             link3description.style.top = PARAGRAPH_HIDDEN;
             link3description.style.left = PARAGRAPH_LEFT;
-        }
-
-        // moving link 4
-        if (link4shape) {
-            link4shape.style.width = MOVING_LINK_SHAPE_WIDTH;
-            link4shape.style.height = MOVING_LINK_SHAPE_HEIGHT;
-            link4shape.style.top = MOVING_LINK4_TOP;
-            link4shape.style.left = MOVING_LINK_SHAPE_LEFT;
-            link4shape.style.transform = MOVING_LINK_SHAPE_TRANSFORM;
-        }
-
-        if (link4plus) {
-            link4plus.style.visibility = MOVING_LINK_PLUS_VISIBILITY;
-            link4plus.style.opacity = MOVING_LINK_PLUS_OPACITY;
-            link4plus.style.width = MOVING_LINK_PLUS_WIDTH;
-            link4plus.style.height = MOVING_LINK_PLUS_HEIGHT
-            link4plus.style.top = MOVING_LINK4_TOP;
-            link4plus.style.left = MOVING_LINK_PLUS_LEFT;
-        }
-
-        if (link4title) {
-            link4title.style.width = MOVING_LINK_TITLE_WIDTH;
-            link4title.style.top = MOVING_LINK4_TOP;
-            link4title.style.left = MOVING_LINK_TITLE_LEFT;
-            link4title.style.fontSize = MOVING_LINK_TITLE_FONT_SIZE;
-            link4title.style.lineHeight = MOVING_LINK_TITLE_LINE_HEIGHT;
-        }
-
-        if (link4description) {
-            link4description.style.top = PARAGRAPH_HIDDEN;
-            link4description.style.left = PARAGRAPH_LEFT;
         }
     }
 
@@ -281,13 +253,14 @@ document.addEventListener('DOMContentLoaded', function () {
             link2shape.style.top = SELECTED_LINK_SHAPE_TOP;
             link2shape.style.left = SELECTED_LINK_SHAPE_LEFT;
             link2shape.style.backgroundPosition = SELECTED_LINK_SHAPE_BG_POSITION;
+            link2shape.style.transform = SHAPE_MIRROR_TRANSFORM;
         }
-
+    
         if (link2plus) {
             link2plus.style.visibility = SELECTED_LINK_PLUS_VISIBILITY;
             link2plus.style.width = SELECTED_LINK_PLUS_WIDTH;
         }
-
+    
         if (link2title) {
             link2title.style.width = SELECTED_LINK_TITLE_WIDTH;
             link2title.style.top = SELECTED_LINK_TITLE_TOP;
@@ -296,30 +269,30 @@ document.addEventListener('DOMContentLoaded', function () {
             link2title.style.lineHeight = SELECTED_LINK_TITLE_LINE_HEIGHT;
             link2title.style.fontWeight = SELECTED_LINK_TITLE_FONT_WEIGHT;
         }
-
+    
         if (link2description) {
             link2description.style.top = PARAGRAPH_TOP;
             link2description.style.left = PARAGRAPH_LEFT;
         }
-
+    
         // moving link 1
         if (link1shape) {
             link1shape.style.width = MOVING_LINK_SHAPE_WIDTH;
             link1shape.style.height = MOVING_LINK_SHAPE_HEIGHT;
             link1shape.style.top = MOVING_LINK1_TOP;
             link1shape.style.left = MOVING_LINK_SHAPE_LEFT;
-            link1shape.style.transform = MOVING_LINK_SHAPE_TRANSFORM;
+            link1shape.style.transform = MOVING_LINK_TRANSFORM;
         }
-
+    
         if (link1plus) {
             link1plus.style.visibility = MOVING_LINK_PLUS_VISIBILITY;
             link1plus.style.opacity = MOVING_LINK_PLUS_OPACITY;
             link1plus.style.width = MOVING_LINK_PLUS_WIDTH;
-            link1plus.style.height = MOVING_LINK_PLUS_HEIGHT
+            link1plus.style.height = MOVING_LINK_PLUS_HEIGHT;
             link1plus.style.top = MOVING_LINK1_TOP;
             link1plus.style.left = MOVING_LINK_PLUS_LEFT;
         }
-
+    
         if (link1title) {
             link1title.style.width = MOVING_LINK_TITLE_WIDTH;
             link1title.style.top = MOVING_LINK1_TOP;
@@ -327,30 +300,30 @@ document.addEventListener('DOMContentLoaded', function () {
             link1title.style.fontSize = MOVING_LINK_TITLE_FONT_SIZE;
             link1title.style.lineHeight = MOVING_LINK_TITLE_LINE_HEIGHT;
         }
-
+    
         if (link1description) {
             link1description.style.top = PARAGRAPH_HIDDEN;
             link1description.style.left = PARAGRAPH_LEFT;
         }
-
+    
         // moving link 3
         if (link3shape) {
             link3shape.style.width = MOVING_LINK_SHAPE_WIDTH;
             link3shape.style.height = MOVING_LINK_SHAPE_HEIGHT;
             link3shape.style.top = MOVING_LINK3_TOP;
             link3shape.style.left = MOVING_LINK_SHAPE_LEFT;
-            link3shape.style.transform = MOVING_LINK_SHAPE_TRANSFORM;
+            link3shape.style.transform = MOVING_LINK_TRANSFORM;
         }
-
+    
         if (link3plus) {
             link3plus.style.visibility = MOVING_LINK_PLUS_VISIBILITY;
             link3plus.style.opacity = MOVING_LINK_PLUS_OPACITY;
             link3plus.style.width = MOVING_LINK_PLUS_WIDTH;
-            link3plus.style.height = MOVING_LINK_PLUS_HEIGHT
+            link3plus.style.height = MOVING_LINK_PLUS_HEIGHT;
             link3plus.style.top = MOVING_LINK3_TOP;
             link3plus.style.left = MOVING_LINK_PLUS_LEFT;
         }
-
+    
         if (link3title) {
             link3title.style.width = MOVING_LINK_TITLE_WIDTH;
             link3title.style.top = MOVING_LINK3_TOP;
@@ -358,44 +331,13 @@ document.addEventListener('DOMContentLoaded', function () {
             link3title.style.fontSize = MOVING_LINK_TITLE_FONT_SIZE;
             link3title.style.lineHeight = MOVING_LINK_TITLE_LINE_HEIGHT;
         }
-
+    
         if (link3description) {
             link3description.style.top = PARAGRAPH_HIDDEN;
             link3description.style.left = PARAGRAPH_LEFT;
         }
-
-        // moving link 4
-        if (link4shape) {
-            link4shape.style.width = MOVING_LINK_SHAPE_WIDTH;
-            link4shape.style.height = MOVING_LINK_SHAPE_HEIGHT;
-            link4shape.style.top = MOVING_LINK4_TOP;
-            link4shape.style.left = MOVING_LINK_SHAPE_LEFT;
-            link4shape.style.transform = MOVING_LINK_SHAPE_TRANSFORM;
-        }
-
-        if (link4plus) {
-            link4plus.style.visibility = MOVING_LINK_PLUS_VISIBILITY;
-            link4plus.style.opacity = MOVING_LINK_PLUS_OPACITY;
-            link4plus.style.width = MOVING_LINK_PLUS_WIDTH;
-            link4plus.style.height = MOVING_LINK_PLUS_HEIGHT
-            link4plus.style.top = MOVING_LINK4_TOP;
-            link4plus.style.left = MOVING_LINK_PLUS_LEFT;
-        }
-
-        if (link4title) {
-            link4title.style.width = MOVING_LINK_TITLE_WIDTH;
-            link4title.style.top = MOVING_LINK4_TOP;
-            link4title.style.left = MOVING_LINK_TITLE_LEFT;
-            link4title.style.fontSize = MOVING_LINK_TITLE_FONT_SIZE;
-            link4title.style.lineHeight = MOVING_LINK_TITLE_LINE_HEIGHT;
-        }
-
-        if (link4description) {
-            link4description.style.top = PARAGRAPH_HIDDEN;
-            link4description.style.left = PARAGRAPH_LEFT;
-        }
     }
-
+    
     function move3() {
         if (link3shape) {
             link3shape.style.height = SELECTED_LINK_SHAPE_HEIGHT;
@@ -403,13 +345,14 @@ document.addEventListener('DOMContentLoaded', function () {
             link3shape.style.top = SELECTED_LINK_SHAPE_TOP;
             link3shape.style.left = SELECTED_LINK_SHAPE_LEFT;
             link3shape.style.backgroundPosition = SELECTED_LINK_SHAPE_BG_POSITION;
+            link3shape.style.transform = SHAPE_MIRROR_TRANSFORM;
         }
-
+    
         if (link3plus) {
             link3plus.style.visibility = SELECTED_LINK_PLUS_VISIBILITY;
             link3plus.style.width = SELECTED_LINK_PLUS_WIDTH;
         }
-
+    
         if (link3title) {
             link3title.style.width = SELECTED_LINK_TITLE_WIDTH;
             link3title.style.top = SELECTED_LINK_TITLE_TOP;
@@ -418,30 +361,30 @@ document.addEventListener('DOMContentLoaded', function () {
             link3title.style.lineHeight = SELECTED_LINK_TITLE_LINE_HEIGHT;
             link3title.style.fontWeight = SELECTED_LINK_TITLE_FONT_WEIGHT;
         }
-
+    
         if (link3description) {
             link3description.style.top = PARAGRAPH_TOP;
             link3description.style.left = PARAGRAPH_LEFT;
         }
-
+    
         // moving link 1
         if (link1shape) {
             link1shape.style.width = MOVING_LINK_SHAPE_WIDTH;
             link1shape.style.height = MOVING_LINK_SHAPE_HEIGHT;
             link1shape.style.top = MOVING_LINK1_TOP;
             link1shape.style.left = MOVING_LINK_SHAPE_LEFT;
-            link1shape.style.transform = MOVING_LINK_SHAPE_TRANSFORM;
+            link1shape.style.transform = MOVING_LINK_TRANSFORM;
         }
-
+    
         if (link1plus) {
             link1plus.style.visibility = MOVING_LINK_PLUS_VISIBILITY;
             link1plus.style.opacity = MOVING_LINK_PLUS_OPACITY;
             link1plus.style.width = MOVING_LINK_PLUS_WIDTH;
-            link1plus.style.height = MOVING_LINK_PLUS_HEIGHT
+            link1plus.style.height = MOVING_LINK_PLUS_HEIGHT;
             link1plus.style.top = MOVING_LINK1_TOP;
             link1plus.style.left = MOVING_LINK_PLUS_LEFT;
         }
-
+    
         if (link1title) {
             link1title.style.width = MOVING_LINK_TITLE_WIDTH;
             link1title.style.top = MOVING_LINK1_TOP;
@@ -449,30 +392,30 @@ document.addEventListener('DOMContentLoaded', function () {
             link1title.style.fontSize = MOVING_LINK_TITLE_FONT_SIZE;
             link1title.style.lineHeight = MOVING_LINK_TITLE_LINE_HEIGHT;
         }
-
+    
         if (link1description) {
             link1description.style.top = PARAGRAPH_HIDDEN;
             link1description.style.left = PARAGRAPH_LEFT;
         }
-
+    
         // moving link 2
         if (link2shape) {
             link2shape.style.width = MOVING_LINK_SHAPE_WIDTH;
             link2shape.style.height = MOVING_LINK_SHAPE_HEIGHT;
             link2shape.style.top = MOVING_LINK2_TOP;
             link2shape.style.left = MOVING_LINK_SHAPE_LEFT;
-            link2shape.style.transform = MOVING_LINK_SHAPE_TRANSFORM;
+            link2shape.style.transform = MOVING_LINK_TRANSFORM;
         }
-
+    
         if (link2plus) {
             link2plus.style.visibility = MOVING_LINK_PLUS_VISIBILITY;
             link2plus.style.opacity = MOVING_LINK_PLUS_OPACITY;
             link2plus.style.width = MOVING_LINK_PLUS_WIDTH;
-            link2plus.style.height = MOVING_LINK_PLUS_HEIGHT
+            link2plus.style.height = MOVING_LINK_PLUS_HEIGHT;
             link2plus.style.top = MOVING_LINK2_TOP;
             link2plus.style.left = MOVING_LINK_PLUS_LEFT;
         }
-
+    
         if (link2title) {
             link2title.style.width = MOVING_LINK_TITLE_WIDTH;
             link2title.style.top = MOVING_LINK2_TOP;
@@ -480,43 +423,13 @@ document.addEventListener('DOMContentLoaded', function () {
             link2title.style.fontSize = MOVING_LINK_TITLE_FONT_SIZE;
             link2title.style.lineHeight = MOVING_LINK_TITLE_LINE_HEIGHT;
         }
-
+    
         if (link2description) {
             link2description.style.top = PARAGRAPH_HIDDEN;
             link2description.style.left = PARAGRAPH_LEFT;
         }
-
-        // moving link 4
-        if (link4shape) {
-            link4shape.style.width = MOVING_LINK_SHAPE_WIDTH;
-            link4shape.style.height = MOVING_LINK_SHAPE_HEIGHT;
-            link4shape.style.top = MOVING_LINK4_TOP;
-            link4shape.style.left = MOVING_LINK_SHAPE_LEFT;
-            link4shape.style.transform = MOVING_LINK_SHAPE_TRANSFORM;
-        }
-
-        if (link4plus) {
-            link4plus.style.visibility = MOVING_LINK_PLUS_VISIBILITY;
-            link4plus.style.opacity = MOVING_LINK_PLUS_OPACITY;
-            link4plus.style.width = MOVING_LINK_PLUS_WIDTH;
-            link4plus.style.height = MOVING_LINK_PLUS_HEIGHT
-            link4plus.style.top = MOVING_LINK4_TOP;
-            link4plus.style.left = MOVING_LINK_PLUS_LEFT;
-        }
-
-        if (link4title) {
-            link4title.style.width = MOVING_LINK_TITLE_WIDTH;
-            link4title.style.top = MOVING_LINK4_TOP;
-            link4title.style.left = MOVING_LINK_TITLE_LEFT;
-            link4title.style.fontSize = MOVING_LINK_TITLE_FONT_SIZE;
-            link4title.style.lineHeight = MOVING_LINK_TITLE_LINE_HEIGHT;
-        }
-
-        if (link4description) {
-            link4description.style.top = PARAGRAPH_HIDDEN;
-            link4description.style.left = PARAGRAPH_LEFT;
-        }
     }
+    
 
     // Capture initial styles after DOM is ready
     captureInitialStyles();
