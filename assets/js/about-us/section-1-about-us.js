@@ -123,6 +123,11 @@ document.addEventListener('DOMContentLoaded', function () {
             link1shape.style.top = '170px';
             link1shape.style.left = '0';
             link1shape.style.backgroundPosition = 'center';
+            if (link1shape.style.transform === 'rotate(0deg)') {
+                link1shape.style.transform = 'rotate(180deg)';
+            } else if (link1shape.style.transform === 'rotate(180deg)') {
+                link1shape.style.transform = 'rotate(0deg)'
+            }
         }
 
         if (link1plus) {
@@ -212,6 +217,11 @@ document.addEventListener('DOMContentLoaded', function () {
             link2shape.style.top = '170px';
             link2shape.style.left = '0';
             link2shape.style.backgroundPosition = 'center';
+            if (link2shape.style.transform === 'rotate(0deg)') {
+                link2shape.style.transform = 'rotate(180deg)';
+            } else if (link2shape.style.transform === 'rotate(180deg)') {
+                link2shape.style.transform = 'rotate(0deg)'
+            }
         }
 
         if (link2plus) {
@@ -302,6 +312,11 @@ document.addEventListener('DOMContentLoaded', function () {
             link3shape.style.top = '170px';
             link3shape.style.left = '0';
             link3shape.style.backgroundPosition = 'center';
+            if (link3shape.style.transform === 'rotate(0deg)') {
+                link3shape.style.transform = 'rotate(180deg)';
+            } else if (link3shape.style.transform === 'rotate(180deg)') {
+                link3shape.style.transform = 'rotate(0deg)'
+            }
         }
 
         if (link3plus) {
