@@ -133,6 +133,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const SELECTED_LINK_SHAPE_TOP = '170px';
     const SELECTED_LINK_SHAPE_LEFT = '0';
     const SELECTED_LINK_SHAPE_BG_POSITION = 'center';
+    const SELECTED_LINK_SHAPE_TRANSFORM = 'rotate(180deg)';
 
     const SELECTED_LINK_PLUS_VISIBILITY = 'hidden';
     const SELECTED_LINK_PLUS_WIDTH = '0';
@@ -147,7 +148,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const MOVING_LINK_SHAPE_WIDTH = '100px';
     const MOVING_LINK_SHAPE_HEIGHT = '60px';
     const MOVING_LINK_SHAPE_LEFT = 'calc(100% - 340px)';
-    const MOVING_LINK_SHAPE_TRANSFORM = 'rotate(180deg)';
+    const MOVING_LINK_SHAPE_TRANSFORM = 'rotate(360deg)';
 
     const MOVING_LINK_PLUS_VISIBILITY = 'visible';
     const MOVING_LINK_PLUS_OPACITY = '1';
@@ -173,6 +174,7 @@ document.addEventListener('DOMContentLoaded', function () {
             link1shape.style.top = SELECTED_LINK_SHAPE_TOP;
             link1shape.style.left = SELECTED_LINK_SHAPE_LEFT;
             link1shape.style.backgroundPosition = SELECTED_LINK_SHAPE_BG_POSITION;
+            link1shape.style.transform = SELECTED_LINK_SHAPE_TRANSFORM;
         }
 
         if (link1plus) {
@@ -295,6 +297,7 @@ document.addEventListener('DOMContentLoaded', function () {
             link2shape.style.top = SELECTED_LINK_SHAPE_TOP;
             link2shape.style.left = SELECTED_LINK_SHAPE_LEFT;
             link2shape.style.backgroundPosition = SELECTED_LINK_SHAPE_BG_POSITION;
+            link2shape.style.transform = SELECTED_LINK_SHAPE_TRANSFORM;
         }
 
         if (link2plus) {
@@ -417,6 +420,7 @@ document.addEventListener('DOMContentLoaded', function () {
             link3shape.style.top = SELECTED_LINK_SHAPE_TOP;
             link3shape.style.left = SELECTED_LINK_SHAPE_LEFT;
             link3shape.style.backgroundPosition = SELECTED_LINK_SHAPE_BG_POSITION;
+            link3shape.style.transform = SELECTED_LINK_SHAPE_TRANSFORM;
         }
 
         if (link3plus) {
@@ -539,6 +543,7 @@ document.addEventListener('DOMContentLoaded', function () {
             link4shape.style.top = SELECTED_LINK_SHAPE_TOP;
             link4shape.style.left = SELECTED_LINK_SHAPE_LEFT;
             link4shape.style.backgroundPosition = SELECTED_LINK_SHAPE_BG_POSITION;
+            link4shape.style.transform = SELECTED_LINK_SHAPE_TRANSFORM;
         }
 
         if (link4plus) {
