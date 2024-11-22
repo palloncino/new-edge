@@ -78,16 +78,16 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function section3AboutUsSelectLink(id) {
-        if (mainTitle1) {
-            mainTitle1.style.position = 'absolute';
-            mainTitle1.style.top = '410px';
-            mainTitle1.style.left = '0';
-            mainTitle1.style.fontSize = '2rem';
-            mainTitle1.style.transition = 'top .5s, font-size .5s, left .5s';
+        if (mainTitle3) {
+            mainTitle3.style.position = 'absolute';
+            mainTitle3.style.top = '410px';
+            mainTitle3.style.left = '0';
+            mainTitle3.style.fontSize = '2rem';
+            mainTitle3.style.transition = 'top .5s, font-size .5s, left .5s';
         }
 
-        if (backBtn1) {
-            backBtn1.style.left = '0';
+        if (backBtn3) {
+            backBtn3.style.left = '0';
         }
 
         switch (id) {
