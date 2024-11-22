@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function section4AboutUsSelectLink(id) {
         if (mainTitle4) {
             mainTitle4.style.position = 'absolute';
-            mainTitle4.style.top = '410px';
+            mainTitle4.style.top = '200px';
             mainTitle4.style.left = '0';
             mainTitle4.style.fontSize = '2rem';
             mainTitle4.style.transition = 'top .5s, font-size .5s, left .5s';
@@ -119,7 +119,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const SELECTED_LINK_SHAPE_TOP = '170px';
     const SELECTED_LINK_SHAPE_LEFT = '0';
     const SELECTED_LINK_SHAPE_BG_POSITION = 'center';
-    const SELECTED_LINK_SHAPE_TRANSFORM = 'rotate(180deg)';
 
     const SELECTED_LINK_PLUS_VISIBILITY = 'hidden';
     const SELECTED_LINK_PLUS_WIDTH = '0';
@@ -145,7 +144,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const MOVING_LINK_TITLE_WIDTH = '100px';
     const MOVING_LINK_TITLE_LEFT = 'calc(100% - 200px)';
     const MOVING_LINK_TITLE_FONT_SIZE = '1.4rem';
-    const MOVING_LINK_TITLE_LINE_HEIGHT = '60px';
+    const MOVING_LINK_TITLE_LINE_HEIGHT = '24px';
 
     /* Specifics */
     const MOVING_LINK1_TOP = 'calc(100% - 240px - 10px - 10px - 10px)';
@@ -160,7 +159,6 @@ document.addEventListener('DOMContentLoaded', function () {
             link1shape.style.top = SELECTED_LINK_SHAPE_TOP;
             link1shape.style.left = SELECTED_LINK_SHAPE_LEFT;
             link1shape.style.backgroundPosition = SELECTED_LINK_SHAPE_BG_POSITION;
-            link1shape.style.transform = SELECTED_LINK_SHAPE_TRANSFORM;
         }
 
         if (link1plus) {
@@ -283,7 +281,6 @@ document.addEventListener('DOMContentLoaded', function () {
             link2shape.style.top = SELECTED_LINK_SHAPE_TOP;
             link2shape.style.left = SELECTED_LINK_SHAPE_LEFT;
             link2shape.style.backgroundPosition = SELECTED_LINK_SHAPE_BG_POSITION;
-            link2shape.style.transform = SELECTED_LINK_SHAPE_TRANSFORM;
         }
 
         if (link2plus) {
@@ -406,7 +403,6 @@ document.addEventListener('DOMContentLoaded', function () {
             link3shape.style.top = SELECTED_LINK_SHAPE_TOP;
             link3shape.style.left = SELECTED_LINK_SHAPE_LEFT;
             link3shape.style.backgroundPosition = SELECTED_LINK_SHAPE_BG_POSITION;
-            link3shape.style.transform = SELECTED_LINK_SHAPE_TRANSFORM;
         }
 
         if (link3plus) {

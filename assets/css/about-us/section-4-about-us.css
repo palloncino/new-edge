@@ -1,6 +1,7 @@
 .section-4-about-us {
     background: #528AF8;
     position: relative;
+    overflow: hidden;
 }
 
 .section-4-about-us-content {
