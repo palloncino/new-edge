@@ -161,11 +161,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const MOVING_LINK_TITLE_LINE_HEIGHT = '60px';
 
     /* Specifics */
-
-    const MOVING_LINK1_TOP = 'calc(100% - 400px)';
-    const MOVING_LINK2_TOP = 'calc(100% - 300px)';
-    const MOVING_LINK3_TOP = 'calc(100% - 200px)';
-    const MOVING_LINK4_TOP = 'calc(100% - 100px)';
+    const MOVING_LINK1_TOP = 'calc(100% - 240px - 10px - 10px - 10px)';
+    const MOVING_LINK2_TOP = 'calc(100% - 180px - 10px - 10px)';
+    const MOVING_LINK3_TOP = 'calc(100% - 120px - 10px)';
+    const MOVING_LINK4_TOP = 'calc(100% - 60px)';
 
     function move1() {
         if (link1shape) {
