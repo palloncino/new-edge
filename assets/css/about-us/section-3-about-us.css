@@ -20,8 +20,8 @@
 #section-3-about-us__main-title {
     position: absolute;
     top: 50%;
-    left: 70%;
-    transform: translate(-50%, -50%);
+    left: 750px;
+    transform: translateY(-50%);
     z-index: 20;
     transition: top .5s, font-size .5s, left .5s, transform .5s;
 }
