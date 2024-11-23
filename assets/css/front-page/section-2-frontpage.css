@@ -1,0 +1,37 @@
+.section-2-homepage {
+    position: relative;
+    /* Establish positioning context */
+    background: url('http://edge.chebellagiornata.it/wp-content/uploads/2024/11/bg-front-page-section-2.png') no-repeat center center;
+    background-size: cover;
+    /* Remove fixed height to inherit from .section-padded-content */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    /* Hide overflow during animation */
+}
+
+
+.blue-slide {
+    position: absolute;
+    bottom: -100%;
+    /* Start completely below the section */
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #2456E6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 1s ease-in-out;
+    transform: translateY(0);
+    /* Initial position */
+    z-index: 2;
+    /* Above the background image */
+}
+
+/* Active State - Slide Up */
+.section-2-homepage.active .blue-slide {
+    transform: translateY(-100%);
+    /* Slide up to cover the section */
+}

@@ -1,0 +1,118 @@
+.section-3-homepage {
+    display: flex;
+    background: #F7F7F7;
+    width: 100%;
+    /* Inherits from .section-padded-content */
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    gap: 100px;
+}
+
+.section-3-column-left {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.section-3-column-right {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.section-3-column-left {
+    background: transparent;
+    /* Remove conflicting background */
+    /* Positioning and sizing handled by flexbox */
+    height: 50%;
+}
+
+#section3-video {
+    height: 100%;
+}
+
+.section-3-column-right {
+    background: transparent;
+    /* Remove conflicting background */
+    flex-direction: column;
+    gap: 50px;
+}
+
+.section-3-action-button-container {}
+
+.section-3-action-button-content {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+.section-3-action-button-content-plus-icon {
+    background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/plus-button-e846a0.svg');
+    background-repeat: no-repeat;
+    align-items: center;
+    justify-content: center;
+    min-height: 22px;
+    min-width: 22px;
+    margin-top: 1.4rem;
+}
+
+
+.section-3-action-button-content-text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-right: 200px;
+}
+
+.section-3-action-button-content-title {
+    margin: 0;
+}
+
+.section-3-h1 {
+    font-family: 'Mundial Regular';
+    font-size: 3.4rem;
+    line-height: 4.6rem;
+    overflow: visible;
+    white-space: nowrap;
+}
+
+.section-3-description {
+    font-family: 'Mundial Thin';
+    font-size: 2rem;
+    line-height: 3rem;
+    font-weight: 300;
+    max-width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: none;
+    /* Limit to two lines */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.section-3-action-button-content-description {}
+
+/* Responsive Adjustments for Section 3 */
+@media (max-width: 768px) {
+    .section-3-homepage {
+        flex-direction: column;
+    }
+
+    .section-3-column-right {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .section-3-action-button-container {
+        padding: 15px 30px;
+        font-size: 1rem;
+    }
+}

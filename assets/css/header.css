@@ -77,7 +77,11 @@
     font-weight: 600;
     color: #fff;
     text-decoration: none;
-    color: #fff;
+    opacity: .5;
+}
+
+.edge-header .header-navigation-link.active {
+    opacity: 1;
 }
 
 /* PAGE SPECIFIC STYLES */
@@ -101,3 +105,12 @@
     color: #fff;
     transition: background 0.3s;
 }
+
+/* /cosa-facciamo */
+.page-id-40 .edge-header .header-navigation-links {
+    background: #F69701!important;
+    color: #fff;
+    transition: background 0.3s;
+}
+
+

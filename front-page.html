@@ -7,12 +7,17 @@
     <link rel="stylesheet" href="./assets/css/font.css">
     <link rel="stylesheet" href="./assets/css/global.css">
     <link rel="stylesheet" href="./assets/css/header.css">
+    <!-- Specific CSS for current page -->
+    <link rel="stylesheet" href="./assets/css/front-page/section-0-frontpage.css">
+    <link rel="stylesheet" href="./assets/css/front-page/section-1-frontpage.css">
+    <link rel="stylesheet" href="./assets/css/front-page/section-2-frontpage.css">
+    <link rel="stylesheet" href="./assets/css/front-page/section-3-frontpage.css">
     <title>Homepage</title>
 </head>
 
-<body>
+<body class="page-id-11">
 
-    <div class="outer-app-container front-page page-id-11 page-template-default">
+    <div class="outer-app-container front-page">
 
         <!-- HEADER -->
         <div id="edge-header" class="edge-header">
@@ -23,7 +28,7 @@
             </div>
             <div class="header-navigation-links-container">
                 <div class="header-navigation-links">
-                    <a class="header-navigation-link selected" href="/a-proposito-di-noi.html">A proposito di noi</a>
+                    <a class="header-navigation-link" href="/a-proposito-di-noi.html">A proposito di noi</a>
                     <a class="header-navigation-link" href="/cosa-facciamo.html">Cosa facciamo</a>
                     <a class="header-navigation-link" href="/over-the-edge.html">Over the Edge</a>
                     <a class="header-navigation-link" href="/il-gruppo.html">Il gruppo</a>
@@ -36,52 +41,6 @@
         <div class="inner-app-container">
 
             <!-- Section 0 -->
-            <style>
-                #text-container {
-                    opacity: 1;
-                    position: absolute;
-                    top: 50%;
-                    left: 200px;
-                    transform: translateY(-50%);
-                    height: auto;
-                    width: 100%;
-                    max-width: 1100px;
-                }
-
-                #text-container__h1 {
-                    font-size: 150px;
-                    line-height: 150px;
-                    text-wrap: nowrap;
-                    margin: 0;
-                }
-
-                #text-container,
-                #text-container__h1 {
-                    transition: all 1s ease-in-out;
-                }
-
-                #intro-start-button-container-row {
-                    opacity: 1;
-                    position: absolute;
-                    bottom: 48px;
-                    right: 48px;
-                    /* transform: translateY(-50%); */
-                }
-
-                #intro-start-button-container {
-                    cursor: pointer;
-                    display: flex;
-                    height: 65px;
-                    width: 120px;
-                    font-size: 24px;
-                    background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-2-orange.svg');
-                    background-repeat: no-repeat;
-                    align-items: center;
-                    justify-content: center;
-                    color: #fff;
-                    font-family: 'Mundial Regular';
-                }
-            </style>
             <div class="section-padded-content section-0-homepage">
 
                 <div id="text-container">
@@ -99,15 +58,6 @@
             </div>
 
             <!-- Section 1 -->
-            <style>
-                .section-1-homepage {
-                    background: #F69602;
-                }
-
-                .translate-y-50 {
-                    transform: translateY(50%);
-                }
-            </style>
             <div class="section-padded-content section-1-homepage">
                 <h1 class="h1-m color-FFF translate-y-50">Soluzioni innovative, competenze specifiche e tecnologie per
                     proteggere il
@@ -115,45 +65,6 @@
             </div>
 
             <!-- Section 2 -->
-            <style>
-                .section-2-homepage {
-                    position: relative;
-                    /* Establish positioning context */
-                    background: url('http://edge.chebellagiornata.it/wp-content/uploads/2024/11/bg-front-page-section-2.png') no-repeat center center;
-                    background-size: cover;
-                    /* Remove fixed height to inherit from .section-padded-content */
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    overflow: hidden;
-                    /* Hide overflow during animation */
-                }
-
-
-                .blue-slide {
-                    position: absolute;
-                    bottom: -100%;
-                    /* Start completely below the section */
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    background: #2456E6;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    transition: transform 1s ease-in-out;
-                    transform: translateY(0);
-                    /* Initial position */
-                    z-index: 2;
-                    /* Above the background image */
-                }
-
-                /* Active State - Slide Up */
-                .section-2-homepage.active .blue-slide {
-                    transform: translateY(-100%);
-                    /* Slide up to cover the section */
-                }
-            </style>
             <div class="section-padded-content section-2-homepage">
                 <!-- Sliding Blue Section -->
                 <div class="blue-slide">
@@ -164,131 +75,11 @@
             </div>
 
             <!-- Section 3 -->
-            <style>
-                .section-3-homepage {
-                    display: flex;
-                    background: #F7F7F7;
-                    width: 100%;
-                    /* Inherits from .section-padded-content */
-                    align-items: center;
-                    justify-content: center;
-                    padding: 0;
-                    gap: 100px;
-                }
-
-                .section-3-column-left {
-                    flex: 1;
-                    display: flex;
-                    align-items: center;
-                    justify-content: flex-end;
-                }
-
-                .section-3-column-right {
-                    flex: 1;
-                    display: flex;
-                    align-items: flex-start;
-                    justify-content: center;
-                }
-
-                .section-3-column-left {
-                    background: transparent;
-                    /* Remove conflicting background */
-                    /* Positioning and sizing handled by flexbox */
-                    height: 50%;
-                }
-
-                #section3-video {
-                    height: 100%;
-                }
-
-                .section-3-column-right {
-                    background: transparent;
-                    /* Remove conflicting background */
-                    flex-direction: column;
-                    gap: 50px;
-                }
-
-                .section-3-action-button-container {}
-
-                .section-3-action-button-content {
-                    display: flex;
-                    justify-content: center;
-                    align-items: flex-start;
-                    gap: 40px;
-                }
-
-                .section-3-action-button-content-plus-icon {
-                    background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/plus-button-e846a0.svg');
-                    background-repeat: no-repeat;
-                    align-items: center;
-                    justify-content: center;
-                    min-height: 22px;
-                    min-width: 22px;
-                    margin-top: 1.4rem;
-                }
-
-
-                .section-3-action-button-content-text-container {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: flex-start;
-                    align-items: flex-start;
-                    padding-right: 200px;
-                }
-
-                .section-3-action-button-content-title {
-                    margin: 0;
-                }
-
-                .section-3-h1 {
-                    font-family: 'Mundial Regular';
-                    font-size: 3.4rem;
-                    line-height: 4.6rem;
-                    overflow: visible;
-                    white-space: nowrap;
-                }
-
-                .section-3-description {
-                    font-family: 'Mundial Thin';
-                    font-size: 2rem;
-                    line-height: 3rem;
-                    font-weight: 300;
-                    max-width: 100%;
-                    word-wrap: break-word;
-                    overflow-wrap: break-word;
-                    hyphens: none;
-                    /* Limit to two lines */
-                    display: -webkit-box;
-                    -webkit-line-clamp: 2;
-                    -webkit-box-orient: vertical;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                }
-
-                .section-3-action-button-content-description {}
-
-                /* Responsive Adjustments for Section 3 */
-                @media (max-width: 768px) {
-                    .section-3-homepage {
-                        flex-direction: column;
-                    }
-
-                    .section-3-column-right {
-                        flex-direction: row;
-                        justify-content: space-around;
-                    }
-
-                    .section-3-action-button-container {
-                        padding: 15px 30px;
-                        font-size: 1rem;
-                    }
-                }
-            </style>
             <div class="section-padded-content section-3-homepage">
                 <div class="section-3-column-left">
                     <video id="section3-video" style="border: none"
-                        src="http://edge.chebellagiornata.it/wp-content/uploads/2024/11/logo-generation.mov"
-                        muted autoplay playsinline>
+                        src="http://edge.chebellagiornata.it/wp-content/uploads/2024/11/logo-generation.mov" muted
+                        autoplay playsinline>
                         Your browser does not support the video tag.
                     </video>
                 </div>
@@ -304,7 +95,6 @@
                                 <div class="section-3-action-button-content-description section-3-description">A ogni
                                     cliente la sua soluzione.</div>
                             </div>
-
                         </div>
                     </div>
 
@@ -318,7 +108,6 @@
                                 <div class="section-3-action-button-content-description section-3-description">Cresciamo
                                     integrando intermediari nel nostro progetto.</div>
                             </div>
-
                         </div>
                     </div>
 
@@ -332,45 +121,15 @@
                                 <div class="section-3-action-button-content-description section-3-description">Il gruppo
                                     per attrarre i migliori talenti</div>
                             </div>
-
                         </div>
                     </div>
                 </div>
             </div>
 
         </div>
-
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                const section2 = document.querySelector('.section-2-homepage');
-                const video = document.getElementById('section3-video');
-
-                const observer = new IntersectionObserver((entries, observer) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            section2.classList.add('active');
-                            observer.unobserve(section2);
-                        }
-                    });
-                }, {
-                    threshold: 0.5
-                });
-
-                observer.observe(section2);
-
-                // Handle video playback to pause at the end
-                if (video) {
-                    video.addEventListener('ended', function () {
-                        this.pause();
-                        // Optionally, set the currentTime to the end to ensure the final frame is displayed
-                        this.currentTime = this.duration;
-                    });
-                }
-            });
-        </script>
-
-
     </div>
+    <script src="./assets/js/front-page/all-sections-front-page.js"></script>
+    <script src="./assets/js/header/header-links.js"></script>
 </body>
 
 </html>
