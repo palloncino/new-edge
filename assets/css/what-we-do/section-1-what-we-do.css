@@ -4,19 +4,32 @@
 /* Big lateral orange labels */
 .section-1-what-we-do__big-svg { width: 250px; height: 150px; background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-2-orange.svg') no-repeat center/contain; display: flex; align-items: center; justify-content: center; }
 .section-1-what-we-do__big-svg-text { font-family: 'Mundial Regular'; font-size: 1.6rem; line-height: 1.8rem; text-transform: uppercase; }
-/* Specific for Big lateral orange labels */
+
+/* Base styles for the shapes */
 .section-1-what-we-do__big-svg--left {
     margin-right: 4rem;
+    transition: transform 1s ease-in-out;
+    transform: translateX(0);
 }
 
 .section-1-what-we-do__big-svg--right {
     margin-left: 4rem;
-    transform: scaleX(-1);
+    transition: transform 1s ease-in-out;
+    transform: translateX(0) scaleX(-1);
 }
 
 .section-1-what-we-do__big-svg-text--right {
     transform: scaleX(-1);
     margin-left: 2rem;
+}
+
+/* Initial hidden state class */
+.labels-initial-state .section-1-what-we-do__big-svg--left {
+    transform: translateX(-1200px);
+}
+
+.labels-initial-state .section-1-what-we-do__big-svg--right {
+    transform: translateX(1200px) scaleX(-1);
 }
 
 /* Circle */

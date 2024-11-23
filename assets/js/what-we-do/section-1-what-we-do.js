@@ -1,10 +1,30 @@
-
 document.addEventListener("DOMContentLoaded", () => {
+    // Add initial state class immediately
+    document.body.classList.add('labels-initial-state');
+    
     const circleInnerContainer = document.getElementById("circle_inner_container");
 
     if (!circleInnerContainer) {
         console.error("Element with ID 'circle_inner_container' not found.");
         return;
+    }
+
+    function slideLateralLabels(num) {
+        const leftLabel = document.querySelector('.section-1-what-we-do__big-svg--left');
+        const rightLabel = document.querySelector('.section-1-what-we-do__big-svg--right');
+
+        if (!leftLabel || !rightLabel) {
+            console.warn("Lateral labels not found");
+            return;
+        }
+
+        if (num === 1) {
+            // Remove the initial state class to trigger the animation
+            document.body.classList.remove('labels-initial-state');
+        } else {
+            // Add the class back to hide the labels
+            document.body.classList.add('labels-initial-state');
+        }
     }
 
     // Phase 1: Rotate the circle_inner_container and two specific items simultaneously
@@ -142,12 +162,18 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-
     // Start the animation sequence
     async function startAnimation() {
+        // Ensure elements are in their initial position
+        // Wait a brief moment to ensure initial positions are applied
+        await new Promise(resolve => setTimeout(resolve, 100));
+        
+        // Begin the animation sequence
+        slideLateralLabels(1);
         await phaseOne();
         await phaseTwo();
     }
 
-    startAnimation();
+    // Start the animation with a slight delay to ensure initial states are applied
+    setTimeout(startAnimation, 0);
 });
