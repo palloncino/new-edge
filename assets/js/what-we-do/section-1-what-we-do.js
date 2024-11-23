@@ -30,6 +30,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // Phase 1: Rotate the circle_inner_container and two specific items simultaneously
     function phaseOne() {
         return new Promise((resolve) => {
+
+            slideLateralLabels(1);
+
             // Set initial transform to ensure the browser registers it
             circleInnerContainer.style.transform = "rotate(0deg)";
 
@@ -164,12 +167,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Start the animation sequence
     async function startAnimation() {
-        // Ensure elements are in their initial position
-        // Wait a brief moment to ensure initial positions are applied
-        await new Promise(resolve => setTimeout(resolve, 100));
-        
-        // Begin the animation sequence
-        slideLateralLabels(1);
+
         await phaseOne();
         await phaseTwo();
     }
