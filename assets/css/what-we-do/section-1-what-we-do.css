@@ -76,29 +76,29 @@
 
 /* Use classes to rotate each SVG inline */
 .circle-item-1 { transform: rotate(0deg) translate(200px) rotate(-100deg); }
-.circle-item-2 { transform: rotate(15deg) translate(200px) rotate(-105deg); }
+.circle-item-2 { transform: rotate(15deg) translate(200px) rotate(-100deg); }
 .circle-item-3 { transform: rotate(30deg) translate(200px) rotate(-100deg); }
-.circle-item-4 { transform: rotate(45deg) translate(200px) rotate(-95deg); }
-.circle-item-5 { transform: rotate(60deg) translate(200px) rotate(-90deg); }
-.circle-item-6 { transform: rotate(75deg) translate(200px) rotate(-95deg); }
-.circle-item-7 { transform: rotate(90deg) translate(200px) rotate(-90deg); }
-.circle-item-8 { transform: rotate(105deg) translate(200px) rotate(-95deg); }
+.circle-item-4 { transform: rotate(45deg) translate(200px) rotate(-100deg); }
+.circle-item-5 { transform: rotate(60deg) translate(200px) rotate(-100deg); }
+.circle-item-6 { transform: rotate(75deg) translate(200px) rotate(-100deg); }
+.circle-item-7 { transform: rotate(90deg) translate(200px) rotate(-100deg); }
+.circle-item-8 { transform: rotate(105deg) translate(200px) rotate(-100deg); }
 .circle-item-9 { transform: rotate(120deg) translate(200px) rotate(-100deg); }
-.circle-item-10 { transform: rotate(135deg) translate(200px) rotate(-105deg); }
+.circle-item-10 { transform: rotate(135deg) translate(200px) rotate(-100deg); }
 .circle-item-11 { transform: rotate(150deg) translate(200px) rotate(-100deg); }
 .circle-item-12 { transform: rotate(165deg) translate(200px) rotate(-100deg); }
 .circle-item-13 { transform: rotate(180deg) translate(200px) rotate(-90deg); }
-.circle-item-14 { transform: rotate(195deg) translate(200px) rotate(-90deg); }
-.circle-item-15 { transform: rotate(210deg) translate(200px) rotate(-95deg); }
-.circle-item-16 { transform: rotate(225deg) translate(200px) rotate(-95deg); }
+.circle-item-14 { transform: rotate(195deg) translate(200px) rotate(-100deg); }
+.circle-item-15 { transform: rotate(210deg) translate(200px) rotate(-100deg); }
+.circle-item-16 { transform: rotate(225deg) translate(200px) rotate(-100deg); }
 .circle-item-17 { transform: rotate(240deg) translate(200px) rotate(-100deg); }
-.circle-item-18 { transform: rotate(255deg) translate(200px) rotate(-95deg); }
-.circle-item-19 { transform: rotate(270deg) translate(200px) rotate(-90deg); }
-.circle-item-20 { transform: rotate(285deg) translate(200px) rotate(-455deg); }
-.circle-item-21 { transform: rotate(300deg) translate(200px) rotate(-460deg); }
-.circle-item-22 { transform: rotate(315deg) translate(200px) rotate(-95deg); }
+.circle-item-18 { transform: rotate(255deg) translate(200px) rotate(-100deg); }
+.circle-item-19 { transform: rotate(270deg) translate(200px) rotate(-100deg); }
+.circle-item-20 { transform: rotate(285deg) translate(200px) rotate(-100deg); }
+.circle-item-21 { transform: rotate(300deg) translate(200px) rotate(-100deg); }
+.circle-item-22 { transform: rotate(315deg) translate(200px) rotate(-100deg); }
 .circle-item-23 { transform: rotate(330deg) translate(200px) rotate(-100deg); }
-.circle-item-24 { transform: rotate(345deg) translate(200px) rotate(-105deg); }
+.circle-item-24 { transform: rotate(345deg) translate(200px) rotate(-100deg); }
 
 .section-1-what-we-do-floating-link-container {
     position: absolute;

@@ -50,8 +50,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-
-
     // Phase 2: Incrementally change shape backgrounds to orange, starting from 2 to 24, excluding 13
     function phaseTwo() {
         return new Promise((resolve) => {
@@ -62,13 +60,13 @@ document.addEventListener("DOMContentLoaded", () => {
             // Special cases: Only adjust the inner-container for outward orientation
             const specialCases = {
                 1: 275,
-                4: 265,
-                7: 265,
-                10: 285,
+                4: 275,
+                7: 275,
+                10: 275,
                 13: 265,
-                16: 265,
-                19: 265,
-                22: 270,
+                16: 275,
+                19: 275,
+                22: 275,
             };
 
             // Collect all circle items
@@ -147,8 +145,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Start the animation sequence
     async function startAnimation() {
-        await phaseOne(); // Phase 1: Rotate the container and two items simultaneously
-        await phaseTwo(); // Phase 2: Change backgrounds incrementally
+        await phaseOne();
+        await phaseTwo();
     }
 
     startAnimation();
