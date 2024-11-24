@@ -12,22 +12,22 @@ document.addEventListener("DOMContentLoaded", () => {
     const link22 = document.getElementById('floating-link-container--22');
 
     if (link4) {
-        link4.querySelector('.section-1-what-we-do-floating-link-plus-icon').addEventListener('click', () => move4());
+        link4.querySelector('.section-1-what-we-do-floating-link-plus-icon').addEventListener('click', () => move(4));
     }
     if (link7) {
-        link7.querySelector('.section-1-what-we-do-floating-link-plus-icon').addEventListener('click', () => move7());
+        link7.querySelector('.section-1-what-we-do-floating-link-plus-icon').addEventListener('click', () => move(7));
     }
     if (link10) {
-        link10.querySelector('.section-1-what-we-do-floating-link-plus-icon').addEventListener('click', () => move10());
+        link10.querySelector('.section-1-what-we-do-floating-link-plus-icon').addEventListener('click', () => move(10));
     }
     if (link16) {
-        link16.querySelector('.section-1-what-we-do-floating-link-plus-icon').addEventListener('click', () => move16());
+        link16.querySelector('.section-1-what-we-do-floating-link-plus-icon').addEventListener('click', () => move(16));
     }
     if (link19) {
-        link19.querySelector('.section-1-what-we-do-floating-link-plus-icon').addEventListener('click', () => move19());
+        link19.querySelector('.section-1-what-we-do-floating-link-plus-icon').addEventListener('click', () => move(19));
     }
     if (link22) {
-        link22.querySelector('.section-1-what-we-do-floating-link-plus-icon').addEventListener('click', () => move22());
+        link22.querySelector('.section-1-what-we-do-floating-link-plus-icon').addEventListener('click', () => move(22));
     }
 
     const floatingLinks = {
@@ -49,9 +49,9 @@ document.addEventListener("DOMContentLoaded", () => {
     let activeTimeouts = [];
     let animationAborted = false;
 
-    function hideFloatingLinks() {
+    function hideFloatingLinks(exceptId) {
         for (const [id, element] of Object.entries(floatingLinks)) {
-            if (element && initialFloatingLinksStyles[id]) {
+            if (id !== `floating-link-container--${exceptId}` && element && initialFloatingLinksStyles[id]) {
                 ELEMENT_PROPERTIES.forEach(property => {
                     element.style[property] = initialFloatingLinksStyles[id][property];
                 });
@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-    function move4() {
+    function move(id) {
         // Abort ongoing animations
         animationAborted = true;
         activeTimeouts.forEach(timeoutID => clearTimeout(timeoutID));
@@ -80,10 +80,19 @@ document.addEventListener("DOMContentLoaded", () => {
         slideLateralLabels(0);
 
         // Step 1: Restore initial styles for all floating links
-        hideFloatingLinks();
+        hideFloatingLinks(id);
 
         // Step 2: Apply transformation to the circleInnerContainer
         rotateInnerCircleOnSelection();
+
+        // TODOs
+
+        // colour and position correctly the items if aborting phaseTwo (or one)
+        // show back button
+        // move the paragraph
+        // move the floating image
+        // move the text title
+        // dissipate plus icon
 
         // Capture settled styles after transformation
         const timeout = setTimeout(() => {
