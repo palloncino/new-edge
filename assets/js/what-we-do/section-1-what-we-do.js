@@ -1,12 +1,58 @@
 document.addEventListener("DOMContentLoaded", () => {
+
     // Add initial state class immediately
     document.body.classList.add('labels-initial-state');
-    
+
     const circleInnerContainer = document.getElementById("circle_inner_container");
 
-    if (!circleInnerContainer) {
-        console.error("Element with ID 'circle_inner_container' not found.");
-        return;
+    const floatingLinks = {
+        'floating-link-container--4': document.getElementById('floating-link-container--4'),
+        'floating-link-container--7': document.getElementById('floating-link-container--7'),
+        'floating-link-container--10': document.getElementById('floating-link-container--10'),
+        'floating-link-container--16': document.getElementById('floating-link-container--16'),
+        'floating-link-container--19': document.getElementById('floating-link-container--19'),
+        'floating-link-container--22': document.getElementById('floating-link-container--22'),
+    };
+
+    const ELEMENT_PROPERTIES = ['position', 'top', 'left', 'font-size', 'line-height', 'width', 'height', 'visibility', 'opacity', 'background-position', 'transition', 'font-weight', 'transform'];
+
+    const initialFloatingLinksStyles = {};
+    const settledFloatingLinksStyles = {};
+
+    function selectLink(id) {
+        switch (4) {
+            case move4():
+                
+                break;
+        
+            default:
+                break;
+        }
+
+    }
+
+    function move4() {
+        console.log('move 4')
+    }
+
+    function captureFloatingLinksStyles(targetStyles) {
+        for (const [id, element] of Object.entries(floatingLinks)) {
+            if (element) {
+                const computedStyles = window.getComputedStyle(element);
+                targetStyles[id] = {};
+                ELEMENT_PROPERTIES.forEach((property) => {
+                    targetStyles[id][property] = computedStyles.getPropertyValue(property);
+                });
+            }
+        }
+    }
+
+    function captureInitialFloatingLinksStyles() {
+        captureFloatingLinksStyles(initialFloatingLinksStyles);
+    }
+
+    function captureSettledFloatingLinksStyles() {
+        captureFloatingLinksStyles(settledFloatingLinksStyles);
     }
 
     function slideLateralLabels(num) {
@@ -67,7 +113,6 @@ document.addEventListener("DOMContentLoaded", () => {
             setTimeout(() => {
                 // Verify the rotation via computed styles
                 const computedStyle = window.getComputedStyle(circleInnerContainer);
-                console.log("Phase 1: Computed transform after animation", computedStyle.transform);
                 resolve();
             }, 1050); // 1s transition + 50ms delay
         });
@@ -78,7 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return new Promise((resolve) => {
             const orangeBackground = 'url("https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-3-orange.svg")';
             const lightBlueBackground = 'url("https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-3-lightblue.svg")';
-            const defaultDelay = 250;
+            const defaultDelay = 200;
 
             // Special cases: Only adjust the inner-container for outward orientation
             const specialCases = {
@@ -114,23 +159,21 @@ document.addEventListener("DOMContentLoaded", () => {
                             // Determine the movement based on the item number
                             if (i === 4 || i === 10) {
                                 // Move to the top for items 4, 10
-                                floatingLinkContainer.style.top = "-60px";
+                                floatingLinkContainer.style.top = "-20px";
                                 floatingLinkContainer.style.bottom = "";
                             } else if (i === 7) {
                                 // Move to the top for item 7
-                                floatingLinkContainer.style.top = "-150px";
+                                floatingLinkContainer.style.top = "-110px";
                                 floatingLinkContainer.style.bottom = "";
                             } else if (i === 16 || i === 22) {
                                 // Move to the bottom for items 16, 22
-                                floatingLinkContainer.style.bottom = "-60px";
+                                floatingLinkContainer.style.bottom = "-20px";
                                 floatingLinkContainer.style.top = ""; // Reset top position
                             } else if (i === 19) {
                                 // Move to the bottom for item 19
-                                floatingLinkContainer.style.bottom = "-140px";
+                                floatingLinkContainer.style.bottom = "-120px";
                                 floatingLinkContainer.style.top = ""; // Reset top position
                             }
-
-                            console.log(`Element #floating-link-container--${i} moved to its new position.`);
                         } else {
                             console.warn(`Floating link container #floating-link-container--${i} not found.`);
                         }
@@ -141,19 +184,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
                         // Apply outward rotation directly to the inner-container
                         item.style.transform = `rotate(${specialCases[i]}deg)`;
-
-                        console.log(`Phase 2: Special case for ${i} (light blue background, outward rotation)`, {
-                            backgroundImage: item.style.backgroundImage,
-                            transform: item.style.transform,
-                        });
                     } else {
                         // Apply orange background for default cases
                         item.style.transition = "none";
                         item.style.backgroundImage = orangeBackground;
-
-                        console.log(`Phase 2: Background applied to ${item.parentElement.className}`, {
-                            backgroundImage: item.style.backgroundImage,
-                        });
                     }
                 }, i * defaultDelay); // Incremental delay
             }
@@ -168,8 +202,13 @@ document.addEventListener("DOMContentLoaded", () => {
     // Start the animation sequence
     async function startAnimation() {
 
+        // Capture initial styles after DOM is ready
+        captureInitialFloatingLinksStyles();
+
         await phaseOne();
         await phaseTwo();
+
+        captureSettledFloatingLinksStyles();
     }
 
     // Start the animation with a slight delay to ensure initial states are applied
