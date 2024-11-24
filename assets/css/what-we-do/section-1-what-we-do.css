@@ -10,6 +10,13 @@
     justify-content: center;
 }
 
+.section-1-what-we-do-back-button {
+    position: absolute;
+    top: calc(100% - 100px);
+    left: -600px;
+    transition: all .5s;
+}
+
 /* Big lateral orange labels */
 .section-1-what-we-do__big-svg {
     width: 250px;
