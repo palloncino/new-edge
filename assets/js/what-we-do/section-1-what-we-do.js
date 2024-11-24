@@ -5,13 +5,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const circleInnerContainer = document.getElementById("circle_inner_container");
 
+    const link4 = document.getElementById('floating-link-container--4');
+    const link7 = document.getElementById('floating-link-container--7');
+    const link10 = document.getElementById('floating-link-container--10');
+    const link16 = document.getElementById('floating-link-container--16');
+    const link19 = document.getElementById('floating-link-container--19');
+    const link22 = document.getElementById('floating-link-container--22');
+
+    if (link4) {
+        link4.querySelector('.section-1-what-we-do-floating-link-plus-icon').addEventListener('click', () => move4());
+    }
+    if (link7) {
+        link7.querySelector('.section-1-what-we-do-floating-link-plus-icon').addEventListener('click', () => move7());
+    }
+    if (link10) {
+        link10.querySelector('.section-1-what-we-do-floating-link-plus-icon').addEventListener('click', () => move10());
+    }
+    if (link16) {
+        link16.querySelector('.section-1-what-we-do-floating-link-plus-icon').addEventListener('click', () => move16());
+    }
+    if (link19) {
+        link19.querySelector('.section-1-what-we-do-floating-link-plus-icon').addEventListener('click', () => move19());
+    }
+    if (link22) {
+        link22.querySelector('.section-1-what-we-do-floating-link-plus-icon').addEventListener('click', () => move22());
+    }
+
     const floatingLinks = {
-        'floating-link-container--4': document.getElementById('floating-link-container--4'),
-        'floating-link-container--7': document.getElementById('floating-link-container--7'),
-        'floating-link-container--10': document.getElementById('floating-link-container--10'),
-        'floating-link-container--16': document.getElementById('floating-link-container--16'),
-        'floating-link-container--19': document.getElementById('floating-link-container--19'),
-        'floating-link-container--22': document.getElementById('floating-link-container--22'),
+        'floating-link-container--4': link4,
+        'floating-link-container--7': link7,
+        'floating-link-container--10': link10,
+        'floating-link-container--16': link16,
+        'floating-link-container--19': link19,
+        'floating-link-container--22': link22,
     };
 
     const ELEMENT_PROPERTIES = ['position', 'top', 'left', 'font-size', 'line-height', 'width', 'height', 'visibility', 'opacity', 'background-position', 'transition', 'font-weight', 'transform'];
@@ -19,20 +45,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const initialFloatingLinksStyles = {};
     const settledFloatingLinksStyles = {};
 
-    function selectLink(id) {
-        switch (4) {
-            case move4():
-                
-                break;
-        
-            default:
-                break;
-        }
-
-    }
-
     function move4() {
-        console.log('move 4')
+        // set the initialFloatingLinksStyles
+        console.log(1)
     }
 
     function captureFloatingLinksStyles(targetStyles) {
