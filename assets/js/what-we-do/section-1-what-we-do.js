@@ -45,6 +45,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const initialFloatingLinksStyles = {};
     const settledFloatingLinksStyles = {};
 
+    // Tracking variables for active timeouts and aborting animations
+    let activeTimeouts = [];
+    let animationAborted = false;
 
     function hideFloatingLinks() {
         for (const [id, element] of Object.entries(floatingLinks)) {
@@ -57,6 +60,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function move4() {
+        // Abort ongoing animations
+        animationAborted = true;
+        activeTimeouts.forEach(timeoutID => clearTimeout(timeoutID));
+        activeTimeouts = [];
+
         slideLateralLabels(0);
 
         // Step 1: Restore initial styles for all floating links
@@ -70,8 +78,13 @@ document.addEventListener("DOMContentLoaded", () => {
             // Apply the desired transformation
             circleInnerContainer.style.transform = "translateX(-750px) translateY(-200px) scale(2.5)";
         }
-    }
 
+        // Capture settled styles after transformation
+        const timeout = setTimeout(() => {
+            captureSettledFloatingLinksStyles();
+        }, 1000); // Match this timeout with the transition duration
+        activeTimeouts.push(timeout);
+    }
 
     function captureFloatingLinksStyles(targetStyles) {
         for (const [id, element] of Object.entries(floatingLinks)) {
@@ -128,6 +141,11 @@ document.addEventListener("DOMContentLoaded", () => {
     function phaseOne() {
         return new Promise((resolve) => {
 
+            if (animationAborted) {
+                resolve();
+                return;
+            }
+
             slideLateralLabels(1);
 
             // Set initial transform to ensure the browser registers it
@@ -156,22 +174,33 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             // Use a slight delay to ensure the initial state is registered
-            setTimeout(() => {
-                circleInnerContainer.style.transform = "rotate(185deg)";
+            const timeout1 = setTimeout(() => {
+                if (!animationAborted) {
+                    circleInnerContainer.style.transform = "rotate(185deg)";
+                }
             }, 50); // 50ms delay
+            activeTimeouts.push(timeout1);
 
             // Wait for the animation to complete before resolving
-            setTimeout(() => {
-                // Verify the rotation via computed styles
-                const computedStyle = window.getComputedStyle(circleInnerContainer);
-                resolve();
+            const timeout2 = setTimeout(() => {
+                if (!animationAborted) {
+                    // Verify the rotation via computed styles
+                    const computedStyle = window.getComputedStyle(circleInnerContainer);
+                    resolve();
+                }
             }, 1050); // 1s transition + 50ms delay
+            activeTimeouts.push(timeout2);
         });
     }
 
     // Phase 2: Incrementally change shape backgrounds to orange, starting from 2 to 24, excluding 13
     function phaseTwo() {
         return new Promise((resolve) => {
+            if (animationAborted) {
+                resolve();
+                return;
+            }
+
             const orangeBackground = 'url("https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-3-orange.svg")';
             const lightBlueBackground = 'url("https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-3-lightblue.svg")';
             const defaultDelay = 200;
@@ -198,15 +227,14 @@ document.addEventListener("DOMContentLoaded", () => {
                     continue;
                 }
 
-                setTimeout(() => {
+                const timeout = setTimeout(() => {
+                    if (animationAborted) return;
+
                     if (specialCases[i] !== undefined) {
 
                         const floatingLinkContainer = document.getElementById(`floating-link-container--${i}`);
 
                         if (floatingLinkContainer) {
-                            // Apply smooth transition for the movement
-                            // floatingLinkContainer.style.transition = "top 1s ease, bottom 1s ease";
-
                             // Determine the movement based on the item number
                             if (i === 4 || i === 10) {
                                 // Move to the top for items 4, 10
@@ -241,28 +269,40 @@ document.addEventListener("DOMContentLoaded", () => {
                         item.style.backgroundImage = orangeBackground;
                     }
                 }, i * defaultDelay); // Incremental delay
+
+                activeTimeouts.push(timeout);
             }
 
             // Wait for all animations to complete
-            setTimeout(() => {
-                resolve();
+            const finalTimeout = setTimeout(() => {
+                if (!animationAborted) {
+                    resolve();
+                }
             }, 24 * defaultDelay);
+            activeTimeouts.push(finalTimeout);
         });
     }
 
     // Start the animation sequence
     async function startAnimation() {
 
+        // Reset the abort flag
+        animationAborted = false;
+
         // Capture initial styles after DOM is ready
         captureInitialFloatingLinksStyles();
-        captureInitialInnerCircleStyles()
+        captureInitialInnerCircleStyles();
 
         await phaseOne();
+        if (animationAborted) return; // Exit if aborted
+
         await phaseTwo();
+        if (animationAborted) return; // Exit if aborted
 
         captureSettledFloatingLinksStyles();
     }
 
     // Start the animation with a slight delay to ensure initial states are applied
-    setTimeout(startAnimation, 0);
+    const initialTimeout = setTimeout(startAnimation, 0);
+    activeTimeouts.push(initialTimeout);
 });
