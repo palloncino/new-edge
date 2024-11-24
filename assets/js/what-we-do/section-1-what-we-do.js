@@ -49,28 +49,6 @@ document.addEventListener("DOMContentLoaded", () => {
     let activeTimeouts = [];
     let animationAborted = false;
 
-    function hideFloatingLinks(exceptId) {
-        for (const [id, element] of Object.entries(floatingLinks)) {
-            if (id !== `floating-link-container--${exceptId}` && element && initialFloatingLinksStyles[id]) {
-                ELEMENT_PROPERTIES.forEach(property => {
-                    element.style[property] = initialFloatingLinksStyles[id][property];
-                });
-            }
-        }
-    }
-
-    function rotateInnerCircleOnSelection() {
-        if (circleInnerContainer) {
-            // Add a transition for smooth transformation
-            circleInnerContainer.style.transition = "transform 1s ease-in-out";
-
-            // Apply the desired transformation
-            circleInnerContainer.style.transform = "translateX(-900px) translateY(-200px) scale(2.5)";
-        }
-    }
-
-
-
     function move(id) {
         // Abort ongoing animations
         animationAborted = true;
@@ -99,6 +77,26 @@ document.addEventListener("DOMContentLoaded", () => {
             captureSettledFloatingLinksStyles();
         }, 1000); // Match this timeout with the transition duration
         activeTimeouts.push(timeout);
+    }
+
+    function hideFloatingLinks(exceptId) {
+        for (const [id, element] of Object.entries(floatingLinks)) {
+            if (id !== `floating-link-container--${exceptId}` && element && initialFloatingLinksStyles[id]) {
+                ELEMENT_PROPERTIES.forEach(property => {
+                    element.style[property] = initialFloatingLinksStyles[id][property];
+                });
+            }
+        }
+    }
+
+    function rotateInnerCircleOnSelection() {
+        if (circleInnerContainer) {
+            // Add a transition for smooth transformation
+            circleInnerContainer.style.transition = "transform 1s ease-in-out";
+
+            // Apply the desired transformation
+            circleInnerContainer.style.transform = "translateX(-900px) translateY(-200px) scale(2.5)";
+        }
     }
 
     function captureFloatingLinksStyles(targetStyles) {
