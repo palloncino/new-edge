@@ -74,6 +74,8 @@ document.addEventListener("DOMContentLoaded", () => {
     function move4() {
         // Abort ongoing animations
         animationAborted = true;
+        activeTimeouts.forEach(timeoutID => clearTimeout(timeoutID));
+        activeTimeouts = [];
 
         slideLateralLabels(0);
 
@@ -82,6 +84,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Step 2: Apply transformation to the circleInnerContainer
         rotateInnerCircleOnSelection();
+
+        // Capture settled styles after transformation
+        const timeout = setTimeout(() => {
+            captureSettledFloatingLinksStyles();
+        }, 1000); // Match this timeout with the transition duration
+        activeTimeouts.push(timeout);
     }
 
     function captureFloatingLinksStyles(targetStyles) {
