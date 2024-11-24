@@ -3,6 +3,12 @@ document.addEventListener("DOMContentLoaded", () => {
     // Add initial state class immediately
     document.body.classList.add('labels-initial-state');
 
+    const floatingBackButton = document.getElementById("section-1-what-we-do-back-button");
+    const floatingParagraph4 = document.getElementById("section-1-what-we-do-floating-paragraph--4");
+    const floatingImage4 = document.getElementById("section-1-what-we-do-floating-image--4");
+    const linkTitle4 = document.getElementById("section-1-what-we-do-floating-link-text--4");
+    const linkPlusIcon4 = document.getElementById("section-1-what-we-do-floating-link-plus-icon--4");
+
     const circleInnerContainer = document.getElementById("circle_inner_container");
     const link4 = document.getElementById('floating-link-container--4');
     const link7 = document.getElementById('floating-link-container--7');
@@ -11,24 +17,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const link19 = document.getElementById('floating-link-container--19');
     const link22 = document.getElementById('floating-link-container--22');
 
-    if (link4) {
-        link4.querySelector('.section-1-what-we-do-floating-link-plus-icon').addEventListener('click', () => move(4));
-    }
-    if (link7) {
-        link7.querySelector('.section-1-what-we-do-floating-link-plus-icon').addEventListener('click', () => move(7));
-    }
-    if (link10) {
-        link10.querySelector('.section-1-what-we-do-floating-link-plus-icon').addEventListener('click', () => move(10));
-    }
-    if (link16) {
-        link16.querySelector('.section-1-what-we-do-floating-link-plus-icon').addEventListener('click', () => move(16));
-    }
-    if (link19) {
-        link19.querySelector('.section-1-what-we-do-floating-link-plus-icon').addEventListener('click', () => move(19));
-    }
-    if (link22) {
-        link22.querySelector('.section-1-what-we-do-floating-link-plus-icon').addEventListener('click', () => move(22));
-    }
+    const links = [link4, link7, link10, link16, link19, link22];
+    links.forEach((link, index) => {
+        if (link) {
+            link.querySelector('.section-1-what-we-do-floating-link-plus-icon').addEventListener('click', () => move(index * 3 + 4));
+        }
+    });
 
     const floatingLinks = {
         'floating-link-container--4': link4,
@@ -63,14 +57,21 @@ document.addEventListener("DOMContentLoaded", () => {
         // Step 2: Apply transformation to the circleInnerContainer
         rotateInnerCircleOnSelection();
 
-        // TODOs
+        // Move floatingBackButton into view by translating x to 0
+        floatingBackButton.style.left = "400px";
 
-        // colour and position correctly the items if aborting phaseTwo (or one)
-        // show back button
-        // move the paragraph
-        // move the floating image
-        // move the text title
-        // dissipate plus icon
+        // Move floatingParagraph4 into view by translating y to 0
+        floatingParagraph4.style.top = "400px";
+
+        // Move floatingImage4 into view by translating x to 0
+        floatingImage4.style.right = "0";
+
+        // Move linkTitle4 into view by translating y to 0
+        linkTitle4.style.fontSize = '3.6rem'
+        linkTitle4.style.lineHeight = '3.6rem'
+
+        // Dissipate linkPlusIcon4 by opacity 0
+        linkPlusIcon4.style.opacity = "0";
 
         // Capture settled styles after transformation
         const timeout = setTimeout(() => {

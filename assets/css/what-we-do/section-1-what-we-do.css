@@ -275,18 +275,22 @@
     position: absolute;
     width: auto;
     height: 400px;
-    width: 400px;
+    width: 550px;
     z-index: 20;
-    transform: translateX(-500%);
+    right: -1200px;
+    bottom: 0px;
+    transition: all .5s;
 }
 
 .section-1-what-we-do-floating-paragraph {
     position: absolute;
-    width: auto;
-    height: 400px;
-    width: 400px;
-    z-index: 20;
-    transform: translateY(-500%);
+    max-width: 600px;
+    width: 100%;
+    font-family: 'Mundial Thin';
+    font-size: 1.6rem;
+    line-height: 2rem;
+    top: 1200px;
+    transition: all .5s;
 }
 
 #section-1-what-we-do-floating-image--4 {
