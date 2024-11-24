@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.add('labels-initial-state');
 
     const circleInnerContainer = document.getElementById("circle_inner_container");
-
     const link4 = document.getElementById('floating-link-container--4');
     const link7 = document.getElementById('floating-link-container--7');
     const link10 = document.getElementById('floating-link-container--10');
@@ -42,13 +41,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const ELEMENT_PROPERTIES = ['position', 'top', 'left', 'font-size', 'line-height', 'width', 'height', 'visibility', 'opacity', 'background-position', 'transition', 'font-weight', 'transform'];
 
+    const initialInnerCircleStyles = {};
     const initialFloatingLinksStyles = {};
     const settledFloatingLinksStyles = {};
 
-    function move4() {
-        // set the initialFloatingLinksStyles
-        console.log(1)
+
+    function hideFloatingLinks() {
+        for (const [id, element] of Object.entries(floatingLinks)) {
+            if (element && initialFloatingLinksStyles[id]) {
+                ELEMENT_PROPERTIES.forEach(property => {
+                    element.style[property] = initialFloatingLinksStyles[id][property];
+                });
+            }
+        }
     }
+
+    function move4() {
+        slideLateralLabels(0);
+
+        // Step 1: Restore initial styles for all floating links
+        hideFloatingLinks();
+
+        // Step 2: Apply transformation to the circleInnerContainer
+        if (circleInnerContainer) {
+            // Add a transition for smooth transformation
+            circleInnerContainer.style.transition = "transform 1s ease-in-out";
+
+            // Apply the desired transformation
+            circleInnerContainer.style.transform = "translateX(-750px) translateY(-200px) scale(2.5)";
+        }
+    }
+
 
     function captureFloatingLinksStyles(targetStyles) {
         for (const [id, element] of Object.entries(floatingLinks)) {
@@ -60,6 +83,19 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
             }
         }
+    }
+
+    function captureInnerCircleStyles() {
+        if (circleInnerContainer) {
+            const computedStyles = window.getComputedStyle(circleInnerContainer);
+            ELEMENT_PROPERTIES.forEach((property) => {
+                initialInnerCircleStyles[property] = computedStyles.getPropertyValue(property);
+            });
+        }
+    }
+
+    function captureInitialInnerCircleStyles() {
+        captureInnerCircleStyles();
     }
 
     function captureInitialFloatingLinksStyles() {
@@ -219,6 +255,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Capture initial styles after DOM is ready
         captureInitialFloatingLinksStyles();
+        captureInitialInnerCircleStyles()
 
         await phaseOne();
         await phaseTwo();
