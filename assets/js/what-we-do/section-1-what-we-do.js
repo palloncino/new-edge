@@ -59,18 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    function move4() {
-        // Abort ongoing animations
-        animationAborted = true;
-        activeTimeouts.forEach(timeoutID => clearTimeout(timeoutID));
-        activeTimeouts = [];
-
-        slideLateralLabels(0);
-
-        // Step 1: Restore initial styles for all floating links
-        hideFloatingLinks();
-
-        // Step 2: Apply transformation to the circleInnerContainer
+    function rotateInnerCircleOnSelection() {
         if (circleInnerContainer) {
             // Add a transition for smooth transformation
             circleInnerContainer.style.transition = "transform 1s ease-in-out";
@@ -78,12 +67,21 @@ document.addEventListener("DOMContentLoaded", () => {
             // Apply the desired transformation
             circleInnerContainer.style.transform = "translateX(-750px) translateY(-200px) scale(2.5)";
         }
+    }
 
-        // Capture settled styles after transformation
-        const timeout = setTimeout(() => {
-            captureSettledFloatingLinksStyles();
-        }, 1000); // Match this timeout with the transition duration
-        activeTimeouts.push(timeout);
+
+
+    function move4() {
+        // Abort ongoing animations
+        animationAborted = true;
+
+        slideLateralLabels(0);
+
+        // Step 1: Restore initial styles for all floating links
+        hideFloatingLinks();
+
+        // Step 2: Apply transformation to the circleInnerContainer
+        rotateInnerCircleOnSelection();
     }
 
     function captureFloatingLinksStyles(targetStyles) {
