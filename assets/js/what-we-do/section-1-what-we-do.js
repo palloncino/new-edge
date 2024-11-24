@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
             circleInnerContainer.style.transition = "transform 1s ease-in-out";
 
             // Apply the desired transformation
-            circleInnerContainer.style.transform = "translateX(-750px) translateY(-200px) scale(2.5)";
+            circleInnerContainer.style.transform = "translateX(-900px) translateY(-200px) scale(2.5)";
         }
     }
 
@@ -307,6 +307,10 @@ document.addEventListener("DOMContentLoaded", () => {
         // Capture initial styles after DOM is ready
         captureInitialFloatingLinksStyles();
         captureInitialInnerCircleStyles();
+        // TODOs
+        // captureInitialBackButtonStyles();
+        // captureInitialParagraphStyles();
+        // captureInitialFloatingImagesStyles();
 
         await phaseOne();
         if (animationAborted) return; // Exit if aborted
