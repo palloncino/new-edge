@@ -61,10 +61,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const initialInnerCircleStyles = {};
     const initialFloatingLinksStyles = {};
-    const settledFloatingLinksStyles = {};
     const floatingBackButtonInitialStyles = {};
     const floatingParagraphInitialStyles = {};
     const floatingImagesInitialStyles = {};
+    const floatingLinkTextInitialStyles = {};
+    const floatingPlusIconInitialStyles = {};
+
+    const settledFloatingLinksStyles = {};
 
     // Tracking variables for active timeouts and aborting animations
     let activeTimeouts = [];
@@ -98,7 +101,11 @@ document.addEventListener("DOMContentLoaded", () => {
         if (slideIn) {
             floatingBackButton.style.left = "400px";
         } else {
-            // TODO: restore floatingBackButton styles by applying floatingBackButtonInitialStyles
+            if (floatingBackButton && floatingBackButtonInitialStyles) {
+                ELEMENT_PROPERTIES.forEach((property) => {
+                    floatingBackButton.style[property] = floatingBackButtonInitialStyles[property];
+                });
+            }
         }
     }
 
@@ -107,7 +114,11 @@ document.addEventListener("DOMContentLoaded", () => {
         if (slideIn) {
             paragraph.style.top = "400px";
         } else {
-            // TODO: restore floatingParagraphInitialStyles styles by applying floatingBackButtonInitialStyles
+            if (paragraph && floatingParagraphInitialStyles[paragraph.id]) {
+                ELEMENT_PROPERTIES.forEach((property) => {
+                    paragraph.style[property] = floatingParagraphInitialStyles[paragraph.id][property];
+                });
+            }
         }
     }
 
@@ -116,7 +127,11 @@ document.addEventListener("DOMContentLoaded", () => {
         if (slideIn) {
             image.style.right = "0";
         } else {
-            // TODO: restore floatingImagesInitialStyles styles by applying floatingBackButtonInitialStyles
+            if (image && floatingImagesInitialStyles[image.id]) {
+                ELEMENT_PROPERTIES.forEach((property) => {
+                    image.style[property] = floatingImagesInitialStyles[image.id][property];
+                });
+            }
         }
     }
 
@@ -128,7 +143,11 @@ document.addEventListener("DOMContentLoaded", () => {
             text.style.fontSize = '3.6rem'
             text.style.lineHeight = '3.6rem'
         } else {
-            // TODO: restore floatingBackButton styles by applying floatingBackButtonInitialStyles
+            if (text && floatingLinkTextInitialStyles[text.id]) {
+                ELEMENT_PROPERTIES.forEach((property) => {
+                    text.style[property] = floatingLinkTextInitialStyles[text.id][property];
+                });
+            }
         }
     }
 
@@ -137,7 +156,11 @@ document.addEventListener("DOMContentLoaded", () => {
         if (slideIn) {
             plusIcon.style.opacity = "0";
         } else {
-            // TODO: restore floatingBackButton styles by applying floatingBackButtonInitialStyles
+            if (plusIcon && floatingPlusIconInitialStyles[plusIcon.id]) {
+                ELEMENT_PROPERTIES.forEach((property) => {
+                    plusIcon.style[property] = floatingPlusIconInitialStyles[plusIcon.id][property];
+                });
+            }
         }
     }
 
@@ -150,8 +173,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
     }
-
-    
 
     function rotateInnerCircleOnSelection() {
         if (circleInnerContainer) {
@@ -206,21 +227,59 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function captureInitialFloatingParagraphStyles() {
-        if (floatingParagraph4) {
-            const computedStyles = window.getComputedStyle(floatingParagraph4);
-            ELEMENT_PROPERTIES.forEach((property) => {
-                floatingParagraphInitialStyles[property] = computedStyles.getPropertyValue(property);
-            });
-        }
+        const paragraphs = [floatingParagraph4, floatingParagraph7, floatingParagraph10, floatingParagraph16, floatingParagraph19, floatingParagraph22];
+        paragraphs.forEach((paragraph) => {
+            if (paragraph) {
+                const id = paragraph.id;
+                floatingParagraphInitialStyles[id] = {};
+                const computedStyles = window.getComputedStyle(paragraph);
+                ELEMENT_PROPERTIES.forEach((property) => {
+                    floatingParagraphInitialStyles[id][property] = computedStyles.getPropertyValue(property);
+                });
+            }
+        });
     }
 
     function captureInitialFloatingImagesStyles() {
-        if (floatingImage4) {
-            const computedStyles = window.getComputedStyle(floatingImage4);
-            ELEMENT_PROPERTIES.forEach((property) => {
-                floatingImagesInitialStyles[property] = computedStyles.getPropertyValue(property);
-            });
-        }
+        const images = [floatingImage4, floatingImage7, floatingImage10, floatingImage16, floatingImage19, floatingImage22];
+        images.forEach((image) => {
+            if (image) {
+                const id = image.id;
+                floatingImagesInitialStyles[id] = {};
+                const computedStyles = window.getComputedStyle(image);
+                ELEMENT_PROPERTIES.forEach((property) => {
+                    floatingImagesInitialStyles[id][property] = computedStyles.getPropertyValue(property);
+                });
+            }
+        });
+    }
+
+    function captureInitialFloatingLinkTextStyles() {
+        const linkTexts = [linkTitle4, linkTitle7, linkTitle10, linkTitle16, linkTitle19, linkTitle22];
+        linkTexts.forEach((linkText) => {
+            if (linkText) {
+                const id = linkText.id;
+                floatingLinkTextInitialStyles[id] = {};
+                const computedStyles = window.getComputedStyle(linkText);
+                ELEMENT_PROPERTIES.forEach((property) => {
+                    floatingLinkTextInitialStyles[id][property] = computedStyles.getPropertyValue(property);
+                });
+            }
+        });
+    }
+
+    function captureInitialFloatingPlusIconStyles() {
+        const plusIcons = [linkPlusIcon4, linkPlusIcon7, linkPlusIcon10, linkPlusIcon16, linkPlusIcon19, linkPlusIcon22];
+        plusIcons.forEach((plusIcon) => {
+            if (plusIcon) {
+                const id = plusIcon.id;
+                floatingPlusIconInitialStyles[id] = {};
+                const computedStyles = window.getComputedStyle(plusIcon);
+                ELEMENT_PROPERTIES.forEach((property) => {
+                    floatingPlusIconInitialStyles[id][property] = computedStyles.getPropertyValue(property);
+                });
+            }
+        });
     }
 
     function slideLateralLabels(num) {
@@ -399,6 +458,8 @@ document.addEventListener("DOMContentLoaded", () => {
         captureInitialBackButtonStyles();
         captureInitialFloatingParagraphStyles();
         captureInitialFloatingImagesStyles();
+        captureInitialFloatingLinkTextStyles();
+        captureInitialFloatingPlusIconStyles();
 
         await phaseOne();
         if (animationAborted) return; // Exit if aborted
