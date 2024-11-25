@@ -76,29 +76,16 @@ document.addEventListener("DOMContentLoaded", () => {
         activeTimeouts.forEach(timeoutID => clearTimeout(timeoutID));
         activeTimeouts = [];
 
-        slideLateralLabels(0);
-
         // Step 1: Restore initial styles for all floating links
         hideFloatingLinks(id);
-
         // Step 2: Apply transformation to the circleInnerContainer
         rotateInnerCircleOnSelection();
-
-        // Move floatingBackButton into view by translating x to 0
+        slideLateralLabels(0);
         slideBackBtn(true);
-
-        // Move floatingParagraph4 into view by translating y to 0
         slideParagraph(id, true);
-
-        // Move floatingImage4 into view by translating x to 0
-        floatingImage4.style.right = "0";
-
-        // Move linkTitle4 into view by translating y to 0
-        linkTitle4.style.fontSize = '3.6rem'
-        linkTitle4.style.lineHeight = '3.6rem'
-
-        // Dissipate linkPlusIcon4 by opacity 0
-        linkPlusIcon4.style.opacity = "0";
+        slideImage(id, true)
+        slideLinkText(id, true)
+        slidePlusIcon(id, true)
 
         // Capture settled styles after transformation
         const timeout = setTimeout(() => {
@@ -117,19 +104,38 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function slideParagraph(id, slideIn) {
         const paragraph = document.getElementById(`section-1-what-we-do-floating-paragraph--${id}`);
-        console.log({paragraph})
         if (slideIn) {
             paragraph.style.top = "400px";
         } else {
-            // TODO: restore floatingBackButton styles by applying floatingBackButtonInitialStyles
+            // TODO: restore floatingParagraphInitialStyles styles by applying floatingBackButtonInitialStyles
         }
     }
 
     function slideImage(id, slideIn) {
         const image = document.getElementById(`section-1-what-we-do-floating-image--${id}`);
-        console.log({paragraph})
         if (slideIn) {
-            paragraph.style.top = "400px";
+            image.style.right = "0";
+        } else {
+            // TODO: restore floatingImagesInitialStyles styles by applying floatingBackButtonInitialStyles
+        }
+    }
+
+    function slideLinkText(id, slideIn) {
+        const text = document.getElementById(`section-1-what-we-do-floating-link-text--${id}`);
+        if (slideIn) {
+            // text.style.right ?
+            // text.style.top ?
+            text.style.fontSize = '3.6rem'
+            text.style.lineHeight = '3.6rem'
+        } else {
+            // TODO: restore floatingBackButton styles by applying floatingBackButtonInitialStyles
+        }
+    }
+
+    function slidePlusIcon(id, slideIn) {
+        const plusIcon = document.getElementById(`section-1-what-we-do-floating-link-plus-icon--${id}`);
+        if (slideIn) {
+            plusIcon.style.opacity = "0";
         } else {
             // TODO: restore floatingBackButton styles by applying floatingBackButtonInitialStyles
         }
@@ -144,6 +150,8 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
     }
+
+    
 
     function rotateInnerCircleOnSelection() {
         if (circleInnerContainer) {
