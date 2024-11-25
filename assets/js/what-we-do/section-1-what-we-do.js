@@ -6,6 +6,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const floatingBackButton = document.getElementById("section-1-what-we-do-back-button");
     const circleInnerContainer = document.getElementById("circle_inner_container");
 
+    const leftLabel = document.querySelector('.section-1-what-we-do__big-svg--left');
+    const rightLabel = document.querySelector('.section-1-what-we-do__big-svg--right');
+
     const link4 = document.getElementById('floating-link-container--4');
     const link7 = document.getElementById('floating-link-container--7');
     const link10 = document.getElementById('floating-link-container--10');
@@ -48,6 +51,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+    if (floatingBackButton) {
+        floatingBackButton.addEventListener('click', backToInitialState);
+    }
+
     const floatingLinksMap = {
         'floating-link-container--4': link4,
         'floating-link-container--7': link7,
@@ -57,23 +64,62 @@ document.addEventListener("DOMContentLoaded", () => {
         'floating-link-container--22': link22,
     };
 
-    const ELEMENT_PROPERTIES = ['position', 'top', 'left', 'font-size', 'line-height', 'width', 'height', 'visibility', 'opacity', 'background-position', 'transition', 'font-weight', 'transform'];
+    const ELEMENT_PROPERTIES = ['position', 'top', 'left', 'right', 'bottom', 'font-size', 'line-height', 'width', 'height', 'visibility', 'opacity', 'background-position', 'transition', 'font-weight', 'transform'];
 
     const initialInnerCircleStyles = {};
     const initialFloatingLinksStyles = {};
-    const floatingBackButtonInitialStyles = {};
-    const floatingParagraphInitialStyles = {};
-    const floatingImagesInitialStyles = {};
     const floatingLinkTextInitialStyles = {};
     const floatingPlusIconInitialStyles = {};
-
     const settledFloatingLinksStyles = {};
+
+    let activeId = undefined;
 
     // Tracking variables for active timeouts and aborting animations
     let activeTimeouts = [];
     let animationAborted = false;
 
+    function backToInitialState() {
+        // Abort ongoing animations
+        animationAborted = true;
+        activeTimeouts.forEach(timeoutID => clearTimeout(timeoutID));
+        activeTimeouts = [];
+
+
+        console.log({
+            initialInnerCircleStyles,
+            initialFloatingLinksStyles,
+            floatingLinkTextInitialStyles,
+            floatingPlusIconInitialStyles,
+            settledFloatingLinksStyles,
+        })
+
+        slideBackBtn(false)
+        slideImage(activeId, false);
+        slideParagraph(activeId, false);
+
+        // restoreFloatingLinks();
+        // restoreCircleInnerContainer();
+        // restoreCircleItems();
+
+        // restoreFloatingLinkTexts();
+        // restoreFloatingPlusIcons();
+
+        // Reset the labels to their initial state
+        slideLateralLabels(1);
+
+        // Reset any added classes or state variables
+        document.body.classList.add('labels-initial-state');
+
+        // Reset active ID
+        activeId = undefined;
+
+        // Reset the abort flag
+        animationAborted = false;
+    }
+
     function move(id) {
+        activeId = id;
+
         // Abort ongoing animations
         animationAborted = true;
         activeTimeouts.forEach(timeoutID => clearTimeout(timeoutID));
@@ -101,11 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (slideIn) {
             floatingBackButton.style.left = "400px";
         } else {
-            if (floatingBackButton && floatingBackButtonInitialStyles) {
-                ELEMENT_PROPERTIES.forEach((property) => {
-                    floatingBackButton.style[property] = floatingBackButtonInitialStyles[property];
-                });
-            }
+            floatingBackButton.style.left = "-600px";
         }
     }
 
@@ -114,11 +156,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (slideIn) {
             paragraph.style.top = "400px";
         } else {
-            if (paragraph && floatingParagraphInitialStyles[paragraph.id]) {
-                ELEMENT_PROPERTIES.forEach((property) => {
-                    paragraph.style[property] = floatingParagraphInitialStyles[paragraph.id][property];
-                });
-            }
+            paragraph.style.top = "1200px";
         }
     }
 
@@ -127,11 +165,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (slideIn) {
             image.style.right = "0";
         } else {
-            if (image && floatingImagesInitialStyles[image.id]) {
-                ELEMENT_PROPERTIES.forEach((property) => {
-                    image.style[property] = floatingImagesInitialStyles[image.id][property];
-                });
-            }
+            image.style.right = "-600px";
         }
     }
 
@@ -217,43 +251,6 @@ document.addEventListener("DOMContentLoaded", () => {
         captureFloatingLinksStyles(settledFloatingLinksStyles);
     }
 
-    function captureInitialBackButtonStyles() {
-        if (floatingBackButton) {
-            const computedStyles = window.getComputedStyle(floatingBackButton);
-            ELEMENT_PROPERTIES.forEach((property) => {
-                floatingBackButtonInitialStyles[property] = computedStyles.getPropertyValue(property);
-            });
-        }
-    }
-
-    function captureInitialFloatingParagraphStyles() {
-        const paragraphs = [floatingParagraph4, floatingParagraph7, floatingParagraph10, floatingParagraph16, floatingParagraph19, floatingParagraph22];
-        paragraphs.forEach((paragraph) => {
-            if (paragraph) {
-                const id = paragraph.id;
-                floatingParagraphInitialStyles[id] = {};
-                const computedStyles = window.getComputedStyle(paragraph);
-                ELEMENT_PROPERTIES.forEach((property) => {
-                    floatingParagraphInitialStyles[id][property] = computedStyles.getPropertyValue(property);
-                });
-            }
-        });
-    }
-
-    function captureInitialFloatingImagesStyles() {
-        const images = [floatingImage4, floatingImage7, floatingImage10, floatingImage16, floatingImage19, floatingImage22];
-        images.forEach((image) => {
-            if (image) {
-                const id = image.id;
-                floatingImagesInitialStyles[id] = {};
-                const computedStyles = window.getComputedStyle(image);
-                ELEMENT_PROPERTIES.forEach((property) => {
-                    floatingImagesInitialStyles[id][property] = computedStyles.getPropertyValue(property);
-                });
-            }
-        });
-    }
-
     function captureInitialFloatingLinkTextStyles() {
         const linkTexts = [linkTitle4, linkTitle7, linkTitle10, linkTitle16, linkTitle19, linkTitle22];
         linkTexts.forEach((linkText) => {
@@ -282,21 +279,13 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    function slideLateralLabels(num) {
-        const leftLabel = document.querySelector('.section-1-what-we-do__big-svg--left');
-        const rightLabel = document.querySelector('.section-1-what-we-do__big-svg--right');
-
-        if (!leftLabel || !rightLabel) {
-            console.warn("Lateral labels not found");
-            return;
-        }
-
-        if (num === 1) {
-            // Remove the initial state class to trigger the animation
-            document.body.classList.remove('labels-initial-state');
+    function slideLateralLabels(bool) {
+        if (bool) {
+            leftLabel.style.transform = "translateX(0)";
+            rightLabel.style.transform = "translateX(0) scaleX(-1)";
         } else {
-            // Add the class back to hide the labels
-            document.body.classList.add('labels-initial-state');
+            leftLabel.style.transform = "translateX(-1200px)";
+            rightLabel.style.transform = "translateX(1200px) scaleX(-1)";
         }
     }
 
@@ -455,11 +444,10 @@ document.addEventListener("DOMContentLoaded", () => {
         // Capture initial styles after DOM is ready
         captureInitialFloatingLinksStyles();
         captureInitialInnerCircleStyles();
-        captureInitialBackButtonStyles();
-        captureInitialFloatingParagraphStyles();
-        captureInitialFloatingImagesStyles();
         captureInitialFloatingLinkTextStyles();
         captureInitialFloatingPlusIconStyles();
+        
+        slideLateralLabels(false)
 
         await phaseOne();
         if (animationAborted) return; // Exit if aborted
