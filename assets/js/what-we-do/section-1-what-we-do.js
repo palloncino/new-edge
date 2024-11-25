@@ -4,18 +4,42 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.add('labels-initial-state');
 
     const floatingBackButton = document.getElementById("section-1-what-we-do-back-button");
-    const floatingParagraph4 = document.getElementById("section-1-what-we-do-floating-paragraph--4");
-    const floatingImage4 = document.getElementById("section-1-what-we-do-floating-image--4");
-    const linkTitle4 = document.getElementById("section-1-what-we-do-floating-link-text--4");
-    const linkPlusIcon4 = document.getElementById("section-1-what-we-do-floating-link-plus-icon--4");
-
     const circleInnerContainer = document.getElementById("circle_inner_container");
+
     const link4 = document.getElementById('floating-link-container--4');
     const link7 = document.getElementById('floating-link-container--7');
     const link10 = document.getElementById('floating-link-container--10');
     const link16 = document.getElementById('floating-link-container--16');
     const link19 = document.getElementById('floating-link-container--19');
     const link22 = document.getElementById('floating-link-container--22');
+
+    const floatingImage4 = document.getElementById("section-1-what-we-do-floating-image--4");
+    const floatingImage7 = document.getElementById("section-1-what-we-do-floating-image--7");
+    const floatingImage10 = document.getElementById("section-1-what-we-do-floating-image--10");
+    const floatingImage16 = document.getElementById("section-1-what-we-do-floating-image--16");
+    const floatingImage19 = document.getElementById("section-1-what-we-do-floating-image--19");
+    const floatingImage22 = document.getElementById("section-1-what-we-do-floating-image--22");
+
+    const floatingParagraph4 = document.getElementById('section-1-what-we-do-floating-paragraph--4');
+    const floatingParagraph7 = document.getElementById('section-1-what-we-do-floating-paragraph--7');
+    const floatingParagraph10 = document.getElementById('section-1-what-we-do-floating-paragraph--10');
+    const floatingParagraph16 = document.getElementById('section-1-what-we-do-floating-paragraph--16');
+    const floatingParagraph19 = document.getElementById('section-1-what-we-do-floating-paragraph--19');
+    const floatingParagraph22 = document.getElementById('section-1-what-we-do-floating-paragraph--22');
+
+    const linkTitle4 = document.getElementById("section-1-what-we-do-floating-link-text--4");
+    const linkTitle7 = document.getElementById("section-1-what-we-do-floating-link-text--7");
+    const linkTitle10 = document.getElementById("section-1-what-we-do-floating-link-text--10");
+    const linkTitle16 = document.getElementById("section-1-what-we-do-floating-link-text--16");
+    const linkTitle19 = document.getElementById("section-1-what-we-do-floating-link-text--19");
+    const linkTitle22 = document.getElementById("section-1-what-we-do-floating-link-text--22");
+
+    const linkPlusIcon4 = document.getElementById("section-1-what-we-do-floating-link-plus-icon--4");
+    const linkPlusIcon7 = document.getElementById("section-1-what-we-do-floating-link-plus-icon--7");
+    const linkPlusIcon10 = document.getElementById("section-1-what-we-do-floating-link-plus-icon--10");
+    const linkPlusIcon16 = document.getElementById("section-1-what-we-do-floating-link-plus-icon--16");
+    const linkPlusIcon19 = document.getElementById("section-1-what-we-do-floating-link-plus-icon--19");
+    const linkPlusIcon22 = document.getElementById("section-1-what-we-do-floating-link-plus-icon--22");
 
     const links = [link4, link7, link10, link16, link19, link22];
     links.forEach((link, index) => {
@@ -24,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    const floatingLinks = {
+    const floatingLinksMap = {
         'floating-link-container--4': link4,
         'floating-link-container--7': link7,
         'floating-link-container--10': link10,
@@ -38,6 +62,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const initialInnerCircleStyles = {};
     const initialFloatingLinksStyles = {};
     const settledFloatingLinksStyles = {};
+    const floatingBackButtonInitialStyles = {};
+    const floatingParagraphInitialStyles = {};
+    const floatingImagesInitialStyles = {};
 
     // Tracking variables for active timeouts and aborting animations
     let activeTimeouts = [];
@@ -58,10 +85,10 @@ document.addEventListener("DOMContentLoaded", () => {
         rotateInnerCircleOnSelection();
 
         // Move floatingBackButton into view by translating x to 0
-        floatingBackButton.style.left = "400px";
+        slideBackBtn(true);
 
         // Move floatingParagraph4 into view by translating y to 0
-        floatingParagraph4.style.top = "400px";
+        slideParagraph(id, true);
 
         // Move floatingImage4 into view by translating x to 0
         floatingImage4.style.right = "0";
@@ -80,8 +107,36 @@ document.addEventListener("DOMContentLoaded", () => {
         activeTimeouts.push(timeout);
     }
 
+    function slideBackBtn(slideIn) {
+        if (slideIn) {
+            floatingBackButton.style.left = "400px";
+        } else {
+            // TODO: restore floatingBackButton styles by applying floatingBackButtonInitialStyles
+        }
+    }
+
+    function slideParagraph(id, slideIn) {
+        const paragraph = document.getElementById(`section-1-what-we-do-floating-paragraph--${id}`);
+        console.log({paragraph})
+        if (slideIn) {
+            paragraph.style.top = "400px";
+        } else {
+            // TODO: restore floatingBackButton styles by applying floatingBackButtonInitialStyles
+        }
+    }
+
+    function slideImage(id, slideIn) {
+        const image = document.getElementById(`section-1-what-we-do-floating-image--${id}`);
+        console.log({paragraph})
+        if (slideIn) {
+            paragraph.style.top = "400px";
+        } else {
+            // TODO: restore floatingBackButton styles by applying floatingBackButtonInitialStyles
+        }
+    }
+
     function hideFloatingLinks(exceptId) {
-        for (const [id, element] of Object.entries(floatingLinks)) {
+        for (const [id, element] of Object.entries(floatingLinksMap)) {
             if (id !== `floating-link-container--${exceptId}` && element && initialFloatingLinksStyles[id]) {
                 ELEMENT_PROPERTIES.forEach(property => {
                     element.style[property] = initialFloatingLinksStyles[id][property];
@@ -101,7 +156,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function captureFloatingLinksStyles(targetStyles) {
-        for (const [id, element] of Object.entries(floatingLinks)) {
+        for (const [id, element] of Object.entries(floatingLinksMap)) {
             if (element) {
                 const computedStyles = window.getComputedStyle(element);
                 targetStyles[id] = {};
@@ -131,6 +186,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function captureSettledFloatingLinksStyles() {
         captureFloatingLinksStyles(settledFloatingLinksStyles);
+    }
+
+    function captureInitialBackButtonStyles() {
+        if (floatingBackButton) {
+            const computedStyles = window.getComputedStyle(floatingBackButton);
+            ELEMENT_PROPERTIES.forEach((property) => {
+                floatingBackButtonInitialStyles[property] = computedStyles.getPropertyValue(property);
+            });
+        }
+    }
+
+    function captureInitialFloatingParagraphStyles() {
+        if (floatingParagraph4) {
+            const computedStyles = window.getComputedStyle(floatingParagraph4);
+            ELEMENT_PROPERTIES.forEach((property) => {
+                floatingParagraphInitialStyles[property] = computedStyles.getPropertyValue(property);
+            });
+        }
+    }
+
+    function captureInitialFloatingImagesStyles() {
+        if (floatingImage4) {
+            const computedStyles = window.getComputedStyle(floatingImage4);
+            ELEMENT_PROPERTIES.forEach((property) => {
+                floatingImagesInitialStyles[property] = computedStyles.getPropertyValue(property);
+            });
+        }
     }
 
     function slideLateralLabels(num) {
@@ -306,10 +388,9 @@ document.addEventListener("DOMContentLoaded", () => {
         // Capture initial styles after DOM is ready
         captureInitialFloatingLinksStyles();
         captureInitialInnerCircleStyles();
-        // TODOs
-        // captureInitialBackButtonStyles();
-        // captureInitialParagraphStyles();
-        // captureInitialFloatingImagesStyles();
+        captureInitialBackButtonStyles();
+        captureInitialFloatingParagraphStyles();
+        captureInitialFloatingImagesStyles();
 
         await phaseOne();
         if (animationAborted) return; // Exit if aborted
