@@ -55,6 +55,37 @@ document.addEventListener("DOMContentLoaded", () => {
         floatingBackButton.addEventListener('click', backToInitialState);
     }
 
+    const settledPositions = {
+        'floating-link-container--4': {
+            top: "-20px",
+            left: "-170px",
+        },
+        'floating-link-container--7': {
+            top: "-110px",
+            left: "50%",
+            transform: "translateX(-50%)",
+        },
+        'floating-link-container--10': {
+            top: "-20px",
+            right: "-170px",
+        },
+        'floating-link-container--16': {
+            bottom: "-20px",
+            right: "-170px",
+        },
+        'floating-link-container--19': {
+            bottom: "-120px",
+            left: "50%",
+            transform: "translateX(-50%)",
+        },
+        'floating-link-container--22': {
+            bottom: "-20px",
+            left: "-170px",
+        },
+        // Add mappings for other floating links if they exist
+    };
+
+
     const floatingLinksMap = {
         'floating-link-container--4': link4,
         'floating-link-container--7': link7,
@@ -78,8 +109,8 @@ document.addEventListener("DOMContentLoaded", () => {
         'opacity',
         'background-position',
         'background-image',
-        'background-size',    // Added
-        'background',          // Added if necessary
+        'background-size',
+        'background',
         'transition',
         'font-weight',
         'transform',
@@ -118,9 +149,10 @@ document.addEventListener("DOMContentLoaded", () => {
         slideBackBtn(false)
         slideImage(activeId, false);
         slideParagraph(activeId, false);
+
         resetPositionInnerCircle();
 
-        // restoreFloatingLinks();
+        restoreFloatingLinks();
         // restoreCircleInnerContainer();
         // restoreCircleItems();
 
@@ -141,28 +173,85 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function move(id) {
         activeId = id;
-
+    
         // Abort ongoing animations
         animationAborted = true;
         activeTimeouts.forEach(timeoutID => clearTimeout(timeoutID));
         activeTimeouts = [];
-
-        // Step 1: Restore initial styles for all floating links
+    
+        // Step 1: Hide all other floating links except the selected one
         hideFloatingLinks(id);
-        // Step 2: Apply transformation to the circleInnerContainer
+    
+        // Step 2: Transform the inner circle for the selected item
         rotateInnerCircleOnSelection();
+    
+        // Step 3: Slide in the labels and back button
         slideLateralLabels(0);
         slideBackBtn(true);
+    
+        // Step 4: Animate the selected floating link and its text
         slideParagraph(id, true);
-        slideImage(id, true)
-        slideLinkText(id, true)
-        slidePlusIcon(id, true)
-
-        // Capture settled styles after transformation
+        slideImage(id, true);
+        slideLinkText(id, true);
+        slidePlusIcon(id, true);
+    
+        // Capture settled styles after the animation
         const timeout = setTimeout(() => {
             captureSettledFloatingLinksStyles();
-        }, 1000); // Match this timeout with the transition duration
+        }, 1000); // Match the transition duration
         activeTimeouts.push(timeout);
+    }
+
+    function restoreFloatingLinks() {
+        console.log("🔄 Restoring floating links to their settled positions...");
+    
+        for (const [id, element] of Object.entries(floatingLinksMap)) {
+            if (element) {
+                const positions = settledPositions[id] || {};
+    
+                // Reset all positioning properties first
+                element.style.top = "";
+                element.style.left = "";
+                element.style.right = "";
+                element.style.bottom = "";
+                element.style.transform = "";
+    
+                // Apply settled positions
+                if (positions.top !== undefined) element.style.top = positions.top;
+                if (positions.bottom !== undefined) element.style.bottom = positions.bottom;
+                if (positions.left !== undefined) element.style.left = positions.left;
+                if (positions.right !== undefined) element.style.right = positions.right;
+                if (positions.transform !== undefined) element.style.transform = positions.transform;
+    
+                // Reset font size and line height to their normal values
+                const textElement = element.querySelector('.section-1-what-we-do-floating-link-text');
+                if (textElement) {
+                    textElement.style.fontSize = "1.4rem"; // Normal size
+                    textElement.style.lineHeight = "1.6rem"; // Normal line height
+                }
+    
+                console.log(`🔄 Restored ${id} with font-size: 1.4rem, line-height: 1.6rem`);
+            } else {
+                console.warn(`⚠️ Cannot restore ${id}. Element missing.`);
+            }
+        }
+    
+        console.log("✅ All floating links have been restored to their settled positions.");
+    }
+
+    function slideLinkText(id, slideIn) {
+        const text = document.getElementById(`section-1-what-we-do-floating-link-text--${id}`);
+        if (text) {
+            if (slideIn) {
+                // Make the text larger for the selected link
+                text.style.fontSize = "3.6rem";
+                text.style.lineHeight = "3.6rem";
+            } else {
+                // Reset to normal size
+                text.style.fontSize = "1.4rem";
+                text.style.lineHeight = "1.6rem";
+            }
+        }
     }
 
     function slideBackBtn(slideIn) {
@@ -188,22 +277,6 @@ document.addEventListener("DOMContentLoaded", () => {
             image.style.right = "0";
         } else {
             image.style.right = "-600px";
-        }
-    }
-
-    function slideLinkText(id, slideIn) {
-        const text = document.getElementById(`section-1-what-we-do-floating-link-text--${id}`);
-        if (slideIn) {
-            // text.style.right ?
-            // text.style.top ?
-            text.style.fontSize = '3.6rem'
-            text.style.lineHeight = '3.6rem'
-        } else {
-            if (text && floatingLinkTextInitialStyles[text.id]) {
-                ELEMENT_PROPERTIES.forEach((property) => {
-                    text.style[property] = floatingLinkTextInitialStyles[text.id][property];
-                });
-            }
         }
     }
 
@@ -270,7 +343,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-
     function captureFloatingLinksStyles(targetStyles) {
         for (const [id, element] of Object.entries(floatingLinksMap)) {
             if (element) {
@@ -279,6 +351,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 ELEMENT_PROPERTIES.forEach((property) => {
                     targetStyles[id][property] = computedStyles.getPropertyValue(property);
                 });
+                console.log(`📋 Captured styles for floating link ${id}:`, targetStyles[id]);
             }
         }
     }
@@ -405,13 +478,14 @@ document.addEventListener("DOMContentLoaded", () => {
     function phaseTwo() {
         return new Promise((resolve) => {
             if (animationAborted) {
+                console.log("❌ Animation aborted before phaseTwo.");
                 resolve();
                 return;
             }
 
             const orangeBackground = 'url("https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-3-orange.svg")';
             const lightBlueBackground = 'url("https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-3-lightblue.svg")';
-            const defaultDelay = 200;
+            const defaultDelay = 200; // 200ms delay between each shape
 
             // Special cases: Only adjust the inner-container for outward orientation
             const specialCases = {
@@ -431,7 +505,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const item = document.querySelector(`.circle-item-${i} .inner-container`);
 
                 if (!parentItem || !item) {
-                    console.warn(`Circle item ${i} not found.`);
+                    console.warn(`⚠️ Circle item ${i} not found.`);
                     continue;
                 }
 
@@ -446,23 +520,47 @@ document.addEventListener("DOMContentLoaded", () => {
                             // Determine the movement based on the item number
                             if (i === 4 || i === 10) {
                                 // Move to the top for items 4, 10
-                                floatingLinkContainer.style.top = "-20px";
-                                floatingLinkContainer.style.bottom = "";
+                                floatingLinkContainer.style.top = settledPositions[`floating-link-container--${i}`].top;
+                                floatingLinkContainer.style.left = settledPositions[`floating-link-container--${i}`].left;
+                                floatingLinkContainer.style.right = ''; // Reset opposite property
+                                floatingLinkContainer.style.bottom = ''; // Reset opposite property
+                                if (settledPositions[`floating-link-container--${i}`].transform) {
+                                    floatingLinkContainer.style.transform = settledPositions[`floating-link-container--${i}`].transform;
+                                }
+                                console.log(`🔄 Moved floating link ${i} to settled position.`);
                             } else if (i === 7) {
                                 // Move to the top for item 7
-                                floatingLinkContainer.style.top = "-110px";
-                                floatingLinkContainer.style.bottom = "";
+                                floatingLinkContainer.style.top = settledPositions[`floating-link-container--${i}`].top;
+                                floatingLinkContainer.style.left = settledPositions[`floating-link-container--${i}`].left;
+                                floatingLinkContainer.style.right = ''; // Reset opposite property
+                                floatingLinkContainer.style.bottom = ''; // Reset opposite property
+                                if (settledPositions[`floating-link-container--${i}`].transform) {
+                                    floatingLinkContainer.style.transform = settledPositions[`floating-link-container--${i}`].transform;
+                                }
+                                console.log(`🔄 Moved floating link ${i} to settled position.`);
                             } else if (i === 16 || i === 22) {
                                 // Move to the bottom for items 16, 22
-                                floatingLinkContainer.style.bottom = "-20px";
-                                floatingLinkContainer.style.top = ""; // Reset top position
+                                floatingLinkContainer.style.bottom = settledPositions[`floating-link-container--${i}`].bottom;
+                                floatingLinkContainer.style.right = settledPositions[`floating-link-container--${i}`].right;
+                                floatingLinkContainer.style.top = ''; // Reset opposite property
+                                floatingLinkContainer.style.left = ''; // Reset opposite property
+                                if (settledPositions[`floating-link-container--${i}`].transform) {
+                                    floatingLinkContainer.style.transform = settledPositions[`floating-link-container--${i}`].transform;
+                                }
+                                console.log(`🔄 Moved floating link ${i} to settled position.`);
                             } else if (i === 19) {
                                 // Move to the bottom for item 19
-                                floatingLinkContainer.style.bottom = "-120px";
-                                floatingLinkContainer.style.top = ""; // Reset top position
+                                floatingLinkContainer.style.bottom = settledPositions[`floating-link-container--${i}`].bottom;
+                                floatingLinkContainer.style.left = settledPositions[`floating-link-container--${i}`].left;
+                                floatingLinkContainer.style.top = ''; // Reset opposite property
+                                floatingLinkContainer.style.right = ''; // Reset opposite property
+                                if (settledPositions[`floating-link-container--${i}`].transform) {
+                                    floatingLinkContainer.style.transform = settledPositions[`floating-link-container--${i}`].transform;
+                                }
+                                console.log(`🔄 Moved floating link ${i} to settled position.`);
                             }
                         } else {
-                            console.warn(`Floating link container #floating-link-container--${i} not found.`);
+                            console.warn(`⚠️ Floating link container #floating-link-container--${i} not found.`);
                         }
 
                         // Apply light blue background and outward rotation
@@ -475,6 +573,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         // Apply orange background for default cases
                         item.style.transition = "none";
                         item.style.backgroundImage = orangeBackground;
+                        console.log(`🔄 Applied orange background to inner-container of circle-item-${i}`);
                     }
                 }, i * defaultDelay); // Incremental delay
 
@@ -484,9 +583,10 @@ document.addEventListener("DOMContentLoaded", () => {
             // Wait for all animations to complete
             const finalTimeout = setTimeout(() => {
                 if (!animationAborted) {
+                    console.log("✅ Phase Two completed.");
                     resolve();
                 }
-            }, 24 * defaultDelay);
+            }, 24 * defaultDelay); // Total delay for all 24 items
             activeTimeouts.push(finalTimeout);
         });
     }
