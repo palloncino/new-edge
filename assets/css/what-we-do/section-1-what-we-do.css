@@ -285,7 +285,42 @@
 }
 
 #section-1-what-we-do-floating-image--4 {
+    background: url('../../images/what-we-do/PRODUCT-DEVELOPMENT.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+#section-1-what-we-do-floating-image--7 {
+    background: url('../../images/what-we-do/INSURANCE-BROKER.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+#section-1-what-we-do-floating-image--10 {
+    background: url('../../images/what-we-do/INSURANCE-BROKER.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+#section-1-what-we-do-floating-image--16 {
     background: url('../../images/what-we-do/COSTUMER-CARE.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+#section-1-what-we-do-floating-image--19 {
+    background: url('../../images/what-we-do/WELFARE.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+#section-1-what-we-do-floating-image--22 {
+    background: url('../../images/what-we-do/WHOLESALE.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;

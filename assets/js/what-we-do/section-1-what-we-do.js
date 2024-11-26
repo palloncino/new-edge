@@ -16,20 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const link19 = document.getElementById('floating-link-container--19');
     const link22 = document.getElementById('floating-link-container--22');
 
-    const floatingImage4 = document.getElementById("section-1-what-we-do-floating-image--4");
-    const floatingImage7 = document.getElementById("section-1-what-we-do-floating-image--7");
-    const floatingImage10 = document.getElementById("section-1-what-we-do-floating-image--10");
-    const floatingImage16 = document.getElementById("section-1-what-we-do-floating-image--16");
-    const floatingImage19 = document.getElementById("section-1-what-we-do-floating-image--19");
-    const floatingImage22 = document.getElementById("section-1-what-we-do-floating-image--22");
-
-    const floatingParagraph4 = document.getElementById('section-1-what-we-do-floating-paragraph--4');
-    const floatingParagraph7 = document.getElementById('section-1-what-we-do-floating-paragraph--7');
-    const floatingParagraph10 = document.getElementById('section-1-what-we-do-floating-paragraph--10');
-    const floatingParagraph16 = document.getElementById('section-1-what-we-do-floating-paragraph--16');
-    const floatingParagraph19 = document.getElementById('section-1-what-we-do-floating-paragraph--19');
-    const floatingParagraph22 = document.getElementById('section-1-what-we-do-floating-paragraph--22');
-
     const linkTitle4 = document.getElementById("section-1-what-we-do-floating-link-text--4");
     const linkTitle7 = document.getElementById("section-1-what-we-do-floating-link-text--7");
     const linkTitle10 = document.getElementById("section-1-what-we-do-floating-link-text--10");
@@ -45,9 +31,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const linkPlusIcon22 = document.getElementById("section-1-what-we-do-floating-link-plus-icon--22");
 
     const links = [link4, link7, link10, link16, link19, link22];
-    links.forEach((link, index) => {
+    links.forEach((link) => {
         if (link) {
-            link.querySelector('.section-1-what-we-do-floating-link-plus-icon').addEventListener('click', () => move(index * 3 + 4));
+            const linkId = parseInt(link.id.split('--')[1]);
+            link.querySelector('.section-1-what-we-do-floating-link-plus-icon').addEventListener('click', () => move(linkId));
         }
     });
 
@@ -136,15 +123,6 @@ document.addEventListener("DOMContentLoaded", () => {
         activeTimeouts.forEach(timeoutID => clearTimeout(timeoutID));
         activeTimeouts = [];
 
-
-        console.log({
-            initialInnerCircleStyles,
-            initialFloatingLinksStyles,
-            floatingLinkTextInitialStyles,
-            floatingPlusIconInitialStyles,
-            settledFloatingLinksStyles,
-        })
-
         slideLateralLabels(1);
         slideBackBtn(false)
         slideImage(activeId, false);
@@ -173,28 +151,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function move(id) {
         activeId = id;
-    
+
         // Abort ongoing animations
         animationAborted = true;
         activeTimeouts.forEach(timeoutID => clearTimeout(timeoutID));
         activeTimeouts = [];
-    
+
         // Step 1: Hide all other floating links except the selected one
         hideFloatingLinks(id);
-    
+
         // Step 2: Transform the inner circle for the selected item
         rotateInnerCircleOnSelection();
-    
+
         // Step 3: Slide in the labels and back button
         slideLateralLabels(0);
         slideBackBtn(true);
-    
+
         // Step 4: Animate the selected floating link and its text
         slideParagraph(id, true);
         slideImage(id, true);
         slideLinkText(id, true);
         slidePlusIcon(id, true);
-    
+
         // Capture settled styles after the animation
         const timeout = setTimeout(() => {
             captureSettledFloatingLinksStyles();
@@ -203,40 +181,37 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function restoreFloatingLinks() {
-        console.log("🔄 Restoring floating links to their settled positions...");
-    
+
         for (const [id, element] of Object.entries(floatingLinksMap)) {
             if (element) {
                 const positions = settledPositions[id] || {};
-    
+
                 // Reset all positioning properties first
                 element.style.top = "";
                 element.style.left = "";
                 element.style.right = "";
                 element.style.bottom = "";
                 element.style.transform = "";
-    
+
                 // Apply settled positions
                 if (positions.top !== undefined) element.style.top = positions.top;
                 if (positions.bottom !== undefined) element.style.bottom = positions.bottom;
                 if (positions.left !== undefined) element.style.left = positions.left;
                 if (positions.right !== undefined) element.style.right = positions.right;
                 if (positions.transform !== undefined) element.style.transform = positions.transform;
-    
+
                 // Reset font size and line height to their normal values
                 const textElement = element.querySelector('.section-1-what-we-do-floating-link-text');
                 if (textElement) {
                     textElement.style.fontSize = "1.4rem"; // Normal size
                     textElement.style.lineHeight = "1.6rem"; // Normal line height
                 }
-    
-                console.log(`🔄 Restored ${id} with font-size: 1.4rem, line-height: 1.6rem`);
+
             } else {
                 console.warn(`⚠️ Cannot restore ${id}. Element missing.`);
             }
         }
-    
-        console.log("✅ All floating links have been restored to their settled positions.");
+
     }
 
     function slideLinkText(id, slideIn) {
@@ -351,7 +326,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 ELEMENT_PROPERTIES.forEach((property) => {
                     targetStyles[id][property] = computedStyles.getPropertyValue(property);
                 });
-                console.log(`📋 Captured styles for floating link ${id}:`, targetStyles[id]);
             }
         }
     }
@@ -362,7 +336,6 @@ document.addEventListener("DOMContentLoaded", () => {
             ELEMENT_PROPERTIES.forEach((property) => {
                 initialInnerCircleStyles[property] = computedStyles.getPropertyValue(property);
             });
-            console.log("📋 Captured initialInnerCircleStyles:", initialInnerCircleStyles);
         } else {
             console.warn("⚠️ circleInnerContainer is not found.");
         }
@@ -478,7 +451,6 @@ document.addEventListener("DOMContentLoaded", () => {
     function phaseTwo() {
         return new Promise((resolve) => {
             if (animationAborted) {
-                console.log("❌ Animation aborted before phaseTwo.");
                 resolve();
                 return;
             }
@@ -527,7 +499,6 @@ document.addEventListener("DOMContentLoaded", () => {
                                 if (settledPositions[`floating-link-container--${i}`].transform) {
                                     floatingLinkContainer.style.transform = settledPositions[`floating-link-container--${i}`].transform;
                                 }
-                                console.log(`🔄 Moved floating link ${i} to settled position.`);
                             } else if (i === 7) {
                                 // Move to the top for item 7
                                 floatingLinkContainer.style.top = settledPositions[`floating-link-container--${i}`].top;
@@ -537,7 +508,6 @@ document.addEventListener("DOMContentLoaded", () => {
                                 if (settledPositions[`floating-link-container--${i}`].transform) {
                                     floatingLinkContainer.style.transform = settledPositions[`floating-link-container--${i}`].transform;
                                 }
-                                console.log(`🔄 Moved floating link ${i} to settled position.`);
                             } else if (i === 16 || i === 22) {
                                 // Move to the bottom for items 16, 22
                                 floatingLinkContainer.style.bottom = settledPositions[`floating-link-container--${i}`].bottom;
@@ -547,7 +517,6 @@ document.addEventListener("DOMContentLoaded", () => {
                                 if (settledPositions[`floating-link-container--${i}`].transform) {
                                     floatingLinkContainer.style.transform = settledPositions[`floating-link-container--${i}`].transform;
                                 }
-                                console.log(`🔄 Moved floating link ${i} to settled position.`);
                             } else if (i === 19) {
                                 // Move to the bottom for item 19
                                 floatingLinkContainer.style.bottom = settledPositions[`floating-link-container--${i}`].bottom;
@@ -557,7 +526,6 @@ document.addEventListener("DOMContentLoaded", () => {
                                 if (settledPositions[`floating-link-container--${i}`].transform) {
                                     floatingLinkContainer.style.transform = settledPositions[`floating-link-container--${i}`].transform;
                                 }
-                                console.log(`🔄 Moved floating link ${i} to settled position.`);
                             }
                         } else {
                             console.warn(`⚠️ Floating link container #floating-link-container--${i} not found.`);
@@ -573,7 +541,6 @@ document.addEventListener("DOMContentLoaded", () => {
                         // Apply orange background for default cases
                         item.style.transition = "none";
                         item.style.backgroundImage = orangeBackground;
-                        console.log(`🔄 Applied orange background to inner-container of circle-item-${i}`);
                     }
                 }, i * defaultDelay); // Incremental delay
 
@@ -583,7 +550,6 @@ document.addEventListener("DOMContentLoaded", () => {
             // Wait for all animations to complete
             const finalTimeout = setTimeout(() => {
                 if (!animationAborted) {
-                    console.log("✅ Phase Two completed.");
                     resolve();
                 }
             }, 24 * defaultDelay); // Total delay for all 24 items
