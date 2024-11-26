@@ -64,7 +64,28 @@ document.addEventListener("DOMContentLoaded", () => {
         'floating-link-container--22': link22,
     };
 
-    const ELEMENT_PROPERTIES = ['position', 'top', 'left', 'right', 'bottom', 'font-size', 'line-height', 'width', 'height', 'visibility', 'opacity', 'background-position', 'transition', 'font-weight', 'transform'];
+    const ELEMENT_PROPERTIES = [
+        'position',
+        'top',
+        'left',
+        'right',
+        'bottom',
+        'font-size',
+        'line-height',
+        'width',
+        'height',
+        'visibility',
+        'opacity',
+        'background-position',
+        'background-image',
+        'background-size',    // Added
+        'background',          // Added if necessary
+        'transition',
+        'font-weight',
+        'transform',
+        'z-index',
+    ];
+
 
     const initialInnerCircleStyles = {};
     const initialFloatingLinksStyles = {};
@@ -93,9 +114,11 @@ document.addEventListener("DOMContentLoaded", () => {
             settledFloatingLinksStyles,
         })
 
+        slideLateralLabels(1);
         slideBackBtn(false)
         slideImage(activeId, false);
         slideParagraph(activeId, false);
+        resetPositionInnerCircle();
 
         // restoreFloatingLinks();
         // restoreCircleInnerContainer();
@@ -105,7 +128,6 @@ document.addEventListener("DOMContentLoaded", () => {
         // restoreFloatingPlusIcons();
 
         // Reset the labels to their initial state
-        slideLateralLabels(1);
 
         // Reset any added classes or state variables
         document.body.classList.add('labels-initial-state');
@@ -214,9 +236,40 @@ document.addEventListener("DOMContentLoaded", () => {
             circleInnerContainer.style.transition = "transform 1s ease-in-out";
 
             // Apply the desired transformation
-            circleInnerContainer.style.transform = "translateX(-900px) translateY(-200px) scale(2.5)";
+            circleInnerContainer.style.transform = "translateX(-970px) translateY(-145px) scale(2.5)";
         }
     }
+
+    function resetPositionInnerCircle() {
+        if (circleInnerContainer && initialInnerCircleStyles) {
+
+            // Step 1: Set the transition property to enable smooth animation
+            const transitionValue = "transform 0.5s ease-in-out";
+            circleInnerContainer.style.transition = transitionValue;
+
+            // Step 2: Force a reflow to ensure the transition property is applied
+            void circleInnerContainer.offsetHeight;
+
+            // Step 3: Use requestAnimationFrame to apply the transform in the next frame
+            requestAnimationFrame(() => {
+                const resetTransform = "rotate(185deg)";
+                circleInnerContainer.style.transform = resetTransform;
+            });
+
+            // Step 4: Restore other properties if necessary
+            for (const property in initialInnerCircleStyles) {
+                if (initialInnerCircleStyles.hasOwnProperty(property)) {
+                    if (property === 'transition' || property === 'transform') continue; // Already handled
+
+                    circleInnerContainer.style[property] = initialInnerCircleStyles[property];
+                }
+            }
+
+        } else {
+            console.warn("⚠️ circleInnerContainer or initialInnerCircleStyles is not defined.");
+        }
+    }
+
 
     function captureFloatingLinksStyles(targetStyles) {
         for (const [id, element] of Object.entries(floatingLinksMap)) {
@@ -236,6 +289,9 @@ document.addEventListener("DOMContentLoaded", () => {
             ELEMENT_PROPERTIES.forEach((property) => {
                 initialInnerCircleStyles[property] = computedStyles.getPropertyValue(property);
             });
+            console.log("📋 Captured initialInnerCircleStyles:", initialInnerCircleStyles);
+        } else {
+            console.warn("⚠️ circleInnerContainer is not found.");
         }
     }
 
@@ -446,7 +502,7 @@ document.addEventListener("DOMContentLoaded", () => {
         captureInitialInnerCircleStyles();
         captureInitialFloatingLinkTextStyles();
         captureInitialFloatingPlusIconStyles();
-        
+
         slideLateralLabels(false)
 
         await phaseOne();

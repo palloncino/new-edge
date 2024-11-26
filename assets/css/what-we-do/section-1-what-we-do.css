@@ -25,19 +25,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: all .5s;
 }
 
 /* Base styles for the shapes */
 .section-1-what-we-do__big-svg--left {
     margin-right: 4rem;
-    transition: transform 1s ease-in-out;
-    transform: translateX(-1200px);
+    transform: translateX(-1000px);
 }
 
 .section-1-what-we-do__big-svg--right {
     margin-left: 4rem;
-    transition: transform 1s ease-in-out;
-    transform: translateX(1200px) scaleX(-1);
+    transform: translateX(1000px) scaleX(-1);
 }
 
 .section-1-what-we-do__big-svg-text {
