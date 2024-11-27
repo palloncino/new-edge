@@ -89,6 +89,7 @@
     transform-origin: 0 0;
     transform: rotate(0deg) translate(200px) rotate(0deg);
     z-index: 2;
+    border: 1px dashed;
 }
 
 .inner-container {
