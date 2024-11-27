@@ -150,6 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
         resetPositionInnerCircle();
         restoreFloatingLinksContainers();
         moveSelectedTitleCompoundLink(activeId, false)
+        resetExtraRotationCircleItem1();
 
         // Reset any added classes or state variables
         document.body.classList.add('labels-initial-state');
@@ -171,15 +172,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
         applyPhaseTwoFinalStyles();
 
-        // Step 1: Hide all other floating links except the selected one
+        // Hide all other floating links except the selected one
         hideFloatingLinksContainers(id);
         
+        // Move the link and plus icon, with the container also
         moveSelectedTitleCompoundLink(id, true);
 
-        // Step 2: Transform the inner circle for the selected item
+        // Transform the inner circle for the selected item
         rotateInnerCircleOnSelection();
 
-        // Step 3: Slide in the labels and back button
+        // Circle item one has a 360deg extra rotation
+        extraRotationCircleItem1()
+
+        // Slide in the labels and back button
         slideLateralLabels(0);
         slideBackBtn(true);
 
@@ -226,6 +231,27 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
 
+    }
+
+    function resetExtraRotationCircleItem1() {
+        const circleItem = document.querySelector('.circle-item-1 .inner-container');
+        if (circleItem) {
+            circleItem.style.transition = "none";
+            circleItem.style.transform = "rotate(275deg)";
+        } else {
+            console.warn("⚠️ circle-item-1 .inner-container not found.");
+        }
+    }
+
+    function extraRotationCircleItem1() {
+        const circleItem = document.querySelector('.circle-item-1 .inner-container');
+        console.log({transition:circleItem.style.transition, transform: circleItem.style.transform})
+        if (circleItem) {
+            circleItem.style.transition = "transform 1.5s";
+            circleItem.style.transform = "rotate(635deg)";
+        } else {
+            console.warn("⚠️ circle-item-1 .inner-container not found.");
+        }
     }
 
     function moveSelectedTitleCompoundLink(id, slideIn) {
@@ -450,8 +476,8 @@ document.addEventListener("DOMContentLoaded", () => {
             circleInnerContainer.style.transform = "rotate(0deg)";
 
             // Apply the transition for rotation
-            circleInnerContainer.style.transition = "transform .5s";
-            centralLogo.style.transition = "transform .5s";
+            circleInnerContainer.style.transition = "transform 1.2s";
+            centralLogo.style.transition = "transform 1.2s";
 
             // Select the two specific circle items
             const circleItem1Inner = document.querySelector(".circle-item-1 .inner-container");
@@ -478,7 +504,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     circleInnerContainer.style.transform = "rotate(185deg)";
                     centralLogo.style.transform = "translate(-50%, -50%) rotate(-185deg)";
                 }
-            }, 50); // 50ms delay
+            }, 100); // 50ms delay
             activeTimeouts.push(timeout1);
 
             // Wait for the animation to complete before resolving
@@ -488,7 +514,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     const computedStyle = window.getComputedStyle(circleInnerContainer);
                     resolve();
                 }
-            }, 1050); // 1s transition + 50ms delay
+            }, 1250); // 1s transition + 50ms delay
             activeTimeouts.push(timeout2);
         });
     }
