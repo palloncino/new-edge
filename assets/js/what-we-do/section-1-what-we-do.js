@@ -9,12 +9,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const leftLabel = document.querySelector('.section-1-what-we-do__big-svg--left');
     const rightLabel = document.querySelector('.section-1-what-we-do__big-svg--right');
 
-    const link4 = document.getElementById('floating-link-container--4');
-    const link7 = document.getElementById('floating-link-container--7');
-    const link10 = document.getElementById('floating-link-container--10');
-    const link16 = document.getElementById('floating-link-container--16');
-    const link19 = document.getElementById('floating-link-container--19');
-    const link22 = document.getElementById('floating-link-container--22');
+    const linkContainer4 = document.getElementById('floating-link-container--4');
+    const linkContainer7 = document.getElementById('floating-link-container--7');
+    const linkContainer10 = document.getElementById('floating-link-container--10');
+    const linkContainer16 = document.getElementById('floating-link-container--16');
+    const linkContainer19 = document.getElementById('floating-link-container--19');
+    const linkContainer22 = document.getElementById('floating-link-container--22');
 
     const linkTitle4 = document.getElementById("section-1-what-we-do-floating-link-text--4");
     const linkTitle7 = document.getElementById("section-1-what-we-do-floating-link-text--7");
@@ -32,8 +32,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const centralLogo = document.getElementById("section-1-what-we-do--central-logo");
 
-    const links = [link4, link7, link10, link16, link19, link22];
-    links.forEach((link) => {
+    const linksContainers = [linkContainer4, linkContainer7, linkContainer10, linkContainer16, linkContainer19, linkContainer22];
+    linksContainers.forEach((link) => {
         if (link) {
             const linkId = parseInt(link.id.split('--')[1]);
             link.querySelector('.section-1-what-we-do-floating-link-plus-icon').addEventListener('click', () => move(linkId));
@@ -75,13 +75,13 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
 
-    const floatingLinksMap = {
-        'floating-link-container--4': link4,
-        'floating-link-container--7': link7,
-        'floating-link-container--10': link10,
-        'floating-link-container--16': link16,
-        'floating-link-container--19': link19,
-        'floating-link-container--22': link22,
+    const floatingLinksContainersMap = {
+        'floating-link-container--4': linkContainer4,
+        'floating-link-container--7': linkContainer7,
+        'floating-link-container--10': linkContainer10,
+        'floating-link-container--16': linkContainer16,
+        'floating-link-container--19': linkContainer19,
+        'floating-link-container--22': linkContainer22,
     };
 
     const ELEMENT_PROPERTIES = [
@@ -108,10 +108,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     const initialInnerCircleStyles = {};
-    const initialFloatingLinksStyles = {};
+    const initialFloatingLinksContainersStyles = {};
     const floatingLinkTextInitialStyles = {};
     const floatingPlusIconInitialStyles = {};
-    const settledFloatingLinksStyles = {};
+    const settledFloatingLinksContainersStyles = {};
 
     let activeId = undefined;
 
@@ -129,17 +129,9 @@ document.addEventListener("DOMContentLoaded", () => {
         slideBackBtn(false)
         slideImage(activeId, false);
         slideParagraph(activeId, false);
-
         resetPositionInnerCircle();
-
-        restoreFloatingLinks();
-        // restoreCircleInnerContainer();
-        // restoreCircleItems();
-
-        // restoreFloatingLinkTexts();
-        // restoreFloatingPlusIcons();
-
-        // Reset the labels to their initial state
+        restoreFloatingLinksContainers();
+        moveSelectedTitleCompoundLink(activeId, false)
 
         // Reset any added classes or state variables
         document.body.classList.add('labels-initial-state');
@@ -160,7 +152,9 @@ document.addEventListener("DOMContentLoaded", () => {
         activeTimeouts = [];
 
         // Step 1: Hide all other floating links except the selected one
-        hideFloatingLinks(id);
+        hideFloatingLinksContainers(id);
+        
+        moveSelectedTitleCompoundLink(id, true);
 
         // Step 2: Transform the inner circle for the selected item
         rotateInnerCircleOnSelection();
@@ -172,19 +166,17 @@ document.addEventListener("DOMContentLoaded", () => {
         // Step 4: Animate the selected floating link and its text
         slideParagraph(id, true);
         slideImage(id, true);
-        slideLinkText(id, true);
-        slidePlusIcon(id, true);
 
         // Capture settled styles after the animation
         const timeout = setTimeout(() => {
-            captureSettledFloatingLinksStyles();
+            captureSettledFloatingLinksContainersStyles();
         }, 1000); // Match the transition duration
         activeTimeouts.push(timeout);
     }
 
-    function restoreFloatingLinks() {
+    function restoreFloatingLinksContainers() {
 
-        for (const [id, element] of Object.entries(floatingLinksMap)) {
+        for (const [id, element] of Object.entries(floatingLinksContainersMap)) {
             if (element) {
                 const positions = settledPositions[id] || {};
 
@@ -216,28 +208,64 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    function slideLinkText(id, slideIn) {
-        const text = document.getElementById(`section-1-what-we-do-floating-link-text--${id}`);
-        if (text) {
+    function moveSelectedTitleCompoundLink(id, slideIn) {
+        
+        const selectedLinkContainer = document.getElementById(`floating-link-container--${id}`);
+        const selectedLinkPlusIcon = document.getElementById(`section-1-what-we-do-floating-link-plus-icon--${id}`);
+        const selectedLinkTitle = document.getElementById(`section-1-what-we-do-floating-link-text--${id}`);
+
+        if (selectedLinkTitle && selectedLinkContainer) {
             if (slideIn) {
+
+                selectedLinkPlusIcon.style.visibility = 'hidden'
                 // Make the text larger for the selected link
-                text.style.position = "absolute"
-                text.style.top = "-20px";
-                text.style.left = "-170px";
-                text.style.fontSize = "3.6rem";
-                text.style.lineHeight = "3.6rem";
+                selectedLinkTitle.style.position = "absolute";
+                selectedLinkTitle.style.fontSize = "3.6rem";
+                selectedLinkTitle.style.lineHeight = "3.6rem";
+
+                // Set specific top and left values based on the link number
+                switch (id) {
+                    case 4:
+                        selectedLinkContainer.style.top = "-20px";
+                        selectedLinkContainer.style.left = "-120px";
+                        break;
+                    case 7:
+                        selectedLinkContainer.style.top = "-10px";
+                        selectedLinkContainer.style.left = "0px";
+                        break;
+                    case 10:
+                        selectedLinkContainer.style.top = "-20px";
+                        selectedLinkContainer.style.right = "280px";
+                        break;
+                    case 16:
+                        selectedLinkContainer.style.top = "0px";
+                        selectedLinkContainer.style.right = "285px";
+                        break;
+                    case 19:
+                        selectedLinkContainer.style.top = "0px";
+                        selectedLinkContainer.style.left = "0px";
+                        break;
+                    case 22:
+                        selectedLinkContainer.style.top = "0px";
+                        selectedLinkContainer.style.left = "-110px";
+                        break;
+                    default:
+                        console.warn(`No specific position defined for link text with id: ${id}`);
+                }
             } else {
+                selectedLinkPlusIcon.style.visibility = 'visible'
+                
                 // Reset to normal size
-                text.style.position = "static"
-                text.style.fontSize = "1.4rem";
-                text.style.lineHeight = "1.6rem";
+                selectedLinkTitle.style.position = "static";
+                selectedLinkTitle.style.fontSize = "1.4rem";
+                selectedLinkTitle.style.lineHeight = "1.6rem";
             }
         }
     }
 
     function slideBackBtn(slideIn) {
         if (slideIn) {
-            floatingBackButton.style.left = "400px";
+            floatingBackButton.style.left = "370px";
         } else {
             floatingBackButton.style.left = "-600px";
         }
@@ -261,24 +289,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    function slidePlusIcon(id, slideIn) {
-        const plusIcon = document.getElementById(`section-1-what-we-do-floating-link-plus-icon--${id}`);
-        if (slideIn) {
-            plusIcon.style.opacity = "0";
-        } else {
-            if (plusIcon && floatingPlusIconInitialStyles[plusIcon.id]) {
-                ELEMENT_PROPERTIES.forEach((property) => {
-                    plusIcon.style[property] = floatingPlusIconInitialStyles[plusIcon.id][property];
-                });
-            }
-        }
-    }
-
-    function hideFloatingLinks(exceptId) {
-        for (const [id, element] of Object.entries(floatingLinksMap)) {
-            if (id !== `floating-link-container--${exceptId}` && element && initialFloatingLinksStyles[id]) {
+    function hideFloatingLinksContainers(exceptId) {
+        for (const [id, element] of Object.entries(floatingLinksContainersMap)) {
+            if (id !== `floating-link-container--${exceptId}` && element && initialFloatingLinksContainersStyles[id]) {
                 ELEMENT_PROPERTIES.forEach(property => {
-                    element.style[property] = initialFloatingLinksStyles[id][property];
+                    element.style[property] = initialFloatingLinksContainersStyles[id][property];
                 });
             }
         }
@@ -286,11 +301,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function rotateInnerCircleOnSelection() {
         if (circleInnerContainer) {
-            // Add a transition for smooth transformation
-            circleInnerContainer.style.transition = "transform 1s ease-in-out";
+            // // Add a transition for smooth transformation
+            circleInnerContainer.style.transition = "transform 1s";
 
-            // Apply the desired transformation
-            circleInnerContainer.style.transform = "translateX(-970px) translateY(-145px) scale(2.5)";
+            // // Apply the desired transformation
+            circleInnerContainer.style.transform = "translateX(-970px) translateY(-185px) scale(2.5) rotate(5deg)";
         }
     }
 
@@ -324,8 +339,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    function captureFloatingLinksStyles(targetStyles) {
-        for (const [id, element] of Object.entries(floatingLinksMap)) {
+    function captureFloatingLinksContainersStyles(targetStyles) {
+        for (const [id, element] of Object.entries(floatingLinksContainersMap)) {
             if (element) {
                 const computedStyles = window.getComputedStyle(element);
                 targetStyles[id] = {};
@@ -351,12 +366,12 @@ document.addEventListener("DOMContentLoaded", () => {
         captureInnerCircleStyles();
     }
 
-    function captureInitialFloatingLinksStyles() {
-        captureFloatingLinksStyles(initialFloatingLinksStyles);
+    function captureInitialFloatingLinksContainersStyles() {
+        captureFloatingLinksContainersStyles(initialFloatingLinksContainersStyles);
     }
 
-    function captureSettledFloatingLinksStyles() {
-        captureFloatingLinksStyles(settledFloatingLinksStyles);
+    function captureSettledFloatingLinksContainersStyles() {
+        captureFloatingLinksContainersStyles(settledFloatingLinksContainersStyles);
     }
 
     function captureInitialFloatingLinkTextStyles() {
@@ -437,7 +452,6 @@ document.addEventListener("DOMContentLoaded", () => {
             const timeout1 = setTimeout(() => {
                 if (!animationAborted) {
                     circleInnerContainer.style.transform = "rotate(185deg)";
-                    console.log({centralLogo})
                     centralLogo.style.transform = "translate(-50%, -50%) rotate(-185deg)";
                 }
             }, 50); // 50ms delay
@@ -572,7 +586,7 @@ document.addEventListener("DOMContentLoaded", () => {
         animationAborted = false;
 
         // Capture initial styles after DOM is ready
-        captureInitialFloatingLinksStyles();
+        captureInitialFloatingLinksContainersStyles();
         captureInitialInnerCircleStyles();
         captureInitialFloatingLinkTextStyles();
         captureInitialFloatingPlusIconStyles();
@@ -585,7 +599,7 @@ document.addEventListener("DOMContentLoaded", () => {
         await phaseTwo();
         if (animationAborted) return; // Exit if aborted
 
-        captureSettledFloatingLinksStyles();
+        captureSettledFloatingLinksContainersStyles();
     }
 
     // Start the animation with a slight delay to ensure initial states are applied
