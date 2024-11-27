@@ -151,6 +151,8 @@ document.addEventListener("DOMContentLoaded", () => {
         activeTimeouts.forEach(timeoutID => clearTimeout(timeoutID));
         activeTimeouts = [];
 
+        applyPhaseTwoFinalStyles();
+
         // Step 1: Hide all other floating links except the selected one
         hideFloatingLinksContainers(id);
         
@@ -302,7 +304,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function rotateInnerCircleOnSelection() {
         if (circleInnerContainer) {
             // // Add a transition for smooth transformation
-            circleInnerContainer.style.transition = "transform 1s";
+            circleInnerContainer.style.transition = "transform .5s";
 
             // // Apply the desired transformation
             circleInnerContainer.style.transform = "translateX(-1070px) translateY(-175px) scale(3) rotate(5deg)";
@@ -314,7 +316,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (circleInnerContainer && initialInnerCircleStyles) {
 
             // Step 1: Set the transition property to enable smooth animation
-            const transitionValue = "transform 1s";
+            const transitionValue = "transform .5s";
             circleInnerContainer.style.transition = transitionValue;
 
             // Step 2: Force a reflow to ensure the transition property is applied
@@ -429,7 +431,7 @@ document.addEventListener("DOMContentLoaded", () => {
             circleInnerContainer.style.transform = "rotate(0deg)";
 
             // Apply the transition for rotation
-            circleInnerContainer.style.transition = "transform 1s";
+            circleInnerContainer.style.transition = "transform .5s";
 
             // Select the two specific circle items
             const circleItem1Inner = document.querySelector(".circle-item-1 .inner-container");
@@ -441,12 +443,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Apply transitions and rotations to the two selected items
             if (circleItem1Inner) {
-                circleItem1Inner.style.transition = "transform 1s";
+                circleItem1Inner.style.transition = "transform .5s";
                 circleItem1Inner.style.transform = "rotate(-85deg)";
             }
 
             if (circleItem13Inner) {
-                circleItem13Inner.style.transition = "transform 1s";
+                circleItem13Inner.style.transition = "transform .5s";
                 circleItem13Inner.style.transform = "rotate(-95deg)";
             }
 
@@ -475,14 +477,16 @@ document.addEventListener("DOMContentLoaded", () => {
     function phaseTwo() {
         return new Promise((resolve) => {
             if (animationAborted) {
+                // Apply all pending style changes immediately
+                applyPhaseTwoFinalStyles();
                 resolve();
                 return;
             }
-
+    
             const orangeBackground = 'url("https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-3-orange.svg")';
             const lightBlueBackground = 'url("https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-3-lightblue.svg")';
             const defaultDelay = 200; // 200ms delay between each shape
-
+    
             // Special cases: Only adjust the inner-container for outward orientation
             const specialCases = {
                 1: 275,
@@ -494,83 +498,31 @@ document.addEventListener("DOMContentLoaded", () => {
                 19: 275,
                 22: 275,
             };
-
+    
             // Collect all circle items
             for (let i = 1; i <= 24; i++) {
                 const parentItem = document.querySelector(`.circle-item-${i}`);
                 const item = document.querySelector(`.circle-item-${i} .inner-container`);
-
+    
                 if (!parentItem || !item) {
                     console.warn(`⚠️ Circle item ${i} not found.`);
                     continue;
                 }
-
+    
                 const timeout = setTimeout(() => {
-                    if (animationAborted) return;
-
-                    if (specialCases[i] !== undefined) {
-
-                        const floatingLinkContainer = document.getElementById(`floating-link-container--${i}`);
-
-                        if (floatingLinkContainer) {
-                            // Determine the movement based on the item number
-                            if (i === 4 || i === 10) {
-                                // Move to the top for items 4, 10
-                                floatingLinkContainer.style.top = settledPositions[`floating-link-container--${i}`].top;
-                                floatingLinkContainer.style.left = settledPositions[`floating-link-container--${i}`].left;
-                                floatingLinkContainer.style.right = ''; // Reset opposite property
-                                floatingLinkContainer.style.bottom = ''; // Reset opposite property
-                                if (settledPositions[`floating-link-container--${i}`].transform) {
-                                    floatingLinkContainer.style.transform = settledPositions[`floating-link-container--${i}`].transform;
-                                }
-                            } else if (i === 7) {
-                                // Move to the top for item 7
-                                floatingLinkContainer.style.top = settledPositions[`floating-link-container--${i}`].top;
-                                floatingLinkContainer.style.left = settledPositions[`floating-link-container--${i}`].left;
-                                floatingLinkContainer.style.right = ''; // Reset opposite property
-                                floatingLinkContainer.style.bottom = ''; // Reset opposite property
-                                if (settledPositions[`floating-link-container--${i}`].transform) {
-                                    floatingLinkContainer.style.transform = settledPositions[`floating-link-container--${i}`].transform;
-                                }
-                            } else if (i === 16 || i === 22) {
-                                // Move to the bottom for items 16, 22
-                                floatingLinkContainer.style.bottom = settledPositions[`floating-link-container--${i}`].bottom;
-                                floatingLinkContainer.style.right = settledPositions[`floating-link-container--${i}`].right;
-                                floatingLinkContainer.style.top = ''; // Reset opposite property
-                                floatingLinkContainer.style.left = ''; // Reset opposite property
-                                if (settledPositions[`floating-link-container--${i}`].transform) {
-                                    floatingLinkContainer.style.transform = settledPositions[`floating-link-container--${i}`].transform;
-                                }
-                            } else if (i === 19) {
-                                // Move to the bottom for item 19
-                                floatingLinkContainer.style.bottom = settledPositions[`floating-link-container--${i}`].bottom;
-                                floatingLinkContainer.style.left = settledPositions[`floating-link-container--${i}`].left;
-                                floatingLinkContainer.style.top = ''; // Reset opposite property
-                                floatingLinkContainer.style.right = ''; // Reset opposite property
-                                if (settledPositions[`floating-link-container--${i}`].transform) {
-                                    floatingLinkContainer.style.transform = settledPositions[`floating-link-container--${i}`].transform;
-                                }
-                            }
-                        } else {
-                            console.warn(`⚠️ Floating link container #floating-link-container--${i} not found.`);
-                        }
-
-                        // Apply light blue background and outward rotation
-                        item.style.transition = "none";
-                        item.style.backgroundImage = lightBlueBackground;
-
-                        // Apply outward rotation directly to the inner-container
-                        item.style.transform = `rotate(${specialCases[i]}deg)`;
-                    } else {
-                        // Apply orange background for default cases
-                        item.style.transition = "none";
-                        item.style.backgroundImage = orangeBackground;
+                    if (animationAborted) {
+                        // Apply all pending style changes immediately
+                        applyPhaseTwoFinalStyles();
+                        resolve();
+                        return;
                     }
+    
+                    applyStyleToCircleItem(i, item, specialCases, lightBlueBackground, orangeBackground);
                 }, i * defaultDelay); // Incremental delay
-
+    
                 activeTimeouts.push(timeout);
             }
-
+    
             // Wait for all animations to complete
             const finalTimeout = setTimeout(() => {
                 if (!animationAborted) {
@@ -579,6 +531,76 @@ document.addEventListener("DOMContentLoaded", () => {
             }, 24 * defaultDelay); // Total delay for all 24 items
             activeTimeouts.push(finalTimeout);
         });
+    }
+
+    function applyStyleToCircleItem(i, item, specialCases, lightBlueBackground, orangeBackground) {
+        if (specialCases[i] !== undefined) {
+            // Apply light blue background and outward rotation
+            item.style.transition = "none";
+            item.style.backgroundImage = lightBlueBackground;
+    
+            // Apply outward rotation directly to the inner-container
+            item.style.transform = `rotate(${specialCases[i]}deg)`;
+    
+            // Move the floating link containers if necessary
+            moveFloatingLinkContainer(i);
+        } else {
+            // Apply orange background for default cases
+            item.style.transition = "none";
+            item.style.backgroundImage = orangeBackground;
+        }
+    }
+    
+    function moveFloatingLinkContainer(i) {
+        const floatingLinkContainer = document.getElementById(`floating-link-container--${i}`);
+    
+        if (floatingLinkContainer) {
+            const positions = settledPositions[`floating-link-container--${i}`] || {};
+    
+            // Reset all positioning properties first
+            floatingLinkContainer.style.top = "";
+            floatingLinkContainer.style.left = "";
+            floatingLinkContainer.style.right = "";
+            floatingLinkContainer.style.bottom = "";
+            floatingLinkContainer.style.transform = "";
+    
+            // Apply settled positions
+            if (positions.top !== undefined) floatingLinkContainer.style.top = positions.top;
+            if (positions.bottom !== undefined) floatingLinkContainer.style.bottom = positions.bottom;
+            if (positions.left !== undefined) floatingLinkContainer.style.left = positions.left;
+            if (positions.right !== undefined) floatingLinkContainer.style.right = positions.right;
+            if (positions.transform !== undefined) floatingLinkContainer.style.transform = positions.transform;
+        } else {
+            console.warn(`⚠️ Floating link container #floating-link-container--${i} not found.`);
+        }
+    }
+    
+    function applyPhaseTwoFinalStyles() {
+        const orangeBackground = 'url("https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-3-orange.svg")';
+        const lightBlueBackground = 'url("https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-3-lightblue.svg")';
+    
+        const specialCases = {
+            1: 275,
+            4: 275,
+            7: 275,
+            10: 275,
+            13: 265,
+            16: 275,
+            19: 275,
+            22: 275,
+        };
+    
+        for (let i = 1; i <= 24; i++) {
+            const parentItem = document.querySelector(`.circle-item-${i}`);
+            const item = document.querySelector(`.circle-item-${i} .inner-container`);
+    
+            if (!parentItem || !item) {
+                console.warn(`⚠️ Circle item ${i} not found.`);
+                continue;
+            }
+    
+            applyStyleToCircleItem(i, item, specialCases, lightBlueBackground, orangeBackground);
+        }
     }
 
     // Start the animation sequence

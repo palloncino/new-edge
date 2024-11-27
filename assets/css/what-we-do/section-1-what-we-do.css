@@ -53,12 +53,10 @@
 
 /* Circle */
 #circle_outer_container {
-    border: 1px dashed blue;
     position: relative;
 }
 
 #circle_inner_container {
-    border: 1px dashed red;
     box-sizing: border-box;
     width: 400px;
     height: 400px;
@@ -76,7 +74,7 @@
     background-repeat: no-repeat;
     width: 99px;
     transform: translate(-50%, -50%) rotate(0deg);
-    transition: all 1s;
+    transition: all .5s;
     height: 181px;
 }
 
@@ -89,7 +87,6 @@
     transform-origin: 0 0;
     transform: rotate(0deg) translate(200px) rotate(0deg);
     z-index: 2;
-    border: 1px dashed;
 }
 
 .inner-container {
@@ -208,7 +205,6 @@
 }
 
 .section-1-what-we-do-floating-link-container {
-    border: 1px dashed green;
     position: absolute;
     display: flex;
     align-items: center;
@@ -220,7 +216,6 @@
 }
 
 .section-1-what-we-do-floating-link-plus-icon {
-    border: 1px dashed orange;
     background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/plus-button-5289F8.svg');
     background-repeat: no-repeat;
     width: 16px;
@@ -229,7 +224,6 @@
 }
 
 .section-1-what-we-do-floating-link-text {
-    border: 1px dashed purple;
     line-height: 1.6rem;
     font-family: 'Mundial Regular';
     font-size: 1.4rem;
