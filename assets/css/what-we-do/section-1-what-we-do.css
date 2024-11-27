@@ -70,10 +70,11 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
     background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/logo.svg');
     background-repeat: no-repeat;
     width: 99px;
+    transform: translate(-50%, -50%) rotate(0deg);
+    transition: all 1s;
     height: 181px;
 }
 

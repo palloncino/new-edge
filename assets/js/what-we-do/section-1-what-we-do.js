@@ -30,6 +30,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const linkPlusIcon19 = document.getElementById("section-1-what-we-do-floating-link-plus-icon--19");
     const linkPlusIcon22 = document.getElementById("section-1-what-we-do-floating-link-plus-icon--22");
 
+    const centralLogo = document.getElementById("section-1-what-we-do--central-logo");
+
     const links = [link4, link7, link10, link16, link19, link22];
     links.forEach((link) => {
         if (link) {
@@ -219,10 +221,14 @@ document.addEventListener("DOMContentLoaded", () => {
         if (text) {
             if (slideIn) {
                 // Make the text larger for the selected link
+                text.style.position = "absolute"
+                text.style.top = "-20px";
+                text.style.left = "-170px";
                 text.style.fontSize = "3.6rem";
                 text.style.lineHeight = "3.6rem";
             } else {
                 // Reset to normal size
+                text.style.position = "static"
                 text.style.fontSize = "1.4rem";
                 text.style.lineHeight = "1.6rem";
             }
@@ -406,7 +412,7 @@ document.addEventListener("DOMContentLoaded", () => {
             circleInnerContainer.style.transform = "rotate(0deg)";
 
             // Apply the transition for rotation
-            circleInnerContainer.style.transition = "transform 1s ease-in-out";
+            circleInnerContainer.style.transition = "transform 1s";
 
             // Select the two specific circle items
             const circleItem1Inner = document.querySelector(".circle-item-1 .inner-container");
@@ -418,12 +424,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Apply transitions and rotations to the two selected items
             if (circleItem1Inner) {
-                circleItem1Inner.style.transition = "transform 1s ease-in-out";
+                circleItem1Inner.style.transition = "transform 1s";
                 circleItem1Inner.style.transform = "rotate(-85deg)";
             }
 
             if (circleItem13Inner) {
-                circleItem13Inner.style.transition = "transform 1s ease-in-out";
+                circleItem13Inner.style.transition = "transform 1s";
                 circleItem13Inner.style.transform = "rotate(-95deg)";
             }
 
@@ -431,6 +437,8 @@ document.addEventListener("DOMContentLoaded", () => {
             const timeout1 = setTimeout(() => {
                 if (!animationAborted) {
                     circleInnerContainer.style.transform = "rotate(185deg)";
+                    console.log({centralLogo})
+                    centralLogo.style.transform = "translate(-50%, -50%) rotate(-185deg)";
                 }
             }, 50); // 50ms delay
             activeTimeouts.push(timeout1);
