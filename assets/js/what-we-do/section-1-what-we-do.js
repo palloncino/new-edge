@@ -304,7 +304,8 @@ document.addEventListener("DOMContentLoaded", () => {
     function rotateInnerCircleOnSelection() {
         if (circleInnerContainer) {
             // // Add a transition for smooth transformation
-            circleInnerContainer.style.transition = "transform .5s";
+            circleInnerContainer.style.transition = "transform 1.5s";
+            centralLogo.style.transition = "transform 1.5s";
 
             // // Apply the desired transformation
             circleInnerContainer.style.transform = "translateX(-1070px) translateY(-175px) scale(3) rotate(5deg)";
@@ -316,8 +317,8 @@ document.addEventListener("DOMContentLoaded", () => {
         if (circleInnerContainer && initialInnerCircleStyles) {
 
             // Step 1: Set the transition property to enable smooth animation
-            const transitionValue = "transform .5s";
-            circleInnerContainer.style.transition = transitionValue;
+            circleInnerContainer.style.transition = "transform .5s";
+            centralLogo.style.transition = "transform .5s";
 
             // Step 2: Force a reflow to ensure the transition property is applied
             void circleInnerContainer.offsetHeight;
@@ -432,6 +433,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Apply the transition for rotation
             circleInnerContainer.style.transition = "transform .5s";
+            centralLogo.style.transition = "transform .5s";
 
             // Select the two specific circle items
             const circleItem1Inner = document.querySelector(".circle-item-1 .inner-container");
