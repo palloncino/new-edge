@@ -5,6 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const floatingBackButton = document.getElementById("section-1-what-we-do-back-button");
     const circleInnerContainer = document.getElementById("circle_inner_container");
+    const centralLogo = document.getElementById("section-1-what-we-do--central-logo");
+    const centralLogoHover = document.getElementById("section-1-what-we-do--central-logo-hover");
 
     const leftLabel = document.querySelector('.section-1-what-we-do__big-svg--left');
     const rightLabel = document.querySelector('.section-1-what-we-do__big-svg--right');
@@ -29,51 +31,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const linkPlusIcon16 = document.getElementById("section-1-what-we-do-floating-link-plus-icon--16");
     const linkPlusIcon19 = document.getElementById("section-1-what-we-do-floating-link-plus-icon--19");
     const linkPlusIcon22 = document.getElementById("section-1-what-we-do-floating-link-plus-icon--22");
-
-    const centralLogo = document.getElementById("section-1-what-we-do--central-logo");
-
-    const linksContainers = [linkContainer4, linkContainer7, linkContainer10, linkContainer16, linkContainer19, linkContainer22];
-    linksContainers.forEach((link) => {
-        if (link) {
-            const linkId = parseInt(link.id.split('--')[1]);
-            link.querySelector('.section-1-what-we-do-floating-link-plus-icon').addEventListener('click', () => move(linkId));
-        }
-    });
-
-    if (floatingBackButton) {
-        floatingBackButton.addEventListener('click', backToInitialState);
-    }
-
-    const settledPositions = {
-        'floating-link-container--4': {
-            top: "-20px",
-            left: "-170px",
-        },
-        'floating-link-container--7': {
-            top: "-110px",
-            left: "50%",
-            transform: "translateX(-50%)",
-        },
-        'floating-link-container--10': {
-            top: "-20px",
-            right: "-170px",
-        },
-        'floating-link-container--16': {
-            bottom: "-20px",
-            right: "-170px",
-        },
-        'floating-link-container--19': {
-            bottom: "-120px",
-            left: "50%",
-            transform: "translateX(-50%)",
-        },
-        'floating-link-container--22': {
-            bottom: "-20px",
-            left: "-170px",
-        },
-        // Add mappings for other floating links if they exist
-    };
-
 
     const floatingLinksContainersMap = {
         'floating-link-container--4': linkContainer4,
@@ -106,7 +63,6 @@ document.addEventListener("DOMContentLoaded", () => {
         'z-index',
     ];
 
-
     const initialInnerCircleStyles = {};
     const initialFloatingLinksContainersStyles = {};
     const floatingLinkTextInitialStyles = {};
@@ -118,6 +74,68 @@ document.addEventListener("DOMContentLoaded", () => {
     // Tracking variables for active timeouts and aborting animations
     let activeTimeouts = [];
     let animationAborted = false;
+
+    const settledPositions = {
+        'floating-link-container--4': {
+            top: "-20px",
+            left: "-170px",
+        },
+        'floating-link-container--7': {
+            top: "-110px",
+            left: "50%",
+            transform: "translateX(-50%)",
+        },
+        'floating-link-container--10': {
+            top: "-20px",
+            right: "-170px",
+        },
+        'floating-link-container--16': {
+            bottom: "-20px",
+            right: "-170px",
+        },
+        'floating-link-container--19': {
+            bottom: "-120px",
+            left: "50%",
+            transform: "translateX(-50%)",
+        },
+        'floating-link-container--22': {
+            bottom: "-20px",
+            left: "-170px",
+        },
+        // Add mappings for other floating links if they exist
+    };
+
+    const linksContainers = [linkContainer4, linkContainer7, linkContainer10, linkContainer16, linkContainer19, linkContainer22];
+    linksContainers.forEach((link) => {
+        if (link) {
+            const linkId = parseInt(link.id.split('--')[1]);
+            link.querySelector('.section-1-what-we-do-floating-link-plus-icon').addEventListener('click', () => move(linkId));
+        }
+    });
+
+    centralLogo.addEventListener('mouseenter', () => hoverLogo(true));
+    centralLogo.addEventListener('mouseleave', () => hoverLogo(false));
+
+    function hoverLogo(isHovering) {
+        if (!activeId) {
+            if (isHovering) {
+                centralLogoHover.style.transition = "all .2s"
+                centralLogoHover.style.opacity = 1;
+                centralLogo.style.transition = "all .2s"
+                centralLogo.style.opacity = 0;
+            } else {
+                centralLogoHover.style.transition = "all .2s"
+                centralLogoHover.style.opacity = 0;
+                centralLogo.style.transition = "all .2s"
+                centralLogo.style.opacity = 1;
+            }
+        }
+    }
+
+
+    if (floatingBackButton) {
+        floatingBackButton.addEventListener('click', backToInitialState);
+    }
 
     function backToInitialState() {
         // Abort ongoing animations

@@ -67,6 +67,7 @@
 }
 
 .section-1-what-we-do--central-logo {
+    cursor: pointer;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -76,6 +77,23 @@
     transform: translate(-50%, -50%) rotate(0deg);
     transition: all .5s;
     height: 181px;
+    z-index: -80;
+    opacity: 1;
+}
+
+#section-1-what-we-do--central-logo-hover {
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(175deg);
+    font-family: 'Mundial Regular';
+    font-size: 1.6rem;
+    line-height: 1.8rem;
+    z-index: -80;
+    opacity: 0;
 }
 
 .circle-item {
@@ -213,6 +231,7 @@
     width: 200px;
     padding: 0 1rem;
     transition: all .5s;
+    z-index: 20;
 }
 
 .section-1-what-we-do-floating-link-plus-icon {
@@ -221,6 +240,7 @@
     width: 16px;
     height: 16px;
     transition: transform .5s;
+    z-index: 20;
 }
 
 .section-1-what-we-do-floating-link-text {
@@ -230,6 +250,7 @@
     padding-top: .2rem;
     text-wrap: nowrap;
     transition: all .5s;
+    z-index: 20;
 }
 
 #floating-link-container--4 {
@@ -284,6 +305,7 @@
     line-height: 2rem;
     top: 1200px;
     transition: all .5s;
+    z-index: 1;
 }
 
 #section-1-what-we-do-floating-image--4 {
