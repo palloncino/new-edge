@@ -305,7 +305,8 @@ document.addEventListener("DOMContentLoaded", () => {
             circleInnerContainer.style.transition = "transform 1s";
 
             // // Apply the desired transformation
-            circleInnerContainer.style.transform = "translateX(-970px) translateY(-185px) scale(2.5) rotate(5deg)";
+            circleInnerContainer.style.transform = "translateX(-1070px) translateY(-175px) scale(3) rotate(5deg)";
+            centralLogo.style.transform = "translate(-50%, -50%) rotate(-360deg)";
         }
     }
 
@@ -313,7 +314,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (circleInnerContainer && initialInnerCircleStyles) {
 
             // Step 1: Set the transition property to enable smooth animation
-            const transitionValue = "transform 0.5s ease-in-out";
+            const transitionValue = "transform 1s";
             circleInnerContainer.style.transition = transitionValue;
 
             // Step 2: Force a reflow to ensure the transition property is applied
@@ -323,6 +324,7 @@ document.addEventListener("DOMContentLoaded", () => {
             requestAnimationFrame(() => {
                 const resetTransform = "rotate(185deg)";
                 circleInnerContainer.style.transform = resetTransform;
+                centralLogo.style.transform = "translate(-50%, -50%) rotate(-185deg)";
             });
 
             // Step 4: Restore other properties if necessary
