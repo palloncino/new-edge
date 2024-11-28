@@ -19,41 +19,6 @@
     transition: all .5s;
 }
 
-/* Big Lateral Orange Labels */
-.section-1-the-group__big-svg {
-    width: 250px;
-    height: 150px;
-    background: url('./assets/svgs/shape-2-orange.svg') no-repeat center/contain;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all .5s;
-    position: absolute;
-}
-
-.section-1-the-group__big-svg--left {
-    left: -1000px;
-    margin-right: 4rem;
-}
-
-.section-1-the-group__big-svg--right {
-    right: -1000px;
-    margin-left: 4rem;
-    transform: scaleX(-1);
-}
-
-.section-1-the-group__big-svg-text {
-    font-family: 'Mundial Regular';
-    font-size: 1.6rem;
-    line-height: 1.8rem;
-    text-transform: uppercase;
-}
-
-.section-1-the-group__big-svg-text--right {
-    transform: scaleX(-1);
-    margin-left: 2rem;
-}
-
 /* Circle */
 #circle_outer_container {
     position: relative;

@@ -8,9 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const centralLogo = document.getElementById("section-1-the-group--central-logo");
     const centralLogoHover = document.getElementById("section-1-the-group--central-logo-hover");
 
-    const leftLabel = document.querySelector('.section-1-the-group__big-svg--left');
-    const rightLabel = document.querySelector('.section-1-the-group__big-svg--right');
-
     const linkContainer2 = document.getElementById('floating-link-container--2');
     const linkContainer4 = document.getElementById('floating-link-container--4');
     const linkContainer5 = document.getElementById('floating-link-container--5');
@@ -143,7 +140,6 @@ document.addEventListener("DOMContentLoaded", () => {
         activeTimeouts.forEach(timeoutID => clearTimeout(timeoutID));
         activeTimeouts = [];
 
-        slideLateralLabels(1);
         slideBackBtn(false)
         slideImage(activeId, false);
         slideParagraph(activeId, false);
@@ -185,7 +181,6 @@ document.addEventListener("DOMContentLoaded", () => {
         extraRotationCircleItem1()
 
         // Slide in the labels and back button
-        slideLateralLabels(0);
         slideBackBtn(true);
 
         // Step 4: Animate the selected floating link and its text
@@ -450,16 +445,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    function slideLateralLabels(bool) {
-        if (bool) {
-            leftLabel.style.transform = "translateX(0)";
-            rightLabel.style.transform = "translateX(0) scaleX(-1)";
-        } else {
-            leftLabel.style.transform = "translateX(-1200px)";
-            rightLabel.style.transform = "translateX(1200px) scaleX(-1)";
-        }
-    }
-
     // Phase 1: Rotate the circle_inner_container and two specific items simultaneously
     function phaseOne() {
         return new Promise((resolve) => {
@@ -468,15 +453,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 resolve();
                 return;
             }
-
-            slideLateralLabels(1);
-
-            // Set initial transform to ensure the browser registers it
-            circleInnerContainer.style.transform = "rotate(0deg)";
-
-            // Apply the transition for rotation
-            circleInnerContainer.style.transition = "transform 1.2s";
-            centralLogo.style.transition = "transform 1.2s";
 
             // Select the two specific circle items
             const circleItem1Inner = document.querySelector(".circle-item-1 .inner-container");
@@ -503,7 +479,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     circleInnerContainer.style.transform = "rotate(185deg)";
                     centralLogo.style.transform = "translate(-50%, -50%) rotate(-185deg)";
                 }
-            }, 100); // 50ms delay
+            }, 0); // 50ms delay
             activeTimeouts.push(timeout1);
 
             // Wait for the animation to complete before resolving
@@ -513,7 +489,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     const computedStyle = window.getComputedStyle(circleInnerContainer);
                     resolve();
                 }
-            }, 1250); // 1s transition + 50ms delay
+            }, 50); // 1s transition + 50ms delay
             activeTimeouts.push(timeout2);
         });
     }
@@ -527,10 +503,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 resolve();
                 return;
             }
-    
-            const orangeBackground = 'url("https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-3-orange.svg")';
-            const lightBlueBackground = 'url("https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-3-lightblue.svg")';
-            const defaultDelay = 200; // 200ms delay between each shape
+            
+            // TODO
+            const blueBackground = 'url("https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-2-blue.svg")';
+            const lightBlueBackground = 'url("https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-2-lightblue.svg")';
+            const defaultDelay = 50; // 200ms delay between each shape
     
             // Special cases: Only adjust the inner-container for outward orientation
             const specialCases = {
@@ -560,7 +537,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         return;
                     }
     
-                    applyStyleToCircleItem(i, item, specialCases, lightBlueBackground, orangeBackground);
+                    applyStyleToCircleItem(i, item, specialCases, lightBlueBackground, blueBackground);
                 }, i * defaultDelay); // Incremental delay
     
                 activeTimeouts.push(timeout);
@@ -576,7 +553,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    function applyStyleToCircleItem(i, item, specialCases, lightBlueBackground, orangeBackground) {
+    function applyStyleToCircleItem(i, item, specialCases, lightBlueBackground, blueBackground) {
         if (specialCases[i] !== undefined) {
             // Apply light blue background and outward rotation
             item.style.transition = "none";
@@ -590,7 +567,7 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             // Apply orange background for default cases
             item.style.transition = "none";
-            item.style.backgroundImage = orangeBackground;
+            item.style.backgroundImage = blueBackground;
         }
     }
     
@@ -619,7 +596,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     
     function applyPhaseTwoFinalStyles() {
-        const orangeBackground = 'url("https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-3-orange.svg")';
+        const blueBackground = 'url("https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-3-orange.svg")';
         const lightBlueBackground = 'url("https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-3-lightblue.svg")';
     
         const specialCases = {
@@ -640,7 +617,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 continue;
             }
     
-            applyStyleToCircleItem(i, item, specialCases, lightBlueBackground, orangeBackground);
+            applyStyleToCircleItem(i, item, specialCases, lightBlueBackground, blueBackground);
         }
     }
 
@@ -656,7 +633,6 @@ document.addEventListener("DOMContentLoaded", () => {
         captureInitialFloatingLinkTextStyles();
         captureInitialFloatingPlusIconStyles();
 
-        slideLateralLabels(false)
 
         await phaseOne();
         if (animationAborted) return; // Exit if aborted
