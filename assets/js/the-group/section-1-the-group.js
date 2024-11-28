@@ -445,57 +445,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Phase 1: Rotate the circle_inner_container and two specific items simultaneously
     function phaseOne() {
-        return new Promise((resolve) => {
-
-            if (animationAborted) {
-                resolve();
-                return;
-            }
-
-            // Select the two specific circle items
-            const circleItem1Inner = document.querySelector(".circle-item-1 .inner-container");
-            const circleItem7Inner = document.querySelector(".circle-item-7 .inner-container");
-
-            if (!circleItem1Inner || !circleItem7Inner) {
-                console.warn("One or both of the circle-item-1 or circle-item-7 not found.");
-            }
-
-            // Apply transitions and rotations to the two selected items
-            if (circleItem1Inner) {
-                circleItem1Inner.style.transition = "transform .5s";
-                circleItem1Inner.style.transform = "rotate(-85deg)";
-            }
-
-            if (circleItem7Inner) {
-                circleItem7Inner.style.transition = "transform .5s";
-                circleItem7Inner.style.transform = "rotate(-95deg)";
-            }
-
-            // Use a slight delay to ensure the initial state is registered
-            const timeout1 = setTimeout(() => {
-                if (!animationAborted) {
-                    circleInnerContainer.style.transform = "rotate(185deg)";
-                    centralLogo.style.transform = "translate(-50%, -50%) rotate(-185deg)";
-                }
-            }, 0); // 50ms delay
-            activeTimeouts.push(timeout1);
-
-            // Wait for the animation to complete before resolving
-            const timeout2 = setTimeout(() => {
-                if (!animationAborted) {
-                    // Verify the rotation via computed styles
-                    const computedStyle = window.getComputedStyle(circleInnerContainer);
-                    resolve();
-                }
-            }, 50); // 1s transition + 50ms delay
-            activeTimeouts.push(timeout2);
-        });
-    }
-
-    // Phase 2: Incrementally change shape backgrounds to orange, starting from 2 to 12, excluding 7
-    function phaseTwo() {
         return new Promise((resolve) => {
             if (animationAborted) {
                 // Apply all pending style changes immediately
@@ -504,11 +454,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
             
-            // TODO
             const blueBackground = 'url("https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-2-blue.svg")';
             const lightBlueBackground = 'url("https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-2-lightblue.svg")';
-            const defaultDelay = 50; // 200ms delay between each shape
-    
+
             // Special cases: Only adjust the inner-container for outward orientation
             const specialCases = {
                 1: 275,
@@ -529,27 +477,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     continue;
                 }
     
-                const timeout = setTimeout(() => {
-                    if (animationAborted) {
-                        // Apply all pending style changes immediately
-                        applyPhaseTwoFinalStyles();
-                        resolve();
-                        return;
-                    }
-    
-                    applyStyleToCircleItem(i, item, specialCases, lightBlueBackground, blueBackground);
-                }, i * defaultDelay); // Incremental delay
-    
-                activeTimeouts.push(timeout);
+                // Apply styles to circle items immediately
+                applyStyleToCircleItem(i, item, specialCases, lightBlueBackground, blueBackground);
             }
     
-            // Wait for all animations to complete
-            const finalTimeout = setTimeout(() => {
-                if (!animationAborted) {
-                    resolve();
-                }
-            }, 12 * defaultDelay); // Total delay for all 12 items
-            activeTimeouts.push(finalTimeout);
+            resolve();
         });
     }
 
@@ -560,7 +492,7 @@ document.addEventListener("DOMContentLoaded", () => {
             item.style.backgroundImage = lightBlueBackground;
     
             // Apply outward rotation directly to the inner-container
-            item.style.transform = `rotate(${specialCases[i]}deg)`;
+            // item.style.transform = `rotate(${specialCases[i]}deg)`;
     
             // Move the floating link containers if necessary
             moveFloatingLinkContainer(i);
@@ -635,9 +567,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         await phaseOne();
-        if (animationAborted) return; // Exit if aborted
-
-        await phaseTwo();
         if (animationAborted) return; // Exit if aborted
 
         captureSettledFloatingLinksContainersStyles();

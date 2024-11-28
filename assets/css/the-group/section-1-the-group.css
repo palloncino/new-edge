@@ -21,10 +21,12 @@
 
 /* Circle */
 #circle_outer_container {
+    border: 1px dashed #0077ff50;
     position: relative;
 }
 
 #circle_inner_container {
+    border: 1px dashed #2b00ff50;
     box-sizing: border-box;
     width: 400px;
     height: 400px;
@@ -70,13 +72,11 @@
 
 /* Circle Items */
 .circle-item {
-    width: 40px;
-    height: 40px;
+    border: 1px dashed #ff000050;
+    width: 84px;
+    height: 50px;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform-origin: 0 0;
-    transform: rotate(0deg) translate(200px) rotate(0deg);
+    transform: rotate(0deg) translate(-50%, -50%);
     z-index: 2;
 }
 
@@ -87,66 +87,62 @@
     background-position: center;
     background-size: contain;
     transform-origin: center;
-    background-image: url('./assets/svgs/shape-3-lightblue.svg');
+    background-image: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-2-blue.svg');
 }
 
 /* Specific Circle Item Styles */
 .circle-item-1 {
-    transform: rotate(0deg) translate(200px) rotate(-100deg);
+    transform: rotate(0deg) translate(200px) rotate(0deg);
 }
 
 .circle-item-2 {
-    transform: rotate(30deg) translate(200px) rotate(-100deg);
+    transform: rotate(30deg) translate(200px) rotate(0deg);
 }
 
 .circle-item-3 {
-    transform: rotate(60deg) translate(200px) rotate(-100deg);
+    transform: rotate(60deg) translate(200px) rotate(0deg);
 }
 
 .circle-item-4 {
-    transform: rotate(90deg) translate(200px) rotate(-100deg);
+    transform: rotate(90deg) translate(200px) rotate(0deg);
 }
 
 .circle-item-5 {
-    transform: rotate(120deg) translate(200px) rotate(-100deg);
+    transform: rotate(120deg) translate(200px) rotate(0deg);
 }
 
 .circle-item-6 {
-    transform: rotate(150deg) translate(200px) rotate(-100deg);
+    transform: rotate(150deg) translate(200px) rotate(0deg);
 }
 
 .circle-item-7 {
-    transform: rotate(180deg) translate(200px) rotate(-90deg);
+    transform: rotate(180deg) translate(200px) rotate(0deg);
 }
 
 .circle-item-8 {
-    transform: rotate(210deg) translate(200px) rotate(-100deg);
+    transform: rotate(210deg) translate(200px) rotate(0deg);
 }
 
 .circle-item-9 {
-    transform: rotate(240deg) translate(200px) rotate(-100deg);
+    transform: rotate(240deg) translate(200px) rotate(0deg);
 }
 
 .circle-item-10 {
-    transform: rotate(270deg) translate(200px) rotate(-100deg);
+    transform: rotate(270deg) translate(200px) rotate(0deg);
 }
 
 .circle-item-11 {
-    transform: rotate(300deg) translate(200px) rotate(-100deg);
+    transform: rotate(300deg) translate(200px) rotate(0deg);
 }
 
 .circle-item-12 {
-    transform: rotate(330deg) translate(200px) rotate(-100deg);
+    transform: rotate(330deg) translate(200px) rotate(0deg);
 }
 
-/* Special Cases */
-.circle-item-1 .inner-container,
-.circle-item-7 .inner-container {
-    background-image: url('./assets/svgs/shape-3-orange.svg');
-}
 
 /* Floating Link Containers */
 .section-1-the-group-floating-link-container {
+    border: 1px dashed rgba(38, 128, 0, 0.694);
     position: absolute;
     display: flex;
     align-items: center;
