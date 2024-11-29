@@ -311,9 +311,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function slideBackBtn(slideIn) {
         if (slideIn) {
-            floatingBackButton.style.left = "370px";
+            floatingBackButton.style.left = "-110px";
         } else {
-            floatingBackButton.style.left = "-600px";
+            floatingBackButton.style.left = "-1200px";
         }
     }
 

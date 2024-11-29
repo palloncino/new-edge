@@ -14,8 +14,8 @@
 
 .section-1-the-group-back-button {
     position: absolute;
-    top: calc(100% - 100px);
-    left: -600px;
+    top: 500px;
+    left: -1200px;
     transition: all .5s;
 }
 
@@ -92,7 +92,7 @@
 
 /* Specific Circle Item Styles */
 .circle-item-1 {
-    transform: rotate(0deg) translate(200px) rotate(0deg);
+    transform: rotate(0deg) translate(200px) rotate(-180deg);
 }
 
 .circle-item-2 {
@@ -100,7 +100,7 @@
 }
 
 .circle-item-3 {
-    transform: rotate(60deg) translate(200px) rotate(0deg);
+    transform: rotate(60deg) translate(200px) rotate(-180deg);
 }
 
 .circle-item-4 {
@@ -108,7 +108,7 @@
 }
 
 .circle-item-5 {
-    transform: rotate(120deg) translate(200px) rotate(0deg);
+    transform: rotate(120deg) translate(200px) rotate(-180deg);
 }
 
 .circle-item-6 {
@@ -116,7 +116,7 @@
 }
 
 .circle-item-7 {
-    transform: rotate(180deg) translate(200px) rotate(0deg);
+    transform: rotate(180deg) translate(200px) rotate(-180deg);
 }
 
 .circle-item-8 {
@@ -124,7 +124,7 @@
 }
 
 .circle-item-9 {
-    transform: rotate(240deg) translate(200px) rotate(0deg);
+    transform: rotate(240deg) translate(200px) rotate(-180deg);
 }
 
 .circle-item-10 {
@@ -132,7 +132,7 @@
 }
 
 .circle-item-11 {
-    transform: rotate(300deg) translate(200px) rotate(0deg);
+    transform: rotate(300deg) translate(200px) rotate(-180deg);
 }
 
 .circle-item-12 {
@@ -155,7 +155,7 @@
 }
 
 .section-1-the-group-floating-link-plus-icon {
-    background: url('./assets/svgs/plus-button-5289F8.svg') no-repeat center;
+    background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/plus-button-5289F8.svg') no-repeat center;
     background-size: contain;
     width: 16px;
     height: 16px;
@@ -174,36 +174,34 @@
 }
 
 /* Initial Positions of Floating Link Containers */
-#floating-link-container--2 {
-    top: -1000px;
-    left: -170px;
+#floating-link-container--1 /* H2O, R => L */ {
+    top: 180px;
+    left: 1500px;
 }
 
-#floating-link-container--4 {
-    top: -1000px;
-    left: 50%;
-    transform: translateX(-50%);
+#floating-link-container--3 /* La quindicesima, R => L */ {
+    top: 420px;
+    left: 1500px;
 }
 
-#floating-link-container--5 {
-    top: -1000px;
-    right: -170px;
+#floating-link-container--5 /* Z&M, L => R */ {
+    top: 420px;
+    left: -1500px;
 }
 
-#floating-link-container--8 {
-    bottom: -1000px;
-    right: -170px;
+#floating-link-container--7 /* Risk, L => R */ {
+    top: 180px;
+    left: -1500px;
 }
 
-#floating-link-container--10 {
-    bottom: -1000px;
-    left: 50%;
-    transform: translateX(-50%);
+#floating-link-container--9 /* Edge, il broker, L => R */ {
+    top: -50px;
+    left: -1500px;
 }
 
-#floating-link-container--11 {
-    bottom: -1000px;
-    left: -170px;
+#floating-link-container--11 /* Bind, R => L */ {
+    top: -50px;
+    left: 1500px;
 }
 
 /* Floating Images and Paragraphs */
@@ -232,7 +230,7 @@
     z-index: 1;
 }
 
-/* Background Images for Floating Images */
+/* 
 #section-1-the-group-floating-image--2 {
     background-image: url('../../images/the-group/company-overview.png');
 }
@@ -255,4 +253,4 @@
 
 #section-1-the-group-floating-image--11 {
     background-image: url('../../images/the-group/contact-us.png');
-}
+} */

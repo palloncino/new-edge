@@ -12,8 +12,8 @@
 
 .section-1-what-we-do-back-button {
     position: absolute;
-    top: calc(100% - 100px);
-    left: -600px;
+    top: 500px;
+    left: -1200px;
     transition: all .5s;
 }
 

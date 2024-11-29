@@ -8,33 +8,33 @@ document.addEventListener("DOMContentLoaded", () => {
     const centralLogo = document.getElementById("section-1-the-group--central-logo");
     const centralLogoHover = document.getElementById("section-1-the-group--central-logo-hover");
 
-    const linkContainer2 = document.getElementById('floating-link-container--2');
-    const linkContainer4 = document.getElementById('floating-link-container--4');
+    const linkContainer1 = document.getElementById('floating-link-container--1');
+    const linkContainer3 = document.getElementById('floating-link-container--3');
     const linkContainer5 = document.getElementById('floating-link-container--5');
-    const linkContainer8 = document.getElementById('floating-link-container--8');
-    const linkContainer10 = document.getElementById('floating-link-container--10');
+    const linkContainer7 = document.getElementById('floating-link-container--7');
+    const linkContainer9 = document.getElementById('floating-link-container--9');
     const linkContainer11 = document.getElementById('floating-link-container--11');
 
-    const linkTitle2 = document.getElementById("section-1-the-group-floating-link-text--2");
-    const linkTitle4 = document.getElementById("section-1-the-group-floating-link-text--4");
+    const linkTitle1 = document.getElementById("section-1-the-group-floating-link-text--1");
+    const linkTitle3 = document.getElementById("section-1-the-group-floating-link-text--3");
     const linkTitle5 = document.getElementById("section-1-the-group-floating-link-text--5");
-    const linkTitle8 = document.getElementById("section-1-the-group-floating-link-text--8");
-    const linkTitle10 = document.getElementById("section-1-the-group-floating-link-text--10");
+    const linkTitle7 = document.getElementById("section-1-the-group-floating-link-text--7");
+    const linkTitle9 = document.getElementById("section-1-the-group-floating-link-text--9");
     const linkTitle11 = document.getElementById("section-1-the-group-floating-link-text--11");
 
-    const linkPlusIcon2 = document.getElementById("section-1-the-group-floating-link-plus-icon--2");
-    const linkPlusIcon4 = document.getElementById("section-1-the-group-floating-link-plus-icon--4");
+    const linkPlusIcon1 = document.getElementById("section-1-the-group-floating-link-plus-icon--1");
+    const linkPlusIcon3 = document.getElementById("section-1-the-group-floating-link-plus-icon--3");
     const linkPlusIcon5 = document.getElementById("section-1-the-group-floating-link-plus-icon--5");
-    const linkPlusIcon8 = document.getElementById("section-1-the-group-floating-link-plus-icon--8");
-    const linkPlusIcon10 = document.getElementById("section-1-the-group-floating-link-plus-icon--10");
+    const linkPlusIcon7 = document.getElementById("section-1-the-group-floating-link-plus-icon--7");
+    const linkPlusIcon9 = document.getElementById("section-1-the-group-floating-link-plus-icon--9");
     const linkPlusIcon11 = document.getElementById("section-1-the-group-floating-link-plus-icon--11");
 
     const floatingLinksContainersMap = {
-        'floating-link-container--2': linkContainer2,
-        'floating-link-container--4': linkContainer4,
+        'floating-link-container--1': linkContainer1,
+        'floating-link-container--3': linkContainer3,
         'floating-link-container--5': linkContainer5,
-        'floating-link-container--8': linkContainer8,
-        'floating-link-container--10': linkContainer10,
+        'floating-link-container--7': linkContainer7,
+        'floating-link-container--9': linkContainer9,
         'floating-link-container--11': linkContainer11,
     };
 
@@ -64,7 +64,33 @@ document.addEventListener("DOMContentLoaded", () => {
     const initialFloatingLinksContainersStyles = {};
     const floatingLinkTextInitialStyles = {};
     const floatingPlusIconInitialStyles = {};
-    const settledFloatingLinksContainersStyles = {};
+
+    const floatingLinkSettledPositions = {
+        'floating-link-container--1': { // H2O // R => L
+            top: "180px",
+            left: "442px",
+        },
+        'floating-link-container--3': { // La quindicesima // R => L
+            top: "420px",
+            left: "310px",
+        },
+        'floating-link-container--5': { // Z&M // L => R
+            top: "420px",
+            left: "0px",
+        },
+        'floating-link-container--7': { // Risk // L => R
+            top: "180px",
+            left: "-180px",
+        },
+        'floating-link-container--9': { // Edge, il broker // L => R
+            top: "-50px",
+            left: "-130px",
+        },
+        'floating-link-container--11': { // Bind // R => L
+            top: "-50px",
+            left: "310px",
+        },
+    };
 
     let activeId = undefined;
 
@@ -72,37 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let activeTimeouts = [];
     let animationAborted = false;
 
-    const settledPositions = {
-        'floating-link-container--2': {
-            top: "-20px",
-            left: "-170px",
-        },
-        'floating-link-container--4': {
-            top: "-110px",
-            left: "50%",
-            transform: "translateX(-50%)",
-        },
-        'floating-link-container--5': {
-            top: "-20px",
-            right: "-170px",
-        },
-        'floating-link-container--8': {
-            bottom: "-20px",
-            right: "-170px",
-        },
-        'floating-link-container--10': {
-            bottom: "-120px",
-            left: "50%",
-            transform: "translateX(-50%)",
-        },
-        'floating-link-container--11': {
-            bottom: "-20px",
-            left: "-170px",
-        },
-        // Add mappings for other floating links if they exist
-    };
-
-    const linksContainers = [linkContainer2, linkContainer4, linkContainer5, linkContainer8, linkContainer10, linkContainer11];
+    const linksContainers = [linkContainer1, linkContainer3, linkContainer5, linkContainer7, linkContainer9, linkContainer11];
     linksContainers.forEach((link) => {
         if (link) {
             const linkId = parseInt(link.id.split('--')[1]);
@@ -162,11 +158,6 @@ document.addEventListener("DOMContentLoaded", () => {
         activeId = id;
 
         // Abort ongoing animations
-        animationAborted = true;
-        activeTimeouts.forEach(timeoutID => clearTimeout(timeoutID));
-        activeTimeouts = [];
-
-        applyPhaseTwoFinalStyles();
 
         // Hide all other floating links except the selected one
         hideFloatingLinksContainers(id);
@@ -186,12 +177,6 @@ document.addEventListener("DOMContentLoaded", () => {
         // Step 4: Animate the selected floating link and its text
         slideParagraph(id, true);
         slideImage(id, true);
-
-        // Capture settled styles after the animation
-        const timeout = setTimeout(() => {
-            captureSettledFloatingLinksContainersStyles();
-        }, 1000); // Match the transition duration
-        activeTimeouts.push(timeout);
     }
 
     function restoreFloatingLinksContainers() {
@@ -305,9 +290,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function slideBackBtn(slideIn) {
         if (slideIn) {
-            floatingBackButton.style.left = "370px";
+            floatingBackButton.style.left = "-110px";
         } else {
-            floatingBackButton.style.left = "-600px";
+            floatingBackButton.style.left = "-1200px";
         }
     }
 
@@ -332,7 +317,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function hideFloatingLinksContainers(exceptId) {
         for (const [id, element] of Object.entries(floatingLinksContainersMap)) {
             if (id !== `floating-link-container--${exceptId}` && element && initialFloatingLinksContainersStyles[id]) {
-                ELEMENT_PROPERTIES.forEach(property => {
+                ['top','left'].forEach(property => {
                     element.style[property] = initialFloatingLinksContainersStyles[id][property];
                 });
             }
@@ -418,7 +403,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function captureInitialFloatingLinkTextStyles() {
-        const linkTexts = [linkTitle2, linkTitle4, linkTitle5, linkTitle8, linkTitle10, linkTitle11];
+        const linkTexts = [linkTitle1, linkTitle3, linkTitle5, linkTitle7, linkTitle9, linkTitle11];
         linkTexts.forEach((linkText) => {
             if (linkText) {
                 const id = linkText.id;
@@ -432,7 +417,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function captureInitialFloatingPlusIconStyles() {
-        const plusIcons = [linkPlusIcon2, linkPlusIcon4, linkPlusIcon5, linkPlusIcon8, linkPlusIcon10, linkPlusIcon11];
+        const plusIcons = [linkPlusIcon1, linkPlusIcon3, linkPlusIcon5, linkPlusIcon7, linkPlusIcon9, linkPlusIcon11];
         plusIcons.forEach((plusIcon) => {
             if (plusIcon) {
                 const id = plusIcon.id;
@@ -447,58 +432,57 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function phaseOne() {
         return new Promise((resolve) => {
-            if (animationAborted) {
-                // Apply all pending style changes immediately
-                applyPhaseTwoFinalStyles();
-                resolve();
-                return;
-            }
-            
-            const blueBackground = 'url("https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-2-blue.svg")';
-            const lightBlueBackground = 'url("https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-2-lightblue.svg")';
-
-            // Special cases: Only adjust the inner-container for outward orientation
-            const specialCases = {
-                1: 275,
-                3: 275,
-                5: 275,
-                7: 265,
-                9: 275,
-                11: 275,
-            };
-    
-            // Collect all circle items
-            for (let i = 1; i <= 12; i++) {
-                const parentItem = document.querySelector(`.circle-item-${i}`);
-                const item = document.querySelector(`.circle-item-${i} .inner-container`);
-    
-                if (!parentItem || !item) {
-                    console.warn(`⚠️ Circle item ${i} not found.`);
-                    continue;
+            setTimeout(() => {
+                if (animationAborted) {
+                    // Apply all pending style changes immediately
+                    applyPhaseTwoFinalStyles();
+                    resolve();
+                    return;
                 }
-    
-                // Apply styles to circle items immediately
-                applyStyleToCircleItem(i, item, specialCases, lightBlueBackground, blueBackground);
-            }
-    
-            resolve();
+                
+                const blueBackground = 'url("https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-2-blue.svg")';
+                const lightBlueBackground = 'url("https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-2-lightblue.svg")';
+
+                // Special cases: Only adjust the inner-container for outward orientation
+                const specialCases = {
+                    1: 180,
+                    3: 180,
+                    5: 180,
+                    7: 180,
+                    9: 180,
+                    11: 180,
+                };
+        
+                // Collect all circle items
+                for (let i = 1; i <= 12; i++) {
+                    const parentItem = document.querySelector(`.circle-item-${i}`);
+                    const item = document.querySelector(`.circle-item-${i} .inner-container`);
+        
+                    if (!parentItem || !item) {
+                        console.warn(`⚠️ Circle item ${i} not found.`);
+                        continue;
+                    }
+        
+                    // Apply styles to circle items with a 1s transition
+                    applyStyleToCircleItem(i, item, specialCases, lightBlueBackground, blueBackground);
+                }
+        
+                resolve();
+            }, 500); // Execute 500ms after being called
         });
     }
 
     function applyStyleToCircleItem(i, item, specialCases, lightBlueBackground, blueBackground) {
+        item.style.transition = "background-image 1s, transform 1s";
         if (specialCases[i] !== undefined) {
             // Apply light blue background and outward rotation
-            item.style.transition = "none";
             item.style.backgroundImage = lightBlueBackground;
-    
-            // Apply outward rotation directly to the inner-container
-            // item.style.transform = `rotate(${specialCases[i]}deg)`;
+            item.style.transform = `rotate(${specialCases[i]}deg)`;
     
             // Move the floating link containers if necessary
             moveFloatingLinkContainer(i);
         } else {
-            // Apply orange background for default cases
-            item.style.transition = "none";
+            // Apply blue background for default cases
             item.style.backgroundImage = blueBackground;
         }
     }
@@ -507,26 +491,21 @@ document.addEventListener("DOMContentLoaded", () => {
         const floatingLinkContainer = document.getElementById(`floating-link-container--${i}`);
     
         if (floatingLinkContainer) {
-            const positions = settledPositions[`floating-link-container--${i}`] || {};
+            const positions = floatingLinkSettledPositions[`floating-link-container--${i}`] || {};
     
-            // Reset all positioning properties first
-            floatingLinkContainer.style.top = "";
-            floatingLinkContainer.style.left = "";
-            floatingLinkContainer.style.right = "";
-            floatingLinkContainer.style.bottom = "";
-            floatingLinkContainer.style.transform = "";
+            // Apply transition duration
+            floatingLinkContainer.style.transition = `all 1s`;
     
             // Apply settled positions
-            if (positions.top !== undefined) floatingLinkContainer.style.top = positions.top;
-            if (positions.bottom !== undefined) floatingLinkContainer.style.bottom = positions.bottom;
-            if (positions.left !== undefined) floatingLinkContainer.style.left = positions.left;
-            if (positions.right !== undefined) floatingLinkContainer.style.right = positions.right;
-            if (positions.transform !== undefined) floatingLinkContainer.style.transform = positions.transform;
+            floatingLinkContainer.style.top = positions.top;
+            floatingLinkContainer.style.bottom = positions.bottom;
+            floatingLinkContainer.style.left = positions.left;
+            floatingLinkContainer.style.right = positions.right;
+            floatingLinkContainer.style.transform = positions.transform;
         } else {
             console.warn(`⚠️ Floating link container #floating-link-container--${i} not found.`);
         }
     }
-    
     function applyPhaseTwoFinalStyles() {
         const blueBackground = 'url("https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-3-orange.svg")';
         const lightBlueBackground = 'url("https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-3-lightblue.svg")';
@@ -568,8 +547,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         await phaseOne();
         if (animationAborted) return; // Exit if aborted
-
-        captureSettledFloatingLinksContainersStyles();
     }
 
     // Start the animation with a slight delay to ensure initial states are applied
