@@ -14,7 +14,7 @@
 
 .section-1-the-group-back-button {
     position: absolute;
-    top: 500px;
+    top: 400px;
     left: -1200px;
     transition: all .5s;
 }
@@ -229,28 +229,26 @@
     transition: all .5s;
     z-index: 1;
 }
-
-/* 
-#section-1-the-group-floating-image--2 {
-    background-image: url('../../images/the-group/company-overview.png');
+#section-1-the-group-floating-image--1 {
+    background-image: url('../../images/the-group/h2o.png');
 }
 
-#section-1-the-group-floating-image--4 {
-    background-image: url('../../images/the-group/mission-vision.png');
+#section-1-the-group-floating-image--3 {
+    background-image: url('../../images/the-group/la-quindicesima.png');
 }
 
 #section-1-the-group-floating-image--5 {
-    background-image: url('../../images/the-group/our-team.png');
+    background-image: url('../../images/the-group/z&m.png');
 }
 
-#section-1-the-group-floating-image--8 {
-    background-image: url('../../images/the-group/services.png');
+#section-1-the-group-floating-image--7 {
+    background-image: url('../../images/the-group/risk.png');
 }
 
-#section-1-the-group-floating-image--10 {
-    background-image: url('../../images/the-group/projects.png');
+#section-1-the-group-floating-image--9 {
+    background-image: url('../../images/the-group/edge-il-broker.png');
 }
 
 #section-1-the-group-floating-image--11 {
-    background-image: url('../../images/the-group/contact-us.png');
-} */
+    background-image: url('../../images/the-group/bind.png');
+}

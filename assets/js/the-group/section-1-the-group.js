@@ -140,7 +140,7 @@ document.addEventListener("DOMContentLoaded", () => {
         slideImage(activeId, false);
         slideParagraph(activeId, false);
         resetPositionInnerCircle();
-        restoreFloatingLinksContainers();
+        // restoreFloatingLinksContainers();
         moveSelectedTitleCompoundLink(activeId, false)
         resetExtraRotationCircleItem1();
 
@@ -227,7 +227,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const circleItem = document.querySelector('.circle-item-1 .inner-container');
         if (circleItem) {
             circleItem.style.transition = "transform 1.5s";
-            circleItem.style.transform = "rotate(635deg)";
+            circleItem.style.transform = "rotate(535deg)";
         } else {
             console.warn("⚠️ circle-item-1 .inner-container not found.");
         }
@@ -299,9 +299,11 @@ document.addEventListener("DOMContentLoaded", () => {
     function slideParagraph(id, slideIn) {
         const paragraph = document.getElementById(`section-1-the-group-floating-paragraph--${id}`);
         if (slideIn) {
-            paragraph.style.top = "400px";
+            paragraph.style.top = "100px";
+            paragraph.style.left = "-110px";
         } else {
             paragraph.style.top = "1200px";
+            paragraph.style.left = "-110px";
         }
     }
 

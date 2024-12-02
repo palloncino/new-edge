@@ -320,7 +320,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function slideParagraph(id, slideIn) {
         const paragraph = document.getElementById(`section-1-what-we-do-floating-paragraph--${id}`);
         if (slideIn) {
-            paragraph.style.top = "400px";
+            paragraph.style.top = "330px";
         } else {
             paragraph.style.top = "1200px";
         }
