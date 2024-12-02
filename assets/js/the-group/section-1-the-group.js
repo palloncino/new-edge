@@ -310,9 +310,11 @@ document.addEventListener("DOMContentLoaded", () => {
     function slideImage(id, slideIn) {
         const image = document.getElementById(`section-1-the-group-floating-image--${id}`);
         if (slideIn) {
-            image.style.right = "0";
+            image.style.right = "0px";
+            image.style.bottom = "0px";
         } else {
-            image.style.right = "-600px";
+            image.style.right = "-1200px";
+            image.style.bottom = "0px";
         }
     }
 
