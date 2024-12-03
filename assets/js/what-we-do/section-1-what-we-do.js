@@ -361,8 +361,8 @@ document.addEventListener("DOMContentLoaded", () => {
         if (circleInnerContainer && initialInnerCircleStyles) {
 
             // Step 1: Set the transition property to enable smooth animation
-            circleInnerContainer.style.transition = "transform .5s";
-            centralLogo.style.transition = "transform .5s";
+            circleInnerContainer.style.transition = "transform 1s";
+            centralLogo.style.transition = "transform 1s";
 
             // Step 2: Force a reflow to ensure the transition property is applied
             void circleInnerContainer.offsetHeight;
