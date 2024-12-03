@@ -140,7 +140,7 @@ document.addEventListener("DOMContentLoaded", () => {
         slideImage(activeId, false);
         slideParagraph(activeId, false);
         resetPositionInnerCircle();
-        // restoreFloatingLinksContainers();
+        restoreFloatingLinksContainers();
         moveSelectedTitleCompoundLink(activeId, false)
         resetExtraRotationCircleItem1();
 
@@ -156,8 +156,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function move(id) {
         activeId = id;
-
-        // Abort ongoing animations
 
         // Hide all other floating links except the selected one
         hideFloatingLinksContainers(id);
@@ -183,7 +181,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         for (const [id, element] of Object.entries(floatingLinksContainersMap)) {
             if (element) {
-                const positions = settledPositions[id] || {};
+                const positions = floatingLinkSettledPositions[id] || {};
 
                 // Reset all positioning properties first
                 element.style.top = "";
@@ -217,7 +215,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const circleItem = document.querySelector('.circle-item-1 .inner-container');
         if (circleItem) {
             circleItem.style.transition = "none";
-            circleItem.style.transform = "rotate(275deg)";
+            circleItem.style.transform = "rotate(180deg)";
         } else {
             console.warn("⚠️ circle-item-1 .inner-container not found.");
         }
@@ -250,25 +248,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 // Set specific top and left values based on the link number
                 switch (id) {
-                    case 2:
+                    case 1:
                         selectedLinkContainer.style.top = "-20px";
                         selectedLinkContainer.style.left = "-120px";
                         break;
-                    case 4:
-                        selectedLinkContainer.style.top = "-10px";
-                        selectedLinkContainer.style.left = "0px";
+                    case 3:
+                        selectedLinkContainer.style.top = "-20px";
+                        selectedLinkContainer.style.left = "-120px";
                         break;
                     case 5:
                         selectedLinkContainer.style.top = "-20px";
-                        selectedLinkContainer.style.right = "280px";
+                        selectedLinkContainer.style.left = "-110px";
                         break;
-                    case 8:
+                    case 7:
                         selectedLinkContainer.style.top = "0px";
-                        selectedLinkContainer.style.right = "285px";
+                        selectedLinkContainer.style.left = "-110px";
                         break;
-                    case 10:
+                    case 9:
                         selectedLinkContainer.style.top = "0px";
-                        selectedLinkContainer.style.left = "0px";
+                        selectedLinkContainer.style.left = "-110px";
                         break;
                     case 11:
                         selectedLinkContainer.style.top = "0px";
@@ -352,7 +350,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Step 3: Use requestAnimationFrame to apply the transform in the next frame
             requestAnimationFrame(() => {
-                const resetTransform = "rotate(185deg)";
+                const resetTransform = "rotate(180deg)";
                 circleInnerContainer.style.transform = resetTransform;
                 centralLogo.style.transform = "translate(-50%, -50%) rotate(-185deg)";
             });
@@ -472,7 +470,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
         
                 resolve();
-            }, 500); // Execute 500ms after being called
+            }, 500);
         });
     }
 
@@ -510,6 +508,7 @@ document.addEventListener("DOMContentLoaded", () => {
             console.warn(`⚠️ Floating link container #floating-link-container--${i} not found.`);
         }
     }
+
     function applyPhaseTwoFinalStyles() {
         const blueBackground = 'url("https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-3-orange.svg")';
         const lightBlueBackground = 'url("https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-3-lightblue.svg")';
