@@ -7,7 +7,8 @@ document.addEventListener("DOMContentLoaded", function() {
         'page-id-11': '/',
         'page-id-37': '/a-proposito-di-noi.html',
         'page-id-40': '/cosa-facciamo.html',
-        'page-id-44': '/il-gruppo.html'
+        'page-id-44': '/il-gruppo.html',
+        'page-id-42': '/over-the-edge.html'
     };
 
     // Get all header navigation links

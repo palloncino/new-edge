@@ -126,4 +126,11 @@
     transition: background 0.3s;
 }
 
+/* /over-the-edge */
+.page-id-42 .edge-header .header-navigation-links {
+    background: #528AF8!important;
+    color: #fff;
+    transition: background 0.3s;
+}
+
 
