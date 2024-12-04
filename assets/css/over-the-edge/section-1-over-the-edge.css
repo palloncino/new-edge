@@ -42,7 +42,7 @@
     line-height: 24px;
     padding-top: .4rem;
     transition: top .5s, font-size .5s, left .5s, transform .5s;
-    width: 200px;
+    width: 90px;
     text-wrap: nowrap;
     z-index: 21;
 }
@@ -51,10 +51,11 @@
     border: 1px dashed rgba(30, 0, 255, 0.392);
     position: absolute;
     width: 16px;
-    height: 60px;
-    background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/plus-button-5289F8.svg') no-repeat center;
+    height: 16px;
+    background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/plus-button-5289F8.svg') no-repeat top;
     transition: all .5s;
     z-index: 21;
+    margin-top: 10px;
 }
 
 .section-1-over-the-edge__link-shape {
@@ -63,55 +64,67 @@
     background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-2-violet.svg') no-repeat center;
     width: 100px;
     height: 60px;
-    transform: rotate(0deg);
+    transform: rotate(90deg);
     transition: all .5s;
     z-index: 21;
 }
 
 /* Link 1 Styles */
 #section-1-over-the-edge__link-1-shape {
-    top: calc(100% - 100px);
-    left: 100px;
 }
 
 #section-1-over-the-edge__link-1-plus {
-    top: calc(100% - 100px);
-    left: calc(100px + 80px);
 }
 
 #section-1-over-the-edge__link-1-title {
-    top: calc(100% - 100px);
-    left: calc(100px + 96px);
 }
 
 /* Link 2 Styles */
 #section-1-over-the-edge__link-2-shape {
-    top: calc(100% - 100px);
-    left: calc(496px);
 }
 
 #section-1-over-the-edge__link-2-plus {
-    top: calc(100% - 100px);
-    left: calc(496px + 80px);
 }
 
 #section-1-over-the-edge__link-2-title {
-    top: calc(100% - 100px);
-    left: calc(496px + 96px);
 }
 
 /* Link 3 Styles */
 #section-1-over-the-edge__link-3-shape {
-    top: calc(100% - 100px);
-    left: calc(892px);
 }
 
 #section-1-over-the-edge__link-3-plus {
-    top: calc(100% - 100px);
-    left: calc(892px + 80px);
 }
 
 #section-1-over-the-edge__link-3-title {
-    top: calc(100% - 100px);
-    left: calc(892px + 96px);
+}
+
+/* Link 4 Styles */
+#section-1-over-the-edge__link-4-shape {
+}
+
+#section-1-over-the-edge__link-4-plus {
+}
+
+#section-1-over-the-edge__link-4-title {
+}
+
+/* Link 5 Styles */
+#section-1-over-the-edge__link-5-shape {
+}
+
+#section-1-over-the-edge__link-5-plus {
+}
+
+#section-1-over-the-edge__link-5-title {
+}
+
+/* Link 6 Styles */
+#section-1-over-the-edge__link-6-shape {
+}
+
+#section-1-over-the-edge__link-6-plus {
+}
+
+#section-1-over-the-edge__link-6-title {
 }
