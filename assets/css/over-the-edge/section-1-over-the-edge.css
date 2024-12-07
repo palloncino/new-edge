@@ -38,8 +38,9 @@
 .section-1-over-the-edge__link-plus,
 .section-1-over-the-edge__link-shape {
     position: absolute;
-    top: -200px; /* Start all elements off-screen */
-    transition: all 0.5s;  
+    top: -200px;
+    /* Start all elements off-screen */
+    transition: all 0.5s;
     z-index: 21;
 }
 
@@ -61,7 +62,8 @@
     width: 16px;
     height: 16px;
     background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/plus-button-5289F8.svg') no-repeat top;
-    margin-top: 10px; /* As previously set */
+    margin-top: 10px;
+    /* As previously set */
 }
 
 /* Shape Styles */
@@ -71,6 +73,17 @@
     width: 100px;
     height: 60px;
     transform: rotate(90deg);
+}
+
+.section-1-over-the-edge__link-description {
+    position: absolute;
+    max-width: 600px;
+    font-family: 'Mundial Thin';
+    font-size: 1.6rem;
+    line-height: 2rem;
+    transition: top .5s;
+    top: 2000px;
+    left: 460px;
 }
 
 /* Link-specific Styles */
