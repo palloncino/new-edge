@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Over the edge</title>
     <link rel="stylesheet" href="./assets/css/font.css">
     <link rel="stylesheet" href="./assets/css/global.css">
     <link rel="stylesheet" href="./assets/css/header.css">
     <link rel="stylesheet" href="./assets/css/over-the-edge/section-1-over-the-edge.css">
-    <title>Over the edge</title>
     <style>
         .section-1-over-the-edge {
             position: relative;
@@ -46,39 +46,41 @@
         }
 
         /* Common among links */
+        .section-1-over-the-edge__link-title,
+        .section-1-over-the-edge__link-plus,
+        .section-1-over-the-edge__link-shape {
+            position: absolute;
+            top: -200px;
+            /* Start off-screen to avoid initial flash */
+            transition: all 0.5s;
+            z-index: 21;
+        }
+
         .section-1-over-the-edge__link-title {
             border: 1px dashed rgba(17, 117, 75, 0.692);
-            position: absolute;
             font-family: 'Mundial Regular';
             font-size: 1.4rem;
             line-height: 24px;
             padding-top: 0.4rem;
-            transition: top 0.5s, font-size 0.5s, left 0.5s, transform 0.5s;
             width: 90px;
             white-space: nowrap;
-            z-index: 21;
+            transition: top 0.5s, font-size 0.5s, left 0.5s, transform 0.5s;
         }
 
         .section-1-over-the-edge__link-plus {
             border: 1px dashed rgba(30, 0, 255, 0.392);
-            position: absolute;
             width: 16px;
             height: 16px;
             background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/plus-button-5289F8.svg') no-repeat top;
-            transition: all 0.5s;
-            z-index: 21;
             margin-top: 10px;
         }
 
         .section-1-over-the-edge__link-shape {
             border: 1px dashed rgba(255, 0, 0, 0.392);
-            position: absolute;
             background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-2-violet.svg') no-repeat center;
             width: 100px;
             height: 60px;
             transform: rotate(90deg);
-            transition: all 0.5s;
-            z-index: 21;
         }
     </style>
 </head>
@@ -148,6 +150,7 @@
 
         </div>
     </div>
+    <script src="./assets/js/header/header-links.js"></script>
     <script>
         const initialStyles = {};
         const TOTAL_LINKS = 5;
@@ -401,15 +404,12 @@
             });
         }
 
+
         function applySelectedStyles(link) {
-            if (link.shape) {
-                link.shape.style.height = '160px';
-                link.shape.style.width = '270px';
-                link.shape.style.top = '170px';
-                link.shape.style.left = '0';
-                link.shape.style.backgroundPosition = 'center';
-                // Use the configured rotation for selected shape
-                link.shape.style.transform = `rotate(${SELECTED_SHAPE_ROTATION})`;
+            // Start with the title hidden and small
+            if (link.title) {
+                link.title.style.width = '0px';
+                link.title.style.opacity = '0';
             }
 
             if (link.plus) {
@@ -418,24 +418,65 @@
                 link.plus.style.height = '0';
             }
 
-            if (link.title) {
-                link.title.style.width = '600px';
-                link.title.style.top = '170px';
-                link.title.style.left = '470px';
-                link.title.style.fontSize = '4rem';
-                link.title.style.lineHeight = '4rem';
-                link.title.style.fontWeight = '700';
-            }
-
             if (link.description) {
                 link.description.style.top = '370px';
                 link.description.style.left = '470px';
                 link.description.style.visibility = 'visible';
                 link.description.style.opacity = '1';
             }
+
+            if (link.shape) {
+                // Temporarily disable transitions
+                link.shape.style.transition = 'none';
+
+                // Set an initial state for the shape before transitioning
+                // Adjust these initial values as needed
+                link.shape.style.width = '100px';
+                link.shape.style.height = '60px';
+                link.shape.style.top = '200px';
+                link.shape.style.left = '-200px';
+                link.shape.style.transform = 'rotate(90deg)';
+
+                // Use requestAnimationFrame to ensure the browser applies the initial layout
+                requestAnimationFrame(() => {
+                    // Now re-enable transitions
+                    link.shape.style.transition = 'all 0.5s';
+
+                    // Set the final desired properties
+                    link.shape.style.height = '160px';
+                    link.shape.style.width = '270px';
+                    link.shape.style.top = '170px';
+                    link.shape.style.left = '0';
+                    link.shape.style.backgroundPosition = 'center';
+                    link.shape.style.transform = `rotate(${SELECTED_SHAPE_ROTATION})`;
+
+                    // After the shape finishes transitioning (~0.5s), position and scale the title
+                    setTimeout(() => {
+                        if (link.shape && link.title) {
+                            const shapeRect = link.shape.getBoundingClientRect();
+                            const containerRect = document.querySelector('.section-padded-content-relative-container').getBoundingClientRect();
+                            const shapeLeft = shapeRect.left - containerRect.left;
+                            const shapeTop = parseFloat(link.shape.style.top) || 170;
+                            const shapeWidth = link.shape.offsetWidth;
+
+                            // Place the title to the right of the shape with some margin (e.g., 30px)
+                            const margin = 30;
+                            const finalTitleLeft = shapeLeft + shapeWidth + margin;
+
+                            link.title.style.left = `${finalTitleLeft}px`;
+                            link.title.style.top = `${shapeTop}px`;
+                            link.title.style.width = '600px';
+                            link.title.style.fontSize = '4rem';
+                            link.title.style.lineHeight = '4rem';
+                            link.title.style.fontWeight = '700';
+                            link.title.style.opacity = '1';
+                        }
+                    }, 600);
+                });
+            }
         }
 
-        // Example applyMovingStyles function using UNSELECTED_SHAPE_ROTATION
+
         function applyMovingStyles(link, id) {
             if (link.shape) {
                 link.shape.style.width = '100px';
