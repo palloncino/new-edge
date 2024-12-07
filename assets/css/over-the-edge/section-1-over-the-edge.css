@@ -10,7 +10,7 @@
     left: 200px;
     margin-top: 100px;
     z-index: 20;
-    transition: top .5s, font-size .5s, left .5s;
+    transition: top 0.5s, font-size 0.5s, left 0.5s;
 }
 
 /* Back button */
@@ -18,7 +18,7 @@
     position: absolute;
     top: calc(100% - 100px);
     left: -600px;
-    transition: all .5s;
+    transition: all 0.5s;
 }
 
 .section-1-over-the-edge__link-description {
@@ -28,9 +28,9 @@
     font-family: 'Mundial Thin';
     font-size: 1.6rem;
     line-height: 2rem;
-    transition: top .5s;
+    transition: top 0.5s;
     top: 2000px;
-    left: 460px;
+    left: 470px;
 }
 
 /* Common among links */
@@ -40,10 +40,10 @@
     font-family: 'Mundial Regular';
     font-size: 1.4rem;
     line-height: 24px;
-    padding-top: .4rem;
-    transition: top .5s, font-size .5s, left .5s, transform .5s;
+    padding-top: 0.4rem;
+    transition: top 0.5s, font-size 0.5s, left 0.5s, transform 0.5s;
     width: 90px;
-    text-wrap: nowrap;
+    white-space: nowrap; /* Corrected from text-wrap */
     z-index: 21;
 }
 
@@ -53,7 +53,7 @@
     width: 16px;
     height: 16px;
     background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/plus-button-5289F8.svg') no-repeat top;
-    transition: all .5s;
+    transition: all 0.5s;
     z-index: 21;
     margin-top: 10px;
 }
@@ -65,66 +65,28 @@
     width: 100px;
     height: 60px;
     transform: rotate(90deg);
-    transition: all .5s;
+    transition: all 0.5s;
     z-index: 21;
 }
 
-/* Link 1 Styles */
-#section-1-over-the-edge__link-1-shape {
-}
+/* Link-specific Styles */
+/* Add specific styles for links 1 through 5 if needed */
+#section-1-over-the-edge__link-1-shape { }
+#section-1-over-the-edge__link-1-plus { }
+#section-1-over-the-edge__link-1-title { }
 
-#section-1-over-the-edge__link-1-plus {
-}
+#section-1-over-the-edge__link-2-shape { }
+#section-1-over-the-edge__link-2-plus { }
+#section-1-over-the-edge__link-2-title { }
 
-#section-1-over-the-edge__link-1-title {
-}
+#section-1-over-the-edge__link-3-shape { }
+#section-1-over-the-edge__link-3-plus { }
+#section-1-over-the-edge__link-3-title { }
 
-/* Link 2 Styles */
-#section-1-over-the-edge__link-2-shape {
-}
+#section-1-over-the-edge__link-4-shape { }
+#section-1-over-the-edge__link-4-plus { }
+#section-1-over-the-edge__link-4-title { }
 
-#section-1-over-the-edge__link-2-plus {
-}
-
-#section-1-over-the-edge__link-2-title {
-}
-
-/* Link 3 Styles */
-#section-1-over-the-edge__link-3-shape {
-}
-
-#section-1-over-the-edge__link-3-plus {
-}
-
-#section-1-over-the-edge__link-3-title {
-}
-
-/* Link 4 Styles */
-#section-1-over-the-edge__link-4-shape {
-}
-
-#section-1-over-the-edge__link-4-plus {
-}
-
-#section-1-over-the-edge__link-4-title {
-}
-
-/* Link 5 Styles */
-#section-1-over-the-edge__link-5-shape {
-}
-
-#section-1-over-the-edge__link-5-plus {
-}
-
-#section-1-over-the-edge__link-5-title {
-}
-
-/* Link 6 Styles */
-#section-1-over-the-edge__link-6-shape {
-}
-
-#section-1-over-the-edge__link-6-plus {
-}
-
-#section-1-over-the-edge__link-6-title {
-}
+#section-1-over-the-edge__link-5-shape { }
+#section-1-over-the-edge__link-5-plus { }
+#section-1-over-the-edge__link-5-title { }

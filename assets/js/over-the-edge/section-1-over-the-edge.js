@@ -1,24 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-    // Common elements
-    const mainTitle1 = document.querySelector('#section-1-over-the-edge__section-1-main-title');
-    const backBtn1 = document.querySelector('#section-1-over-the-edge__back-btn');
-    // Link 1 elements
-    const link1shape = document.querySelector('#section-1-over-the-edge__link-1-shape');
-    const link1plus = document.querySelector('#section-1-over-the-edge__link-1-plus');
-    const link1title = document.querySelector('#section-1-over-the-edge__link-1-title');
-    const link1description = document.querySelector('#section-1-over-the-edge__link-1-description');
-    // Link 2 elements (if any)
-    const link2shape = document.querySelector('#section-1-over-the-edge__link-2-shape');
-    const link2plus = document.querySelector('#section-1-over-the-edge__link-2-plus');
-    const link2title = document.querySelector('#section-1-over-the-edge__link-2-title');
-    const link2description = document.querySelector('#section-1-over-the-edge__link-2-description');
-    // Link 3 elements (if any)
-    const link3shape = document.querySelector('#section-1-over-the-edge__link-3-shape');
-    const link3plus = document.querySelector('#section-1-over-the-edge__link-3-plus');
-    const link3title = document.querySelector('#section-1-over-the-edge__link-3-title');
-    const link3description = document.querySelector('#section-1-over-the-edge__link-3-description');
-
+    // Constants for positioning
     const PARAGRAPH_TOP = '370px';
     const PARAGRAPH_HIDDEN = '2000px';
     const PARAGRAPH_LEFT = '470px';
@@ -26,83 +8,93 @@ document.addEventListener('DOMContentLoaded', function () {
     // Object to store the initial styles
     const initialStyles = {};
 
+    // Total number of links
+    const TOTAL_LINKS = 5;
+
+    // Common elements
+    const mainTitle = document.querySelector('#section-1-over-the-edge__section-1-main-title');
+    const backBtn = document.querySelector('#section-1-over-the-edge__back-btn');
+
+    // Links data structure
+    const links = [];
+
+    for (let i = 1; i <= TOTAL_LINKS; i++) {
+        links.push({
+            shape: document.querySelector(`#section-1-over-the-edge__link-${i}-shape`),
+            plus: document.querySelector(`#section-1-over-the-edge__link-${i}-plus`),
+            title: document.querySelector(`#section-1-over-the-edge__link-${i}-title`),
+            description: document.querySelector(`#section-1-over-the-edge__link-${i}-description`)
+        });
+    }
+
+    // Function to capture initial styles
     function captureInitialStyles() {
-        // Capture computed styles for all elements
-        const elements = {
-            'section-1-over-the-edge__back-btn': backBtn1,
-            // Link 1
-            'section-1-over-the-edge__link-1-shape': link1shape,
-            'section-1-over-the-edge__link-1-plus': link1plus,
-            'section-1-over-the-edge__link-1-title': link1title,
-            'section-1-over-the-edge__link-1-description': link1description,
-            // Link 2
-            'section-1-over-the-edge__link-2-shape': link2shape,
-            'section-1-over-the-edge__link-2-plus': link2plus,
-            'section-1-over-the-edge__link-2-title': link2title,
-            'section-1-over-the-edge__link-2-description': link2description,
-            // Link 3
-            'section-1-over-the-edge__link-3-shape': link3shape,
-            'section-1-over-the-edge__link-3-plus': link3plus,
-            'section-1-over-the-edge__link-3-title': link3title,
-            'section-1-over-the-edge__link-3-description': link3description,
-        };
+        // Capture computed styles for back button
+        captureElementStyles('section-1-over-the-edge__back-btn', backBtn);
 
-        for (const [id, element] of Object.entries(elements)) {
-            if (element) {
-                const computedStyles = window.getComputedStyle(element);
-                initialStyles[id] = {};
-                [
-                    'position',
-                    'top',
-                    'left',
-                    'font-size',
-                    'line-height',
-                    'width',
-                    'height',
-                    'visibility',
-                    'opacity',
-                    'background-position',
-                    'transition',
-                    'font-weight',
-                    'transform',
-                ].forEach((property) => {
-                    initialStyles[id][property] = computedStyles.getPropertyValue(property);
-                });
-            }
+        // Capture computed styles for each link
+        links.forEach((link, index) => {
+            const linkId = `section-1-over-the-edge__link-${index + 1}`;
+            captureElementStyles(`${linkId}-shape`, link.shape);
+            captureElementStyles(`${linkId}-plus`, link.plus);
+            captureElementStyles(`${linkId}-title`, link.title);
+            captureElementStyles(`${linkId}-description`, link.description);
+        });
+    }
+
+    // Helper function to capture styles of a single element
+    function captureElementStyles(id, element) {
+        if (element) {
+            const computedStyles = window.getComputedStyle(element);
+            initialStyles[id] = {};
+            [
+                'position',
+                'top',
+                'left',
+                'font-size',
+                'line-height',
+                'width',
+                'height',
+                'visibility',
+                'opacity',
+                'background-position',
+                'transition',
+                'font-weight',
+                'transform'
+            ].forEach((property) => {
+                initialStyles[id][property] = computedStyles.getPropertyValue(property);
+            });
         }
     }
 
+    // Function to select a link
     function section1AboutUsSelectLink(id) {
-        if (mainTitle1) {
-            mainTitle1.style.position = 'absolute';
-            mainTitle1.style.top = '200px';
-            mainTitle1.style.left = '0';
-            mainTitle1.style.fontSize = '2rem';
-            mainTitle1.style.transition = 'top .5s, font-size .5s, left .5s';
+        // Adjust main title
+        if (mainTitle) {
+            mainTitle.style.position = 'absolute';
+            mainTitle.style.top = '200px';
+            mainTitle.style.left = '0';
+            mainTitle.style.fontSize = '2rem';
+            mainTitle.style.transition = 'top 0.5s, font-size 0.5s, left 0.5s';
         }
 
-        if (backBtn1) {
-            backBtn1.style.left = '0';
+        // Adjust back button
+        if (backBtn) {
+            backBtn.style.left = '0';
         }
 
-        switch (id) {
-            case 1:
-                move1();
-                break;
-
-            case 2:
-                move2();
-                break;
-
-            case 3:
-                move3();
-                break;
-
-            default:
-                break;
-        }
+        // Iterate through all links
+        links.forEach((link, index) => {
+            const currentId = index + 1;
+            if (currentId === id) {
+                applySelectedStyles(link, currentId);
+            } else {
+                applyMovingStyles(link, currentId);
+            }
+        });
     }
 
+    // Function to unselect all links
     function section1AboutUsUnselect() {
         // Restore the initial styles of all elements
         for (const [id, savedStyles] of Object.entries(initialStyles)) {
@@ -113,288 +105,102 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
             }
         }
-    }
 
-    function move1() {
-        if (link1shape) {
-            link1shape.style.height = '160px';
-            link1shape.style.width = '270px';
-            link1shape.style.top = '170px';
-            link1shape.style.left = '0';
-            link1shape.style.backgroundPosition = 'center';
-            if (link1shape.style.transform === 'rotate(0deg)') {
-                link1shape.style.transform = 'rotate(180deg)';
-            } else if (link1shape.style.transform === 'rotate(180deg)') {
-                link1shape.style.transform = 'rotate(0deg)'
-            }
+        // Restore main title and back button positioning
+        if (mainTitle) {
+            mainTitle.style.position = 'absolute';
+            mainTitle.style.top = '0px';
+            mainTitle.style.left = '200px';
+            mainTitle.style.fontSize = 'initial';
+            mainTitle.style.transition = 'top 0.5s, font-size 0.5s, left 0.5s';
         }
 
-        if (link1plus) {
-            link1plus.style.visibility = 'hidden';
-            link1plus.style.width = '0';
-        }
-
-        if (link1title) {
-            link1title.style.width = '600px';
-            link1title.style.top = '170px';
-            link1title.style.left = PARAGRAPH_LEFT;
-            link1title.style.fontSize = '4rem';
-            link1title.style.lineHeight = '4rem';
-            link1title.style.fontWeight = '700';
-        }
-
-        if (link1description) {
-            link1description.style.top = PARAGRAPH_TOP;
-            link1description.style.left = PARAGRAPH_LEFT;
-        }
-
-        // moving link 2
-        if (link2shape) {
-            link2shape.style.width = '100px';
-            link2shape.style.height = '60px';
-            link2shape.style.top = 'calc(100% - 200px)';
-            link2shape.style.left = 'calc(100% - 340px)';
-            link2shape.style.transform = 'rotate(180deg)';
-        }
-
-        if (link2plus) {
-            link2plus.style.visibility = 'visible';
-            link2plus.style.opacity = '1';
-            link2plus.style.width = '16px';
-            link2plus.style.top = 'calc(100% - 200px)';
-            link2plus.style.left = 'calc(100% - 230px)';
-        }
-
-        if (link2title) {
-            link2title.style.width = '100px';
-            link2title.style.top = 'calc(100% - 200px)';
-            link2title.style.left = 'calc(100% - 200px)';
-            link2title.style.fontSize = '1.4rem';
-            link2title.style.lineHeight = '24px';
-        }
-
-        if (link2description) {
-            link2description.style.top = PARAGRAPH_HIDDEN;
-            link1description.style.left = PARAGRAPH_LEFT;
-        }
-
-        // moving link 3
-        if (link3shape) {
-            link3shape.style.width = '100px';
-            link3shape.style.height = '60px';
-            link3shape.style.top = 'calc(100% - 100px)';
-            link3shape.style.left = 'calc(100% - 340px)';
-            link3shape.style.transform = 'rotate(180deg)';
-        }
-
-        if (link3plus) {
-            link3plus.style.visibility = 'visible';
-            link3plus.style.opacity = '1';
-            link3plus.style.width = '16px';
-            link3plus.style.top = 'calc(100% - 100px)';
-            link3plus.style.left = 'calc(100% - 230px)';
-        }
-
-        if (link3title) {
-            link3title.style.width = '100px';
-            link3title.style.top = 'calc(100% - 100px)';
-            link3title.style.left = 'calc(100% - 200px)';
-            link3title.style.fontSize = '1.4rem';
-            link3title.style.lineHeight = '24px';
-        }
-
-        if (link3description) {
-            link3description.style.top = PARAGRAPH_HIDDEN;
-            link1description.style.left = PARAGRAPH_LEFT;
+        if (backBtn) {
+            // Position back button at initial position
+            backBtn.style.left = '-600px';
+            backBtn.style.top = 'calc(100% - 100px)';
         }
     }
 
-    function move2() {
-        if (link2shape) {
-            link2shape.style.height = '160px';
-            link2shape.style.width = '270px';
-            link2shape.style.top = '170px';
-            link2shape.style.left = '0';
-            link2shape.style.backgroundPosition = 'center';
-            if (link2shape.style.transform === 'rotate(0deg)') {
-                link2shape.style.transform = 'rotate(180deg)';
-            } else if (link2shape.style.transform === 'rotate(180deg)') {
-                link2shape.style.transform = 'rotate(0deg)'
-            }
+    // Function to apply selected styles to a link
+    function applySelectedStyles(link, id) {
+        if (link.shape) {
+            link.shape.style.height = '160px';
+            link.shape.style.width = '270px';
+            link.shape.style.top = '170px';
+            link.shape.style.left = '0';
+            link.shape.style.backgroundPosition = 'center';
+            toggleTransform(link.shape, 'rotate(180deg)', 'rotate(0deg)');
         }
 
-        if (link2plus) {
-            link2plus.style.visibility = 'hidden';
-            link2plus.style.width = '0';
+        if (link.plus) {
+            link.plus.style.visibility = 'hidden';
+            link.plus.style.width = '0';
+            link.plus.style.height = '0';
         }
 
-        if (link2title) {
-            link2title.style.width = '600px';
-            link2title.style.top = '170px';
-            link2title.style.left = PARAGRAPH_LEFT;
-            link2title.style.fontSize = '4rem';
-            link2title.style.lineHeight = '4rem';
-            link2title.style.fontWeight = '700';
+        if (link.title) {
+            link.title.style.width = '600px';
+            link.title.style.top = '170px';
+            link.title.style.left = PARAGRAPH_LEFT;
+            link.title.style.fontSize = '4rem';
+            link.title.style.lineHeight = '4rem';
+            link.title.style.fontWeight = '700';
         }
 
-        if (link2description) {
-            link2description.style.top = PARAGRAPH_TOP;
-            link2description.style.left = PARAGRAPH_LEFT;
+        if (link.description) {
+            link.description.style.top = PARAGRAPH_TOP;
+            link.description.style.left = PARAGRAPH_LEFT;
+            link.description.style.visibility = 'visible';
+            link.description.style.opacity = '1';
         }
-
-        // moving link 1
-        if (link1shape) {
-            link1shape.style.width = '100px';
-            link1shape.style.height = '60px';
-            link1shape.style.top = 'calc(100% - 300px)';
-            link1shape.style.left = 'calc(100% - 340px)';
-            link1shape.style.transform = 'rotate(180deg)';
-        }
-
-        if (link1plus) {
-            link1plus.style.visibility = 'visible';
-            link1plus.style.opacity = '1';
-            link1plus.style.width = '16px';
-            link1plus.style.top = 'calc(100% - 300px)';
-            link1plus.style.left = 'calc(100% - 230px)';
-        }
-
-        if (link1title) {
-            link1title.style.width = '100px';
-            link1title.style.top = 'calc(100% - 300px)';
-            link1title.style.left = 'calc(100% - 200px)';
-            link1title.style.fontSize = '1.4rem';
-            link1title.style.lineHeight = '24px';
-        }
-
-        if (link1description) {
-            link1description.style.top = PARAGRAPH_HIDDEN;
-            link2description.style.left = PARAGRAPH_LEFT;
-        }
-
-        // moving link 3
-        if (link3shape) {
-            link3shape.style.width = '100px';
-            link3shape.style.height = '60px';
-            link3shape.style.top = 'calc(100% - 100px)';
-            link3shape.style.left = 'calc(100% - 340px)';
-            link3shape.style.transform = 'rotate(180deg)';
-        }
-
-        if (link3plus) {
-            link3plus.style.visibility = 'visible';
-            link3plus.style.opacity = '1';
-            link3plus.style.width = '16px';
-            link3plus.style.top = 'calc(100% - 100px)';
-            link3plus.style.left = 'calc(100% - 230px)';
-        }
-
-        if (link3title) {
-            link3title.style.width = '100px';
-            link3title.style.top = 'calc(100% - 100px)';
-            link3title.style.left = 'calc(100% - 200px)';
-            link3title.style.fontSize = '1.4rem';
-            link3title.style.lineHeight = '24px';
-        }
-
-        if (link3description) {
-            link3description.style.top = PARAGRAPH_HIDDEN;
-            link3description.style.left = PARAGRAPH_LEFT;
-        }
-
     }
 
-    function move3() {
-        if (link3shape) {
-            link3shape.style.height = '160px';
-            link3shape.style.width = '270px';
-            link3shape.style.top = '170px';
-            link3shape.style.left = '0';
-            link3shape.style.backgroundPosition = 'center';
-            if (link3shape.style.transform === 'rotate(0deg)') {
-                link3shape.style.transform = 'rotate(180deg)';
-            } else if (link3shape.style.transform === 'rotate(180deg)') {
-                link3shape.style.transform = 'rotate(0deg)'
-            }
+    // Function to apply moving/reset styles to non-selected links
+    function applyMovingStyles(link, id) {
+        if (link.shape) {
+            link.shape.style.width = '100px';
+            link.shape.style.height = '60px';
+            // Adjust top and left based on link number to stack them
+            const offsetY = 100 + (id - 1) * 80; // Example offset, adjust as needed
+            link.shape.style.top = `calc(100% - ${offsetY}px)`;
+            link.shape.style.left = 'calc(100% - 340px)';
+            link.shape.style.transform = 'rotate(360deg)';
         }
 
-        if (link3plus) {
-            link3plus.style.visibility = 'hidden';
-            link3plus.style.width = '0';
+        if (link.plus) {
+            link.plus.style.visibility = 'visible';
+            link.plus.style.opacity = '1';
+            link.plus.style.width = '16px';
+            link.plus.style.height = '16px';
+            // Adjust top based on link number
+            const offsetY = 100 + (id - 1) * 80; // Example offset, adjust as needed
+            link.plus.style.top = `calc(100% - ${offsetY}px)`;
+            link.plus.style.left = 'calc(100% - 230px)';
         }
 
-        if (link3title) {
-            link3title.style.width = '600px';
-            link3title.style.top = '170px';
-            link3title.style.left = PARAGRAPH_LEFT;
-            link3title.style.fontSize = '4rem';
-            link3title.style.lineHeight = '4rem';
-            link3title.style.fontWeight = '700';
+        if (link.title) {
+            link.title.style.width = '100px';
+            link.title.style.top = `calc(100% - ${100 + (id - 1) * 80}px)`; // Example offset
+            link.title.style.left = 'calc(100% - 200px)';
+            link.title.style.fontSize = '1.4rem';
+            link.title.style.lineHeight = '24px';
         }
 
-        if (link3description) {
-            link3description.style.top = PARAGRAPH_TOP;
-            link3description.style.left = PARAGRAPH_LEFT;
+        if (link.description) {
+            link.description.style.top = PARAGRAPH_HIDDEN;
+            link.description.style.left = PARAGRAPH_LEFT;
+            link.description.style.visibility = 'hidden';
+            link.description.style.opacity = '0';
         }
+    }
 
-        // moving link 1
-        if (link1shape) {
-            link1shape.style.width = '100px';
-            link1shape.style.height = '60px';
-            link1shape.style.top = 'calc(100% - 300px)';
-            link1shape.style.left = 'calc(100% - 340px)';
-            link1shape.style.transform = 'rotate(180deg)';
-        }
-
-        if (link1plus) {
-            link1plus.style.visibility = 'visible';
-            link1plus.style.opacity = '1';
-            link1plus.style.width = '16px';
-            link1plus.style.top = 'calc(100% - 300px)';
-            link1plus.style.left = 'calc(100% - 230px)';
-        }
-
-        if (link1title) {
-            link1title.style.width = '100px';
-            link1title.style.top = 'calc(100% - 300px)';
-            link1title.style.left = 'calc(100% - 200px)';
-            link1title.style.fontSize = '1.4rem';
-            link1title.style.lineHeight = '24px';
-        }
-
-        if (link1description) {
-            link1description.style.top = PARAGRAPH_HIDDEN;
-            link1description.style.left = PARAGRAPH_LEFT;
-        }
-
-        // moving link 2
-        if (link2shape) {
-            link2shape.style.width = '100px';
-            link2shape.style.height = '60px';
-            link2shape.style.top = 'calc(100% - 100px)';
-            link2shape.style.left = 'calc(100% - 340px)';
-            link2shape.style.transform = 'rotate(180deg)';
-        }
-
-        if (link2plus) {
-            link2plus.style.visibility = 'visible';
-            link2plus.style.opacity = '1';
-            link2plus.style.width = '16px';
-            link2plus.style.top = 'calc(100% - 100px)';
-            link2plus.style.left = 'calc(100% - 230px)';
-        }
-
-        if (link2title) {
-            link2title.style.width = '100px';
-            link2title.style.top = 'calc(100% - 100px)';
-            link2title.style.left = 'calc(100% - 200px)';
-            link2title.style.fontSize = '1.4rem';
-            link2title.style.lineHeight = '24px';
-        }
-
-        if (link2description) {
-            link2description.style.top = PARAGRAPH_HIDDEN;
-            link3description.style.left = PARAGRAPH_LEFT;
+    // Helper function to toggle transform property
+    function toggleTransform(element, transform1, transform2) {
+        if (element.style.transform === transform1) {
+            element.style.transform = transform2;
+        } else {
+            element.style.transform = transform1;
         }
     }
 
