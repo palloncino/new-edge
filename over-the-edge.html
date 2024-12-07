@@ -1,19 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/font.css">
     <link rel="stylesheet" href="./assets/css/global.css">
     <link rel="stylesheet" href="./assets/css/header.css">
-    <!-- Specific CSS for current page -->
     <link rel="stylesheet" href="./assets/css/over-the-edge/section-1-over-the-edge.css">
     <title>Over the edge</title>
+    <style>
+        .section-1-over-the-edge {
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Main title */
+        #section-1-over-the-edge__section-1-main-title {
+            position: absolute;
+            top: 0;
+            left: 200px;
+            margin-top: 100px;
+            z-index: 20;
+            transition: top 0.5s, font-size 0.5s, left 0.5s;
+        }
+
+        /* Back button */
+        #section-1-over-the-edge__back-btn {
+            position: absolute;
+            top: calc(100% - 100px);
+            left: -600px;
+            transition: all 0.5s;
+        }
+
+        .section-1-over-the-edge__link-description {
+            border: 1px dashed rgba(255, 0, 0, 0.392);
+            position: absolute;
+            max-width: 600px;
+            font-family: 'Mundial Thin';
+            font-size: 1.6rem;
+            line-height: 2rem;
+            transition: top 0.5s;
+            top: 2000px;
+            left: 470px;
+        }
+
+        /* Common among links */
+        .section-1-over-the-edge__link-title {
+            border: 1px dashed rgba(17, 117, 75, 0.692);
+            position: absolute;
+            font-family: 'Mundial Regular';
+            font-size: 1.4rem;
+            line-height: 24px;
+            padding-top: 0.4rem;
+            transition: top 0.5s, font-size 0.5s, left 0.5s, transform 0.5s;
+            width: 90px;
+            white-space: nowrap; 
+            z-index: 21;
+        }
+
+        .section-1-over-the-edge__link-plus {
+            border: 1px dashed rgba(30, 0, 255, 0.392);
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/plus-button-5289F8.svg') no-repeat top;
+            transition: all 0.5s;
+            z-index: 21;
+            margin-top: 10px;
+        }
+
+        .section-1-over-the-edge__link-shape {
+            border: 1px dashed rgba(255, 0, 0, 0.392);
+            position: absolute;
+            background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-2-violet.svg') no-repeat center;
+            width: 100px;
+            height: 60px;
+            transform: rotate(90deg);
+            transition: all 0.5s;
+            z-index: 21;
+        }
+    </style>
 </head>
 
 <body class="page-id-42">
-
     <div class="outer-app-container">
 
         <!-- HEADER -->
@@ -39,7 +108,6 @@
 
             <div class="section-padded-content section-1-over-the-edge">
                 <div class="section-padded-content-relative-container">
-
 
                     <div id="section-1-over-the-edge__link-1-shape" class="section-1-over-the-edge__link-shape"></div>
                     <div id="section-1-over-the-edge__link-1-plus" class="section-1-over-the-edge__link-plus plus-icon"
@@ -71,7 +139,6 @@
                     <div id="section-1-over-the-edge__link-5-title" class="section-1-over-the-edge__link-title"
                         data-meta-label="true">LINK 5</div>
 
-
                     <div id="section-1-over-the-edge__back-btn" class="btn btn-F69701 color-FFF"
                         onclick="section1AboutUsUnselect()" data-meta-label="true">Back
                     </div>
@@ -82,16 +149,74 @@
     </div>
     <script src="./assets/js/over-the-edge/section-1-over-the-edge.js"></script>
     <script src="./assets/js/header/header-links.js"></script>
-    <!-- Place this script before the closing </body> tag -->
     <script>
+        const initialStyles = {};
+        const TOTAL_LINKS = 5;
+        const PARAGRAPH_TOP = '370px';
+        const PARAGRAPH_HIDDEN = '2000px';
+        const PARAGRAPH_LEFT = '470px';
+
+        let mainTitle = null;
+        let backBtn = null;
+        let links = [];
+
         document.addEventListener('DOMContentLoaded', () => {
+            // Initialize references
+            mainTitle = document.querySelector('#section-1-over-the-edge__section-1-main-title');
+            backBtn = document.querySelector('#section-1-over-the-edge__back-btn');
+
+            for (let i = 1; i <= TOTAL_LINKS; i++) {
+                links.push({
+                    shape: document.querySelector(`#section-1-over-the-edge__link-${i}-shape`),
+                    plus: document.querySelector(`#section-1-over-the-edge__link-${i}-plus`),
+                    title: document.querySelector(`#section-1-over-the-edge__link-${i}-title`),
+                    description: document.querySelector(`#section-1-over-the-edge__link-${i}-description`)
+                });
+            }
+
+            // First position them
             positionLinks();
-            window.addEventListener('resize', debounce(positionLinks, 100));
+
+            // After positioning, capture these as the "initial" (default) styles:
+            captureInitialStyles();
+
+            window.addEventListener('resize', () => {
+                positionLinks();
+                // Re-capture after resize if you want the default to update after each resize
+                // captureInitialStyles(); // Uncomment if you always want to treat the latest layout as initial.
+            });
         });
+
+        function captureInitialStyles() {
+            captureElementStyles('section-1-over-the-edge__back-btn', backBtn);
+            if (mainTitle) captureElementStyles('section-1-over-the-edge__section-1-main-title', mainTitle);
+
+            links.forEach((link, index) => {
+                const linkId = `section-1-over-the-edge__link-${index + 1}`;
+                captureElementStyles(`${linkId}-shape`, link.shape);
+                captureElementStyles(`${linkId}-plus`, link.plus);
+                captureElementStyles(`${linkId}-title`, link.title);
+                captureElementStyles(`${linkId}-description`, link.description);
+            });
+        }
+
+        function captureElementStyles(id, element) {
+            if (element) {
+                // Store the current inline styles as the "initial" state
+                const styleAttr = element.getAttribute('style') || '';
+                initialStyles[id] = { cssText: styleAttr };
+            }
+        }
+
+        function restoreElementStyles(id, element) {
+            if (element && initialStyles[id]) {
+                element.setAttribute('style', initialStyles[id].cssText);
+            }
+        }
 
         function positionLinks() {
             const container = document.querySelector('.section-padded-content-relative-container');
-            const totalLinks = 5; // Updated to 5 links
+            const totalLinks = TOTAL_LINKS;
             const padding = 50;
             const verticalShift = 100;
             const verticalSpacing = 10;
@@ -107,12 +232,9 @@
 
                 if (shape && plus && title) {
                     const centerX = padding + spacing * i;
-
                     const shapeWidth = shape.offsetWidth;
                     const shapeHeight = shape.offsetHeight;
-
-                    const shapeInitialTop = parseFloat(getComputedStyle(shape).top) || 0;
-                    const shapeNewTop = shapeInitialTop + verticalShift;
+                    const shapeNewTop = 100;
 
                     const shapeLeft = centerX - shapeWidth / 2;
                     shape.style.left = `${shapeLeft}px`;
@@ -133,35 +255,127 @@
                     title.style.top = `${plusTop}px`;
                 }
             }
-            positionBackButton(container);
         }
 
-        function section1OverTheEdgeSelectLink(id) {
-            const totalLinks = 5; // Updated to 5 links
-            for (let i = 1; i <= totalLinks; i++) {
-                const shape = document.getElementById(`section-1-over-the-edge__link-${i}-shape`);
-                const plus = document.getElementById(`section-1-over-the-edge__link-${i}-plus`);
-                const title = document.getElementById(`section-1-over-the-edge__link-${i}-title`);
-                if (i === id) {
-                    applySelectedStyles(shape, plus, title);
+        function section1AboutUsSelectLink(id) {
+            // Adjust main title
+            if (mainTitle) {
+                mainTitle.style.position = 'absolute';
+                mainTitle.style.top = '200px';
+                mainTitle.style.left = '0';
+                mainTitle.style.fontSize = '2rem';
+                mainTitle.style.transition = 'top 0.5s, font-size 0.5s, left 0.5s';
+            }
+
+            // Adjust back button
+            if (backBtn) {
+                backBtn.style.left = '0';
+            }
+
+            links.forEach((linkObj, index) => {
+                const currentId = index + 1;
+                if (currentId === id) {
+                    applySelectedStyles(linkObj);
                 } else {
-                    applyMovingStyles(shape, plus, title);
+                    applyMovingStyles(linkObj, currentId);
                 }
+            });
+        }
+
+        function section1AboutUsUnselect() {
+            // Restore all elements to their initial captured inline styles
+            restoreElementStyles('section-1-over-the-edge__back-btn', backBtn);
+            if (mainTitle) restoreElementStyles('section-1-over-the-edge__section-1-main-title', mainTitle);
+
+            links.forEach((link, index) => {
+                const linkId = `section-1-over-the-edge__link-${index + 1}`;
+                restoreElementStyles(`${linkId}-shape`, link.shape);
+                restoreElementStyles(`${linkId}-plus`, link.plus);
+                restoreElementStyles(`${linkId}-title`, link.title);
+                restoreElementStyles(`${linkId}-description`, link.description);
+            });
+        }
+
+        function applySelectedStyles(link) {
+            if (link.shape) {
+                link.shape.style.height = '160px';
+                link.shape.style.width = '270px';
+                link.shape.style.top = '170px';
+                link.shape.style.left = '0';
+                link.shape.style.backgroundPosition = 'center';
+                toggleTransform(link.shape, 'rotate(180deg)', 'rotate(0deg)');
+            }
+
+            if (link.plus) {
+                link.plus.style.visibility = 'hidden';
+                link.plus.style.width = '0';
+                link.plus.style.height = '0';
+            }
+
+            if (link.title) {
+                link.title.style.width = '600px';
+                link.title.style.top = '170px';
+                link.title.style.left = PARAGRAPH_LEFT;
+                link.title.style.fontSize = '4rem';
+                link.title.style.lineHeight = '4rem';
+                link.title.style.fontWeight = '700';
+            }
+
+            if (link.description) {
+                link.description.style.top = PARAGRAPH_TOP;
+                link.description.style.left = PARAGRAPH_LEFT;
+                link.description.style.visibility = 'visible';
+                link.description.style.opacity = '1';
             }
         }
 
-        function section1OverTheEdgeUnselect() {
-            const totalLinks = 5; // Updated to 5 links
-            for (let i = 1; i <= totalLinks; i++) {
-                const shape = document.getElementById(`section-1-over-the-edge__link-${i}-shape`);
-                const plus = document.getElementById(`section-1-over-the-edge__link-${i}-plus`);
-                const title = document.getElementById(`section-1-over-the-edge__link-${i}-title`);
-                if (shape && plus && title) {
-                    restoreInitialStyles(shape, plus, title);
-                }
+        function applyMovingStyles(link, id) {
+            if (link.shape) {
+                link.shape.style.width = '100px';
+                link.shape.style.height = '60px';
+                const offsetY = 100 + (id - 1) * 80; 
+                link.shape.style.top = `calc(100% - ${offsetY}px)`;
+                link.shape.style.left = 'calc(100% - 340px)';
+                link.shape.style.transform = 'rotate(360deg)';
+            }
+
+            if (link.plus) {
+                link.plus.style.visibility = 'visible';
+                link.plus.style.opacity = '1';
+                link.plus.style.width = '16px';
+                link.plus.style.height = '16px';
+                const offsetY = 100 + (id - 1) * 80;
+                link.plus.style.top = `calc(100% - ${offsetY}px)`;
+                link.plus.style.left = 'calc(100% - 230px)';
+            }
+
+            if (link.title) {
+                link.title.style.width = '100px';
+                link.title.style.top = `calc(100% - ${100 + (id - 1) * 80}px)`;
+                link.title.style.left = 'calc(100% - 200px)';
+                link.title.style.fontSize = '1.4rem';
+                link.title.style.lineHeight = '24px';
+            }
+
+            if (link.description) {
+                link.description.style.top = PARAGRAPH_HIDDEN;
+                link.description.style.left = PARAGRAPH_LEFT;
+                link.description.style.visibility = 'hidden';
+                link.description.style.opacity = '0';
             }
         }
+
+        function toggleTransform(element, transform1, transform2) {
+            if (element.style.transform === transform1) {
+                element.style.transform = transform2;
+            } else {
+                element.style.transform = transform1;
+            }
+        }
+
+        // Expose functions globally
+        window.section1AboutUsSelectLink = section1AboutUsSelectLink;
+        window.section1AboutUsUnselect = section1AboutUsUnselect;
     </script>
 </body>
-
 </html>
