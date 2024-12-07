@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -54,7 +55,7 @@
             padding-top: 0.4rem;
             transition: top 0.5s, font-size 0.5s, left 0.5s, transform 0.5s;
             width: 90px;
-            white-space: nowrap; 
+            white-space: nowrap;
             z-index: 21;
         }
 
@@ -147,21 +148,30 @@
 
         </div>
     </div>
-    <script src="./assets/js/over-the-edge/section-1-over-the-edge.js"></script>
-    <script src="./assets/js/header/header-links.js"></script>
     <script>
         const initialStyles = {};
         const TOTAL_LINKS = 5;
         const PARAGRAPH_TOP = '370px';
         const PARAGRAPH_HIDDEN = '2000px';
         const PARAGRAPH_LEFT = '470px';
+        const ANIMATION_DELAY = 500; // 500 ms delay between each link animation
 
         let mainTitle = null;
         let backBtn = null;
         let links = [];
+        let finalPositions = {}; // to store final positions after positionLinks()
+
+        let animationInProgress = false;
+        let animationTimeouts = [];
+
+        // ----------------------------------------------------
+        // CONFIGURATION FOR ROTATION VALUES
+        // Adjust these values if rotation degrees need to change:
+        const SELECTED_SHAPE_ROTATION = '360deg';    // Rotation for selected shape
+        const UNSELECTED_SHAPE_ROTATION = '540deg';  // Rotation for unselected shape on the right side
+        // ----------------------------------------------------
 
         document.addEventListener('DOMContentLoaded', () => {
-            // Initialize references
             mainTitle = document.querySelector('#section-1-over-the-edge__section-1-main-title');
             backBtn = document.querySelector('#section-1-over-the-edge__back-btn');
 
@@ -174,18 +184,110 @@
                 });
             }
 
-            // First position them
             positionLinks();
-
-            // After positioning, capture these as the "initial" (default) styles:
-            captureInitialStyles();
+            storeFinalPositions();
+            setInitialIntroState();
+            animationInProgress = true;
+            animateLinksIntoPosition(0);
 
             window.addEventListener('resize', () => {
                 positionLinks();
-                // Re-capture after resize if you want the default to update after each resize
-                // captureInitialStyles(); // Uncomment if you always want to treat the latest layout as initial.
+                storeFinalPositions();
             });
         });
+
+        function storeFinalPositions() {
+            for (let i = 1; i <= TOTAL_LINKS; i++) {
+                const shape = document.getElementById(`section-1-over-the-edge__link-${i}-shape`);
+                const plus = document.getElementById(`section-1-over-the-edge__link-${i}-plus`);
+                const title = document.getElementById(`section-1-over-the-edge__link-${i}-title`);
+
+                finalPositions[i] = {
+                    shape: { left: shape.style.left, top: shape.style.top },
+                    plus: { left: plus.style.left, top: plus.style.top },
+                    title: { left: title.style.left, top: title.style.top }
+                };
+            }
+        }
+
+        function setInitialIntroState() {
+            links.forEach((link) => {
+                if (link.shape) {
+                    link.shape.style.top = '-200px';
+                    link.shape.style.transition = 'all 0.5s';
+                    link.shape.style.transform = 'rotate(0deg)';
+                }
+                if (link.plus) {
+                    link.plus.style.top = '-200px';
+                    link.plus.style.transition = 'all 0.5s';
+                }
+                if (link.title) {
+                    link.title.style.top = '-200px';
+                    link.title.style.transition = 'all 0.5s';
+                }
+            });
+        }
+
+        function animateLinksIntoPosition(i) {
+            if (i >= TOTAL_LINKS) {
+                // All links placed
+                captureInitialStyles();
+                animationInProgress = false;
+                return;
+            }
+
+            const timeoutId = setTimeout(() => {
+                const link = links[i];
+                const id = i + 1;
+                if (link.shape) {
+                    link.shape.style.left = finalPositions[id].shape.left;
+                    link.shape.style.top = finalPositions[id].shape.top;
+                    // Rotate 450 deg instead of 360
+                    link.shape.style.transform = 'rotate(450deg)';
+                }
+                if (link.plus) {
+                    link.plus.style.left = finalPositions[id].plus.left;
+                    link.plus.style.top = finalPositions[id].plus.top;
+                }
+                if (link.title) {
+                    link.title.style.left = finalPositions[id].title.left;
+                    link.title.style.top = finalPositions[id].title.top;
+                }
+
+                animateLinksIntoPosition(i + 1);
+            }, ANIMATION_DELAY);
+
+            animationTimeouts.push(timeoutId);
+        }
+
+        function completeAnimationNow() {
+            // Abort all timeouts
+            animationTimeouts.forEach((t) => clearTimeout(t));
+            animationTimeouts = [];
+
+            // Immediately place all links in their final positions
+            for (let i = 0; i < TOTAL_LINKS; i++) {
+                const link = links[i];
+                const id = i + 1;
+                if (link.shape) {
+                    link.shape.style.left = finalPositions[id].shape.left;
+                    link.shape.style.top = finalPositions[id].shape.top;
+                    link.shape.style.transform = 'rotate(450deg)';
+                }
+                if (link.plus) {
+                    link.plus.style.left = finalPositions[id].plus.left;
+                    link.plus.style.top = finalPositions[id].plus.top;
+                }
+                if (link.title) {
+                    link.title.style.left = finalPositions[id].title.left;
+                    link.title.style.top = finalPositions[id].title.top;
+                }
+            }
+
+            // Capture these styles now that everything is in place
+            captureInitialStyles();
+            animationInProgress = false;
+        }
 
         function captureInitialStyles() {
             captureElementStyles('section-1-over-the-edge__back-btn', backBtn);
@@ -202,7 +304,6 @@
 
         function captureElementStyles(id, element) {
             if (element) {
-                // Store the current inline styles as the "initial" state
                 const styleAttr = element.getAttribute('style') || '';
                 initialStyles[id] = { cssText: styleAttr };
             }
@@ -216,7 +317,7 @@
 
         function positionLinks() {
             const container = document.querySelector('.section-padded-content-relative-container');
-            const totalLinks = TOTAL_LINKS;
+            const totalLinks = 5;
             const padding = 50;
             const verticalShift = 100;
             const verticalSpacing = 10;
@@ -234,7 +335,7 @@
                     const centerX = padding + spacing * i;
                     const shapeWidth = shape.offsetWidth;
                     const shapeHeight = shape.offsetHeight;
-                    const shapeNewTop = 100;
+                    const shapeNewTop = 100; // final shape top
 
                     const shapeLeft = centerX - shapeWidth / 2;
                     shape.style.left = `${shapeLeft}px`;
@@ -246,8 +347,8 @@
                     const combinedWidth = plusWidth + horizontalSpacing + titleWidth;
                     const combinedLeft = centerX - combinedWidth / 2;
 
-                    const plusTop = shapeNewTop + shapeHeight + verticalSpacing;
-
+                    // Add 10px to the final top for plus and title
+                    const plusTop = shapeNewTop + shapeHeight + verticalSpacing + 10;
                     plus.style.left = `${combinedLeft}px`;
                     plus.style.top = `${plusTop}px`;
 
@@ -258,6 +359,11 @@
         }
 
         function section1AboutUsSelectLink(id) {
+            // If animation is still in progress, complete it first
+            if (animationInProgress) {
+                completeAnimationNow();
+            }
+
             // Adjust main title
             if (mainTitle) {
                 mainTitle.style.position = 'absolute';
@@ -283,7 +389,6 @@
         }
 
         function section1AboutUsUnselect() {
-            // Restore all elements to their initial captured inline styles
             restoreElementStyles('section-1-over-the-edge__back-btn', backBtn);
             if (mainTitle) restoreElementStyles('section-1-over-the-edge__section-1-main-title', mainTitle);
 
@@ -303,7 +408,8 @@
                 link.shape.style.top = '170px';
                 link.shape.style.left = '0';
                 link.shape.style.backgroundPosition = 'center';
-                toggleTransform(link.shape, 'rotate(180deg)', 'rotate(0deg)');
+                // Use the configured rotation for selected shape
+                link.shape.style.transform = `rotate(${SELECTED_SHAPE_ROTATION})`;
             }
 
             if (link.plus) {
@@ -315,28 +421,30 @@
             if (link.title) {
                 link.title.style.width = '600px';
                 link.title.style.top = '170px';
-                link.title.style.left = PARAGRAPH_LEFT;
+                link.title.style.left = '470px';
                 link.title.style.fontSize = '4rem';
                 link.title.style.lineHeight = '4rem';
                 link.title.style.fontWeight = '700';
             }
 
             if (link.description) {
-                link.description.style.top = PARAGRAPH_TOP;
-                link.description.style.left = PARAGRAPH_LEFT;
+                link.description.style.top = '370px';
+                link.description.style.left = '470px';
                 link.description.style.visibility = 'visible';
                 link.description.style.opacity = '1';
             }
         }
 
+        // Example applyMovingStyles function using UNSELECTED_SHAPE_ROTATION
         function applyMovingStyles(link, id) {
             if (link.shape) {
                 link.shape.style.width = '100px';
                 link.shape.style.height = '60px';
-                const offsetY = 100 + (id - 1) * 80; 
+                const offsetY = 100 + (id - 1) * 80;
                 link.shape.style.top = `calc(100% - ${offsetY}px)`;
                 link.shape.style.left = 'calc(100% - 340px)';
-                link.shape.style.transform = 'rotate(360deg)';
+                // Use the configured rotation for non-selected shapes on the right side
+                link.shape.style.transform = `rotate(${UNSELECTED_SHAPE_ROTATION})`;
             }
 
             if (link.plus) {
@@ -358,8 +466,8 @@
             }
 
             if (link.description) {
-                link.description.style.top = PARAGRAPH_HIDDEN;
-                link.description.style.left = PARAGRAPH_LEFT;
+                link.description.style.top = '2000px';
+                link.description.style.left = '470px';
                 link.description.style.visibility = 'hidden';
                 link.description.style.opacity = '0';
             }
@@ -378,4 +486,5 @@
         window.section1AboutUsUnselect = section1AboutUsUnselect;
     </script>
 </body>
+
 </html>

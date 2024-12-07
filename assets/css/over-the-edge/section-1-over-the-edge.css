@@ -34,43 +34,47 @@
 }
 
 /* Common among links */
+.section-1-over-the-edge__link-title,
+.section-1-over-the-edge__link-plus,
+.section-1-over-the-edge__link-shape {
+    position: absolute;
+    top: -200px; /* Start all elements off-screen */
+    transition: all 0.5s;  
+    z-index: 21;
+}
+
+/* Title Styles */
 .section-1-over-the-edge__link-title {
     border: 1px dashed rgba(17, 117, 75, 0.692);
-    position: absolute;
     font-family: 'Mundial Regular';
     font-size: 1.4rem;
     line-height: 24px;
     padding-top: 0.4rem;
-    transition: top 0.5s, font-size 0.5s, left 0.5s, transform 0.5s;
     width: 90px;
-    white-space: nowrap; /* Corrected from text-wrap */
-    z-index: 21;
+    white-space: nowrap;
+    transition: top 0.5s, font-size 0.5s, left 0.5s, transform 0.5s;
 }
 
+/* Plus Styles */
 .section-1-over-the-edge__link-plus {
     border: 1px dashed rgba(30, 0, 255, 0.392);
-    position: absolute;
     width: 16px;
     height: 16px;
     background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/plus-button-5289F8.svg') no-repeat top;
-    transition: all 0.5s;
-    z-index: 21;
-    margin-top: 10px;
+    margin-top: 10px; /* As previously set */
 }
 
+/* Shape Styles */
 .section-1-over-the-edge__link-shape {
     border: 1px dashed rgba(255, 0, 0, 0.392);
-    position: absolute;
     background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-2-violet.svg') no-repeat center;
     width: 100px;
     height: 60px;
     transform: rotate(90deg);
-    transition: all 0.5s;
-    z-index: 21;
 }
 
 /* Link-specific Styles */
-/* Add specific styles for links 1 through 5 if needed */
+/* (Only add if needed)
 #section-1-over-the-edge__link-1-shape { }
 #section-1-over-the-edge__link-1-plus { }
 #section-1-over-the-edge__link-1-title { }
