@@ -406,12 +406,12 @@
 
 
         function applySelectedStyles(link) {
-            // Start with the title hidden and small
-            if (link.title) {
-                link.title.style.width = '0px';
-                link.title.style.opacity = '0';
-            }
+            const finalShapeWidth = 270; // We know this is the final width we are setting
+            const finalShapeTop = 170;   // Final top position we are setting
+            const finalShapeLeft = 0;    // Final left position we are setting
+            const margin = 30;           // The space we want between shape and title
 
+            // Hide plus and description logic as before
             if (link.plus) {
                 link.plus.style.visibility = 'hidden';
                 link.plus.style.width = '0';
@@ -425,53 +425,45 @@
                 link.description.style.opacity = '1';
             }
 
-            if (link.shape) {
-                // Temporarily disable transitions
-                link.shape.style.transition = 'none';
+            if (link.title) {
+                // Start title hidden/small
+                link.title.style.width = '0px';
+                link.title.style.opacity = '0';
+            }
 
-                // Set an initial state for the shape before transitioning
-                // Adjust these initial values as needed
+            if (link.shape) {
+                // Set initial state without transitions
+                link.shape.style.transition = 'none';
                 link.shape.style.width = '100px';
                 link.shape.style.height = '60px';
                 link.shape.style.top = '200px';
                 link.shape.style.left = '-200px';
                 link.shape.style.transform = 'rotate(90deg)';
 
-                // Use requestAnimationFrame to ensure the browser applies the initial layout
                 requestAnimationFrame(() => {
-                    // Now re-enable transitions
+                    // Re-enable transitions
                     link.shape.style.transition = 'all 0.5s';
 
-                    // Set the final desired properties
+                    // Apply final shape properties
                     link.shape.style.height = '160px';
-                    link.shape.style.width = '270px';
-                    link.shape.style.top = '170px';
-                    link.shape.style.left = '0';
+                    link.shape.style.width = `${finalShapeWidth}px`;
+                    link.shape.style.top = `${finalShapeTop}px`;
+                    link.shape.style.left = `${finalShapeLeft}px`;
                     link.shape.style.backgroundPosition = 'center';
                     link.shape.style.transform = `rotate(${SELECTED_SHAPE_ROTATION})`;
 
-                    // After the shape finishes transitioning (~0.5s), position and scale the title
-                    setTimeout(() => {
-                        if (link.shape && link.title) {
-                            const shapeRect = link.shape.getBoundingClientRect();
-                            const containerRect = document.querySelector('.section-padded-content-relative-container').getBoundingClientRect();
-                            const shapeLeft = shapeRect.left - containerRect.left;
-                            const shapeTop = parseFloat(link.shape.style.top) || 170;
-                            const shapeWidth = link.shape.offsetWidth;
-
-                            // Place the title to the right of the shape with some margin (e.g., 30px)
-                            const margin = 30;
-                            const finalTitleLeft = shapeLeft + shapeWidth + margin;
-
-                            link.title.style.left = `${finalTitleLeft}px`;
-                            link.title.style.top = `${shapeTop}px`;
-                            link.title.style.width = '600px';
-                            link.title.style.fontSize = '4rem';
-                            link.title.style.lineHeight = '4rem';
-                            link.title.style.fontWeight = '700';
-                            link.title.style.opacity = '1';
-                        }
-                    }, 600);
+                    // We know the final width, top, left of the shape, so we can set the title now
+                    if (link.title) {
+                        const finalTitleLeft = finalShapeLeft + finalShapeWidth + margin;
+                        // Set final title position and size immediately
+                        link.title.style.left = `${finalTitleLeft}px`;
+                        link.title.style.top = `${finalShapeTop}px`;
+                        link.title.style.width = '600px';
+                        link.title.style.fontSize = '4rem';
+                        link.title.style.lineHeight = '4rem';
+                        link.title.style.fontWeight = '700';
+                        link.title.style.opacity = '1';
+                    }
                 });
             }
         }
