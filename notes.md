@@ -1,0 +1,1 @@
+the circles, when u select a link, the inner circle rotate as much as it need to match the link position to be the right side, for "what we do" and "the group"

@@ -112,24 +112,39 @@
             <div class="section-padded-content section-1-over-the-edge">
                 <div class="section-padded-content-relative-container">
 
-                    <div id="section-1-over-the-edge__link-1-description" class="section-1-over-the-edge__link-description">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam qui quos autem! Impedit incidunt odio non ad rerum! Sunt, quis. Aliquid, dolorem. Velit, optio! Eveniet expedita dolores quam porro corrupti!
+                    <div id="section-1-over-the-edge__link-1-description"
+                        class="section-1-over-the-edge__link-description">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam qui quos autem! Impedit
+                        incidunt odio non ad rerum! Sunt, quis. Aliquid, dolorem. Velit, optio! Eveniet expedita dolores
+                        quam porro corrupti!
                     </div>
 
-                    <div id="section-1-over-the-edge__link-2-description" class="section-1-over-the-edge__link-description">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam qui quos autem! Impedit incidunt odio non ad rerum! Sunt, quis. Aliquid, dolorem. Velit, optio! Eveniet expedita dolores quam porro corrupti!
+                    <div id="section-1-over-the-edge__link-2-description"
+                        class="section-1-over-the-edge__link-description">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam qui quos autem! Impedit
+                        incidunt odio non ad rerum! Sunt, quis. Aliquid, dolorem. Velit, optio! Eveniet expedita dolores
+                        quam porro corrupti!
                     </div>
 
-                    <div id="section-1-over-the-edge__link-3-description" class="section-1-over-the-edge__link-description">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam qui quos autem! Impedit incidunt odio non ad rerum! Sunt, quis. Aliquid, dolorem. Velit, optio! Eveniet expedita dolores quam porro corrupti!
+                    <div id="section-1-over-the-edge__link-3-description"
+                        class="section-1-over-the-edge__link-description">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam qui quos autem! Impedit
+                        incidunt odio non ad rerum! Sunt, quis. Aliquid, dolorem. Velit, optio! Eveniet expedita dolores
+                        quam porro corrupti!
                     </div>
 
-                    <div id="section-1-over-the-edge__link-4-description" class="section-1-over-the-edge__link-description">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam qui quos autem! Impedit incidunt odio non ad rerum! Sunt, quis. Aliquid, dolorem. Velit, optio! Eveniet expedita dolores quam porro corrupti!
+                    <div id="section-1-over-the-edge__link-4-description"
+                        class="section-1-over-the-edge__link-description">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam qui quos autem! Impedit
+                        incidunt odio non ad rerum! Sunt, quis. Aliquid, dolorem. Velit, optio! Eveniet expedita dolores
+                        quam porro corrupti!
                     </div>
 
-                    <div id="section-1-over-the-edge__link-5-description" class="section-1-over-the-edge__link-description">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam qui quos autem! Impedit incidunt odio non ad rerum! Sunt, quis. Aliquid, dolorem. Velit, optio! Eveniet expedita dolores quam porro corrupti!
+                    <div id="section-1-over-the-edge__link-5-description"
+                        class="section-1-over-the-edge__link-description">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam qui quos autem! Impedit
+                        incidunt odio non ad rerum! Sunt, quis. Aliquid, dolorem. Velit, optio! Eveniet expedita dolores
+                        quam porro corrupti!
                     </div>
 
                     <div id="section-1-over-the-edge__link-1-shape" class="section-1-over-the-edge__link-shape"></div>
@@ -424,7 +439,6 @@
             });
         }
 
-
         function applySelectedStyles(link) {
             const finalShapeWidth = 270; // We know this is the final width we are setting
             const finalShapeTop = 170;   // Final top position we are setting
@@ -439,8 +453,7 @@
             }
 
             if (link.description) {
-                link.description.style.top = '370px';
-                link.description.style.left = '470px';
+                // link.description.style.left = '470px';
                 link.description.style.visibility = 'visible';
                 link.description.style.opacity = '1';
             }
@@ -483,11 +496,15 @@
                         link.title.style.lineHeight = '4rem';
                         link.title.style.fontWeight = '700';
                         link.title.style.opacity = '1';
+                        if (link.description) {
+                            link.description.style.left = `${finalTitleLeft}px`;
+                            link.description.style.top = `${finalShapeTop + 100}px`;
+                        }
+
                     }
                 });
             }
         }
-
 
         function applyMovingStyles(link, id) {
             if (link.shape) {
