@@ -23,7 +23,6 @@
 
 /* Common among links */
 .section-1-about-us__link-title {
-    border: 1px dashed red;
     position: absolute;
     font-family: 'Mundial Regular';
     font-size: 1.4rem;
