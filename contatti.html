@@ -8,47 +8,6 @@
     <link rel="stylesheet" href="./assets/css/global.css">
     <link rel="stylesheet" href="./assets/css/header.css">
     <title>Contatti</title>
-    <style>
-        .section-1-contacts__row-container {
-            position: relative;
-            height: 100%;
-            display: flex;
-            gap: 4rem;
-        }
-
-        .section-1-contacts__column-left-container {
-            box-sizing: border-box;
-            border: 4px dashed rgba(64, 0, 255, 0.254);
-            height: 100%;
-            width: 100%;
-        }
-
-        .section-1-contacts__column-right-container {
-            box-sizing: border-box;
-            border: 4px dashed rgba(255, 0, 89, 0.254);
-            height: 100%;
-            width: 100%;
-            padding: 20px;  
-        }
-
-        .section-1-contacts__map-container {
-            box-sizing: border-box;
-            border: 2px dashed rgba(98, 0, 255, 0.468);
-            background: url('./assets/svgs/italia-arancione.svg') no-repeat center center;
-            background-size: contain;
-            width: 100%;
-            height: 100%;
-            position: relative;
-        }
-
-        .map-pin {
-            position: absolute;
-            height: 16px;
-            width: 16px;
-            background: url('./assets/svgs/plus-button-fff.svg') no-repeat center center;
-            background-size: contain;
-        }
-    </style>
 </head>
 
 <body class="page-id-46">
@@ -76,10 +35,61 @@
 
         <div class="inner-app-container">
 
+            <style>
+                .section-1-contacts__row-container {
+                    position: relative;
+                    height: 100%;
+                    display: flex;
+                    gap: 4rem;
+                }
+
+                .section-1-contacts__column-left-container {
+                    box-sizing: border-box;
+                    padding-top: 100px;
+                    border: 4px dashed rgba(64, 0, 255, 0.254);
+                    height: 100%;
+                    width: 100%;
+                }
+
+                .section-1-contacts__column-left-content {
+                    height: 100%;
+                    width: 100%;
+                    background: rgba(255, 0, 89, 0.254);
+                }
+
+                .section-1-contacts__column-right-container {
+                    box-sizing: border-box;
+                    border: 4px dashed rgba(255, 0, 89, 0.254);
+                    height: 100%;
+                    width: 100%;
+                    padding: 20px;
+                }
+
+                .section-1-contacts__map-container {
+                    box-sizing: border-box;
+                    border: 2px dashed rgba(98, 0, 255, 0.468);
+                    background: url('./assets/svgs/italia-arancione.svg') no-repeat center center;
+                    background-size: contain;
+                    width: 100%;
+                    height: 100%;
+                    position: relative;
+                }
+
+                .map-pin {
+                    position: absolute;
+                    height: 16px;
+                    width: 16px;
+                    background: url('./assets/svgs/plus-button-fff.svg') no-repeat center center;
+                    background-size: contain;
+                }
+            </style>
             <div class="section-padded-content section-1-contacts">
                 <div class="section-1-contacts__row-container">
                     <div class="section-1-contacts__column-left-container">
-                        <!-- Left container content -->
+                        <div class="section-1-contacts__column-left-content">
+                            <div class="section-1-contacts-legal-office-container"></div>
+                            <div class="section-1-contacts-operation-office-container"></div>
+                        </div>
                     </div>
 
                     <div class="section-1-contacts__column-right-container">
@@ -91,7 +101,12 @@
                 </div>
             </div>
 
-            <div class="section-padded-content">
+            <style>
+                .section-2-contacts {
+                    background: #F69600;
+                }
+            </style>
+            <div class="section-padded-content section-2-contacts">
                 <h1 style="padding: 200px">Lavora con noi</h1>
             </div>
 
