@@ -77,10 +77,29 @@
 
         .section-1-over-the-edge__link-shape {
             border: 1px dashed rgba(255, 0, 0, 0.392);
-            background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-2-violet.svg') no-repeat center;
             width: 100px;
             height: 60px;
             transform: rotate(90deg);
+        }
+
+        #section-1-over-the-edge__link-1-shape {
+            background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-2-blue.svg') no-repeat center;
+        }
+
+        #section-1-over-the-edge__link-2-shape {
+            background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-2-lightblue.svg') no-repeat center;
+        }
+
+        #section-1-over-the-edge__link-3-shape {
+            background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-2-orange.svg') no-repeat center;
+        }
+
+        #section-1-over-the-edge__link-4-shape {
+            background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-2-violet.svg') no-repeat center;
+        }
+
+        #section-1-over-the-edge__link-5-shape {
+            background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-2-pink.svg') no-repeat center;
         }
     </style>
 </head>
@@ -465,13 +484,13 @@
             }
 
             if (link.shape) {
-                // Set initial state without transitions
-                link.shape.style.transition = 'none';
-                link.shape.style.width = '100px';
-                link.shape.style.height = '60px';
-                link.shape.style.top = '200px';
-                link.shape.style.left = '-200px';
-                link.shape.style.transform = 'rotate(90deg)';
+                link.shape.style.transition = 'all 0.5s ease';
+                link.shape.style.height = '160px';
+                link.shape.style.width = '270px';
+                link.shape.style.top = '170px';
+                link.shape.style.left = '0';
+                link.shape.style.backgroundPosition = 'center';
+                link.shape.style.transform = 'rotate(180deg)';
 
                 requestAnimationFrame(() => {
                     // Re-enable transitions
