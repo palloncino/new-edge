@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 50 50">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <!-- Generator: Adobe Illustrator 28.6.0, SVG Export Plug-In . SVG Version: 1.2.0 Build 709)  -->
+  <g>
+    <g id="Livello_1">
+      <path id="Tracciato_85" class="cls-1" d="M25,0C11.2,0,0,11.2,0,25s11.2,25,25,25,25-11.2,25-25S38.8,0,25,0M37.5,30h-7.5v7.5c0,2.8-2.2,5-5,5s-5-2.2-5-5v-7.5h-7.5c-2.8,0-5-2.2-5-5s2.2-5,5-5h7.5v-7.5c0-2.8,2.2-5,5-5s5,2.2,5,5v7.5h7.5c2.8,0,5,2.2,5,5s-2.2,5-5,5"/>
+    </g>
+  </g>
+</svg>

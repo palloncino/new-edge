@@ -7,9 +7,48 @@
     <link rel="stylesheet" href="./assets/css/font.css">
     <link rel="stylesheet" href="./assets/css/global.css">
     <link rel="stylesheet" href="./assets/css/header.css">
-    <!-- Specific CSS for current page -->
-    <!-- ... -->
     <title>Contatti</title>
+    <style>
+        .section-1-contacts__row-container {
+            position: relative;
+            height: 100%;
+            display: flex;
+            gap: 4rem;
+        }
+
+        .section-1-contacts__column-left-container {
+            box-sizing: border-box;
+            border: 4px dashed rgba(64, 0, 255, 0.254);
+            height: 100%;
+            width: 100%;
+        }
+
+        .section-1-contacts__column-right-container {
+            box-sizing: border-box;
+            border: 4px dashed rgba(255, 0, 89, 0.254);
+            height: 100%;
+            width: 100%;
+            padding: 20px;  
+        }
+
+        .section-1-contacts__map-container {
+            box-sizing: border-box;
+            border: 2px dashed rgba(98, 0, 255, 0.468);
+            background: url('./assets/svgs/italia-arancione.svg') no-repeat center center;
+            background-size: contain;
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .map-pin {
+            position: absolute;
+            height: 16px;
+            width: 16px;
+            background: url('./assets/svgs/plus-button-fff.svg') no-repeat center center;
+            background-size: contain;
+        }
+    </style>
 </head>
 
 <body class="page-id-46">
@@ -37,52 +76,19 @@
 
         <div class="inner-app-container">
 
-            <style>
-                .section-1-contacts__row-container {
-                    position: relative;
-                    height: 100%;
-                    display: flex;
-                    gap: 4rem;
-                }
-
-                .section-1-contacts__column-left-container {
-                    box-sizing: border-box;
-                    border: 4px dashed rgba(64, 0, 255, 0.254);
-                    height: 100%;
-                    width: 100%;
-                }
-
-                .section-1-contacts__column-right-container {
-                    box-sizing: border-box;
-                    border: 4px dashed rgba(255, 0, 89, 0.254);
-                    height: 100%;
-                    width: 100%;
-                    padding: 20px;
-                }
-                .section-1-contacts__map-container {
-                    background: url('./assets/svgs/italia-arancione.svg') no-repeat center center;
-                    background-size: cover;
-                    width: 100%;
-                    height: 100%;
-                }
-            </style>
             <div class="section-padded-content section-1-contacts">
                 <div class="section-1-contacts__row-container">
                     <div class="section-1-contacts__column-left-container">
-                        <!-- <ul style="margin: 0;">
-                            <li>Lorem ipsum</li>
-                            <li>Lorem ipsum</li>
-                            <li>Lorem ipsum</li>
-                        </ul> -->
+                        <!-- Left container content -->
                     </div>
 
                     <div class="section-1-contacts__column-right-container">
-                        <div class="section-1-contacts__map-container">
-
+                        <div class="section-1-contacts__map-container" id="map-container">
+                            <div class="map-pin plus-icon" id="map-pin-milan"></div>
+                            <div class="map-pin plus-icon" id="map-pin-calabria"></div>
                         </div>
                     </div>
                 </div>
-
             </div>
 
             <div class="section-padded-content">
@@ -90,12 +96,59 @@
             </div>
 
             <div class="section-padded-content">
-                <h1 style="padding: 200px">informazioni</h1>
+                <h1 style="padding: 200px">Informazioni</h1>
             </div>
 
         </div>
     </div>
-    <script src="./assets/js/header/header-links.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const mapContainer = document.querySelector('.section-1-contacts__map-container');
+
+            const originalMapSize = { width: 415, height: 543 }; // Original dimensions of the map image
+            const pinsData = [
+                { id: 'map-pin-milan', originalX: 87, originalY: 108 },
+                { id: 'map-pin-calabria', originalX: 312, originalY: 440 }
+            ];
+
+            function positionPins() {
+                const containerWidth = mapContainer.clientWidth;
+                const containerHeight = mapContainer.clientHeight;
+                const containerRatio = containerWidth / containerHeight;
+                const originalRatio = originalMapSize.width / originalMapSize.height;
+
+                let displayedMapWidth, displayedMapHeight;
+
+                if (containerRatio > originalRatio) {
+                    displayedMapHeight = containerHeight;
+                    displayedMapWidth = displayedMapHeight * originalRatio;
+                } else {
+                    displayedMapWidth = containerWidth;
+                    displayedMapHeight = displayedMapWidth / originalRatio;
+                }
+
+                const offsetX = (containerWidth - displayedMapWidth) / 2;
+                const offsetY = (containerHeight - displayedMapHeight) / 2;
+
+                pinsData.forEach(pin => {
+                    const pinElement = document.getElementById(pin.id);
+                    const scaledX = offsetX + (pin.originalX / originalMapSize.width) * displayedMapWidth;
+                    const scaledY = offsetY + (pin.originalY / originalMapSize.height) * displayedMapHeight;
+
+                    pinElement.style.left = `${scaledX}px`;
+                    pinElement.style.top = `${scaledY}px`;
+                });
+            }
+
+            // Initial positioning
+            positionPins();
+
+            // Adjust pin positions on window resize
+            window.addEventListener('resize', positionPins);
+        });
+    </script>
+
 </body>
 
 </html>
