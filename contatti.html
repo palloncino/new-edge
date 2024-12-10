@@ -8,6 +8,66 @@
     <link rel="stylesheet" href="./assets/css/global.css">
     <link rel="stylesheet" href="./assets/css/header.css">
     <title>Contatti</title>
+    <style>
+        .section-1-contacts__row-container {
+            position: relative;
+            height: 100%;
+            display: flex;
+            gap: 4rem;
+        }
+
+        .section-1-contacts__column-left-container {
+            box-sizing: border-box;
+            padding-top: 100px;
+            border: 4px dashed rgba(64, 0, 255, 0.254);
+            height: 100%;
+            width: 100%;
+        }
+
+        .section-1-contacts__column-left-content {
+            height: 100%;
+            width: 100%;
+            background: rgba(255, 0, 89, 0.254);
+        }
+
+        .section-1-contacts__column-right-container {
+            box-sizing: border-box;
+            border: 4px dashed rgba(255, 0, 89, 0.254);
+            height: 100%;
+            width: 100%;
+            padding: 20px;
+        }
+
+        .section-1-contacts__map-container {
+            box-sizing: border-box;
+            border: 2px dashed rgba(98, 0, 255, 0.468);
+            background: url('./assets/svgs/italia-arancione.svg') no-repeat center center;
+            background-size: contain;
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .map-pin {
+            position: absolute;
+            height: 16px;
+            width: 16px;
+            background: url('./assets/svgs/plus-button-fff.svg') no-repeat center center;
+            background-size: contain;
+            cursor: pointer;
+        }
+
+        #map-pointer {
+            position: absolute;
+            left: 1000px;
+            width: 100px;
+            height: 100px;
+            background: url('./assets/svgs/shape-2-pink.svg') no-repeat center center;
+            background-size: contain;
+            transform-origin: center;
+            transition: transform 0.5s ease, top 0.5s ease, left 0.5s ease;
+        }
+    </style>
 </head>
 
 <body class="page-id-46">
@@ -35,71 +95,6 @@
 
         <div class="inner-app-container">
 
-            <style>
-                .section-1-contacts__row-container {
-                    position: relative;
-                    height: 100%;
-                    display: flex;
-                    gap: 4rem;
-                }
-
-                .section-1-contacts__column-left-container {
-                    box-sizing: border-box;
-                    padding-top: 100px;
-                    border: 4px dashed rgba(64, 0, 255, 0.254);
-                    height: 100%;
-                    width: 100%;
-                }
-
-                .section-1-contacts__column-left-content {
-                    height: 100%;
-                    width: 100%;
-                    background: rgba(255, 0, 89, 0.254);
-                }
-
-                /* .section-1-contacts-legal-office-container {
-                    
-                } */
-
-                .section-1-contacts-operation-office-container {
-                    
-                }
-
-                .section-1-contacts-operation-office-text {
-                    
-                }
-
-                .section-1-contacts-operation-office-list-container {
-                    
-                }
-
-
-                .section-1-contacts__column-right-container {
-                    box-sizing: border-box;
-                    border: 4px dashed rgba(255, 0, 89, 0.254);
-                    height: 100%;
-                    width: 100%;
-                    padding: 20px;
-                }
-
-                .section-1-contacts__map-container {
-                    box-sizing: border-box;
-                    border: 2px dashed rgba(98, 0, 255, 0.468);
-                    background: url('./assets/svgs/italia-arancione.svg') no-repeat center center;
-                    background-size: contain;
-                    width: 100%;
-                    height: 100%;
-                    position: relative;
-                }
-
-                .map-pin {
-                    position: absolute;
-                    height: 16px;
-                    width: 16px;
-                    background: url('./assets/svgs/plus-button-fff.svg') no-repeat center center;
-                    background-size: contain;
-                }
-            </style>
             <div class="section-padded-content section-1-contacts">
                 <div class="section-1-contacts__row-container">
                     <div class="section-1-contacts__column-left-container">
@@ -111,18 +106,14 @@
 
                     <div class="section-1-contacts__column-right-container">
                         <div class="section-1-contacts__map-container" id="map-container">
-                            <div class="map-pin plus-icon" id="map-pin-milan"></div>
-                            <div class="map-pin plus-icon" id="map-pin-calabria"></div>
+                            <div id="map-pointer"></div>
+                            <div class="map-pin" id="map-pin-milan"></div>
+                            <div class="map-pin" id="map-pin-calabria"></div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <style>
-                .section-2-contacts {
-                    background: #F69600;
-                }
-            </style>
             <div class="section-padded-content section-2-contacts">
                 <h1 style="padding: 200px">Lavora con noi</h1>
             </div>
@@ -137,11 +128,26 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const mapContainer = document.querySelector('.section-1-contacts__map-container');
+            const mapPointer = document.getElementById('map-pointer');
 
             const originalMapSize = { width: 415, height: 543 }; // Original dimensions of the map image
+            const pointerAspectRatio = 0.62; // Height is 62% of the width
+
             const pinsData = [
-                { id: 'map-pin-milan', originalX: 87, originalY: 108 },
-                { id: 'map-pin-calabria', originalX: 312, originalY: 440 }
+                {
+                    id: 'map-pin-milan',
+                    originalX: 87,
+                    originalY: 108,
+                    pointerOffset: 50, // Distance outward from the pin
+                    pointerRotation: 270 // Points up
+                },
+                {
+                    id: 'map-pin-calabria',
+                    originalX: 312,
+                    originalY: 440,
+                    pointerOffset: 70, // Distance outward from the pin
+                    pointerRotation: 90 // Points down
+                }
             ];
 
             function positionPins() {
@@ -173,13 +179,50 @@
                 });
             }
 
-            // Initial positioning
+            function movePointerToPin(pin) {
+                const pinElement = document.getElementById(pin.id);
+                const pinRect = pinElement.getBoundingClientRect();
+                const containerRect = mapContainer.getBoundingClientRect();
+
+                const pinCenterX = pinRect.left - containerRect.left + pinRect.width / 2;
+                const pinCenterY = pinRect.top - containerRect.top + pinRect.height / 2;
+
+                // Calculate pointer dimensions
+                const pointerWidth = 100; // Adjust as needed
+                const pointerHeight = pointerWidth * pointerAspectRatio;
+
+                // Calculate pointer position offset
+                const angleRad = (pin.pointerRotation * Math.PI) / 180;
+                const offsetX = Math.cos(angleRad) * pin.pointerOffset;
+                const offsetY = Math.sin(angleRad) * pin.pointerOffset;
+
+                // Apply pointer dimensions and position
+                mapPointer.style.width = `${pointerWidth}px`;
+                mapPointer.style.height = `${pointerHeight}px`;
+                mapPointer.style.left = `${pinCenterX + offsetX}px`;
+                mapPointer.style.top = `${pinCenterY + offsetY}px`;
+
+                // Apply scaling and rotation
+                mapPointer.style.transform = `translate(-50%, -50%) rotate(-${pin.pointerRotation}deg) scale(0.8)`;
+            }
+
+            // Initial positioning of pins
             positionPins();
+
+            // Attach event listeners to pins
+            pinsData.forEach(pin => {
+                const pinElement = document.getElementById(pin.id);
+                pinElement.addEventListener('click', () => movePointerToPin(pin));
+            });
 
             // Adjust pin positions on window resize
             window.addEventListener('resize', positionPins);
+
+            // Set initial position for pointer
+            mapPointer.style.left = '1200px';
         });
     </script>
+
 
 </body>
 
