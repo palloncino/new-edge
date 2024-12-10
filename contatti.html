@@ -71,6 +71,24 @@
             /* Optional: enlarge on hover for better UX */
         }
 
+        /* Active Pin Styling */
+        .map-pin::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('./assets/svgs/plus-button-e846a0.svg') no-repeat center center;
+            background-size: contain;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .map-pin.active::after {
+            opacity: 1;
+        }
+
         #map-pointer {
             position: absolute;
             left: 1200px;
@@ -84,7 +102,7 @@
             background: url('./assets/svgs/shape-2-pink.svg') no-repeat center center;
             background-size: contain;
             transform-origin: center;
-            transform: translate(-50%, -50%) rotate(0deg) scale(1);
+            transform: translate(-50%, -50%) rotate(-90deg) scale(1);
             /* Initial transform */
             transition: transform 0.5s ease, top 0.5s ease, left 0.5s ease;
             z-index: 10;
@@ -130,14 +148,22 @@
                     <div class="section-1-contacts__column-right-container">
                         <div class="section-1-contacts__map-container" id="map-container">
                             <div id="map-pointer"></div>
-                            <div class="map-pin" id="map-pin-milan" title="Milan"></div>
-                            <div class="map-pin" id="map-pin-tourin" title="Tourin"></div>
-                            <div class="map-pin" id="map-pin-casale" title="Casale Monferrato"></div>
-                            <div class="map-pin" id="map-pin-mantova" title="Mantova"></div>
-                            <div class="map-pin" id="map-pin-verona" title="Verona"></div>
-                            <div class="map-pin" id="map-pin-ferrara" title="Ferrara"></div>
-                            <div class="map-pin" id="map-pin-padova" title="Padova"></div>
-                            <div class="map-pin" id="map-pin-calabria" title="Calabria"></div>
+                            <div class="map-pin" id="map-pin-milan" title="Milan" tabindex="0" role="button"
+                                aria-label="Milan"></div>
+                            <div class="map-pin" id="map-pin-tourin" title="Tourin" tabindex="0" role="button"
+                                aria-label="Tourin"></div>
+                            <div class="map-pin" id="map-pin-casale" title="Casale Monferrato" tabindex="0"
+                                role="button" aria-label="Casale Monferrato"></div>
+                            <div class="map-pin" id="map-pin-mantova" title="Mantova" tabindex="0" role="button"
+                                aria-label="Mantova"></div>
+                            <div class="map-pin" id="map-pin-verona" title="Verona" tabindex="0" role="button"
+                                aria-label="Verona"></div>
+                            <div class="map-pin" id="map-pin-ferrara" title="Ferrara" tabindex="0" role="button"
+                                aria-label="Ferrara"></div>
+                            <div class="map-pin" id="map-pin-padova" title="Padova" tabindex="0" role="button"
+                                aria-label="Padova"></div>
+                            <div class="map-pin" id="map-pin-calabria" title="Calabria" tabindex="0" role="button"
+                                aria-label="Calabria"></div>
                         </div>
                     </div>
                 </div>
@@ -153,7 +179,6 @@
 
         </div>
     </div>
-
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const mapContainer = document.querySelector('.section-1-contacts__map-container');
@@ -174,7 +199,7 @@
                     id: 'map-pin-tourin',
                     originalX: 47,
                     originalY: 95,
-                    pointerOffset: 40, // Distance outward from the pin
+                    pointerOffset: 40,
                     pointerRotation: 135 // Points towards bottom-right
                 },
                 {
@@ -222,6 +247,7 @@
                 // Add more pins as needed
             ];
 
+            let activePinId = null; // Track the currently active pin
 
             function positionPins() {
                 const containerWidth = mapContainer.clientWidth;
@@ -280,15 +306,33 @@
                 mapPointer.style.left = `${pinCenterX + offsetX}px`;
                 mapPointer.style.top = `${pinCenterY + offsetY}px`;
 
-                // Apply rotation and scaling
-                // Positive rotation aligns with CSS's clockwise rotation
-                mapPointer.style.transform = `translate(-50%, -50%) rotate(${pin.pointerRotation}deg) scale(0.5)`;
+                // Apply rotation and scaling directly from configuration
+                mapPointer.style.transform = `translate(-50%, -50%) rotate(${pin.pointerRotation + 180}deg) scale(.5)`;
+
+                // Manage active pin state
+                if (activePinId && activePinId !== pin.id) {
+                    const previousActivePin = document.getElementById(activePinId);
+                    previousActivePin.classList.remove('active');
+                }
+                pinElement.classList.add('active');
+                activePinId = pin.id;
             }
 
             // Attach event listeners to pins
             pinsData.forEach(pin => {
                 const pinElement = document.getElementById(pin.id);
                 pinElement.addEventListener('click', () => movePointerToPin(pin));
+
+                // Make pins accessible via keyboard
+                pinElement.setAttribute('tabindex', '0');
+                pinElement.setAttribute('role', 'button');
+                pinElement.setAttribute('aria-label', pin.title || 'Map Pin');
+
+                pinElement.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        movePointerToPin(pin);
+                    }
+                });
             });
 
             // Initial positioning of pins
@@ -298,13 +342,18 @@
             window.addEventListener('resize', () => {
                 positionPins();
                 // Optional: Reposition the pointer if needed
-                // You can store the last selected pin and reapply movePointerToPin
+                if (activePinId) {
+                    const activePin = pinsData.find(pin => pin.id === activePinId);
+                    if (activePin) {
+                        movePointerToPin(activePin);
+                    }
+                }
             });
 
             // Set initial position for pointer off-screen
             mapPointer.style.left = '1200px';
             mapPointer.style.top = '0px';
-            mapPointer.style.transform = `translate(-50%, -50%) rotate(0deg) scale(1)`;
+            mapPointer.style.transform = `translate(-50%, -50%) rotate(-90deg) scale(1)`;
         });
     </script>
 
