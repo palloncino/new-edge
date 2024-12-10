@@ -25,16 +25,10 @@
         }
 
         .section-1-contacts__column-left-content {
+            box-sizing: border-box;
             height: 100%;
             width: 100%;
-            background: rgba(255, 0, 89, 0.254);
         }
-
-        .section-1-contacts-operation-office-container {}
-
-        .section-1-contacts-operation-office-text {}
-
-        .section-1-contacts-operation-office-list-container {}
 
         .section-1-contacts__column-right-container {
             box-sizing: border-box;
@@ -140,8 +134,35 @@
                 <div class="section-1-contacts__row-container">
                     <div class="section-1-contacts__column-left-container">
                         <div class="section-1-contacts__column-left-content">
-                            <div class="section-1-contacts-legal-office-container"></div>
-                            <div class="section-1-contacts-operation-office-container"></div>
+                            <style>
+                                .section-1-contacts-legal-office-container,
+                                .section-1-contacts-operation-office-container {
+                                    font-family: 'Mundial Thin';
+                                }
+
+                                .section-1-contacts-legal-office-container h3, h2,
+                                .section-1-contacts-operation-office-container h3, h2 {
+                                    font-family: 'Mundial Regular';
+                                    margin: 0 0 1rem 0;
+                                }
+
+                                .section-1-contacts-legal-office-container h3,
+                                .section-1-contacts-operation-office-container h3 {
+                                    text-transform: uppercase;
+                                }
+                            </style>
+                            <div class="section-1-contacts-legal-office-container">
+                                <h2>Sede legale</h2>
+                                <h3>Milano</h3>
+                                <p>Lorem ipsum</p>
+                                <p>+39 345678910</p>
+                            </div>
+                            <div class="section-1-contacts-operation-office-container">
+                                <h2>Sedi operative</h2>
+                                <h3>Milano</h3>
+                                <p>Lorem ipsum</p>
+                                <p>+39 345678910</p>
+                            </div>
                         </div>
                     </div>
 
@@ -184,67 +205,161 @@
             const mapContainer = document.querySelector('.section-1-contacts__map-container');
             const mapPointer = document.getElementById('map-pointer');
 
-            const originalMapSize = { width: 415, height: 543 }; // Original dimensions of the map image
-            const pointerAspectRatio = 0.62; // Height is 62% of the width
+            const originalMapSize = { width: 415, height: 543 };
+            const pointerAspectRatio = 0.62;
 
             const pinsData = [
                 {
                     id: 'map-pin-milan',
                     originalX: 87,
                     originalY: 95,
-                    pointerOffset: 30, // Distance outward from the pin
-                    pointerRotation: 180 // Points to the left
+                    pointerOffset: 30,
+                    pointerRotation: 180,
+                    sedeLegale: {
+                        cityLabel: "Milano",
+                        contacts: [
+                            {
+                                addressString: "",
+                                email: "milano@edge.com",
+                                phone: "+39 345678910"
+                            }
+                        ]
+                    },
+                    sedeOperativa: {
+                        cityLabel: "Milano",
+                        contacts: [
+                            {
+                                addressString: "",
+                                email: "ex@ex.com",
+                                phone: "+39 347 2994421"
+                            }
+                        ]
+                    }
                 },
                 {
                     id: 'map-pin-tourin',
                     originalX: 47,
                     originalY: 95,
                     pointerOffset: 40,
-                    pointerRotation: 135 // Points towards bottom-right
+                    pointerRotation: 135,
+                    sedeOperativa: {
+                        cityLabel: "Casale Monferrato",
+                        contacts: [
+                            {
+                                addressString: "Piazza Tancredi Galimberti 18 - 10134 Torino",
+                                email: "",
+                                phone: "+39 347 2994421"
+                            },
+                            {
+                                addressString: "Corso Vittorio Emanuele II 162 - 10138 Torino",
+                                email: "",
+                                phone: "+39 347 7492818"
+                            }
+                        ]
+                    }
                 },
                 {
                     id: 'map-pin-casale',
                     originalX: 70,
                     originalY: 118,
                     pointerOffset: 50,
-                    pointerRotation: 45 // Points towards top-right
+                    pointerRotation: 45,
+                    sedeOperativa: {
+                        cityLabel: "Casale Monferrato",
+                        contacts: [
+                            {
+                                addressString: "Corso Vittorio Emanuele II 162 - 10138 Torino",
+                                email: "",
+                                phone: "+39 345678910"
+                            }
+                        ]
+                    }
                 },
                 {
                     id: 'map-pin-mantova',
                     originalX: 135,
                     originalY: 120,
                     pointerOffset: 40,
-                    pointerRotation: 225 // Points towards bottom-left
+                    pointerRotation: 225,
+                    sedeOperativa: {
+                        cityLabel: "Mantova",
+                        contacts: [
+                            {
+                                addressString: "",
+                                email: "",
+                                phone: "+39 345678910"
+                            }
+                        ]
+                    }
                 },
                 {
                     id: 'map-pin-verona',
                     originalX: 135,
                     originalY: 80,
                     pointerOffset: 30,
-                    pointerRotation: 135 // Points towards bottom-right
+                    pointerRotation: 135,
+                    sedeOperativa: {
+                        cityLabel: "Verona",
+                        contacts: [
+                            {
+                                addressString: "Via del Perlar 37/b – 37135 Verona",
+                                email: "",
+                                phone: "+39 345678910"
+                            }
+                        ]
+                    }
                 },
                 {
                     id: 'map-pin-ferrara',
                     originalX: 165,
                     originalY: 140,
                     pointerOffset: 60,
-                    pointerRotation: 90 // Points up
+                    pointerRotation: 90,
+                    sedeOperativa: {
+                        cityLabel: "Verona",
+                        contacts: [
+                            {
+                                addressString: "Via Annibale Zucchini, 57/F – 44122 Ferrara",
+                                email: "",
+                                phone: "+39 345678910"
+                            }
+                        ]
+                    }
                 },
                 {
                     id: 'map-pin-padova',
                     originalX: 165,
                     originalY: 100,
                     pointerOffset: 50,
-                    pointerRotation: 0 // Points to the right
+                    pointerRotation: 0,
+                    sedeOperativa: {
+                        cityLabel: "Padova",
+                        contacts: [
+                            {
+                                addressString: "",
+                                email: "",
+                                phone: "+39 345678910"
+                            }
+                        ]
+                    }
                 },
                 {
                     id: 'map-pin-calabria',
                     originalX: 340,
                     originalY: 440,
                     pointerOffset: 40,
-                    pointerRotation: 270 // Points up
+                    pointerRotation: 270,
+                    sedeOperativa: {
+                        cityLabel: "Reggio Calabria",
+                        contacts: [
+                            {
+                                addressString: "Vico S'Anna di Sbarre Inferiori – 89132 Reggio Calabria",
+                                email: "",
+                                phone: "+39 345678910"
+                            }
+                        ]
+                    }
                 }
-                // Add more pins as needed
             ];
 
             let activePinId = null; // Track the currently active pin
