@@ -126,39 +126,51 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', () => {
             const mapContainer = document.querySelector('.section-1-contacts__map-container');
             const mapPointer = document.getElementById('map-pointer');
 
-            const originalMapSize = { width: 415, height: 543 }; // Original dimensions of the map image
-            const pointerAspectRatio = 0.62; // Height is 62% of the width
+            const originalMapSize = { width: 415, height: 543 };
+            const pointerAspectRatio = 0.62;
 
             const pinsData = [
                 {
                     id: 'map-pin-milan',
                     originalX: 87,
                     originalY: 108,
-                    pointerOffset: 50, // Distance outward from the pin
-                    pointerRotation: 270 // Points up
+                    pointerOffset: 50, // Offset from the pin
+                    pointerRotation: -45 // Rotation in degrees
                 },
                 {
                     id: 'map-pin-calabria',
                     originalX: 312,
                     originalY: 440,
-                    pointerOffset: 70, // Distance outward from the pin
-                    pointerRotation: 90 // Points down
+                    pointerOffset: 60,
+                    pointerRotation: 90
                 }
             ];
+
+            function createDebugMarker(x, y) {
+                const marker = document.createElement('div');
+                marker.style.position = 'absolute';
+                marker.style.width = '10px';
+                marker.style.height = '10px';
+                marker.style.backgroundColor = 'red';
+                marker.style.borderRadius = '50%';
+                marker.style.left = `${x}px`;
+                marker.style.top = `${y}px`;
+                marker.style.transform = 'translate(-50%, -50%)';
+                marker.style.zIndex = 15; // Ensure it appears above other elements
+                mapContainer.appendChild(marker);
+            }
 
             function positionPins() {
                 const containerWidth = mapContainer.clientWidth;
                 const containerHeight = mapContainer.clientHeight;
-                const containerRatio = containerWidth / containerHeight;
                 const originalRatio = originalMapSize.width / originalMapSize.height;
 
                 let displayedMapWidth, displayedMapHeight;
-
-                if (containerRatio > originalRatio) {
+                if (containerWidth / containerHeight > originalRatio) {
                     displayedMapHeight = containerHeight;
                     displayedMapWidth = displayedMapHeight * originalRatio;
                 } else {
@@ -176,6 +188,9 @@
 
                     pinElement.style.left = `${scaledX}px`;
                     pinElement.style.top = `${scaledY}px`;
+
+                    // Create a debug marker at the center of the pin
+                    createDebugMarker(scaledX, scaledY);
                 });
             }
 
@@ -187,39 +202,31 @@
                 const pinCenterX = pinRect.left - containerRect.left + pinRect.width / 2;
                 const pinCenterY = pinRect.top - containerRect.top + pinRect.height / 2;
 
-                // Calculate pointer dimensions
-                const pointerWidth = 100; // Adjust as needed
-                const pointerHeight = pointerWidth * pointerAspectRatio;
-
-                // Calculate pointer position offset
                 const angleRad = (pin.pointerRotation * Math.PI) / 180;
                 const offsetX = Math.cos(angleRad) * pin.pointerOffset;
                 const offsetY = Math.sin(angleRad) * pin.pointerOffset;
 
-                // Apply pointer dimensions and position
-                mapPointer.style.width = `${pointerWidth}px`;
-                mapPointer.style.height = `${pointerHeight}px`;
+                mapPointer.style.width = `100px`;
+                mapPointer.style.height = `${100 * pointerAspectRatio}px`;
                 mapPointer.style.left = `${pinCenterX + offsetX}px`;
                 mapPointer.style.top = `${pinCenterY + offsetY}px`;
+                mapPointer.style.transform = `translate(-50%, -50%) rotate(${pin.pointerRotation}deg) scale(0.8)`;
 
-                // Apply scaling and rotation
-                mapPointer.style.transform = `translate(-50%, -50%) rotate(-${pin.pointerRotation}deg) scale(0.8)`;
+                // Create a debug marker for pointer's target position
+                createDebugMarker(pinCenterX + offsetX, pinCenterY + offsetY);
             }
 
-            // Initial positioning of pins
-            positionPins();
-
-            // Attach event listeners to pins
             pinsData.forEach(pin => {
                 const pinElement = document.getElementById(pin.id);
                 pinElement.addEventListener('click', () => movePointerToPin(pin));
             });
 
-            // Adjust pin positions on window resize
-            window.addEventListener('resize', positionPins);
+            positionPins();
 
-            // Set initial position for pointer
-            mapPointer.style.left = '1200px';
+            window.addEventListener('resize', () => {
+                mapContainer.querySelectorAll('div').forEach(marker => marker.remove()); // Clear debug markers
+                positionPins();
+            });
         });
     </script>
 
