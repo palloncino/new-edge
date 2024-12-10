@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -55,17 +54,13 @@
             background: url('./assets/svgs/plus-button-fff.svg') no-repeat center center;
             background-size: contain;
             cursor: pointer;
-            /* Indicate clickable pins */
             transition: transform 0.3s ease;
-            /* Smooth scaling on hover */
         }
 
         .map-pin:hover {
             transform: scale(1.2);
-            /* Optional: enlarge on hover for better UX */
         }
 
-        /* Active Pin Styling */
         .map-pin::after {
             content: '';
             position: absolute;
@@ -86,21 +81,15 @@
         #map-pointer {
             position: absolute;
             left: 1200px;
-            /* Initial position far left */
             top: 0px;
-            /* Initial position */
             width: 100px;
-            /* Initial width */
             height: 62px;
-            /* 62% of width */
             background: url('./assets/svgs/shape-2-pink.svg') no-repeat center center;
             background-size: contain;
             transform-origin: center;
             transform: translate(-50%, -50%) rotate(-90deg) scale(1);
-            /* Initial transform */
             transition: transform 0.5s ease, top 0.5s ease, left 0.5s ease;
             z-index: 10;
-            /* Ensure the pointer is above the pins */
         }
 
         #section-1-contacts__back-btn {
@@ -108,13 +97,35 @@
             bottom: 0;
             left: -1200px;
         }
+
+        .section-1-contacts-legal-office-container,
+        .section-1-contacts-operation-office-container {
+            font-family: 'Mundial Thin';
+        }
+
+        .section-1-contacts-legal-office-container h3,
+        h2,
+        .section-1-contacts-operation-office-container h3,
+        h2 {
+            font-family: 'Mundial Regular';
+            margin: 0 0 1rem 0;
+        }
+
+        .section-1-contacts-legal-office-container h3,
+        .section-1-contacts-operation-office-container h3 {
+            font-family: 'Mundial Thin';
+        }
+
+        .section-1-contacts-legal-office-container h3,
+        .section-1-contacts-operation-office-container h3 {
+            text-transform: uppercase;
+        }
     </style>
 </head>
 
 <body class="page-id-46">
 
     <div class="outer-app-container">
-
         <!-- HEADER -->
         <div id="edge-header" class="edge-header">
             <div id="header-logo-container" class="header-logo-container">
@@ -135,7 +146,6 @@
         </div>
 
         <div class="inner-app-container">
-
             <div class="section-padded-content section-1-contacts">
                 <div class="section-1-contacts__row-container">
                     <div class="section-1-contacts__column-left-container">
@@ -144,75 +154,19 @@
                             Back
                         </div>
                         <div class="section-1-contacts__column-left-content">
-                            <!-- <style>
-                                .section-1-contacts-legal-office-container,
-                                .section-1-contacts-operation-office-container {
-                                    font-family: 'Mundial Thin';
-                                }
-
-                                .section-1-contacts-legal-office-container h3, h2,
-                                .section-1-contacts-operation-office-container h3, h2 {
-                                    font-family: 'Mundial Regular';
-                                    margin: 0 0 1rem 0;
-                                }
-
-                                .section-1-contacts-legal-office-container h3,
-                                .section-1-contacts-operation-office-container h3 {
-                                    text-transform: uppercase;
-                                }
-                            </style> -->
-                            <!-- This is how it would look like when we select a pin: -->
-                            <!-- <div class="section-1-contacts-legal-office-container">
-                                <h2>Sede legale</h2>
-                                <h3>Milano</h3>
-                                <p>Lorem ipsum</p>
-                                <p>+39 345678910</p>
-                            </div>
-                            <div class="section-1-contacts-operation-office-container">
-                                <h2>Sedi operative</h2>
-                                <h3>Milano</h3>
-                                <p>Lorem ipsum</p>
-                                <p>+39 345678910</p>
-                            </div> -->
-
-
-                            <style>
-                                .section-1-contacts-legal-office-container,
-                                .section-1-contacts-operation-office-container {
-                                    font-family: 'Mundial Thin';
-                                }
-
-                                .section-1-contacts-legal-office-container h3,
-                                h2,
-                                .section-1-contacts-operation-office-container h3,
-                                h2 {
-                                    font-family: 'Mundial Regular';
-                                    margin: 0 0 1rem 0;
-                                }
-
-                                .section-1-contacts-legal-office-container h3,
-                                .section-1-contacts-operation-office-container h3 {
-                                    font-family: 'Mundial Thin';
-                                }
-
-                                .section-1-contacts-legal-office-container h3,
-                                .section-1-contacts-operation-office-container h3 {
-                                    text-transform: uppercase;
-                                }
-                            </style>
-                            <!-- this is how it look like when we land, and when we deselct the pin we come back to this view: -->
+                            <!-- Default view (no pin selected) -->
                             <div class="section-1-contacts-legal-office-container">
                                 <h2>Sede legale</h2>
                                 <h3>Milano</h3>
                             </div>
                             <div class="section-1-contacts-operation-office-container">
                                 <h2>Sedi operative</h2>
-                                <h3 onclick="movePointerToPin()">Milano</h3>
-                                <h3>Verona</h3>
-                                <h3>Casale monferrato</h3>
+                                <!-- Example of calling movePointerToPin on click -->
+                                <h3 onclick="window.movePointerToPinByCity('Milano')">Milano</h3>
+                                <h3 onclick="window.movePointerToPinByCity('Verona')">Verona</h3>
+                                <h3 onclick="window.movePointerToPinByCity('Casale Monferrato')">Casale monferrato</h3>
                                 <!-- etc... -->
                             </div>
-
                         </div>
                     </div>
 
@@ -247,13 +201,14 @@
             <div class="section-padded-content">
                 <h1 style="padding: 200px">Informazioni</h1>
             </div>
-
         </div>
     </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const mapContainer = document.querySelector('.section-1-contacts__map-container');
             const mapPointer = document.getElementById('map-pointer');
+            const backBtn = document.getElementById('section-1-contacts__back-btn');
 
             const originalMapSize = { width: 415, height: 543 };
             const pointerAspectRatio = 0.62;
@@ -261,158 +216,71 @@
             const pinsData = [
                 {
                     id: 'map-pin-milan',
+                    city: 'Milano',
                     originalX: 87,
                     originalY: 95,
                     pointerOffset: 30,
-                    pointerRotation: 180,
-                    sedeLegale: {
-                        cityLabel: "Milano",
-                        contacts: [
-                            {
-                                addressString: "",
-                                email: "milano@edge.com",
-                                phone: "+39 345678910"
-                            }
-                        ]
-                    },
-                    sedeOperativa: {
-                        cityLabel: "Milano",
-                        contacts: [
-                            {
-                                addressString: "",
-                                email: "ex@ex.com",
-                                phone: "+39 347 2994421"
-                            }
-                        ]
-                    }
+                    pointerRotation: 180
                 },
                 {
                     id: 'map-pin-tourin',
+                    city: 'Torino',
                     originalX: 47,
                     originalY: 95,
                     pointerOffset: 40,
-                    pointerRotation: 135,
-                    sedeOperativa: {
-                        cityLabel: "Casale Monferrato",
-                        contacts: [
-                            {
-                                addressString: "Piazza Tancredi Galimberti 18 - 10134 Torino",
-                                email: "",
-                                phone: "+39 347 2994421"
-                            },
-                            {
-                                addressString: "Corso Vittorio Emanuele II 162 - 10138 Torino",
-                                email: "",
-                                phone: "+39 347 7492818"
-                            }
-                        ]
-                    }
+                    pointerRotation: 135
                 },
                 {
                     id: 'map-pin-casale',
+                    city: 'Casale Monferrato',
                     originalX: 70,
                     originalY: 118,
                     pointerOffset: 50,
-                    pointerRotation: 45,
-                    sedeOperativa: {
-                        cityLabel: "Casale Monferrato",
-                        contacts: [
-                            {
-                                addressString: "Corso Vittorio Emanuele II 162 - 10138 Torino",
-                                email: "",
-                                phone: "+39 345678910"
-                            }
-                        ]
-                    }
+                    pointerRotation: 45
                 },
                 {
                     id: 'map-pin-mantova',
+                    city: 'Mantova',
                     originalX: 135,
                     originalY: 120,
                     pointerOffset: 40,
-                    pointerRotation: 225,
-                    sedeOperativa: {
-                        cityLabel: "Mantova",
-                        contacts: [
-                            {
-                                addressString: "",
-                                email: "",
-                                phone: "+39 345678910"
-                            }
-                        ]
-                    }
+                    pointerRotation: 225
                 },
                 {
                     id: 'map-pin-verona',
+                    city: 'Verona',
                     originalX: 135,
                     originalY: 80,
                     pointerOffset: 30,
-                    pointerRotation: 135,
-                    sedeOperativa: {
-                        cityLabel: "Verona",
-                        contacts: [
-                            {
-                                addressString: "Via del Perlar 37/b – 37135 Verona",
-                                email: "",
-                                phone: "+39 345678910"
-                            }
-                        ]
-                    }
+                    pointerRotation: 135
                 },
                 {
                     id: 'map-pin-ferrara',
+                    city: 'Ferrara',
                     originalX: 165,
                     originalY: 140,
                     pointerOffset: 60,
-                    pointerRotation: 90,
-                    sedeOperativa: {
-                        cityLabel: "Verona",
-                        contacts: [
-                            {
-                                addressString: "Via Annibale Zucchini, 57/F – 44122 Ferrara",
-                                email: "",
-                                phone: "+39 345678910"
-                            }
-                        ]
-                    }
+                    pointerRotation: 90
                 },
                 {
                     id: 'map-pin-padova',
+                    city: 'Padova',
                     originalX: 165,
                     originalY: 100,
                     pointerOffset: 50,
-                    pointerRotation: 0,
-                    sedeOperativa: {
-                        cityLabel: "Padova",
-                        contacts: [
-                            {
-                                addressString: "",
-                                email: "",
-                                phone: "+39 345678910"
-                            }
-                        ]
-                    }
+                    pointerRotation: 0
                 },
                 {
                     id: 'map-pin-calabria',
+                    city: 'Reggio Calabria',
                     originalX: 340,
                     originalY: 440,
                     pointerOffset: 40,
-                    pointerRotation: 270,
-                    sedeOperativa: {
-                        cityLabel: "Reggio Calabria",
-                        contacts: [
-                            {
-                                addressString: "Vico S'Anna di Sbarre Inferiori – 89132 Reggio Calabria",
-                                email: "",
-                                phone: "+39 345678910"
-                            }
-                        ]
-                    }
+                    pointerRotation: 270
                 }
             ];
 
-            let activePinId = null; // Track the currently active pin
+            let activePinId = null;
 
             function positionPins() {
                 const containerWidth = mapContainer.clientWidth;
@@ -423,11 +291,9 @@
                 let displayedMapWidth, displayedMapHeight;
 
                 if (containerRatio > originalRatio) {
-                    // Container is wider relative to the map's aspect ratio
                     displayedMapHeight = containerHeight;
                     displayedMapWidth = displayedMapHeight * originalRatio;
                 } else {
-                    // Container is taller relative to the map's aspect ratio
                     displayedMapWidth = containerWidth;
                     displayedMapHeight = displayedMapWidth / originalRatio;
                 }
@@ -446,42 +312,47 @@
             }
 
             function movePointerToPin(pin) {
-                console.log(1)
                 const pinElement = document.getElementById(pin.id);
                 const pinRect = pinElement.getBoundingClientRect();
                 const containerRect = mapContainer.getBoundingClientRect();
 
-                // Calculate the center of the pin relative to the map container
                 const pinCenterX = pinRect.left - containerRect.left + pinRect.width / 2;
                 const pinCenterY = pinRect.top - containerRect.top + pinRect.height / 2;
 
-                // Calculate pointer dimensions
-                const pointerWidth = 100; // Adjust as needed
+                const pointerWidth = 100;
                 const pointerHeight = pointerWidth * pointerAspectRatio;
 
-                // Calculate pointer position offset based on rotation
                 const angleRad = (pin.pointerRotation * Math.PI) / 180;
                 const offsetX = Math.cos(angleRad) * pin.pointerOffset;
                 const offsetY = Math.sin(angleRad) * pin.pointerOffset;
 
-                // Apply pointer dimensions
                 mapPointer.style.width = `${pointerWidth}px`;
                 mapPointer.style.height = `${pointerHeight}px`;
 
-                // Position the pointer
                 mapPointer.style.left = `${pinCenterX + offsetX}px`;
                 mapPointer.style.top = `${pinCenterY + offsetY}px`;
-
-                // Apply rotation and scaling directly from configuration
                 mapPointer.style.transform = `translate(-50%, -50%) rotate(${pin.pointerRotation + 180}deg) scale(.5)`;
 
-                // Manage active pin state
                 if (activePinId && activePinId !== pin.id) {
                     const previousActivePin = document.getElementById(activePinId);
                     previousActivePin.classList.remove('active');
                 }
                 pinElement.classList.add('active');
                 activePinId = pin.id;
+
+                // Show the back button
+                backBtn.style.left = '0';
+            }
+
+            // Make the function globally accessible
+            window.movePointerToPin = movePointerToPin;
+
+            // Helper to move pointer by city name
+            window.movePointerToPinByCity = function (cityName) {
+                const pin = pinsData.find(p => p.city.toLowerCase() === cityName.toLowerCase());
+                if (pin) {
+                    movePointerToPin(pin);
+                }
             }
 
             // Attach event listeners to pins
@@ -489,10 +360,9 @@
                 const pinElement = document.getElementById(pin.id);
                 pinElement.addEventListener('click', () => movePointerToPin(pin));
 
-                // Make pins accessible via keyboard
                 pinElement.setAttribute('tabindex', '0');
                 pinElement.setAttribute('role', 'button');
-                pinElement.setAttribute('aria-label', pin.title || 'Map Pin');
+                pinElement.setAttribute('aria-label', pin.city || 'Map Pin');
 
                 pinElement.addEventListener('keypress', (e) => {
                     if (e.key === 'Enter') {
@@ -501,13 +371,33 @@
                 });
             });
 
+            function section1AboutUsUnselect() {
+                // Reset pointer off-screen
+                mapPointer.style.left = '1200px';
+                mapPointer.style.top = '0px';
+                mapPointer.style.transform = 'translate(-50%, -50%) rotate(-90deg) scale(1)';
+
+                // Hide the back button
+                backBtn.style.left = '-1200px';
+
+                // Remove active class from the currently active pin, if any
+                if (activePinId) {
+                    const previousActivePin = document.getElementById(activePinId);
+                    if (previousActivePin) {
+                        previousActivePin.classList.remove('active');
+                    }
+                    activePinId = null;
+                }
+            }
+
+            // Make the deselect function global as well
+            window.section1AboutUsUnselect = section1AboutUsUnselect;
+
             // Initial positioning of pins
             positionPins();
 
-            // Adjust pin positions on window resize
             window.addEventListener('resize', () => {
                 positionPins();
-                // Optional: Reposition the pointer if needed
                 if (activePinId) {
                     const activePin = pinsData.find(pin => pin.id === activePinId);
                     if (activePin) {
@@ -515,14 +405,8 @@
                     }
                 }
             });
-
-            // Set initial position for pointer off-screen
-            mapPointer.style.left = '1200px';
-            mapPointer.style.top = '0px';
-            mapPointer.style.transform = `translate(-50%, -50%) rotate(-90deg) scale(1)`;
         });
     </script>
 
 </body>
-
 </html>
