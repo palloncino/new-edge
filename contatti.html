@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contatti</title>
     <link rel="stylesheet" href="./assets/css/font.css">
     <link rel="stylesheet" href="./assets/css/global.css">
     <link rel="stylesheet" href="./assets/css/header.css">
-    <title>Contatti</title>
     <style>
         .section-1-contacts__row-container {
             position: relative;
@@ -29,6 +29,12 @@
             width: 100%;
             background: rgba(255, 0, 89, 0.254);
         }
+
+        .section-1-contacts-operation-office-container {}
+
+        .section-1-contacts-operation-office-text {}
+
+        .section-1-contacts-operation-office-list-container {}
 
         .section-1-contacts__column-right-container {
             box-sizing: border-box;
@@ -55,17 +61,34 @@
             background: url('./assets/svgs/plus-button-fff.svg') no-repeat center center;
             background-size: contain;
             cursor: pointer;
+            /* Indicate clickable pins */
+            transition: transform 0.3s ease;
+            /* Smooth scaling on hover */
+        }
+
+        .map-pin:hover {
+            transform: scale(1.2);
+            /* Optional: enlarge on hover for better UX */
         }
 
         #map-pointer {
             position: absolute;
-            left: 1000px;
+            left: 1200px;
+            /* Initial position far left */
+            top: 0px;
+            /* Initial position */
             width: 100px;
-            height: 100px;
+            /* Initial width */
+            height: 62px;
+            /* 62% of width */
             background: url('./assets/svgs/shape-2-pink.svg') no-repeat center center;
             background-size: contain;
             transform-origin: center;
+            transform: translate(-50%, -50%) rotate(0deg) scale(1);
+            /* Initial transform */
             transition: transform 0.5s ease, top 0.5s ease, left 0.5s ease;
+            z-index: 10;
+            /* Ensure the pointer is above the pins */
         }
     </style>
 </head>
@@ -107,8 +130,14 @@
                     <div class="section-1-contacts__column-right-container">
                         <div class="section-1-contacts__map-container" id="map-container">
                             <div id="map-pointer"></div>
-                            <div class="map-pin" id="map-pin-milan"></div>
-                            <div class="map-pin" id="map-pin-calabria"></div>
+                            <div class="map-pin" id="map-pin-milan" title="Milan"></div>
+                            <div class="map-pin" id="map-pin-tourin" title="Tourin"></div>
+                            <div class="map-pin" id="map-pin-casale" title="Casale Monferrato"></div>
+                            <div class="map-pin" id="map-pin-mantova" title="Mantova"></div>
+                            <div class="map-pin" id="map-pin-verona" title="Verona"></div>
+                            <div class="map-pin" id="map-pin-ferrara" title="Ferrara"></div>
+                            <div class="map-pin" id="map-pin-padova" title="Padova"></div>
+                            <div class="map-pin" id="map-pin-calabria" title="Calabria"></div>
                         </div>
                     </div>
                 </div>
@@ -130,50 +159,84 @@
             const mapContainer = document.querySelector('.section-1-contacts__map-container');
             const mapPointer = document.getElementById('map-pointer');
 
-            const originalMapSize = { width: 415, height: 543 };
-            const pointerAspectRatio = 0.62;
+            const originalMapSize = { width: 415, height: 543 }; // Original dimensions of the map image
+            const pointerAspectRatio = 0.62; // Height is 62% of the width
 
             const pinsData = [
                 {
                     id: 'map-pin-milan',
                     originalX: 87,
-                    originalY: 108,
-                    pointerOffset: 50, // Offset from the pin
-                    pointerRotation: -45 // Rotation in degrees
+                    originalY: 95,
+                    pointerOffset: 30, // Distance outward from the pin
+                    pointerRotation: 180 // Points to the left
+                },
+                {
+                    id: 'map-pin-tourin',
+                    originalX: 47,
+                    originalY: 95,
+                    pointerOffset: 40, // Distance outward from the pin
+                    pointerRotation: 135 // Points towards bottom-right
+                },
+                {
+                    id: 'map-pin-casale',
+                    originalX: 70,
+                    originalY: 118,
+                    pointerOffset: 50,
+                    pointerRotation: 45 // Points towards top-right
+                },
+                {
+                    id: 'map-pin-mantova',
+                    originalX: 135,
+                    originalY: 120,
+                    pointerOffset: 40,
+                    pointerRotation: 225 // Points towards bottom-left
+                },
+                {
+                    id: 'map-pin-verona',
+                    originalX: 135,
+                    originalY: 80,
+                    pointerOffset: 30,
+                    pointerRotation: 135 // Points towards bottom-right
+                },
+                {
+                    id: 'map-pin-ferrara',
+                    originalX: 165,
+                    originalY: 140,
+                    pointerOffset: 60,
+                    pointerRotation: 90 // Points up
+                },
+                {
+                    id: 'map-pin-padova',
+                    originalX: 165,
+                    originalY: 100,
+                    pointerOffset: 50,
+                    pointerRotation: 0 // Points to the right
                 },
                 {
                     id: 'map-pin-calabria',
-                    originalX: 312,
+                    originalX: 340,
                     originalY: 440,
-                    pointerOffset: 60,
-                    pointerRotation: 90
+                    pointerOffset: 40,
+                    pointerRotation: 270 // Points up
                 }
+                // Add more pins as needed
             ];
 
-            function createDebugMarker(x, y) {
-                const marker = document.createElement('div');
-                marker.style.position = 'absolute';
-                marker.style.width = '10px';
-                marker.style.height = '10px';
-                marker.style.backgroundColor = 'red';
-                marker.style.borderRadius = '50%';
-                marker.style.left = `${x}px`;
-                marker.style.top = `${y}px`;
-                marker.style.transform = 'translate(-50%, -50%)';
-                marker.style.zIndex = 15; // Ensure it appears above other elements
-                mapContainer.appendChild(marker);
-            }
 
             function positionPins() {
                 const containerWidth = mapContainer.clientWidth;
                 const containerHeight = mapContainer.clientHeight;
+                const containerRatio = containerWidth / containerHeight;
                 const originalRatio = originalMapSize.width / originalMapSize.height;
 
                 let displayedMapWidth, displayedMapHeight;
-                if (containerWidth / containerHeight > originalRatio) {
+
+                if (containerRatio > originalRatio) {
+                    // Container is wider relative to the map's aspect ratio
                     displayedMapHeight = containerHeight;
                     displayedMapWidth = displayedMapHeight * originalRatio;
                 } else {
+                    // Container is taller relative to the map's aspect ratio
                     displayedMapWidth = containerWidth;
                     displayedMapHeight = displayedMapWidth / originalRatio;
                 }
@@ -188,9 +251,6 @@
 
                     pinElement.style.left = `${scaledX}px`;
                     pinElement.style.top = `${scaledY}px`;
-
-                    // Create a debug marker at the center of the pin
-                    createDebugMarker(scaledX, scaledY);
                 });
             }
 
@@ -199,37 +259,54 @@
                 const pinRect = pinElement.getBoundingClientRect();
                 const containerRect = mapContainer.getBoundingClientRect();
 
+                // Calculate the center of the pin relative to the map container
                 const pinCenterX = pinRect.left - containerRect.left + pinRect.width / 2;
                 const pinCenterY = pinRect.top - containerRect.top + pinRect.height / 2;
 
+                // Calculate pointer dimensions
+                const pointerWidth = 100; // Adjust as needed
+                const pointerHeight = pointerWidth * pointerAspectRatio;
+
+                // Calculate pointer position offset based on rotation
                 const angleRad = (pin.pointerRotation * Math.PI) / 180;
                 const offsetX = Math.cos(angleRad) * pin.pointerOffset;
                 const offsetY = Math.sin(angleRad) * pin.pointerOffset;
 
-                mapPointer.style.width = `100px`;
-                mapPointer.style.height = `${100 * pointerAspectRatio}px`;
+                // Apply pointer dimensions
+                mapPointer.style.width = `${pointerWidth}px`;
+                mapPointer.style.height = `${pointerHeight}px`;
+
+                // Position the pointer
                 mapPointer.style.left = `${pinCenterX + offsetX}px`;
                 mapPointer.style.top = `${pinCenterY + offsetY}px`;
-                mapPointer.style.transform = `translate(-50%, -50%) rotate(${pin.pointerRotation}deg) scale(0.8)`;
 
-                // Create a debug marker for pointer's target position
-                createDebugMarker(pinCenterX + offsetX, pinCenterY + offsetY);
+                // Apply rotation and scaling
+                // Positive rotation aligns with CSS's clockwise rotation
+                mapPointer.style.transform = `translate(-50%, -50%) rotate(${pin.pointerRotation}deg) scale(0.5)`;
             }
 
+            // Attach event listeners to pins
             pinsData.forEach(pin => {
                 const pinElement = document.getElementById(pin.id);
                 pinElement.addEventListener('click', () => movePointerToPin(pin));
             });
 
+            // Initial positioning of pins
             positionPins();
 
+            // Adjust pin positions on window resize
             window.addEventListener('resize', () => {
-                mapContainer.querySelectorAll('div').forEach(marker => marker.remove()); // Clear debug markers
                 positionPins();
+                // Optional: Reposition the pointer if needed
+                // You can store the last selected pin and reapply movePointerToPin
             });
+
+            // Set initial position for pointer off-screen
+            mapPointer.style.left = '1200px';
+            mapPointer.style.top = '0px';
+            mapPointer.style.transform = `translate(-50%, -50%) rotate(0deg) scale(1)`;
         });
     </script>
-
 
 </body>
 
