@@ -102,6 +102,12 @@
             z-index: 10;
             /* Ensure the pointer is above the pins */
         }
+
+        #section-1-contacts__back-btn {
+            position: absolute;
+            bottom: 0;
+            left: -1200px;
+        }
     </style>
 </head>
 
@@ -133,8 +139,12 @@
             <div class="section-padded-content section-1-contacts">
                 <div class="section-1-contacts__row-container">
                     <div class="section-1-contacts__column-left-container">
+                        <div id="section-1-contacts__back-btn" class="btn btn-F69701 color-FFF"
+                            onclick="section1AboutUsUnselect()" data-meta-label="true">
+                            Back
+                        </div>
                         <div class="section-1-contacts__column-left-content">
-                            <style>
+                            <!-- <style>
                                 .section-1-contacts-legal-office-container,
                                 .section-1-contacts-operation-office-container {
                                     font-family: 'Mundial Thin';
@@ -150,8 +160,9 @@
                                 .section-1-contacts-operation-office-container h3 {
                                     text-transform: uppercase;
                                 }
-                            </style>
-                            <div class="section-1-contacts-legal-office-container">
+                            </style> -->
+                            <!-- This is how it would look like when we select a pin: -->
+                            <!-- <div class="section-1-contacts-legal-office-container">
                                 <h2>Sede legale</h2>
                                 <h3>Milano</h3>
                                 <p>Lorem ipsum</p>
@@ -162,7 +173,46 @@
                                 <h3>Milano</h3>
                                 <p>Lorem ipsum</p>
                                 <p>+39 345678910</p>
+                            </div> -->
+
+
+                            <style>
+                                .section-1-contacts-legal-office-container,
+                                .section-1-contacts-operation-office-container {
+                                    font-family: 'Mundial Thin';
+                                }
+
+                                .section-1-contacts-legal-office-container h3,
+                                h2,
+                                .section-1-contacts-operation-office-container h3,
+                                h2 {
+                                    font-family: 'Mundial Regular';
+                                    margin: 0 0 1rem 0;
+                                }
+
+                                .section-1-contacts-legal-office-container h3,
+                                .section-1-contacts-operation-office-container h3 {
+                                    font-family: 'Mundial Thin';
+                                }
+
+                                .section-1-contacts-legal-office-container h3,
+                                .section-1-contacts-operation-office-container h3 {
+                                    text-transform: uppercase;
+                                }
+                            </style>
+                            <!-- this is how it look like when we land, and when we deselct the pin we come back to this view: -->
+                            <div class="section-1-contacts-legal-office-container">
+                                <h2>Sede legale</h2>
+                                <h3>Milano</h3>
                             </div>
+                            <div class="section-1-contacts-operation-office-container">
+                                <h2>Sedi operative</h2>
+                                <h3 onclick="movePointerToPin()">Milano</h3>
+                                <h3>Verona</h3>
+                                <h3>Casale monferrato</h3>
+                                <!-- etc... -->
+                            </div>
+
                         </div>
                     </div>
 
@@ -396,6 +446,7 @@
             }
 
             function movePointerToPin(pin) {
+                console.log(1)
                 const pinElement = document.getElementById(pin.id);
                 const pinRect = pinElement.getBoundingClientRect();
                 const containerRect = mapContainer.getBoundingClientRect();
