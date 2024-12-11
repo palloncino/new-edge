@@ -185,6 +185,10 @@
             transition: all .5s;
         }
 
+        .MundialRegular {
+            font-family: 'Mundial regular'!important;
+        }
+
         .office-title-h2 {
             font-size: 1.8rem;
             font-family: 'Mundial regular';
@@ -286,29 +290,28 @@
                                     </div>
                                     <h2 id="operation-office-title-h2" class="office-title-h2">Sedi operative</h2>
                                     <div id="operation-list-of-cities-container">
-                                        <h3 class="office-title-h3" onclick="window.movePointerToPinByCity('Milano')">
+                                        <h3 id="h3-text__map-pin-milan" class="office-title-h3" onclick="window.movePointerToPinByCity('Milano')">
                                             Milano
                                         </h3>
-                                        <h3 class="office-title-h3" onclick="window.movePointerToPinByCity('Torino')">
+                                        <h3 id="h3-text__map-pin-torino" class="office-title-h3" onclick="window.movePointerToPinByCity('Torino')">
                                             Torino
                                         </h3>
-                                        <h3 class="office-title-h3"
-                                            onclick="window.movePointerToPinByCity('Casale Monferrato')">
+                                        <h3 id="h3-text__map-pin-casale" class="office-title-h3" onclick="window.movePointerToPinByCity('Casale Monferrato')">
                                             Casale Monferrato
                                         </h3>
-                                        <h3 class="office-title-h3" onclick="window.movePointerToPinByCity('Mantova')">
+                                        <h3 id="h3-text__map-pin-mantova" class="office-title-h3" onclick="window.movePointerToPinByCity('Mantova')">
                                             Mantova
                                         </h3>
-                                        <h3 class="office-title-h3" onclick="window.movePointerToPinByCity('Verona')">
+                                        <h3 id="h3-text__map-pin-verona" class="office-title-h3" onclick="window.movePointerToPinByCity('Verona')">
                                             Verona
                                         </h3>
-                                        <h3 class="office-title-h3" onclick="window.movePointerToPinByCity('Ferrara')">
+                                        <h3 id="h3-text__map-pin-ferrara" class="office-title-h3" onclick="window.movePointerToPinByCity('Ferrara')">
                                             Ferrara
                                         </h3>
-                                        <h3 class="office-title-h3" onclick="window.movePointerToPinByCity('Padova')">
+                                        <h3 id="h3-text__map-pin-padova" class="office-title-h3" onclick="window.movePointerToPinByCity('Padova')">
                                             Padova
                                         </h3>
-                                        <h3 class="office-title-h3" onclick="window.movePointerToPinByCity('Calabria')">
+                                        <h3 id="h3-text__map-pin-calabria" class="office-title-h3" onclick="window.movePointerToPinByCity('Calabria')">
                                             Calabria
                                         </h3>
                                     </div>
@@ -607,12 +610,13 @@
             }
 
             function showSelectedPinContent(pin) {
+                console.log(pin);
                 // Reset everything first
                 textsContainers.style.gap = '50px';
                 legalAddresses.style.left = '-800px';
                 operationAddresses.style.left = '-800px';
                 legalH2.style.top = '0px';
-                legalH3.style.fontFamily = 'Mundial Regular'
+                legalH3.style.fontFamily = 'Mundial Regular';
                 legalList.style.top = '50px';
                 operationalList.style.top = '50px';
                 operationalList.style.left = '-800px';
@@ -650,7 +654,7 @@
                     operationH3.textContent = pin.sedeOperativa.cityLabel || 'Sede Operativa';
 
                     // Populate operation-list-of-addresses
-                    const operationAddressesHTML = pin.sedeOperativa.contacts.map(contact => {
+                    let operationAddressesHTML = pin.sedeOperativa.contacts.map(contact => {
                         let lines = '';
                         if (contact.addressString) lines += `<div class="address-text-line">${contact.addressString}</div>`;
                         if (contact.email) lines += `<div class="address-text-line">${contact.email}</div>`;
@@ -658,8 +662,13 @@
                         return `<div class="address-text-line-container">${lines}</div>`;
                     }).join('');
 
+                    // Add the city element directly into the HTML
+                    const cityElementHTML = `<h3 id="h3-text__map-pin-${pin.sedeOperativa.cityLabel.toLowerCase()}" class="office-title-h3 MundialRegular" onclick="window.movePointerToPinByCity('${pin.sedeOperativa.cityLabel}')">${pin.sedeOperativa.cityLabel}</h3>`;
+                    operationAddressesHTML = cityElementHTML + operationAddressesHTML;
+
                     operationAddresses.innerHTML = operationAddressesHTML;
                     operationAddresses.style.left = '0px';
+                    operationAddresses.style.top = '50px';
                 } else {
                     // No sede operativa data, move it out of sight
                     operationH2.style.top = '-800px';
