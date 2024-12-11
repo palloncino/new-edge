@@ -75,28 +75,36 @@
                                     </div>
                                     <h2 id="operation-office-title-h2" class="office-title-h2">Sedi operative</h2>
                                     <div id="operation-list-of-cities-container">
-                                        <h3 id="h3-text__map-pin-milan" class="office-title-h3" onclick="window.movePointerToPinByCity('Milano')">
+                                        <h3 id="h3-text__map-pin-milan" class="office-title-h3"
+                                            onclick="window.movePointerToPinByCity('Milano')">
                                             Milano
                                         </h3>
-                                        <h3 id="h3-text__map-pin-torino" class="office-title-h3" onclick="window.movePointerToPinByCity('Torino')">
+                                        <h3 id="h3-text__map-pin-torino" class="office-title-h3"
+                                            onclick="window.movePointerToPinByCity('Torino')">
                                             Torino
                                         </h3>
-                                        <h3 id="h3-text__map-pin-casale" class="office-title-h3" onclick="window.movePointerToPinByCity('Casale Monferrato')">
+                                        <h3 id="h3-text__map-pin-casale" class="office-title-h3"
+                                            onclick="window.movePointerToPinByCity('Casale Monferrato')">
                                             Casale Monferrato
                                         </h3>
-                                        <h3 id="h3-text__map-pin-mantova" class="office-title-h3" onclick="window.movePointerToPinByCity('Mantova')">
+                                        <h3 id="h3-text__map-pin-mantova" class="office-title-h3"
+                                            onclick="window.movePointerToPinByCity('Mantova')">
                                             Mantova
                                         </h3>
-                                        <h3 id="h3-text__map-pin-verona" class="office-title-h3" onclick="window.movePointerToPinByCity('Verona')">
+                                        <h3 id="h3-text__map-pin-verona" class="office-title-h3"
+                                            onclick="window.movePointerToPinByCity('Verona')">
                                             Verona
                                         </h3>
-                                        <h3 id="h3-text__map-pin-ferrara" class="office-title-h3" onclick="window.movePointerToPinByCity('Ferrara')">
+                                        <h3 id="h3-text__map-pin-ferrara" class="office-title-h3"
+                                            onclick="window.movePointerToPinByCity('Ferrara')">
                                             Ferrara
                                         </h3>
-                                        <h3 id="h3-text__map-pin-padova" class="office-title-h3" onclick="window.movePointerToPinByCity('Padova')">
+                                        <h3 id="h3-text__map-pin-padova" class="office-title-h3"
+                                            onclick="window.movePointerToPinByCity('Padova')">
                                             Padova
                                         </h3>
-                                        <h3 id="h3-text__map-pin-calabria" class="office-title-h3" onclick="window.movePointerToPinByCity('Calabria')">
+                                        <h3 id="h3-text__map-pin-calabria" class="office-title-h3"
+                                            onclick="window.movePointerToPinByCity('Calabria')">
                                             Calabria
                                         </h3>
                                     </div>
@@ -130,14 +138,131 @@
                 </div>
             </div>
 
-            <div class="section-padded-content section-2-contacts">
-                <h1 style="padding: 200px">Lavora con noi</h1>
-            </div>
+            <style>
+                .section-2-contacts {
+                    background: #F39409;
+                }
 
-            <div class="section-padded-content">
-                <h1 style="padding: 200px">Informazioni</h1>
+                .section-2-contacts-row-container {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: flex-start;
+                    height: 100%;
+                    gap: 50px;
+                }
+
+                .section-2-contacts-left-column {
+                    box-sizing: border-box;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    align-items: space-between;
+                    height: 100%;
+                    padding: 100px 0;
+                    border: 1px dashed #00000020;
+                    flex: 2;
+                }
+
+                .section-2-contacts-right-column {
+                    border: 1px dashed #00000020;
+                    flex: 3;
+                }
+
+                .section-2-contacts-left-column-title {
+                    color: #fff;
+                    font-size: 2.4rem;
+                    font-family: 'Mundial Regular';
+                }
+
+                .section-2-contacts-left-column-caption {
+                    color: #fff;
+                    font-size: 1.4rem;
+                    line-height: 1.8rem;
+                    font-family: 'Mundial Thin';
+                }
+
+                .section-2-contacts-left-column-jds {
+                    color: #fff;
+                    font-size: 1.4rem;
+                    line-height: 1.8rem;
+                    font-family: 'Mundial Regular';
+                    text-transform: uppercase;
+                }
+            </style>
+
+            <div class="section-padded-content section-2-contacts">
+
+                <div class="section-2-contacts-row-container">
+                    <div class="section-2-contacts-left-column">
+                        <div class="section-2-contacts-left-column-title">
+                            Lavora con noi
+                        </div>
+
+                        <div class="section-2-contacts-left-column-caption">
+                            Ti piacerebbe lavorare con edge? Inviaci la tua candidatura spontaine o consulta le
+                            posizioni aperte
+                        </div>
+
+                        <div class="section-2-contacts-left-column-jds">
+                            Posizioni aperte
+                        </div>
+
+
+                    </div>
+
+                    <style>
+                        .section-2-contacts-form-container {
+                            display: grid;
+                            grid-template-columns: repeat(3, 1fr);
+                            gap: 10px;
+                            height: 100%;
+                        }
+
+                        .section-2-contacts-form-field {
+                            font-size: 1.2rem;
+                            border: none;
+                            box-sizing: border-box;
+                            border: 1px solid #ccc;
+                            padding: 10px;
+                            background: #E946A0;
+                            color: #fff;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            border-radius: 15px;
+                            font-family: 'Mundial Regular';
+                            min-height: 50px;
+                        }
+
+                        .span-1 {
+                            grid-column: span 1;
+                        }
+
+                        .span-2 {
+                            grid-column: span 2;
+                        }
+                    </style>
+
+                    <div class="section-2-contacts-right-column">
+                        <div class="section-2-contacts-form-container">
+                            <div class="section-2-contacts-form-field span-1">Nome</div>
+                            <div class="section-2-contacts-form-field span-1">Cognome</div>
+                            <div class="section-2-contacts-form-field span-1">CV</div>
+                            <div class="section-2-contacts-form-field span-2">example@mail.com</div>
+                            <div class="section-2-contacts-form-field span-1">INVIO</div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
+    </div>
+
+    <div class="section-padded-content">
+        <h1 style="padding: 200px">Informazioni</h1>
+    </div>
+    </div>
     </div>
 
     <script src="./assets/js/contacts/section-1-contacts.js"></script>
