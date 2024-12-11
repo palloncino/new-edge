@@ -184,6 +184,12 @@
                                 transition: all .5s;
                             }
 
+                            #legal-list-of-addresses {
+                                position: absolute;
+                                top: 0px;
+                                left: -800px;
+                            }
+
                             .section-1-contacts-operation-office-container {
                                 padding-top: 50px;
                                 position: relative;
@@ -230,11 +236,18 @@
 
                         <div class="section-1-contacts__column-left-content">
                             <div class="section-1-contacts-offices-container">
+
                                 <div class="section-1-contacts-legal-office-container">
                                     <h2 id="legal-office-title-h2" class="office-title-h2">Sede legale</h2>
                                     <div id="legal-list-of-cities-container">
                                         <h3 class="office-title-h3" onclick="window.movePointerToPinByCity('Milano')">
                                             Milano</h3>
+                                    </div>
+                                    <div id="legal-list-of-addresses">
+                                        <h3 class="office-title-h3" onclick="window.movePointerToPinByCity('Milano')">
+                                            Milano</h3>
+                                        <div>Lorem ipsum</div>
+                                        <div>+39 345678910</div>
                                     </div>
                                 </div>
                                 <div class="section-1-contacts-operation-office-container">
@@ -268,6 +281,7 @@
                                         </h3>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -555,26 +569,9 @@
 
             function showSelectedPinContent(pin) {
                 console.log({ pin })
-                // {
-                //     "id": "map-pin-mantova",
-                //     "city": "Mantova",
-                //     "originalX": 135,
-                //     "originalY": 120,
-                //     "pointerOffset": 40,
-                //     "pointerRotation": 225,
-                //     "sedeOperativa": {
-                //         "cityLabel": "Mantova",
-                //         "contacts": [
-                //             {
-                //                 "addressString": "",
-                //                 "email": "",
-                //                 "phone": "+39 345678910"
-                //             }
-                //         ]
-                //     }
-                // }
 
                 operationalList.style.top = '800px'
+
                 if (!pin.sedeLegale) {
                     legalList.style.top = '-800px'
                     legalList.style.top = '-800px'
@@ -585,6 +582,37 @@
                     legalList.style.top = '-800px'
                     legalList.style.top = '-800px'
                     legalH2.style.top = '-800px'
+                }
+            }
+
+            function section1ContactsUnselect() {
+                // LEGAL
+                legalH2.style.top = '0px'
+                legalList.style.top = '50px'
+                
+                // OPERATIONS
+                operationalList.style.top = '50px'
+
+                // BACK
+                backBtn.style.left = '-1200px';
+
+                // MAP
+                mapPointer.style.left = '1200px';
+                mapPointer.style.top = '0px';
+                mapPointer.style.transform = 'translate(-50%, -50%) rotate(-90deg) scale(1)';
+
+                if (activePinId) {
+                    const previousActivePin = document.getElementById(activePinId);
+                    if (previousActivePin) {
+                        previousActivePin.classList.remove('active');
+                    }
+                    activePinId = null;
+                }
+
+                // Remove selected pin content and show default view
+                if (selectedPinContent) {
+                    selectedPinContent.remove();
+                    selectedPinContent = null;
                 }
             }
 
@@ -650,37 +678,6 @@
                     }
                 });
             });
-
-            function section1ContactsUnselect() {
-                // Reset pointer off-screen
-
-                operationalList.style.top = '50px'
-
-                legalList.style.top = '50px'
-                legalH2.style.top = '0px'
-
-                mapPointer.style.left = '1200px';
-                mapPointer.style.top = '0px';
-                mapPointer.style.transform = 'translate(-50%, -50%) rotate(-90deg) scale(1)';
-
-                // Hide the back button
-                backBtn.style.left = '-1200px';
-
-                // Remove active class from the currently active pin, if any
-                if (activePinId) {
-                    const previousActivePin = document.getElementById(activePinId);
-                    if (previousActivePin) {
-                        previousActivePin.classList.remove('active');
-                    }
-                    activePinId = null;
-                }
-
-                // Remove selected pin content and show default view
-                if (selectedPinContent) {
-                    selectedPinContent.remove();
-                    selectedPinContent = null;
-                }
-            }
 
             // Make the deselect function global as well
             window.section1ContactsUnselect = section1ContactsUnselect;
