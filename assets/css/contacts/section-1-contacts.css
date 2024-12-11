@@ -1,0 +1,214 @@
+.section-1-contacts__row-container {
+    position: relative;
+    height: 100%;
+    display: flex;
+    gap: 4rem;
+}
+
+.section-1-contacts__column-left-container {
+    box-sizing: border-box;
+    padding-top: 100px;
+    border: 1px dashed #00000020;
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.section-1-contacts__column-left-content {
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.section-1-contacts__column-right-container {
+    box-sizing: border-box;
+    border: 1px dashed #00000020;
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+}
+
+.section-1-contacts__map-container {
+    box-sizing: border-box;
+    border: 1px dashed #00000020;
+    background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/italia-arancione.svg') no-repeat center center;
+    background-size: contain;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.map-pin {
+    position: absolute;
+    height: 16px;
+    width: 16px;
+    background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/plus-button-fff.svg') no-repeat center center;
+    background-size: contain;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.map-pin:hover {
+    transform: scale(1.2);
+}
+
+.map-pin::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/plus-button-e846a0.svg') no-repeat center center;
+    background-size: contain;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.map-pin.active::after {
+    opacity: 1;
+}
+
+#map-pointer {
+    position: absolute;
+    left: 1200px;
+    top: 0px;
+    width: 100px;
+    height: 62px;
+    background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-2-pink.svg') no-repeat center center;
+    background-size: contain;
+    transform-origin: center;
+    transform: translate(-50%, -50%) rotate(-90deg) scale(1);
+    transition: transform 0.5s ease, top 0.5s ease, left 0.5s ease;
+    z-index: 10;
+}
+
+#section-1-contacts__back-btn {
+    position: absolute;
+    bottom: 0;
+    left: -1200px;
+    transition: left 0.5s ease;
+    z-index: 300;
+}
+
+#selected-pin-content {
+    position: absolute;
+    left: -1200px;
+    top: 0;
+    transition: left 0.5s ease;
+    width: 100%;
+}
+
+#default-contact-view {
+    position: relative;
+}
+
+.section-1-contacts-offices-container {
+    position: relative;
+    box-sizing: border-box;
+    /* padding-top: 40px; */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 50px;
+    height: 100%;
+    transition: all .5s;
+}
+
+.section-1-contacts-legal-office-container {
+    position: relative;
+    padding-top: 50px;
+    width: 100%;
+}
+
+#legal-office-title-h2 {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    border: 1px dashed #00000020;
+    transition: all .5s;
+}
+
+#legal-list-of-cities-container {
+    position: absolute;
+    top: 50px;
+    border: 1px dashed #00000020;
+    transition: all .5s;
+}
+
+#legal-list-of-addresses {
+    position: absolute;
+    top: 80px;
+    left: -800px;
+    transition: all .5s;
+}
+
+.section-1-contacts-operation-office-container {
+    padding-top: 50px;
+    position: relative;
+    width: 100%;
+}
+
+#operation-office-title-h2 {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    border: 1px dashed #00000020;
+    transition: all .5s;
+}
+
+#operation-list-of-cities-container {
+    position: absolute;
+    top: 50px;
+    left: 0px;
+    border: 1px dashed #00000020;
+    transition: all .5s;
+}
+
+#operation-list-of-addresses {
+    position: absolute;
+    top: 50px;
+    left: -800px;
+    transition: all .5s;
+}
+
+.MundialRegular {
+    font-family: 'Mundial regular'!important;
+}
+
+.office-title-h2 {
+    font-size: 1.8rem;
+    font-family: 'Mundial regular';
+    margin: 0 0 1rem 0;
+}
+
+.office-title-h3 {
+    font-family: 'Mundial Thin';
+    text-transform: uppercase;
+    cursor: pointer;
+    margin: 0 0 1rem 0;
+    width: auto;
+}
+
+.office-title-h3:last-child {
+    margin-bottom: 0;
+}
+
+.address-text-line-container {
+    margin: 0 0 1rem 0;
+}
+
+.address-text-line-container:last-child {
+    margin-bottom: 0;
+}
+
+.address-text-line {
+    font-family: 'Mundial thin';
+    margin: 0 0 .4rem 0;
+}
+
+.address-text-line:last-child {
+    margin-bottom: 0;
+}
