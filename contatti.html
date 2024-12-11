@@ -156,9 +156,10 @@
                                 flex-direction: column;
                                 align-items: flex-start;
                                 justify-content: flex-start;
-                                gap: 4rem;
+                                gap: 50px;
                                 background: #00000010;
                                 height: 100%;
+                                transition: all .5s;
                             }
 
                             .section-1-contacts-legal-office-container {
@@ -186,8 +187,9 @@
 
                             #legal-list-of-addresses {
                                 position: absolute;
-                                top: 0px;
+                                top: 80px;
                                 left: -800px;
+                                transition: all .5s;
                             }
 
                             .section-1-contacts-operation-office-container {
@@ -214,6 +216,13 @@
                                 transition: all .5s;
                             }
 
+                            #operation-list-of-addresses {
+                                position: absolute;
+                                top: 50px;
+                                left: -800px;
+                                transition: all .5s;
+                            }
+
                             .office-title-h2 {
                                 font-size: 1.8rem;
                                 font-family: 'Mundial regular';
@@ -232,6 +241,23 @@
                             .office-title-h3:last-child {
                                 margin-bottom: 0;
                             }
+
+                            .address-text-line-container {
+                                margin: 0 0 1rem 0;
+                            }
+
+                            .address-text-line-container:last-child {
+                                margin-bottom: 0;
+                            }
+
+                            .address-text-line {
+                                font-family: 'Mundial thin';
+                                margin: 0 0 .4rem 0;
+                            }
+
+                            .address-text-line:last-child {
+                                margin-bottom: 0;
+                            }
                         </style>
 
                         <div class="section-1-contacts__column-left-content">
@@ -240,20 +266,32 @@
                                 <div class="section-1-contacts-legal-office-container">
                                     <h2 id="legal-office-title-h2" class="office-title-h2">Sede legale</h2>
                                     <div id="legal-list-of-cities-container">
-                                        <h3 class="office-title-h3" onclick="window.movePointerToPinByCity('Milano')">
+                                        <h3 id="legal-office-title-h3" class="office-title-h3" onclick="window.movePointerToPinByCity('Milano')">
                                             Milano</h3>
                                     </div>
                                     <div id="legal-list-of-addresses">
-                                        <h3 class="office-title-h3" onclick="window.movePointerToPinByCity('Milano')">
-                                            Milano</h3>
-                                        <div>Lorem ipsum</div>
-                                        <div>+39 345678910</div>
+                                        <div class="address-text-line">dynamic-value</div>
+                                        <div class="address-text-line">+39 345678910 (dynamic-value)</div>
                                     </div>
                                 </div>
+
                                 <div class="section-1-contacts-operation-office-container">
+
+                                    <div id="operation-list-of-addresses">
+                                        <h3 id="operation-office-title-h3" class="office-title-h3" onclick="window.movePointerToPinByCity('Milano')">
+                                            City dynamic-value</h3>
+                                        <div class="address-text-line-container">
+                                            <div class="address-text-line">dynamic-value</div>
+                                            <div class="address-text-line">+39 345678910 (dynamic-value)</div>
+                                        </div>
+
+                                        <div class="address-text-line-container">
+                                            <div class="address-text-line">dynamic-value 2</div>
+                                            <div class="address-text-line">+39 345678912 (dynamic-value)</div>
+                                        </div>
+                                    </div>
                                     <h2 id="operation-office-title-h2" class="office-title-h2">Sedi operative</h2>
                                     <div id="operation-list-of-cities-container">
-
                                         <h3 class="office-title-h3" onclick="window.movePointerToPinByCity('Milano')">
                                             Milano
                                         </h3>
@@ -280,8 +318,8 @@
                                             Calabria
                                         </h3>
                                     </div>
+                                    
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -322,15 +360,22 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const mapContainer = document.querySelector('.section-1-contacts__map-container');
-            const mapPointer = document.getElementById('map-pointer');
-            const backBtn = document.getElementById('section-1-contacts__back-btn');
+            const legalH2 = document.getElementById('legal-office-title-h2')
+            const legalH3 = document.getElementById('legal-office-title-h3')
+            const legalList = document.getElementById('legal-list-of-cities-container');
+            const legalAddresses = document.getElementById('legal-list-of-addresses')
 
             const operationH2 = document.getElementById('operation-office-title-h2')
-            const legalH2 = document.getElementById('legal-office-title-h2')
-
+            const operationH3 = document.getElementById('operation-office-title-h3')
             const operationalList = document.getElementById('operation-list-of-cities-container');
-            const legalList = document.getElementById('legal-list-of-cities-container');
+            const operationAddresses = document.getElementById('operation-list-of-addresses')
+
+            const backBtn = document.getElementById('section-1-contacts__back-btn');
+
+            const mapContainer = document.querySelector('.section-1-contacts__map-container');
+            const mapPointer = document.getElementById('map-pointer');
+            
+            const textsContainers = document.querySelector('.section-1-contacts-offices-container');
 
             let selectedPinContent = null;
 
@@ -576,22 +621,38 @@
                     legalList.style.top = '-800px'
                     legalList.style.top = '-800px'
                     legalH2.style.top = '-800px'
+                    textsContainers.style.gap = '0px'
+                } else {
+                    legalH3.style.fontFamily = 'Mundial Regular'
+                    legalAddresses.style.left = '0px'
+                    textsContainers.style.gap = '100px'
                 }
 
                 if (!pin.sedeOperativa) {
                     legalList.style.top = '-800px'
                     legalList.style.top = '-800px'
                     legalH2.style.top = '-800px'
+                } else {
+                    operationH3.style.fontFamily = 'Mundial Regular'
+                    operationAddresses.style.left = '0px'
                 }
             }
 
             function section1ContactsUnselect() {
+
+                textsContainers.style.gap = '50px'
+            
+                
+                legalH3.style.fontFamily = 'Mundial Regular'
+                legalAddresses.style.left = '-800px'
+
                 // LEGAL
                 legalH2.style.top = '0px'
                 legalList.style.top = '50px'
-                
+
                 // OPERATIONS
                 operationalList.style.top = '50px'
+                operationAddresses.style.left = '-800px'
 
                 // BACK
                 backBtn.style.left = '-1200px';
