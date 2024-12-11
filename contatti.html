@@ -144,7 +144,7 @@
                 <div class="section-1-contacts__row-container">
                     <div class="section-1-contacts__column-left-container">
                         <div id="section-1-contacts__back-btn" class="btn btn-F69701 color-FFF"
-                            onclick="section1AboutUsUnselect()" data-meta-label="true">Back
+                            onclick="section1ContactsUnselect()" data-meta-label="true">Back
                         </div>
 
                         <style>
@@ -174,12 +174,14 @@
                                 width: 100%;
                                 background: #940a0a10;
                                 border: 1px dashed red;
+                                transition: all .5s;
                             }
 
                             #legal-list-of-cities-container {
                                 position: absolute;
                                 top: 50px;
                                 border: 1px dashed red;
+                                transition: all .5s;
                             }
 
                             .section-1-contacts-operation-office-container {
@@ -195,6 +197,7 @@
                                 width: 100%;
                                 background: #08760610;
                                 border: 1px dashed rgb(17, 122, 12);
+                                transition: all .5s;
                             }
 
                             #operation-list-of-cities-container {
@@ -202,6 +205,7 @@
                                 top: 50px;
                                 background: #2e750a10;
                                 border: 1px dashed rgb(17, 122, 12);
+                                transition: all .5s;
                             }
 
                             .office-title-h2 {
@@ -229,7 +233,8 @@
                                 <div class="section-1-contacts-legal-office-container">
                                     <h2 id="legal-office-title-h2" class="office-title-h2">Sede legale</h2>
                                     <div id="legal-list-of-cities-container">
-                                        <h3 class="office-title-h3" onclick="window.movePointerToPinByCity('Milano')">Milano</h3>
+                                        <h3 class="office-title-h3" onclick="window.movePointerToPinByCity('Milano')">
+                                            Milano</h3>
                                     </div>
                                 </div>
                                 <div class="section-1-contacts-operation-office-container">
@@ -242,7 +247,8 @@
                                         <h3 class="office-title-h3" onclick="window.movePointerToPinByCity('Torino')">
                                             Torino
                                         </h3>
-                                        <h3 class="office-title-h3" onclick="window.movePointerToPinByCity('Casale Monferrato')">
+                                        <h3 class="office-title-h3"
+                                            onclick="window.movePointerToPinByCity('Casale Monferrato')">
                                             Casale Monferrato
                                         </h3>
                                         <h3 class="office-title-h3" onclick="window.movePointerToPinByCity('Mantova')">
@@ -305,7 +311,14 @@
             const mapContainer = document.querySelector('.section-1-contacts__map-container');
             const mapPointer = document.getElementById('map-pointer');
             const backBtn = document.getElementById('section-1-contacts__back-btn');
-            let selectedPinContent = null; // Will hold the reference to dynamically created content
+
+            const operationH2 = document.getElementById('operation-office-title-h2')
+            const legalH2 = document.getElementById('legal-office-title-h2')
+
+            const operationalList = document.getElementById('operation-list-of-cities-container');
+            const legalList = document.getElementById('legal-list-of-cities-container');
+
+            let selectedPinContent = null;
 
             const originalMapSize = { width: 415, height: 543 };
             const pointerAspectRatio = 0.62;
@@ -541,7 +554,38 @@
             }
 
             function showSelectedPinContent(pin) {
-                console.log(1)
+                console.log({ pin })
+                // {
+                //     "id": "map-pin-mantova",
+                //     "city": "Mantova",
+                //     "originalX": 135,
+                //     "originalY": 120,
+                //     "pointerOffset": 40,
+                //     "pointerRotation": 225,
+                //     "sedeOperativa": {
+                //         "cityLabel": "Mantova",
+                //         "contacts": [
+                //             {
+                //                 "addressString": "",
+                //                 "email": "",
+                //                 "phone": "+39 345678910"
+                //             }
+                //         ]
+                //     }
+                // }
+
+                operationalList.style.top = '800px'
+                if (!pin.sedeLegale) {
+                    legalList.style.top = '-800px'
+                    legalList.style.top = '-800px'
+                    legalH2.style.top = '-800px'
+                }
+
+                if (!pin.sedeOperativa) {
+                    legalList.style.top = '-800px'
+                    legalList.style.top = '-800px'
+                    legalH2.style.top = '-800px'
+                }
             }
 
             function movePointerToPin(pin) {
@@ -607,8 +651,14 @@
                 });
             });
 
-            function section1AboutUsUnselect() {
+            function section1ContactsUnselect() {
                 // Reset pointer off-screen
+
+                operationalList.style.top = '50px'
+
+                legalList.style.top = '50px'
+                legalH2.style.top = '0px'
+
                 mapPointer.style.left = '1200px';
                 mapPointer.style.top = '0px';
                 mapPointer.style.transform = 'translate(-50%, -50%) rotate(-90deg) scale(1)';
@@ -630,11 +680,10 @@
                     selectedPinContent.remove();
                     selectedPinContent = null;
                 }
-                defaultContactView.style.display = 'block';
             }
 
             // Make the deselect function global as well
-            window.section1AboutUsUnselect = section1AboutUsUnselect;
+            window.section1ContactsUnselect = section1ContactsUnselect;
 
             // Initial positioning of pins
             positionPins();
