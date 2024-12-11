@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -102,26 +103,6 @@
             z-index: 300;
         }
 
-        .section-1-contacts-legal-office-container,
-        .section-1-contacts-operation-office-container {
-            font-family: 'Mundial Thin';
-        }
-
-        .section-1-contacts-legal-office-container h2,
-        .section-1-contacts-operation-office-container h2,
-        .section-1-contacts-legal-office-container h3,
-        .section-1-contacts-operation-office-container h3 {
-            font-family: 'Mundial Regular';
-            margin: 0 0 1rem 0;
-        }
-
-        .section-1-contacts-legal-office-container h3,
-        .section-1-contacts-operation-office-container h3 {
-            font-family: 'Mundial Thin';
-            text-transform: uppercase;
-            cursor: pointer;
-        }
-
         #selected-pin-content {
             position: absolute;
             left: -1200px;
@@ -165,21 +146,123 @@
                         <div id="section-1-contacts__back-btn" class="btn btn-F69701 color-FFF"
                             onclick="section1AboutUsUnselect()" data-meta-label="true">Back
                         </div>
+
+                        <style>
+                            .section-1-contacts-offices-container {
+                                position: relative;
+                                box-sizing: border-box;
+                                /* padding-top: 40px; */
+                                display: flex;
+                                flex-direction: column;
+                                align-items: flex-start;
+                                justify-content: flex-start;
+                                gap: 4rem;
+                                background: #00000010;
+                                height: 100%;
+                            }
+
+                            .section-1-contacts-legal-office-container {
+                                position: relative;
+                                padding-top: 50px;
+                                width: 100%;
+                                background: #ff000010;
+                            }
+
+                            #legal-office-title-h2 {
+                                position: absolute;
+                                top: 0px;
+                                width: 100%;
+                                background: #940a0a10;
+                                border: 1px dashed red;
+                            }
+
+                            #legal-list-of-cities-container {
+                                position: absolute;
+                                top: 50px;
+                                border: 1px dashed red;
+                            }
+
+                            .section-1-contacts-operation-office-container {
+                                padding-top: 50px;
+                                position: relative;
+                                width: 100%;
+                                background: #00000010;
+                            }
+
+                            #operation-office-title-h2 {
+                                position: absolute;
+                                top: 0px;
+                                width: 100%;
+                                background: #08760610;
+                                border: 1px dashed rgb(17, 122, 12);
+                            }
+
+                            #operation-list-of-cities-container {
+                                position: absolute;
+                                top: 50px;
+                                background: #2e750a10;
+                                border: 1px dashed rgb(17, 122, 12);
+                            }
+
+                            .office-title-h2 {
+                                font-size: 1.8rem;
+                                font-family: 'Mundial regular';
+                                margin: 0 0 1rem 0;
+                            }
+
+                            .office-title-h3 {
+                                font-family: 'Mundial Thin';
+                                text-transform: uppercase;
+                                cursor: pointer;
+                                margin: 0 0 1rem 0;
+                                width: auto;
+                                background: #00000010;
+                            }
+
+                            .office-title-h3:last-child {
+                                margin-bottom: 0;
+                            }
+                        </style>
+
                         <div class="section-1-contacts__column-left-content">
-                            <div id="default-contact-view">
-                                <!-- Default view (no pin selected) -->
+                            <div class="section-1-contacts-offices-container">
                                 <div class="section-1-contacts-legal-office-container">
-                                    <h2>Sede legale</h2>
-                                    <h3>Milano</h3>
+                                    <h2 id="legal-office-title-h2" class="office-title-h2">Sede legale</h2>
+                                    <div id="legal-list-of-cities-container">
+                                        <h3 class="office-title-h3" onclick="window.movePointerToPinByCity('Milano')">Milano</h3>
+                                    </div>
                                 </div>
                                 <div class="section-1-contacts-operation-office-container">
-                                    <h2>Sedi operative</h2>
-                                    <h3 onclick="window.movePointerToPinByCity('Milano')">Milano</h3>
-                                    <h3 onclick="window.movePointerToPinByCity('Verona')">Verona</h3>
-                                    <h3 onclick="window.movePointerToPinByCity('Casale Monferrato')">Casale monferrato</h3>
+                                    <h2 id="operation-office-title-h2" class="office-title-h2">Sedi operative</h2>
+                                    <div id="operation-list-of-cities-container">
+
+                                        <h3 class="office-title-h3" onclick="window.movePointerToPinByCity('Milano')">
+                                            Milano
+                                        </h3>
+                                        <h3 class="office-title-h3" onclick="window.movePointerToPinByCity('Torino')">
+                                            Torino
+                                        </h3>
+                                        <h3 class="office-title-h3" onclick="window.movePointerToPinByCity('Casale Monferrato')">
+                                            Casale Monferrato
+                                        </h3>
+                                        <h3 class="office-title-h3" onclick="window.movePointerToPinByCity('Mantova')">
+                                            Mantova
+                                        </h3>
+                                        <h3 class="office-title-h3" onclick="window.movePointerToPinByCity('Verona')">
+                                            Verona
+                                        </h3>
+                                        <h3 class="office-title-h3" onclick="window.movePointerToPinByCity('Ferrara')">
+                                            Ferrara
+                                        </h3>
+                                        <h3 class="office-title-h3" onclick="window.movePointerToPinByCity('Padova')">
+                                            Padova
+                                        </h3>
+                                        <h3 class="office-title-h3" onclick="window.movePointerToPinByCity('Calabria')">
+                                            Calabria
+                                        </h3>
+                                    </div>
                                 </div>
                             </div>
-                            <!-- Dynamically inserted content goes here when a pin is selected -->
                         </div>
                     </div>
 
@@ -222,7 +305,6 @@
             const mapContainer = document.querySelector('.section-1-contacts__map-container');
             const mapPointer = document.getElementById('map-pointer');
             const backBtn = document.getElementById('section-1-contacts__back-btn');
-            const defaultContactView = document.getElementById('default-contact-view');
             let selectedPinContent = null; // Will hold the reference to dynamically created content
 
             const originalMapSize = { width: 415, height: 543 };
@@ -459,24 +541,7 @@
             }
 
             function showSelectedPinContent(pin) {
-                // Hide default view
-                defaultContactView.style.display = 'none';
-
-                // If there's already a selected pin content, remove it first
-                if (selectedPinContent) {
-                    selectedPinContent.remove();
-                    selectedPinContent = null;
-                }
-
-                selectedPinContent = createSelectedPinContent(pin);
-                const columnContent = document.querySelector('.section-1-contacts__column-left-content');
-                columnContent.appendChild(selectedPinContent);
-
-                // Force a reflow to allow transition to run
-                void selectedPinContent.offsetWidth;
-
-                // Slide in the content
-                selectedPinContent.style.left = '0';
+                console.log(1)
             }
 
             function movePointerToPin(pin) {
@@ -587,4 +652,5 @@
     </script>
 
 </body>
+
 </html>
