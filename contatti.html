@@ -21,12 +21,14 @@
             border: 4px dashed rgba(64, 0, 255, 0.254);
             height: 100%;
             width: 100%;
+            position: relative;
         }
 
         .section-1-contacts__column-left-content {
             box-sizing: border-box;
             height: 100%;
             width: 100%;
+            position: relative;
         }
 
         .section-1-contacts__column-right-container {
@@ -96,6 +98,8 @@
             position: absolute;
             bottom: 0;
             left: -1200px;
+            transition: left 0.5s ease;
+            z-index: 300;
         }
 
         .section-1-contacts-legal-office-container,
@@ -103,10 +107,10 @@
             font-family: 'Mundial Thin';
         }
 
+        .section-1-contacts-legal-office-container h2,
+        .section-1-contacts-operation-office-container h2,
         .section-1-contacts-legal-office-container h3,
-        h2,
-        .section-1-contacts-operation-office-container h3,
-        h2 {
+        .section-1-contacts-operation-office-container h3 {
             font-family: 'Mundial Regular';
             margin: 0 0 1rem 0;
         }
@@ -114,11 +118,20 @@
         .section-1-contacts-legal-office-container h3,
         .section-1-contacts-operation-office-container h3 {
             font-family: 'Mundial Thin';
+            text-transform: uppercase;
+            cursor: pointer;
         }
 
-        .section-1-contacts-legal-office-container h3,
-        .section-1-contacts-operation-office-container h3 {
-            text-transform: uppercase;
+        #selected-pin-content {
+            position: absolute;
+            left: -1200px;
+            top: 0;
+            transition: left 0.5s ease;
+            width: 100%;
+        }
+
+        #default-contact-view {
+            position: relative;
         }
     </style>
 </head>
@@ -150,23 +163,23 @@
                 <div class="section-1-contacts__row-container">
                     <div class="section-1-contacts__column-left-container">
                         <div id="section-1-contacts__back-btn" class="btn btn-F69701 color-FFF"
-                            onclick="section1AboutUsUnselect()" data-meta-label="true">
-                            Back
+                            onclick="section1AboutUsUnselect()" data-meta-label="true">Back
                         </div>
                         <div class="section-1-contacts__column-left-content">
-                            <!-- Default view (no pin selected) -->
-                            <div class="section-1-contacts-legal-office-container">
-                                <h2>Sede legale</h2>
-                                <h3>Milano</h3>
+                            <div id="default-contact-view">
+                                <!-- Default view (no pin selected) -->
+                                <div class="section-1-contacts-legal-office-container">
+                                    <h2>Sede legale</h2>
+                                    <h3>Milano</h3>
+                                </div>
+                                <div class="section-1-contacts-operation-office-container">
+                                    <h2>Sedi operative</h2>
+                                    <h3 onclick="window.movePointerToPinByCity('Milano')">Milano</h3>
+                                    <h3 onclick="window.movePointerToPinByCity('Verona')">Verona</h3>
+                                    <h3 onclick="window.movePointerToPinByCity('Casale Monferrato')">Casale monferrato</h3>
+                                </div>
                             </div>
-                            <div class="section-1-contacts-operation-office-container">
-                                <h2>Sedi operative</h2>
-                                <!-- Example of calling movePointerToPin on click -->
-                                <h3 onclick="window.movePointerToPinByCity('Milano')">Milano</h3>
-                                <h3 onclick="window.movePointerToPinByCity('Verona')">Verona</h3>
-                                <h3 onclick="window.movePointerToPinByCity('Casale Monferrato')">Casale monferrato</h3>
-                                <!-- etc... -->
-                            </div>
+                            <!-- Dynamically inserted content goes here when a pin is selected -->
                         </div>
                     </div>
 
@@ -209,6 +222,8 @@
             const mapContainer = document.querySelector('.section-1-contacts__map-container');
             const mapPointer = document.getElementById('map-pointer');
             const backBtn = document.getElementById('section-1-contacts__back-btn');
+            const defaultContactView = document.getElementById('default-contact-view');
+            let selectedPinContent = null; // Will hold the reference to dynamically created content
 
             const originalMapSize = { width: 415, height: 543 };
             const pointerAspectRatio = 0.62;
@@ -220,7 +235,27 @@
                     originalX: 87,
                     originalY: 95,
                     pointerOffset: 30,
-                    pointerRotation: 180
+                    pointerRotation: 180,
+                    sedeLegale: {
+                        cityLabel: "Milano",
+                        contacts: [
+                            {
+                                addressString: "Via Example 10, 20100 Milano",
+                                email: "milano@edge.com",
+                                phone: "+39 345678910"
+                            }
+                        ]
+                    },
+                    sedeOperativa: {
+                        cityLabel: "Milano",
+                        contacts: [
+                            {
+                                addressString: "Via Operativa 20, 20100 Milano",
+                                email: "operativa.milano@edge.com",
+                                phone: "+39 3472994421"
+                            }
+                        ]
+                    }
                 },
                 {
                     id: 'map-pin-tourin',
@@ -228,7 +263,22 @@
                     originalX: 47,
                     originalY: 95,
                     pointerOffset: 40,
-                    pointerRotation: 135
+                    pointerRotation: 135,
+                    sedeOperativa: {
+                        cityLabel: "Torino",
+                        contacts: [
+                            {
+                                addressString: "Piazza Tancredi Galimberti 18 - 10134 Torino",
+                                email: "",
+                                phone: "+39 3472994421"
+                            },
+                            {
+                                addressString: "Corso Vittorio Emanuele II 162 - 10138 Torino",
+                                email: "",
+                                phone: "+39 3477492818"
+                            }
+                        ]
+                    }
                 },
                 {
                     id: 'map-pin-casale',
@@ -236,7 +286,17 @@
                     originalX: 70,
                     originalY: 118,
                     pointerOffset: 50,
-                    pointerRotation: 45
+                    pointerRotation: 45,
+                    sedeOperativa: {
+                        cityLabel: "Casale Monferrato",
+                        contacts: [
+                            {
+                                addressString: "Corso Vittorio Emanuele II 162 - 10138 Torino",
+                                email: "",
+                                phone: "+39 345678910"
+                            }
+                        ]
+                    }
                 },
                 {
                     id: 'map-pin-mantova',
@@ -244,7 +304,17 @@
                     originalX: 135,
                     originalY: 120,
                     pointerOffset: 40,
-                    pointerRotation: 225
+                    pointerRotation: 225,
+                    sedeOperativa: {
+                        cityLabel: "Mantova",
+                        contacts: [
+                            {
+                                addressString: "",
+                                email: "",
+                                phone: "+39 345678910"
+                            }
+                        ]
+                    }
                 },
                 {
                     id: 'map-pin-verona',
@@ -252,7 +322,17 @@
                     originalX: 135,
                     originalY: 80,
                     pointerOffset: 30,
-                    pointerRotation: 135
+                    pointerRotation: 135,
+                    sedeOperativa: {
+                        cityLabel: "Verona",
+                        contacts: [
+                            {
+                                addressString: "Via del Perlar 37/b – 37135 Verona",
+                                email: "",
+                                phone: "+39 345678910"
+                            }
+                        ]
+                    }
                 },
                 {
                     id: 'map-pin-ferrara',
@@ -260,7 +340,17 @@
                     originalX: 165,
                     originalY: 140,
                     pointerOffset: 60,
-                    pointerRotation: 90
+                    pointerRotation: 90,
+                    sedeOperativa: {
+                        cityLabel: "Ferrara",
+                        contacts: [
+                            {
+                                addressString: "Via Annibale Zucchini, 57/F – 44122 Ferrara",
+                                email: "",
+                                phone: "+39 345678910"
+                            }
+                        ]
+                    }
                 },
                 {
                     id: 'map-pin-padova',
@@ -268,7 +358,17 @@
                     originalX: 165,
                     originalY: 100,
                     pointerOffset: 50,
-                    pointerRotation: 0
+                    pointerRotation: 0,
+                    sedeOperativa: {
+                        cityLabel: "Padova",
+                        contacts: [
+                            {
+                                addressString: "",
+                                email: "",
+                                phone: "+39 345678910"
+                            }
+                        ]
+                    }
                 },
                 {
                     id: 'map-pin-calabria',
@@ -276,7 +376,17 @@
                     originalX: 340,
                     originalY: 440,
                     pointerOffset: 40,
-                    pointerRotation: 270
+                    pointerRotation: 270,
+                    sedeOperativa: {
+                        cityLabel: "Reggio Calabria",
+                        contacts: [
+                            {
+                                addressString: "Vico S'Anna di Sbarre Inferiori – 89132 Reggio Calabria",
+                                email: "",
+                                phone: "+39 345678910"
+                            }
+                        ]
+                    }
                 }
             ];
 
@@ -311,6 +421,64 @@
                 });
             }
 
+            function createSelectedPinContent(pin) {
+                // Create a container
+                const container = document.createElement('div');
+                container.id = 'selected-pin-content';
+
+                let html = '';
+
+                // Sede Legale
+                if (pin.sedeLegale) {
+                    html += `<div class="section-1-contacts-legal-office-container">
+                                <h2>Sede legale</h2>
+                                <h3>${pin.sedeLegale.cityLabel}</h3>`;
+                    pin.sedeLegale.contacts.forEach(contact => {
+                        if (contact.addressString) html += `<p>${contact.addressString}</p>`;
+                        if (contact.email) html += `<p>${contact.email}</p>`;
+                        if (contact.phone) html += `<p>${contact.phone}</p>`;
+                    });
+                    html += `</div>`;
+                }
+
+                // Sede Operativa
+                if (pin.sedeOperativa) {
+                    html += `<div class="section-1-contacts-operation-office-container">
+                                <h2>Sedi operative</h2>
+                                <h3>${pin.sedeOperativa.cityLabel}</h3>`;
+                    pin.sedeOperativa.contacts.forEach(contact => {
+                        if (contact.addressString) html += `<p>${contact.addressString}</p>`;
+                        if (contact.email) html += `<p>${contact.email}</p>`;
+                        if (contact.phone) html += `<p>${contact.phone}</p>`;
+                    });
+                    html += `</div>`;
+                }
+
+                container.innerHTML = html;
+                return container;
+            }
+
+            function showSelectedPinContent(pin) {
+                // Hide default view
+                defaultContactView.style.display = 'none';
+
+                // If there's already a selected pin content, remove it first
+                if (selectedPinContent) {
+                    selectedPinContent.remove();
+                    selectedPinContent = null;
+                }
+
+                selectedPinContent = createSelectedPinContent(pin);
+                const columnContent = document.querySelector('.section-1-contacts__column-left-content');
+                columnContent.appendChild(selectedPinContent);
+
+                // Force a reflow to allow transition to run
+                void selectedPinContent.offsetWidth;
+
+                // Slide in the content
+                selectedPinContent.style.left = '0';
+            }
+
             function movePointerToPin(pin) {
                 const pinElement = document.getElementById(pin.id);
                 const pinRect = pinElement.getBoundingClientRect();
@@ -342,6 +510,9 @@
 
                 // Show the back button
                 backBtn.style.left = '0';
+
+                // Show selected pin content in left column
+                showSelectedPinContent(pin);
             }
 
             // Make the function globally accessible
@@ -388,6 +559,13 @@
                     }
                     activePinId = null;
                 }
+
+                // Remove selected pin content and show default view
+                if (selectedPinContent) {
+                    selectedPinContent.remove();
+                    selectedPinContent = null;
+                }
+                defaultContactView.style.display = 'block';
             }
 
             // Make the deselect function global as well
