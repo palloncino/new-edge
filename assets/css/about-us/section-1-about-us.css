@@ -142,7 +142,7 @@
     :root {
         /* Base Offset */
         --base-offset: 100px;
-        --spacing: 300px;
+        --spacing: 340px;
         /* Half of 300px */
         --plus-offset: 110px;
         --title-offset: 26px;

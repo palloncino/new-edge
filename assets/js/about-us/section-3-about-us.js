@@ -124,12 +124,12 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    const PARAGRAPH_TOP = '310px';
     const PARAGRAPH_HIDDEN = '2000px';
-    const PARAGRAPH_LEFT = '470px';
+    const PARAGRAPH_TOP = window.innerWidth < 1100 ? '250px' : (window.innerWidth < 1441 ? '250px' : '310px');
+    const PARAGRAPH_LEFT = window.innerWidth < 1100 ? '250px' : (window.innerWidth < 1441 ? '300px' : '470px');
 
     const SELECTED_LINK_SHAPE_HEIGHT = '200px';
-    const SELECTED_LINK_SHAPE_WIDTH = '218px';
+    const SELECTED_LINK_SHAPE_WIDTH = window.innerWidth < 1441 ? '178px' : '218px';
     const SELECTED_LINK_SHAPE_TOP = '170px';
     const SELECTED_LINK_SHAPE_LEFT = '0';
     const SELECTED_LINK_SHAPE_BG_POSITION = 'center';
@@ -141,8 +141,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const SELECTED_LINK_TITLE_WIDTH = '600px';
     const SELECTED_LINK_TITLE_TOP = '170px';
     const SELECTED_LINK_TITLE_LEFT = PARAGRAPH_LEFT;
-    const SELECTED_LINK_TITLE_FONT_SIZE = '4rem';
-    const SELECTED_LINK_TITLE_LINE_HEIGHT = '4rem';
+    const SELECTED_LINK_TITLE_FONT_SIZE = window.innerWidth < 1441 ? '3rem' : '4rem';
+    const SELECTED_LINK_TITLE_LINE_HEIGHT = window.innerWidth < 1441 ? '3rem' : '4rem';
     const SELECTED_LINK_TITLE_FONT_WEIGHT = '700';
 
     const MOVING_LINK_SHAPE_WIDTH = '100px';

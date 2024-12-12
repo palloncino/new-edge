@@ -79,64 +79,64 @@
 
 /* Link 1 Styles */
 #section-3-about-us__link-1-shape {
-    top: 200px;
+    top: 10vh;
     left: 200px;
 }
 
 #section-3-about-us__link-1-plus {
-    top: 200px;
+    top: 10vh;
     left: calc(200px + 100px + 10px);
 }
 
 #section-3-about-us__link-1-title {
-    top: 200px;
+    top: 10vh;
     left: calc(200px + 100px + 10px + 16px + 10px);
 }
 
 /* Link 2 Styles */
 #section-3-about-us__link-2-shape {
-    top: calc(200px + 100px);
+    top: calc(10vh + 100px);
     left: 200px;
 }
 
 #section-3-about-us__link-2-plus {
-    top: calc(200px + 100px);
+    top: calc(10vh + 100px);
     left: calc(200px + 100px + 10px);
 }
 
 #section-3-about-us__link-2-title {
-    top: calc(200px + 100px);
+    top: calc(10vh + 100px);
     left: calc(200px + 100px + 10px + 16px + 10px);
 }
 
 /* Link 3 Styles */
 #section-3-about-us__link-3-shape {
-    top: calc(200px + 100px + 100px);
+    top: calc(10vh + 100px + 100px);
     left: 200px;
 }
 
 #section-3-about-us__link-3-plus {
-    top: calc(200px + 100px + 100px);
+    top: calc(10vh + 100px + 100px);
     left: calc(200px + 100px + 10px);
 }
 
 #section-3-about-us__link-3-title {
-    top: calc(200px + 100px + 100px);
+    top: calc(10vh + 100px + 100px);
     left: calc(200px + 100px + 10px + 16px + 10px);
 }
 
 /* Link 4 Styles */
 #section-3-about-us__link-4-shape {
-    top: calc(200px + 100px + 100px + 100px);
+    top: calc(10vh + 100px + 100px + 100px);
     left: 200px;
 }
 
 #section-3-about-us__link-4-plus {
-    top: calc(200px + 100px + 100px + 100px);
+    top: calc(10vh + 100px + 100px + 100px);
     left: calc(200px + 100px + 10px);
 }
 
 #section-3-about-us__link-4-title {
-    top: calc(200px + 100px + 100px + 100px);
+    top: calc(10vh + 100px + 100px + 100px);
     left: calc(200px + 100px + 10px + 16px + 10px);
 }
