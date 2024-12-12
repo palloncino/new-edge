@@ -337,7 +337,6 @@ document.addEventListener("DOMContentLoaded", () => {
             centralLogo.style.transition = "transform 1.5s";
 
             const circleRotationValue = () => {
-                console.log({ id });
                 switch (id) {
                     case 1:
                         return 0;
@@ -357,7 +356,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             const logoRotationValue = () => {
-                console.log({ id });
                 switch (id) {
                     case 1:
                         return -320;

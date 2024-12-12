@@ -12,7 +12,6 @@
 .section-1-contacts__column-left-container {
     box-sizing: border-box;
     padding-top: 100px;
-    border: 1px dashed #00000020;
     height: 100%;
     width: 100%;
     position: relative;
@@ -27,7 +26,6 @@
 
 .section-1-contacts__column-right-container {
     box-sizing: border-box;
-    border: 1px dashed #00000020;
     height: 100%;
     width: 100%;
     padding: 20px;
@@ -35,7 +33,6 @@
 
 .section-1-contacts__map-container {
     box-sizing: border-box;
-    border: 1px dashed #00000020;
     background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/italia-arancione.svg') no-repeat center center;
     background-size: contain;
     width: 100%;
@@ -131,14 +128,12 @@
     position: absolute;
     top: 0px;
     width: 100%;
-    border: 1px dashed #00000020;
     transition: all .5s;
 }
 
 #legal-list-of-cities-container {
     position: absolute;
     top: 50px;
-    border: 1px dashed #00000020;
     transition: all .5s;
 }
 
@@ -159,7 +154,6 @@
     position: absolute;
     top: 0px;
     width: 100%;
-    border: 1px dashed #00000020;
     transition: all .5s;
 }
 
@@ -167,7 +161,6 @@
     position: absolute;
     top: 50px;
     left: 0px;
-    border: 1px dashed #00000020;
     transition: all .5s;
 }
 

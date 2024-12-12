@@ -235,7 +235,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function resetExtraRotationCircleItem(id) {
         const circleItem = document.querySelector(`.circle-item-${id} .inner-container`);
-        console.log({ id, circleItem })
         if (circleItem) {
             circleItem.style.transition = "none";
             circleItem.style.transform = "rotate(275deg)";
@@ -246,7 +245,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function extraRotationCircleItem(id) {
         const circleItem = document.querySelector(`.circle-item-${id} .inner-container`);
-        console.log({ transition: circleItem.style.transition, transform: circleItem.style.transform })
         if (circleItem) {
             circleItem.style.transition = "transform 1.5s";
             circleItem.style.transform = "rotate(635deg)";
@@ -353,7 +351,6 @@ document.addEventListener("DOMContentLoaded", () => {
             centralLogo.style.transition = "transform 1.5s";
 
             const circleRotationValue = () => {
-                console.log({ id });
                 switch (id) {
                     case 4:
                         return -40;
@@ -373,7 +370,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             const logoRotationValue = () => {
-                console.log({ id });
                 switch (id) {
                     case 4:
                         return -320;

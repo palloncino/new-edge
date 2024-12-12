@@ -271,7 +271,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // Check if the animation should be skipped
     const skipAnimation = localStorage.getItem("introSeen");
     if (skipAnimation) {
-        console.log('Intro seen; skipping animation');
         window.location.href = "/";
         return;
     }
@@ -286,7 +285,6 @@ document.addEventListener("DOMContentLoaded", () => {
         // Set `introSeen` after the animation finishes and redirect to `/`
         const animationDuration = 12000;
         setTimeout(() => {
-            console.log('land-animation, redirecting to /');
             localStorage.setItem("introSeen", "true");
             window.location.href = "/";
         }, animationDuration);

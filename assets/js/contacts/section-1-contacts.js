@@ -252,7 +252,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function showSelectedPinContent(pin) {
-        console.log(pin);
         // Reset everything first
         textsContainers.style.gap = '50px';
         legalAddresses.style.left = '-800px';
