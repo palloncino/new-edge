@@ -142,7 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
         resetPositionInnerCircle();
         restoreFloatingLinksContainers();
         moveSelectedTitleCompoundLink(activeId, false)
-        resetExtraRotationCircleItem1();
+        resetExtraRotationCircleItems();
 
         // Reset any added classes or state variables
         document.body.classList.add('labels-initial-state');
@@ -164,10 +164,10 @@ document.addEventListener("DOMContentLoaded", () => {
         moveSelectedTitleCompoundLink(id, true);
 
         // Transform the inner circle for the selected item
-        rotateInnerCircleOnSelection();
+        rotateInnerCircleOnSelection(id);
 
         // Circle item one has a 360deg extra rotation
-        extraRotationCircleItem1()
+        extraRotationCircleItems()
 
         // Slide in the labels and back button
         slideBackBtn(true);
@@ -211,23 +211,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    function resetExtraRotationCircleItem1() {
-        const circleItem = document.querySelector('.circle-item-1 .inner-container');
-        if (circleItem) {
-            circleItem.style.transition = "none";
-            circleItem.style.transform = "rotate(180deg)";
-        } else {
-            console.warn("⚠️ circle-item-1 .inner-container not found.");
+    function resetExtraRotationCircleItems() {
+        for (let i = 1; i <= 11; i += 2) {
+            const circleItem = document.querySelector(`.circle-item-${i} .inner-container`);
+            if (circleItem) {
+                circleItem.style.transition = "transform 1.5s";
+                circleItem.style.transform = "rotate(180deg)";
+            } else {
+                console.warn(`⚠️ circle-item-${i} .inner-container not found.`);
+            }
         }
     }
 
-    function extraRotationCircleItem1() {
-        const circleItem = document.querySelector('.circle-item-1 .inner-container');
-        if (circleItem) {
-            circleItem.style.transition = "transform 1.5s";
-            circleItem.style.transform = "rotate(535deg)";
-        } else {
-            console.warn("⚠️ circle-item-1 .inner-container not found.");
+    function extraRotationCircleItems() {
+        for (let i = 1; i <= 11; i += 2) {
+            const circleItem = document.querySelector(`.circle-item-${i} .inner-container`);
+            if (circleItem) {
+                circleItem.style.transition = "transform 1.5s";
+                circleItem.style.transform = "rotate(535deg)";
+            } else {
+                console.warn(`⚠️ circle-item-${i} .inner-container not found.`);
+            }
         }
     }
 
@@ -326,15 +330,55 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    function rotateInnerCircleOnSelection() {
+    function rotateInnerCircleOnSelection(id) {
         if (circleInnerContainer) {
             // // Add a transition for smooth transformation
             circleInnerContainer.style.transition = "transform 1.5s";
             centralLogo.style.transition = "transform 1.5s";
 
+            const circleRotationValue = () => {
+                console.log({ id });
+                switch (id) {
+                    case 1:
+                        return 0;
+                    case 3:
+                        return -60;
+                    case 5:
+                        return -120;
+                    case 7:
+                        return -180;
+                    case 9:
+                        return 120;
+                    case 11:
+                        return 60;
+                    default:
+                        return 0;
+                }
+            }
+
+            const logoRotationValue = () => {
+                console.log({ id });
+                switch (id) {
+                    case 1:
+                        return -320;
+                    case 3:
+                        return -265;
+                    case 5:
+                        return -225;
+                    case 7:
+                        return -140;
+                    case 9:
+                        return -95;
+                    case 11:
+                        return -50;
+                    default:
+                        return 355;
+                }
+            }
+
             // // Apply the desired transformation
-            circleInnerContainer.style.transform = "translateX(-1070px) translateY(-175px) scale(3)";
-            centralLogo.style.transform = `translate(${(window.innerWidth / 2) + 400}px, -50%) rotate(0deg)`;
+            circleInnerContainer.style.transform = `translateX(-925px) translateY(-175px) scale(2.5) rotate(${circleRotationValue()}deg)`;
+            centralLogo.style.transform = `translate(${(window.innerWidth / 2) + 400}px, -50%) rotate(${logoRotationValue}deg)`;
         }
     }
 
