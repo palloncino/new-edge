@@ -206,7 +206,8 @@
                     font-size: 1.2rem;
                     border: none;
                     box-sizing: border-box;
-                    border: 1px solid #ccc;
+                    border: none;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
                     padding: 10px;
                     background: #E946A0;
                     color: #fff;
@@ -264,16 +265,21 @@
 
 
     <style>
+        .section-3-contacts {
+            overflow: hidden;
+        }
+
         .section-3-contacts-row-container {
+            box-sizing: border-box;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
             justify-content: center;
             margin-top: 50px;
-            height: calc(100% - 200px);
-            background: #00000010;
+            height: 100%;
             font-family: 'Mundial Regular';
         }
+
         .section-3-contacts-grid-contacts {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -299,8 +305,50 @@
                 max-width: 65%;
             }
         }
+
+        .section-3-contacts-lower-row-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            transform: translateX(20%);
+            gap: 20px;
+        }
+
+        /* write style here */
+        .shape--1 {
+            background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-3-orange.svg') no-repeat center center;
+            width: 200px;
+            height: 185px;
+        }
+
+        .shape--2 {
+            background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-3-pink.svg') no-repeat center center;
+            width: 200px;
+            height: 185px;
+        }
+
+        .shape--3 {
+            background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-3-orange.svg') no-repeat center center;
+            width: 200px;
+            height: 185px;
+        }
+
+        .shape--4 {
+            background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-3-pink.svg') no-repeat center center;
+            width: 200px;
+            height: 185px;
+        }
+
+        .shape--5 {
+            background: url('https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-3-orange.svg') no-repeat center center;
+            width: 200px;
+            height: 185px;
+        }
     </style>
-    <div class="section-padded-content" style="font-family: 'Mundial Regular';">
+
+    <div class="section-padded-content section-3-contacts" style="font-family: 'Mundial Regular';">
         <div class="section-3-contacts-row-container">
             <div class="section-3-contacts-heading-container">
                 <h1>Informazioni</h1>
@@ -353,6 +401,13 @@
                         edge-broker@pec.it
                     </div>
                 </div>
+            </div>
+            <div class="section-3-contacts-lower-row-container">
+                <div class="shape--1"></div>
+                <div class="shape--2"></div>
+                <div class="shape--3"></div>
+                <div class="shape--4"></div>
+                <div class="shape--5"></div>
             </div>
         </div>
     </div>
