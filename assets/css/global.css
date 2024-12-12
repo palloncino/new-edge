@@ -93,9 +93,9 @@ h6 {
 
 @media (max-width: 1441px) {
     .h1-xl {
-        font-size: 5.5rem;
-        line-height: 5.5rem;
-        max-width: 550px;
+        font-size: 6.5rem;
+        line-height: 7rem;
+        max-width: 600px;
     }
 
     .h1-m {

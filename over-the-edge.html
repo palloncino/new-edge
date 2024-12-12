@@ -45,16 +45,22 @@
             left: 470px;
         }
 
-        /* Common among links */
-        .section-1-over-the-edge__link-title,
-        .section-1-over-the-edge__link-plus,
         .section-1-over-the-edge__link-shape {
             position: absolute;
             top: -200px;
-            /* Start off-screen to avoid initial flash */
             transition: all 0.5s;
             z-index: 21;
         }
+
+        /* Common among links */
+        .section-1-over-the-edge__link-title,
+        .section-1-over-the-edge__link-plus {
+            position: absolute;
+            top: 1200px;
+            transition: all 0.5s;
+            z-index: 21;
+        }
+        
 
         .section-1-over-the-edge__link-title {
             border: 1px dashed rgba(17, 117, 75, 0.692);
@@ -77,9 +83,9 @@
 
         .section-1-over-the-edge__link-shape {
             border: 1px dashed rgba(255, 0, 0, 0.392);
-            width: 100px;
-            height: 60px;
-            transform: rotate(90deg);
+            width: 150px;
+            height: 90px;
+            transform: rotate(90deg) scale(.8);
         }
 
         #section-1-over-the-edge__link-1-shape {
@@ -304,8 +310,17 @@
         function animateLinksIntoPosition(i) {
             if (i >= TOTAL_LINKS) {
                 // All links placed
-                captureInitialStyles();
-                animationInProgress = false;
+                setTimeout(() => {
+                    links.forEach((link) => {
+                        if (link.shape) {
+                            const currentHeight = parseInt(link.shape.style.height) || 0;
+                            const currentWidth = parseInt(link.shape.style.width) || 0;
+                            link.shape.style.transform = `scale(1) rotate(450deg)`;
+                        }
+                    });
+                    captureInitialStyles();
+                    animationInProgress = false;
+                }, ANIMATION_DELAY);
                 return;
             }
 
@@ -316,7 +331,7 @@
                     link.shape.style.left = finalPositions[id].shape.left;
                     link.shape.style.top = finalPositions[id].shape.top;
                     // Rotate 450 deg instead of 360
-                    link.shape.style.transform = 'rotate(450deg)';
+                    link.shape.style.transform = 'rotate(450deg) scale(.8)';
                 }
                 if (link.plus) {
                     link.plus.style.left = finalPositions[id].plus.left;
@@ -408,7 +423,7 @@
                     const centerX = padding + spacing * i;
                     const shapeWidth = shape.offsetWidth;
                     const shapeHeight = shape.offsetHeight;
-                    const shapeNewTop = 100; // final shape top
+                    const shapeNewTop = 150; // final shape top
 
                     const shapeLeft = centerX - shapeWidth / 2;
                     shape.style.left = `${shapeLeft}px`;
@@ -421,7 +436,7 @@
                     const combinedLeft = centerX - combinedWidth / 2;
 
                     // Add 10px to the final top for plus and title
-                    const plusTop = shapeNewTop + shapeHeight + verticalSpacing + 10;
+                    const plusTop = shapeNewTop + shapeHeight + verticalSpacing + 40;
                     plus.style.left = `${combinedLeft}px`;
                     plus.style.top = `${plusTop}px`;
 
