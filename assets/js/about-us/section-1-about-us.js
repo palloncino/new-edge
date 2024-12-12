@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function section1AboutUsSelectLink(id) {
         if (mainTitle1) {
             mainTitle1.style.position = 'absolute';
-            mainTitle1.style.top = '200px';
+            mainTitle1.style.top = '230px';
             mainTitle1.style.left = '0';
             mainTitle1.style.fontSize = '2rem';
             mainTitle1.style.transition = 'top 0.5s, font-size 0.5s, left 0.5s';
