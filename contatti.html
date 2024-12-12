@@ -262,8 +262,99 @@
         </div>
     </div>
 
-    <div class="section-padded-content">
-        <h1 style="padding: 200px">Informazioni</h1>
+
+    <style>
+        .section-3-contacts-row-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            margin-top: 50px;
+            height: calc(100% - 200px);
+            background: #00000010;
+            font-family: 'Mundial Regular';
+        }
+        .section-3-contacts-grid-contacts {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            font-family: 'Mundial Regular';
+        }
+
+        .section-3-contacts-heading-container h1 {
+            font-size: 2.4rem;
+        }
+
+        .item-title {
+            line-height: 1.4rem;
+        }
+
+        .item-content-line {
+            font-family: 'Mundial Thin';
+            line-height: 1.4rem;
+        }
+
+        @media (min-width: 1100px) {
+            .section-3-contacts-grid-contacts {
+                max-width: 65%;
+            }
+        }
+    </style>
+    <div class="section-padded-content" style="font-family: 'Mundial Regular';">
+        <div class="section-3-contacts-row-container">
+            <div class="section-3-contacts-heading-container">
+                <h1>Informazioni</h1>
+            </div>
+            <div class="section-3-contacts-grid-contacts">
+                <div class="grid-item-container">
+                    <div class="item-title">
+                        Per temi amministrativi e contabili:
+                    </div>
+                    <div class="item-content-line">
+                        amministrazione@edge-broker.it
+                    </div>
+                    <div class="item-content-line">
+                        edge-broker@pec.it
+                    </div>
+                </div>
+                <div class="grid-item-container">
+                    <div class="item-title">
+                        Per temi legati alla gestione dei sinistri:
+                    </div>
+                    <div class="item-content-line">
+                        sinistri@edge-broker.it
+                    </div>
+                    <div class="item-content-line">
+                        sinistri.edge@pec.it
+                    </div>
+                </div>
+                <div class="grid-item-container">
+                    <div class="item-title">
+                        Per temi assuntivi, richieste di nuove coperture o modifiche di contratti in corso:
+                    </div>
+                    <div class="item-content-line">
+                        assunzione@edge-broker.it
+                    </div>
+                    <div class="item-content-line">
+                        assunzione.edge@pec.it
+                    </div>
+                </div>
+                <div class="grid-item-container">
+                    <div class="item-title">
+                        Per tutti gli altri temi:
+                    </div>
+                    <div class="item-content-line">
+                        +39 02 30568810
+                    </div>
+                    <div class="item-content-line">
+                        welcomeoffice@edge-broker.com
+                    </div>
+                    <div class="item-content-line">
+                        edge-broker@pec.it
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     </div>
     </div>
