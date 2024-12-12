@@ -150,7 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
         resetPositionInnerCircle();
         restoreFloatingLinksContainers();
         moveSelectedTitleCompoundLink(activeId, false)
-        resetExtraRotationCircleItem1();
+        resetExtraRotationCircleItem();
 
         // Reset any added classes or state variables
         document.body.classList.add('labels-initial-state');
@@ -174,15 +174,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Hide all other floating links except the selected one
         hideFloatingLinksContainers(id);
-        
+
         // Move the link and plus icon, with the container also
         moveSelectedTitleCompoundLink(id, true);
 
         // Transform the inner circle for the selected item
-        rotateInnerCircleOnSelection();
+        rotateInnerCircleOnSelection(id);
 
         // Circle item one has a 360deg extra rotation
-        extraRotationCircleItem1()
+        extraRotationCircleItem(id)
 
         // Slide in the labels and back button
         slideLateralLabels(0);
@@ -233,8 +233,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    function resetExtraRotationCircleItem1() {
-        const circleItem = document.querySelector('.circle-item-1 .inner-container');
+    function resetExtraRotationCircleItem(id) {
+        const circleItem = document.querySelector(`.circle-item-${id} .inner-container`);
+        console.log({ id, circleItem })
         if (circleItem) {
             circleItem.style.transition = "none";
             circleItem.style.transform = "rotate(275deg)";
@@ -243,9 +244,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    function extraRotationCircleItem1() {
-        const circleItem = document.querySelector('.circle-item-1 .inner-container');
-        console.log({transition:circleItem.style.transition, transform: circleItem.style.transform})
+    function extraRotationCircleItem(id) {
+        const circleItem = document.querySelector(`.circle-item-${id} .inner-container`);
+        console.log({ transition: circleItem.style.transition, transform: circleItem.style.transform })
         if (circleItem) {
             circleItem.style.transition = "transform 1.5s";
             circleItem.style.transform = "rotate(635deg)";
@@ -255,7 +256,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function moveSelectedTitleCompoundLink(id, slideIn) {
-        
+
         const selectedLinkContainer = document.getElementById(`floating-link-container--${id}`);
         const selectedLinkPlusIcon = document.getElementById(`section-1-what-we-do-floating-link-plus-icon--${id}`);
         const selectedLinkTitle = document.getElementById(`section-1-what-we-do-floating-link-text--${id}`);
@@ -300,7 +301,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             } else {
                 selectedLinkPlusIcon.style.visibility = 'visible'
-                
+
                 // Reset to normal size
                 selectedLinkTitle.style.position = "static";
                 selectedLinkTitle.style.fontSize = "1.4rem";
@@ -345,15 +346,55 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    function rotateInnerCircleOnSelection() {
+    function rotateInnerCircleOnSelection(id) {
         if (circleInnerContainer) {
-            // // Add a transition for smooth transformation
+            // Add a transition for smooth transformation
             circleInnerContainer.style.transition = "transform 1.5s";
             centralLogo.style.transition = "transform 1.5s";
 
-            // // Apply the desired transformation
-            circleInnerContainer.style.transform = "translateX(-1070px) translateY(-175px) scale(3) rotate(5deg)";
-            centralLogo.style.transform = "translate(-50%, -50%) rotate(-360deg)";
+            const circleRotationValue = () => {
+                console.log({ id });
+                switch (id) {
+                    case 4:
+                        return -40;
+                    case 7:
+                        return -85;
+                    case 10:
+                        return -130;
+                    case 16:
+                        return -220;
+                    case 19:
+                        return -265;
+                    case 22:
+                        return -310;
+                    default:
+                        return 5;
+                }
+            }
+
+            const logoRotationValue = () => {
+                console.log({ id });
+                switch (id) {
+                    case 4:
+                        return -320;
+                    case 7:
+                        return -265;
+                    case 10:
+                        return -225;
+                    case 16:
+                        return -140;
+                    case 19:
+                        return -95
+                    case 22:
+                        return -50;
+                    default:
+                        return 355;
+                }
+            }
+
+            // Apply the desired transformation
+            circleInnerContainer.style.transform = `translateX(-1070px) translateY(-175px) scale(3) rotate(${circleRotationValue()}deg)`;
+            centralLogo.style.transform = `translate(-50%, -50%) rotate(${logoRotationValue()}deg)`;
         }
     }
 
@@ -528,11 +569,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 resolve();
                 return;
             }
-    
+
             const orangeBackground = 'url("https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-3-orange.svg")';
             const lightBlueBackground = 'url("https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-3-lightblue.svg")';
             const defaultDelay = 200; // 200ms delay between each shape
-    
+
             // Special cases: Only adjust the inner-container for outward orientation
             const specialCases = {
                 1: 275,
@@ -544,17 +585,17 @@ document.addEventListener("DOMContentLoaded", () => {
                 19: 275,
                 22: 275,
             };
-    
+
             // Collect all circle items
             for (let i = 1; i <= 24; i++) {
                 const parentItem = document.querySelector(`.circle-item-${i}`);
                 const item = document.querySelector(`.circle-item-${i} .inner-container`);
-    
+
                 if (!parentItem || !item) {
                     console.warn(`⚠️ Circle item ${i} not found.`);
                     continue;
                 }
-    
+
                 const timeout = setTimeout(() => {
                     if (animationAborted) {
                         // Apply all pending style changes immediately
@@ -562,13 +603,13 @@ document.addEventListener("DOMContentLoaded", () => {
                         resolve();
                         return;
                     }
-    
+
                     applyStyleToCircleItem(i, item, specialCases, lightBlueBackground, orangeBackground);
                 }, i * defaultDelay); // Incremental delay
-    
+
                 activeTimeouts.push(timeout);
             }
-    
+
             // Wait for all animations to complete
             const finalTimeout = setTimeout(() => {
                 if (!animationAborted) {
@@ -584,10 +625,10 @@ document.addEventListener("DOMContentLoaded", () => {
             // Apply light blue background and outward rotation
             item.style.transition = "none";
             item.style.backgroundImage = lightBlueBackground;
-    
+
             // Apply outward rotation directly to the inner-container
             item.style.transform = `rotate(${specialCases[i]}deg)`;
-    
+
             // Move the floating link containers if necessary
             moveFloatingLinkContainer(i);
         } else {
@@ -596,20 +637,20 @@ document.addEventListener("DOMContentLoaded", () => {
             item.style.backgroundImage = orangeBackground;
         }
     }
-    
+
     function moveFloatingLinkContainer(i) {
         const floatingLinkContainer = document.getElementById(`floating-link-container--${i}`);
-    
+
         if (floatingLinkContainer) {
             const positions = settledPositions[`floating-link-container--${i}`] || {};
-    
+
             // Reset all positioning properties first
             floatingLinkContainer.style.top = "";
             floatingLinkContainer.style.left = "";
             floatingLinkContainer.style.right = "";
             floatingLinkContainer.style.bottom = "";
             floatingLinkContainer.style.transform = "";
-    
+
             // Apply settled positions
             if (positions.top !== undefined) floatingLinkContainer.style.top = positions.top;
             if (positions.bottom !== undefined) floatingLinkContainer.style.bottom = positions.bottom;
@@ -620,11 +661,11 @@ document.addEventListener("DOMContentLoaded", () => {
             console.warn(`⚠️ Floating link container #floating-link-container--${i} not found.`);
         }
     }
-    
+
     function applyPhaseTwoFinalStyles() {
         const orangeBackground = 'url("https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-3-orange.svg")';
         const lightBlueBackground = 'url("https://edge.chebellagiornata.it/wp-content/themes/generic/assets/svgs/shape-3-lightblue.svg")';
-    
+
         const specialCases = {
             1: 275,
             4: 275,
@@ -635,16 +676,16 @@ document.addEventListener("DOMContentLoaded", () => {
             19: 275,
             22: 275,
         };
-    
+
         for (let i = 1; i <= 24; i++) {
             const parentItem = document.querySelector(`.circle-item-${i}`);
             const item = document.querySelector(`.circle-item-${i} .inner-container`);
-    
+
             if (!parentItem || !item) {
                 console.warn(`⚠️ Circle item ${i} not found.`);
                 continue;
             }
-    
+
             applyStyleToCircleItem(i, item, specialCases, lightBlueBackground, orangeBackground);
         }
     }
