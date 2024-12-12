@@ -97,6 +97,12 @@ h6 {
         line-height: 6rem;
         max-width: 600px;
     }
+
+    .h1-m {
+        font-size: 3rem;
+        line-height: 4rem;
+        max-width: 80%;
+    }
 }
 
 @media (max-width: 1450px) {
